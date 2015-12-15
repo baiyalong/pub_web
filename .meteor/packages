@@ -1,0 +1,48 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+nimble:restivus
+accounts-password
+alanning:roles
+iron:router
+meteorhacks:cluster
+sacha:spin
+aldeed:collection2
+momentjs:moment
+twbs:bootstrap
+mrt:moment-timezone
+cfs:standard-packages
+cfs:gridfs
+fourseven:scss
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+raix:push
+
+
+npm-container
+http
+meteorhacks:npm
+ostrio:meteor-root
+rajit:bootstrap3-datepicker
+rajit:bootstrap3-datepicker-zh-cn
+percolate:synced-cron
+natestrauser:x-editable-bootstrap
+jparker:crypto-hmac
+jparker:crypto-base64
+jparker:crypto-sha1
+pcel:mysql

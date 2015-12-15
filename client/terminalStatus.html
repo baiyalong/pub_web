@@ -1,0 +1,36 @@
+<template name="terminalStatus">
+    <div class="terminalStatus">
+        <div class="topic">
+            <p>移动终端状态管理</p>
+        </div>
+        <div class="divider">
+            <div></div>
+        </div>
+
+        <div class="row-fluid list">
+            <div class="col-md-12">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>终端ID</th>
+                        <th>更新时间</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each terminalList}}
+                    <tr  id="{{_id}}">
+                        <td>{{ID}}</td>
+                        <td>{{getTime timestamp}}</td>
+                        <td>
+                            <a class="remove btn btn-default btn-sm">删除</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</template>

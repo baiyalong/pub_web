@@ -1,0 +1,93 @@
+<template name="airQualityReview">
+    <div class="airQualityReview">
+        <div class="topic">
+            <p>空气质量预报审核</p>
+        </div>
+        <div class="divider">
+            <div></div>
+        </div>
+
+        <div class="row-fluid list">
+            <div class="col-md-12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th width='12%'>时间</th>
+                            <th width='10%'>城市</th>
+                            <th width='30%'>污染预报详情</th>
+                            <th width='40%'>未来污染趋势</th>
+                            <th width='10%'>状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each airQualityList}}
+                        <tr id="{{_id}}">
+                            <td>{{moment date}}</td>
+                            <td>{{cityName}}</td>
+                            <td>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>日期</th>
+                                            <th>污染物</th>
+                                            <th>级别</th>
+                                            <th>指数</th>
+                                            <th>能见度</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each applyContent.detail}}
+                                        <tr>
+                                            <td>{{momentShort date}}</td>
+                                            <td>{{getPrimaryPollutant primaryPollutant}}</td>
+                                            <td>{{getAirIndexLevel airIndexLevel}}</td>
+                                            <td>{{airQualityIndex}}</td>
+                                            <td>{{visibility}}</td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td><p class="text-left">{{applyContent.description}}</p></td>
+                            <td>
+                                <p class="{{statusColor statusCode}}">{{statusName}}</p>
+                                {{#if notAudit statusCode}}
+                                <a class="pass btn btn-default btn-sm">审核通过</a>
+                                <a class="back btn btn-default btn-sm">退回修改</a>
+                                {{/if}}
+                                <a class="remove btn btn-default btn-sm">删除</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="auditOption" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">{{title}}<span
+                                style="color:red">&nbsp;&nbsp;{{err}}</span>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="option">审核意见</label>
+                                <textarea class="form-control" id="option" required="required" rows="5"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-default audit">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</template>

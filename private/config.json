@@ -1,0 +1,15 @@
+{
+  "getRawData": {
+    "addr": "http://10.10.10.10:8088",
+    "getMonitoringDataPath": "/path",
+    "getForcastDataPath": "/path"
+  },
+  "ipRange": "10.10.10.0",
+  "roles": [
+    "内蒙古自治区环保厅公共信息发布管理员",
+    "盟市环保公共信息发布管理员",
+    "发布平台系统管理员"
+  ],
+  "IP":"10.15.214.185",
+  "PORT":"4000"
+}

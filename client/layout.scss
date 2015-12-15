@@ -1,0 +1,184 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  padding-top: 65px;
+  height: 100%;
+  width: 100%;
+}
+
+nav {
+  height: 62px;
+  background: #f7f7f7;
+  box-shadow: 0 3px 3px #d4d4d4;
+  margin: 0;
+}
+
+nav:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background: #28b779;
+}
+
+nav div {
+  margin: 0 auto;
+  padding: 0;
+  width: 1024px;
+  height: 100%;
+}
+
+nav .title {
+  /*font-size: 22px;*/
+  font-weight: bolder;
+  margin: 20px auto auto 30px;
+  padding: 0;
+  height: 22px;
+  line-height: 22px;
+}
+
+nav .username {
+  font-weight: bold;
+  margin: 23px auto;
+  padding: 0;
+  height: 14px;
+  line-height: 14px;
+}
+
+nav .logout {
+  font-weight: bold;
+  margin: 23px 20px auto;
+  padding: 0;
+  height: 14px;
+  line-height: 14px;
+  text-decoration: none;
+}
+
+/*nav:after {*/
+/*content: "";*/
+/*display: block;*/
+/*width: 100%;*/
+/*height: 3px;*/
+/*background: #d4d4d4;*/
+/*}*/
+
+.container-fluid {
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#main {
+  margin: 0 auto;
+  padding: 0;
+  width: 1024px;
+  height: 100%;
+}
+
+.mainL {
+  padding: 0;
+  background-color: #4dcb8d;
+  color: white;
+  width: 250px;
+  height: 100%;
+}
+
+.mainL ul li {
+  height: 50px;
+  margin: 0;
+}
+
+.mainL ul li:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #57D296;
+}
+
+.mainL ul li:after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #2CBD7E;
+}
+
+.mainL ul li a {
+  height: 50px;
+  line-height: 30px;
+  padding-left: 45px;
+  color: #FFFFFF;
+}
+
+.mainL ul li a .layout {
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+nav .layout {
+  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+.mainL ul li a:hover {
+  background: #28b779;
+}
+
+.mainL ul li a:active {
+  background: #28b779;
+}
+
+.mainL ul li a:visited {
+  background: #28b779;
+}
+
+.mainL ul li a.active {
+  background: #28b779;
+}
+
+.mainR {
+  padding: 0;
+  overflow: auto;
+  width: 774px;
+  height: 100%;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+table {
+  margin-top: 20px;
+}
+
+#dataCorrectionTable input {
+  width: 90px
+}
+
+#pollutantLimitTable input {
+  width: 90px
+}
+
+#pollutantLimitTable {
+  width: 300px;
+}
+
+.logout {
+  margin-right: 50px;
+}
+
+.imgMargin {
+  margin-right: 11px;
+}

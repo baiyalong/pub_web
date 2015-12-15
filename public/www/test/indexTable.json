@@ -1,0 +1,44 @@
+[
+  {
+    "city": "呼和浩特",
+    "AQI": 24,
+    "class": "优",
+    "majorP": "PM10"
+  },
+  {
+    "city": "巴彦卓尔",
+    "AQI": 46,
+    "class": "优",
+    "majorP": "PM2.5"
+  },
+  {
+    "city": "呼伦贝尔",
+    "AQI": 17,
+    "class": "优",
+    "majorP": "O3"
+  },
+  {
+    "city": "阿拉善盟",
+    "AQI": 74,
+    "class": "良",
+    "majorP": "PM2.5"
+  },
+  {
+    "city": "兴安盟",
+    "AQI": 114,
+    "class": "轻度污染",
+    "majorP": "PM10"
+  },
+  {
+    "city": "通辽",
+    "AQI": 268,
+    "class": "严重污染",
+    "majorP": "PM10"
+  },
+  {
+    "city": "赤峰",
+    "AQI": 24,
+    "class": "优",
+    "majorP": "PM2.5"
+  }
+]

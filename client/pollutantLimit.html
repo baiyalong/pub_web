@@ -1,0 +1,36 @@
+<template name="pollutantLimit">
+    <div class="pollutantLimit">
+        <div class="topic">
+            <p>污染物排放发布限值</p>
+        </div>
+        <div class="divider">
+            <div></div>
+        </div>
+
+        <div class="row-fluid list">
+            <div>
+                <table id="pollutantLimitTable" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th>名称</th>
+                        {{#each limitList}}
+                        <td>{{pollutantName}}</td>
+                        {{/each}}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>限值</th>
+                        {{#each limitList}}
+                        <td>
+                            <a href="#" class="editableLimit" code="{{pollutantCode}}"
+                               id="{{_id}}">{{limit}}</a>
+                        </td>
+                        {{/each}}
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</template>

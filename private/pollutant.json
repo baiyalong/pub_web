@@ -1,0 +1,152 @@
+[
+    {
+        "pollutantCode": 100,
+        "pollutantName": "SO2",
+        "chineseName": "二氧化硫",
+        "unit": "μg/m3"
+    },
+    {
+        "pollutantCode": 101,
+        "pollutantName": "NO2",
+        "chineseName": "二氧化氮",
+        "unit": "μg/m3"
+    },
+    {
+        "pollutantCode": 102,
+        "pollutantName": "O3",
+        "chineseName": "臭氧",
+        "unit": "μg/m3"
+    },
+    {
+        "pollutantCode": 103,
+        "pollutantName": "CO",
+        "chineseName": "一氧化碳",
+        "unit": "mg/m3"
+    },
+    {
+        "pollutantCode": 104,
+        "pollutantName": "PM10",
+        "chineseName": "颗粒物PM10",
+        "unit": "μg/m3"
+    },
+    {
+        "pollutantCode": 105,
+        "pollutantName": "PM2.5",
+        "chineseName": "细颗粒物PM2.5",
+        "unit": "μg/m3"
+    },
+    {
+        "pollutantCode": 106,
+        "pollutantName": "NOx",
+        "chineseName": "氮氧化物",
+        "unit": "μg/m3"
+    },
+    {
+        "pollutantCode": 107,
+        "pollutantName": "NO",
+        "chineseName": "一氧化氮",
+        "unit": "μg/m3"
+    },
+    {
+        "pollutantCode": 108,
+        "pollutantName": "风速",
+        "chineseName": "风速",
+        "unit": "m/s"
+    },
+    {
+        "pollutantCode": 109,
+        "pollutantName": "风向",
+        "chineseName": "风向",
+        "unit": "deg"
+    },
+    {
+        "pollutantCode": 110,
+        "pollutantName": "气压",
+        "chineseName": "气压",
+        "unit": "hpa"
+    },
+    {
+        "pollutantCode": 111,
+        "pollutantName": "气温",
+        "chineseName": "气温",
+        "unit": "℃"
+    },
+    {
+        "pollutantCode": 112,
+        "pollutantName": "湿度",
+        "chineseName": "湿度",
+        "unit": "%"
+    },
+    {
+        "pollutantCode": 113,
+        "pollutantName": "降水量",
+        "chineseName": "降水量",
+        "unit": "mm"
+    },
+    {
+        "pollutantCode": 114,
+        "pollutantName": "站房温度",
+        "chineseName": "站房温度",
+        "unit": "℃"
+    },
+    {
+        "pollutantCode": 115,
+        "pollutantName": "站房湿度",
+        "chineseName": "站房湿度",
+        "unit": "%"
+    },
+    {
+        "pollutantCode": 116,
+        "pollutantName": "CO2",
+        "chineseName": "二氧化碳",
+        "unit": "mg/m3"
+    },
+    {
+        "pollutantCode": 117,
+        "pollutantName": "甲烷",
+        "chineseName": "甲烷",
+        "unit": "mg/m3"
+    },
+    {
+        "pollutantCode": 118,
+        "pollutantName": "能见度",
+        "chineseName": "能见度",
+        "unit": "km"
+    },
+    {
+        "pollutantCode": 120,
+        "pollutantName": "降水强度",
+        "chineseName": "降水强度",
+        "unit": "mm/h"
+    },
+    {
+        "pollutantCode": 121,
+        "pollutantName": "蒸发量",
+        "chineseName": "蒸发量",
+        "unit": "mm"
+    },
+    {
+        "pollutantCode": 122,
+        "pollutantName": "蒸发率",
+        "chineseName": "蒸发率",
+        "unit": "mm/h"
+    },
+    {
+        "pollutantCode": 123,
+        "pollutantName": "日照",
+        "chineseName": "日照",
+        "unit": "W/㎡"
+    },
+    {
+        "pollutantCode": 124,
+        "pollutantName": "日照时数",
+        "chineseName": "日照时数",
+        "unit": "h"
+    },
+    {
+        "pollutantCode": 125,
+        "pollutantName": "太阳辐射",
+        "chineseName": "太阳辐射",
+        "unit": "W/㎡"
+    }
+]

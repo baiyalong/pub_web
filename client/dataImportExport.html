@@ -1,0 +1,66 @@
+<template name="dataImportExport">
+    <div class="dataImportExport">
+        <div class="topic">
+            <p>数据导入导出</p>
+        </div>
+        <div class="divider">
+            <div></div>
+        </div>
+
+        <div class="row-fluid list">
+            <div class="col-md-12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>数据项</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id='dStation'>
+                            <td>发布点位信息 </td>
+                            <td>
+                                <button class="btn btn-default  btn-sm">模版下载</button>
+                                <button class="btn btn-default  btn-sm">导入数据</button>
+                                <button class="btn btn-default  btn-sm">导出数据</button>
+                            </td>
+                        </tr>
+                        <tr id='dCorrect'>
+                            <td>点位数据修正 </td>
+                            <td>
+                                <button class="btn btn-default  btn-sm">模版下载</button>
+                                <button class="btn btn-default  btn-sm">导入数据</button>
+                                <button class="btn btn-default  btn-sm">导出数据</button>
+                            </td>
+                        </tr>
+                        <tr id='dLimit'>
+                            <td class="ll">污染物发布限值</td>
+                            <td>
+                                <button class="btn btn-default  btn-sm">模版下载</button>
+                                <button class="btn btn-default  btn-sm">导入数据</button>
+                                <button class="btn btn-default  btn-sm">导出数据</button>
+                            </td>
+                        </tr>
+                        <tr id='dWarning'>
+                            <td class="ll">紧急污染预告发布历史记录</td>
+                            <td>
+                                <button class="btn btn-default  btn-sm" style="visibility:hidden;">模版下载</button>
+                                <button class="btn btn-default  btn-sm" style="visibility:hidden;">导入数据</button>
+                                <button class="btn btn-default  btn-sm">导出数据</button>
+                            </td>
+                        </tr>
+                        <tr id='dForcast'>
+                            <td class="ll">空气质量预报审核历史记录</td>
+                            <td>
+                                <button class="btn btn-default  btn-sm" style="visibility:hidden;">模版下载</button>
+                                <button class="btn btn-default  btn-sm" style="visibility:hidden;">导入数据</button>
+                                <button class="btn btn-default  btn-sm">导出数据</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</template>

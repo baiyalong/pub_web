@@ -1,0 +1,171 @@
+<template name="airQualityPublish">
+    <div class="airQualityPublish">
+        <div class="topic">
+            <p>空气质量预报发布</p>
+        </div>
+        <div class="divider">
+            <div></div>
+        </div>
+        <div class="row-fluid select">
+            <div class="col-md-12">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="date">发布时间</label>
+                        <span>{{today}}</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">当前状态</label>
+                        <span class="{{statusColor}}">{{currentStatus}}</span>
+                    </div>
+                    <div class="form-group" style="margin-left:0">
+                        <label for="city">城市</label>
+                        <select class="form-control input-sm" id="city" disabled="disabled">
+                            {{#each cityList}}
+                            <option value="{{code}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-right:0">
+                        <label for="county">旗县</label>
+                        <select class="form-control input-sm" id="county" disabled="disabled" style="width:120px">
+                            {{#each countyList}}
+                            <option value="{{code}}">{{name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row-fluid content list">
+            <div class="col-md-12">
+                <div class="row-fluid">
+                    <p><b>污染预报详情录入</b></p>
+                    <table class="forecastDetail">
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>首要污染物</th>
+                                <th>空气指数级别</th>
+                                <th>空气质量指数</th>
+                                <th>能见度</th>
+                                <th>
+                                    <button class="btn btn-default add btn-sm">添加</button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each forecastList}}
+                            <tr id="{{_id}}" date="{{date}}">
+                                <td>{{dateString}}</td>
+                                <td>
+                                    <select class="form-control input-sm primaryPollutant">
+                                        {{#each selectPrimaryPollutant primaryPollutant}}
+                                        <option value="{{pollutantCode}}" selected="{{selected}}">{{pollutantName}}</option>
+                                        {{/each}}
+                                    </select>
+                                </td>
+                                <td>
+                                    <select class="form-control input-sm airIndexLevel">
+                                        {{#each selectAirIndexLevel airIndexLevel}}
+                                        <option value="{{code}}" selected="{{selected}}">{{name}}</option>
+                                        {{/each}}
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control input-sm airQualityIndex" value="{{airQualityIndex}}">
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control input-sm visibility" value="{{visibility}}">
+                                </td>
+                                <td>
+                                    {{#if showDetele}}
+                                    <button class="btn btn-default delete btn-sm">删除</button>
+                                    {{/if}}
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row-fluid" style="margin-top:30px">
+                    <p><b>未来污染趋势预报</b></p>
+                    <textarea class="form-control" rows="5">{{description}}</textarea>
+                </div>
+                <div class="row-fluid">
+                    <div class="col-md-2">
+                        <button class="btn btn-success btn-sm cancel">取消编辑</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-default btn-sm save">提交审核</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row-fluid list">
+            <div class="col-md-12">
+                <div class="row-fluid" style="margin-top:30px">
+                    <p><b>审核意见</b></p>
+                    <p>
+                        {{auditOption}}
+                    </p>
+                </div>
+                <div class="row-fluid" style="margin-top:30px">
+                    <p><b>历史记录</b></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width='12%'>时间</th>
+                                <th width='10%'>城市</th>
+                                <th width='30%'>污染预报详情</th>
+                                <th width='40%'>未来污染趋势</th>
+                                <th width='10%'>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each airQualityList}}
+                            <tr id="{{_id}}">
+                                <td>{{moment date}}</td>
+                                <td>{{cityName}}</td>
+                                <td>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>日期</th>
+                                                <th>污染物</th>
+                                                <th>级别</th>
+                                                <th>指数</th>
+                                                <th>能见度</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {{#each applyContent.detail}}
+                                            <tr>
+                                                <td>{{momentShort date}}</td>
+                                                <td>{{getPrimaryPollutant primaryPollutant}}</td>
+                                                <td>{{getAirIndexLevel airIndexLevel}}</td>
+                                                <td>{{airQualityIndex}}</td>
+                                                <td>{{visibility}}</td>
+                                            </tr>
+                                            {{/each}}
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <p class="text-left">{{applyContent.description}}</p>
+                                </td>
+                                <td>
+                                    <p class="{{statusColor statusCode}}">{{statusName}}</p>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</template>

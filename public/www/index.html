@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>内蒙古自治区空气质量预报信息发布</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/index.css">
+
+    <script src="/lib/jquery.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/d3/d3.min.js"></script>
+    <script src="/index.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="active"><a href="#">城市空气质量预报</a></li>
+                <li role="presentation"><a href="#">城市空气质量月报</a></li>
+                <li role="presentation"><a href="#">环境质量状况周报</a></li>
+                <li role="presentation"><a href="#">国家河流水质公报</a></li>
+                <li role="presentation"><a href="#">城市声环境状况</a></li>
+                <li role="presentation"><a href="#">国家自动检测水质报告</a></li>
+            </ul>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">空气质量实时监测</h3>
+                </div>
+                <div class="panel-body" id="map">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">未来空气质量预报</h3>
+                </div>
+                <div class="panel-body">
+                    <b>呼和浩特<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        预计明日AQI:24<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        级别:优</b>
+                </div>
+                <!-- Table -->
+                <table class="table table-condensed table-hover">
+                    <tr>
+                        <th>盟市</th>
+                        <th>明日AQI预报</th>
+                        <th>类别</th>
+                        <th>首要污染物</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

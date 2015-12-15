@@ -1,0 +1,38 @@
+<template name="layout">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div>
+            <a class="navbar-brand title" href="/">公共信息发布服务系统</a>
+            <a href="#" class="logout navbar-text navbar-right">注销
+                <div class="layout layout_0"></div>
+            </a>
+
+            <p class="navbar-text navbar-right username">{{username}}</p>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div id="main" class="row-fluid">
+            <div class="col-md-2 mainL">
+                <ul class="nav nav-pills nav-stacked navHover">
+                    {{#each menu}}
+                    <li role="presentation">
+                        <a href={{path}} class="{{active}}">
+                            {{#if iconClass}}
+                            <div class={{iconClass}}></div>
+                            {{else}}
+                            <img src={{imgSrc}} class='imgMargin'/>
+                            {{/if}}
+                            {{name}}
+                        </a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="col-md-10 mainR">
+                {{> yield}}
+            </div>
+        </div>
+    </div>
+
+    {{> modal}}
+</template>

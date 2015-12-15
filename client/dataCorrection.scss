@@ -1,0 +1,141 @@
+.dataCorrection {
+
+  .topic {
+    height: auto;
+  }
+
+  .topic p {
+    margin: 27px auto 9px 30px;
+    color: #28B779;
+    font-weight: bolder;
+    font-size: medium;
+  }
+
+  .divider {
+    height: 1px;
+    background: #E7E7E7;
+    margin-bottom: 20px;
+  }
+  .divider div {
+    height: 2px;
+    background: #28B779;
+    margin-left: 30px;
+    width: 98px;
+    position: relative;
+    top: -1px;
+  }
+
+  .select > div {
+    padding-left: 30px;
+  }
+
+  .select label {
+    margin-right: 10px;
+  }
+
+  .select div.form-group {
+    margin-right: 25px;
+  }
+
+  .stationInfo {
+    padding-top: 20px;
+  }
+
+  .content > div {
+    padding-left: 30px;
+    padding-right: 0;
+    margin-top: 10px;
+    div.col-md-1 {
+      padding: 0;
+    }
+    div.col-md-11 {
+      padding-left: 17px;
+      padding-right: 0;
+      textarea {
+        padding: 0;
+      }
+    }
+    div.col-md-2 {
+      margin-top: 20px;
+      margin-left: 326px;
+      padding: 0;
+      width: 90px;
+    }
+    div.col-md-3 {
+      margin-top: 20px;
+      padding: 0;
+    }
+  }
+
+  .list > div {
+    padding-left: 30px;
+    padding-right: 0;
+    margin-top: 20px;
+    div.col-md-1 {
+      padding: 0;
+    }
+    div.col-md-11 {
+      padding-left: 17px;
+      padding-right: 0;
+    }
+  }
+
+  .list table {
+    border: 1px solid #D8D8D8;
+    width: 100%;
+    empty-cells: hide;
+    border-collapse: collapse;
+    margin: 0;
+    //input {
+    //  width: 40px;
+    //  max-width: 40px;
+    //  overflow: auto;
+    //}
+    th, td {
+      text-align: center;
+    }
+    //input {
+    //  text-align: right;
+    //  padding: 5px;
+    //}
+  }
+
+  .list thead {
+    background: #F1F1F1;
+  }
+
+  .list tbody tr {
+    border: 1px dashed #D8D8D8;
+
+  }
+
+  .list tbody tr:hover {
+    background: #E1EEE7;
+  }
+
+  .list tr {
+    height: 40px;
+    max-height: 40px;
+    overflow: auto;
+  }
+
+  .list th {
+    height: 40px;
+    vertical-align: middle;
+    //padding-left: 20px;
+  }
+
+  .list td {
+    height: 40px;
+    vertical-align: middle;
+    //padding-left: 20px;
+  }
+  //.button {
+  //  .col-md-1 {
+  //    margin: 20px 20px 20px 290px;
+  //  }
+  //  .col-md-2 {
+  //    margin: 20px 0;
+  //  }
+  //}
+}

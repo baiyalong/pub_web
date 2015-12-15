@@ -1,0 +1,14 @@
+{
+  "apn": {
+    "passphrase": "123456",
+    "key": "apnProdKey.pem",
+    "cert": "apnProdCert.pem"
+  },
+  "production": true,
+  "badge": true,
+  "sound": true,
+  "alert": true,
+  "vibrate": true,
+  "sendInterval": 15000,
+  "sendBatchSize": 1
+}

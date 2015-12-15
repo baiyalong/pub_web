@@ -1,0 +1,745 @@
+[{
+  "code": 150000,
+  "name": "内蒙古自治区",
+  "longitude": 111.670801,
+  "latitude": 40.818311,
+  "weatherID": 101080101
+}, {
+  "code": 150100,
+  "name": "呼和浩特市",
+  "longitude": 111.670801,
+  "latitude": 40.818311,
+  "weatherID": 101080101
+}, {
+  "code": 150101,
+  "name": "市辖区",
+  "longitude": 111.670801,
+  "latitude": 40.818311,
+  "weatherID": 101080101
+}, {
+  "code": 150102,
+  "name": "新城区",
+  "longitude": 111.66554,
+  "latitude": 40.85828,
+  "weatherID": 101080101
+}, {
+  "code": 150103,
+  "name": "回民区",
+  "longitude": 111.62402,
+  "latitude": 40.80827,
+  "weatherID": 101080101
+}, {
+  "code": 150104,
+  "name": "玉泉区",
+  "longitude": 111.67456,
+  "latitude": 40.75227,
+  "weatherID": 101080101
+}, {
+  "code": 150105,
+  "name": "赛罕区",
+  "longitude": 111.70224,
+  "latitude": 40.79207,
+  "weatherID": 101080101
+}, {
+  "code": 150121,
+  "name": "土默特左旗",
+  "longitude": 111.14898,
+  "latitude": 40.72229,
+  "weatherID": 101080102
+}, {
+  "code": 150122,
+  "name": "托克托县",
+  "longitude": 111.19101,
+  "latitude": 40.27492,
+  "weatherID": 101080103
+}, {
+  "code": 150123,
+  "name": "和林格尔县",
+  "longitude": 111.82205,
+  "latitude": 40.37892,
+  "weatherID": 101080104
+}, {
+  "code": 150124,
+  "name": "清水河县",
+  "longitude": 111.68316,
+  "latitude": 39.9097,
+  "weatherID": 101080105
+}, {
+  "code": 150125,
+  "name": "武川县",
+  "longitude": 111.45785,
+  "latitude": 41.09289,
+  "weatherID": 101080107
+}, {
+  "code": 150200,
+  "name": "包头市",
+  "longitude": 109.840405,
+  "latitude": 40.658168,
+  "weatherID": 101080201
+}, {
+  "code": 150201,
+  "name": "市辖区",
+  "longitude": 109.840405,
+  "latitude": 40.658168,
+  "weatherID": 101080201
+}, {
+  "code": 150202,
+  "name": "东河区",
+  "longitude": 110.0462,
+  "latitude": 40.58237,
+  "weatherID": 101080201
+}, {
+  "code": 150203,
+  "name": "昆都仑区",
+  "longitude": 109.83862,
+  "latitude": 40.64175,
+  "weatherID": 101080201
+}, {
+  "code": 150204,
+  "name": "青山区",
+  "longitude": 109.90131,
+  "latitude": 40.64329,
+  "weatherID": 101080201
+}, {
+  "code": 150205,
+  "name": "石拐区",
+  "longitude": 110.27322,
+  "latitude": 40.67297,
+  "weatherID": 101080201
+}, {
+  "code": 150206,
+  "name": "白云鄂博矿区",
+  "longitude": 109.97367,
+  "latitude": 41.76968,
+  "weatherID": 101080202
+}, {
+  "code": 150207,
+  "name": "九原区",
+  "longitude": 109.96496,
+  "latitude": 40.60554,
+  "weatherID": 101080201
+}, {
+  "code": 150221,
+  "name": "土默特右旗",
+  "longitude": 110.52417,
+  "latitude": 40.5688,
+  "weatherID": 101080204
+}, {
+  "code": 150222,
+  "name": "固阳县",
+  "longitude": 110.06372,
+  "latitude": 41.01851,
+  "weatherID": 101080205
+}, {
+  "code": 150223,
+  "name": "达尔罕茂明安联合旗",
+  "longitude": 110.43258,
+  "latitude": 41.69875,
+  "weatherID": 101080206
+}, {
+  "code": 150300,
+  "name": "乌海市",
+  "longitude": 106.825563,
+  "latitude": 39.673734,
+  "weatherID": 101080301
+}, {
+  "code": 150301,
+  "name": "市辖区",
+  "longitude": 106.825563,
+  "latitude": 39.673734,
+  "weatherID": 101080301
+}, {
+  "code": 150302,
+  "name": "海勃湾区",
+  "longitude": 106.8222,
+  "latitude": 39.66955,
+  "weatherID": 101080301
+}, {
+  "code": 150303,
+  "name": "海南区",
+  "longitude": 106.88656,
+  "latitude": 39.44128,
+  "weatherID": 101080301
+}, {
+  "code": 150304,
+  "name": "乌达区",
+  "longitude": 106.72723,
+  "latitude": 39.505,
+  "weatherID": 101080301
+}, {
+  "code": 150400,
+  "name": "赤峰市",
+  "longitude": 118.956806,
+  "latitude": 42.275317,
+  "weatherID": 101080601
+}, {
+  "code": 150401,
+  "name": "市辖区",
+  "longitude": 118.956806,
+  "latitude": 42.275317,
+  "weatherID": 101080601
+}, {
+  "code": 150402,
+  "name": "红山区",
+  "longitude": 118.95755,
+  "latitude": 42.24312,
+  "weatherID": 101080601
+}, {
+  "code": 150403,
+  "name": "元宝山区",
+  "longitude": 119.28921,
+  "latitude": 42.04005,
+  "weatherID": 101080601
+}, {
+  "code": 150404,
+  "name": "松山区",
+  "longitude": 118.9328,
+  "latitude": 42.28613,
+  "weatherID": 101080601
+}, {
+  "code": 150421,
+  "name": "阿鲁科尔沁旗",
+  "longitude": 120.06527,
+  "latitude": 43.87988,
+  "weatherID": 101080603
+}, {
+  "code": 150422,
+  "name": "巴林左旗",
+  "longitude": 119.38012,
+  "latitude": 43.97031,
+  "weatherID": 101080605
+}, {
+  "code": 150423,
+  "name": "巴林右旗",
+  "longitude": 118.66461,
+  "latitude": 43.53387,
+  "weatherID": 101080606
+}, {
+  "code": 150424,
+  "name": "林西县",
+  "longitude": 118.04733,
+  "latitude": 43.61165,
+  "weatherID": 101080607
+}, {
+  "code": 150425,
+  "name": "克什克腾旗",
+  "longitude": 117.54562,
+  "latitude": 43.26501,
+  "weatherID": 101080608
+}, {
+  "code": 150426,
+  "name": "翁牛特旗",
+  "longitude": 119.03042,
+  "latitude": 42.93147,
+  "weatherID": 101080609
+}, {
+  "code": 150428,
+  "name": "喀喇沁旗",
+  "longitude": 118.70144,
+  "latitude": 41.92917,
+  "weatherID": 101080611
+}, {
+  "code": 150429,
+  "name": "宁城县",
+  "longitude": 119.34375,
+  "latitude": 41.59661,
+  "weatherID": 101080613
+}, {
+  "code": 150430,
+  "name": "敖汉旗",
+  "longitude": 119.92163,
+  "latitude": 42.29071,
+  "weatherID": 101080614
+}, {
+  "code": 150500,
+  "name": "通辽市",
+  "longitude": 122.263119,
+  "latitude": 43.617429,
+  "weatherID": 101080501
+}, {
+  "code": 150501,
+  "name": "市辖区",
+  "longitude": 122.263119,
+  "latitude": 43.617429,
+  "weatherID": 101080501
+}, {
+  "code": 150502,
+  "name": "科尔沁区",
+  "longitude": 122.25573,
+  "latitude": 43.62257,
+  "weatherID": 101080501
+}, {
+  "code": 150521,
+  "name": "科尔沁左翼中旗",
+  "longitude": 123.31912,
+  "latitude": 44.13014,
+  "weatherID": 101080503
+}, {
+  "code": 150522,
+  "name": "科尔沁左翼后旗",
+  "longitude": 122.35745,
+  "latitude": 42.94897,
+  "weatherID": 101080504
+}, {
+  "code": 150523,
+  "name": "开鲁县",
+  "longitude": 121.31884,
+  "latitude": 43.60003,
+  "weatherID": 101080506
+}, {
+  "code": 150524,
+  "name": "库伦旗",
+  "longitude": 121.776,
+  "latitude": 42.72998,
+  "weatherID": 101080507
+}, {
+  "code": 150525,
+  "name": "奈曼旗",
+  "longitude": 120.66348,
+  "latitude": 42.84527,
+  "weatherID": 101080508
+}, {
+  "code": 150526,
+  "name": "扎鲁特旗",
+  "longitude": 120.91507,
+  "latitude": 44.55592,
+  "weatherID": 101080509
+}, {
+  "code": 150581,
+  "name": "霍林郭勒市",
+  "longitude": 119.65429,
+  "latitude": 45.53454,
+  "weatherID": 101081108
+}, {
+  "code": 150600,
+  "name": "鄂尔多斯市",
+  "longitude": 109.99029,
+  "latitude": 39.817179,
+  "weatherID": 101080701
+}, {
+  "code": 150601,
+  "name": "市辖区",
+  "longitude": 109.99029,
+  "latitude": 39.817179,
+  "weatherID": 101080701
+}, {
+  "code": 150602,
+  "name": "东胜区",
+  "longitude": 109.96289,
+  "latitude": 39.82236,
+  "weatherID": 101080701
+}, {
+  "code": 150621,
+  "name": "达拉特旗",
+  "longitude": 110.03317,
+  "latitude": 40.4001,
+  "weatherID": 101080703
+}, {
+  "code": 150622,
+  "name": "准格尔旗",
+  "longitude": 111.23645,
+  "latitude": 39.86783,
+  "weatherID": 101080704
+}, {
+  "code": 150623,
+  "name": "鄂托克前旗",
+  "longitude": 107.48403,
+  "latitude": 38.18396,
+  "weatherID": 101080705
+}, {
+  "code": 150624,
+  "name": "鄂托克旗",
+  "longitude": 107.98226,
+  "latitude": 39.09456,
+  "weatherID": 101080708
+}, {
+  "code": 150625,
+  "name": "杭锦旗",
+  "longitude": 108.72934,
+  "latitude": 39.84023,
+  "weatherID": 101080709
+}, {
+  "code": 150626,
+  "name": "乌审旗",
+  "longitude": 108.8461,
+  "latitude": 38.59092,
+  "weatherID": 101080710
+}, {
+  "code": 150627,
+  "name": "伊金霍洛旗",
+  "longitude": 109.74908,
+  "latitude": 39.57393,
+  "weatherID": 101080711
+}, {
+  "code": 150700,
+  "name": "呼伦贝尔市",
+  "longitude": 119.758168,
+  "latitude": 49.215333,
+  "weatherID": 101081001
+}, {
+  "code": 150701,
+  "name": "市辖区",
+  "longitude": 119.758168,
+  "latitude": 49.215333,
+  "weatherID": 101081001
+}, {
+  "code": 150702,
+  "name": "海拉尔区",
+  "longitude": 119.7364,
+  "latitude": 49.2122,
+  "weatherID": 101081001
+}, {
+  "code": 150703,
+  "name": "扎赉诺尔区",
+  "longitude": 117.792702,
+  "latitude": 49.486943,
+  "weatherID": 101081010
+}, {
+  "code": 150721,
+  "name": "阿荣旗",
+  "longitude": 123.45941,
+  "latitude": 48.12581,
+  "weatherID": 101081003
+}, {
+  "code": 150722,
+  "name": "莫力达瓦达斡尔族自治旗",
+  "longitude": 124.51498,
+  "latitude": 48.48055,
+  "weatherID": 101081004
+}, {
+  "code": 150723,
+  "name": "鄂伦春自治旗",
+  "longitude": 123.72604,
+  "latitude": 50.59777,
+  "weatherID": 101081005
+}, {
+  "code": 150724,
+  "name": "鄂温克族自治旗",
+  "longitude": 119.7565,
+  "latitude": 49.14284,
+  "weatherID": 101081006
+}, {
+  "code": 150725,
+  "name": "陈巴尔虎旗",
+  "longitude": 119.42434,
+  "latitude": 49.32684,
+  "weatherID": 101081007
+}, {
+  "code": 150726,
+  "name": "新巴尔虎左旗",
+  "longitude": 118.26989,
+  "latitude": 48.21842,
+  "weatherID": 101081008
+}, {
+  "code": 150727,
+  "name": "新巴尔虎右旗",
+  "longitude": 116.82366,
+  "latitude": 48.66473,
+  "weatherID": 101081009
+}, {
+  "code": 150781,
+  "name": "满洲里市",
+  "longitude": 117.47946,
+  "latitude": 49.58272,
+  "weatherID": 101081010
+}, {
+  "code": 150782,
+  "name": "牙克石市",
+  "longitude": 120.7117,
+  "latitude": 49.2856,
+  "weatherID": 101081011
+}, {
+  "code": 150783,
+  "name": "扎兰屯市",
+  "longitude": 122.73757,
+  "latitude": 48.01363,
+  "weatherID": 101081012
+}, {
+  "code": 150784,
+  "name": "额尔古纳市",
+  "longitude": 120.19094,
+  "latitude": 50.24249,
+  "weatherID": 101081014
+}, {
+  "code": 150785,
+  "name": "根河市",
+  "longitude": 121.52197,
+  "latitude": 50.77996,
+  "weatherID": 101081015
+}, {
+  "code": 150800,
+  "name": "巴彦淖尔市",
+  "longitude": 107.416959,
+  "latitude": 40.757402,
+  "weatherID": 101080801
+}, {
+  "code": 150801,
+  "name": "市辖区",
+  "longitude": 107.416959,
+  "latitude": 40.757402,
+  "weatherID": 101080801
+}, {
+  "code": 150802,
+  "name": "临河区",
+  "longitude": 107.42668,
+  "latitude": 40.75827,
+  "weatherID": 101080801
+}, {
+  "code": 150821,
+  "name": "五原县",
+  "longitude": 108.26916,
+  "latitude": 41.09631,
+  "weatherID": 101080802
+}, {
+  "code": 150822,
+  "name": "磴口县",
+  "longitude": 107.00936,
+  "latitude": 40.33062,
+  "weatherID": 101080803
+}, {
+  "code": 150823,
+  "name": "乌拉特前旗",
+  "longitude": 108.65219,
+  "latitude": 40.73649,
+  "weatherID": 101080804
+}, {
+  "code": 150824,
+  "name": "乌拉特中旗",
+  "longitude": 108.52587,
+  "latitude": 41.56789,
+  "weatherID": 101080806
+}, {
+  "code": 150825,
+  "name": "乌拉特后旗",
+  "longitude": 106.98971,
+  "latitude": 41.43151,
+  "weatherID": 101080807
+}, {
+  "code": 150826,
+  "name": "杭锦后旗",
+  "longitude": 107.15133,
+  "latitude": 40.88627,
+  "weatherID": 101080810
+}, {
+  "code": 150900,
+  "name": "乌兰察布市",
+  "longitude": 113.114543,
+  "latitude": 41.034126,
+  "weatherID": 101080401
+}, {
+  "code": 150901,
+  "name": "市辖区",
+  "longitude": 113.114543,
+  "latitude": 41.034126,
+  "weatherID": 101080401
+}, {
+  "code": 150902,
+  "name": "集宁区",
+  "longitude": 113.11452,
+  "latitude": 41.0353,
+  "weatherID": 101080401
+}, {
+  "code": 150921,
+  "name": "卓资县",
+  "longitude": 112.57757,
+  "latitude": 40.89414,
+  "weatherID": 101080402
+}, {
+  "code": 150922,
+  "name": "化德县",
+  "longitude": 114.01071,
+  "latitude": 41.90433,
+  "weatherID": 101080403
+}, {
+  "code": 150923,
+  "name": "商都县",
+  "longitude": 113.57772,
+  "latitude": 41.56213,
+  "weatherID": 101080404
+}, {
+  "code": 150924,
+  "name": "兴和县",
+  "longitude": 113.83395,
+  "latitude": 40.87186,
+  "weatherID": 101080406
+}, {
+  "code": 150925,
+  "name": "凉城县",
+  "longitude": 112.49569,
+  "latitude": 40.53346,
+  "weatherID": 101080407
+}, {
+  "code": 150926,
+  "name": "察哈尔右翼前旗",
+  "longitude": 113.22131,
+  "latitude": 40.7788,
+  "weatherID": 101080408
+}, {
+  "code": 150927,
+  "name": "察哈尔右翼中旗",
+  "longitude": 112.63537,
+  "latitude": 41.27742,
+  "weatherID": 101080409
+}, {
+  "code": 150928,
+  "name": "察哈尔右翼后旗",
+  "longitude": 113.19216,
+  "latitude": 41.43554,
+  "weatherID": 101080410
+}, {
+  "code": 150929,
+  "name": "四子王旗",
+  "longitude": 111.70654,
+  "latitude": 41.53312,
+  "weatherID": 101080411
+}, {
+  "code": 150981,
+  "name": "丰镇市",
+  "longitude": 113.10983,
+  "latitude": 40.4369,
+  "weatherID": 101080412
+}, {
+  "code": 152200,
+  "name": "兴安盟",
+  "longitude": 122.070317,
+  "latitude": 46.076268,
+  "weatherID": 101081101
+}, {
+  "code": 152201,
+  "name": "乌兰浩特市",
+  "longitude": 122.06378,
+  "latitude": 46.06235,
+  "weatherID": 101081101
+}, {
+  "code": 152202,
+  "name": "阿尔山市",
+  "longitude": 119.94317,
+  "latitude": 47.17716,
+  "weatherID": 101081102
+}, {
+  "code": 152221,
+  "name": "科尔沁右翼前旗",
+  "longitude": 121.95269,
+  "latitude": 46.0795,
+  "weatherID": 101081109
+}, {
+  "code": 152222,
+  "name": "科尔沁右翼中旗",
+  "longitude": 121.46807,
+  "latitude": 45.05605,
+  "weatherID": 101081103
+}, {
+  "code": 152223,
+  "name": "扎赉特旗",
+  "longitude": 122.91229,
+  "latitude": 46.7267,
+  "weatherID": 101081105
+}, {
+  "code": 152224,
+  "name": "突泉县",
+  "longitude": 121.59396,
+  "latitude": 45.38187,
+  "weatherID": 101081107
+}, {
+  "code": 152500,
+  "name": "锡林郭勒盟",
+  "longitude": 116.090996,
+  "latitude": 43.944018,
+  "weatherID": 101080901
+}, {
+  "code": 152501,
+  "name": "二连浩特市",
+  "longitude": 111.98297,
+  "latitude": 43.65303,
+  "weatherID": 101080903
+}, {
+  "code": 152502,
+  "name": "锡林浩特市",
+  "longitude": 116.08603,
+  "latitude": 43.93341,
+  "weatherID": 101080901
+}, {
+  "code": 152522,
+  "name": "阿巴嘎旗",
+  "longitude": 114.96826,
+  "latitude": 44.02174,
+  "weatherID": 101080904
+}, {
+  "code": 152523,
+  "name": "苏尼特左旗",
+  "longitude": 113.6506,
+  "latitude": 43.85687,
+  "weatherID": 101080906
+}, {
+  "code": 152524,
+  "name": "苏尼特右旗",
+  "longitude": 112.65741,
+  "latitude": 42.7469,
+  "weatherID": 101080907
+}, {
+  "code": 152525,
+  "name": "东乌珠穆沁旗",
+  "longitude": 116.97293,
+  "latitude": 45.51108,
+  "weatherID": 101080908
+}, {
+  "code": 152526,
+  "name": "西乌珠穆沁旗",
+  "longitude": 117.60983,
+  "latitude": 44.59623,
+  "weatherID": 101080909
+}, {
+  "code": 152527,
+  "name": "太仆寺旗",
+  "longitude": 115.28302,
+  "latitude": 41.87727,
+  "weatherID": 101080910
+}, {
+  "code": 152528,
+  "name": "镶黄旗",
+  "longitude": 113.84472,
+  "latitude": 42.23927,
+  "weatherID": 101080911
+}, {
+  "code": 152529,
+  "name": "正镶白旗",
+  "longitude": 115.00067,
+  "latitude": 42.30712,
+  "weatherID": 101080912
+}, {
+  "code": 152530,
+  "name": "正蓝旗",
+  "longitude": 116.00363,
+  "latitude": 42.25229,
+  "weatherID": 101080913
+}, {
+  "code": 152531,
+  "name": "多伦县",
+  "longitude": 116.48565,
+  "latitude": 42.203,
+  "weatherID": 101080915
+}, {
+  "code": 152900,
+  "name": "阿拉善盟",
+  "longitude": 105.706422,
+  "latitude": 38.844814,
+  "weatherID": 101081201
+}, {
+  "code": 152921,
+  "name": "阿拉善左旗",
+  "longitude": 105.67532,
+  "latitude": 38.8293,
+  "weatherID": 101081201
+}, {
+  "code": 152922,
+  "name": "阿拉善右旗",
+  "longitude": 101.66705,
+  "latitude": 39.21533,
+  "weatherID": 101081202
+}, {
+  "code": 152923,
+  "name": "额济纳旗",
+  "longitude": 101.06887,
+  "latitude": 41.96755,
+  "weatherID": 101081203
+}]

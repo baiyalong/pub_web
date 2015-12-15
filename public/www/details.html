@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>内蒙古自治区空气质量预报信息详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/nvd3/nv.d3.min.css">
+    <link rel="stylesheet" href="/details.css">
+
+    <script src="/lib/jquery.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/d3/d3.min.js"></script>
+    <script src="/lib/nvd3/nv.d3.min.js"></script>
+    <script src="/details.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <h1 class="text-center">内蒙古空气质量发布网</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <!--div class="panel-heading">
+                    <h3 class="panel-title"></h3>
+                </div-->
+                <div class="panel-body" id="map">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <!--div class="panel-heading">
+                    <h3 class="panel-title"></h3>
+                </div-->
+                <table class="table table-condensed table-hover" id="city">
+                    <tr>
+                        <th>盟市</th>
+                        <th>AQI</th>
+                        <th>PM2.5</th>
+                        <th>PM10</th>
+                        <th>O3</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <h3 class="text-left">呼和浩特市</h3>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">实时空气质量<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <small>2015年8月11日<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>14时</small>
+                    </h3>
+
+                </div>
+                <div class="panel-body">
+                    <div class="rd rdl">
+                        <p id="zs">实时空气质量指数</p>
+
+
+                        <p id="num">32</p>
+
+                        <p id="you">优</p>
+
+                    </div>
+                    <div class="rd rdm">
+                        <p>户外活动</p>
+
+                        <p>老人与小孩</p>
+
+                        <p>开窗通风</p>
+
+                        <p>口罩</p>
+
+                        <p>空气净化器</p>
+                    </div>
+                    <div class="rd rdr">
+                        <p>适宜</p>
+
+                        <p>适宜外出</p>
+
+                        <p>适宜</p>
+
+                        <p>不必佩戴</p>
+
+                        <p>不必开启</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">空气质量预报</h3>
+                </div>
+                <table class="table table-condensed table-hover" id="time">
+                    <tr>
+                        <th>时段</th>
+                        <th>空气质量</th>
+                        <th>首要污染物</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">最近24小时污染物浓度变化</h3>
+                </div>
+                <div class="panel-body" id="chartDay">
+                    <svg style="height: 500px"></svg>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">各监测点污染情况</h3>
+                </div>
+                <table class="table table-condensed table-hover" id="terminal">
+                    <tr>
+                        <th>监测点</th>
+                        <th>污染指数</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">过去30天AQI变化图</h3>
+                </div>
+                <div class="panel-body" id="chartMonth">
+                    <svg style="height: 500px"></svg>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
