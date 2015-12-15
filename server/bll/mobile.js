@@ -135,7 +135,7 @@ BLL.mobile = {
               })()]
             })(e.airQualityIndex),
             (function (code) {
-              return ['SO2', 'NO2', 'O3', 'CO', 'PM2.5', 'PM10'][code % 100]
+              return ['SO₂', 'NO₂', 'O₃', 'CO', 'PM2.5', 'PM10'][code % 100]
             })(e.primaryPollutant)
           ]
         })

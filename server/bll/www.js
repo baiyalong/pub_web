@@ -35,7 +35,7 @@ BLL.www = {
                                         code: Math.floor(e.areaCode / 100) * 100,
                                         name: Area.findOne({ code: Math.floor(e.areaCode / 100) * 100 }).name,
                                         primaryPollutant: (function (code) {
-                                            return ['SO2', 'NO2', 'O3', 'CO', 'PM2.5', 'PM10'][code % 100]
+                                            return ['SO₂', 'NO₂', 'O₃', 'CO', 'PM2.5', 'PM10'][code % 100]
                                         })(e.primaryPollutant),
                                         airQualityLevel: (function (code) {
                                             return ['一级', '二级', '三级', '四级', '五级', '六级'][code - 1]
@@ -79,17 +79,26 @@ BLL.www = {
                 aqi: Number(data['AQI']),
                 level: data['Quality']
             },
-            airQualityForecast: [
-                {
-                    time: day(1),
-                    airQuality: '优到良',
-                    primaryPollutant: 'PM2.5'
-                }, {
-                    time: day(2),
-                    airQuality: '优到良',
-                    primaryPollutant: 'PM2.5'
-                }
-            ],
+            airQualityForecast: (function () {
+                return DataAirQuality.find({ areaCode: { $gt: id, $lt: id + 100 }, date: { $gt: new Date() } }).map(function (e) {
+                    return {
+                        time: moment(e.date).format('MM月DD日'),
+                        airQuality: (function (value) {
+                            return ['优', '良', '轻度污染', '中度污染', '重度污染', '严重污染'][(function () {
+                                if (value > 0 && value <= 50) return 0;
+                                if (value > 50 && value <= 100) return 1;
+                                if (value > 100 && value <= 150) return 2;
+                                if (value > 150 && value <= 200) return 3;
+                                if (value > 200 && value <= 300) return 4;
+                                if (value > 300) return 5;
+                            })()]
+                        })(e.airQualityIndex),
+                        primaryPollutant: (function (code) {
+                            return ['SO₂', 'NO₂', 'O₃', 'CO', 'PM2.5', 'PM10'][code % 100]
+                        })(e.primaryPollutant)
+                    }
+                })
+            })(),
             pollutantLimit: (function () {
                 var arr = Pollutant.find({
                     $and: [{
