@@ -31,7 +31,18 @@ Template.airQualityReview.helpers({
         return moment(date).format('MM-DD')
     },
     airQualityList: function () {
-        return AirQuality.find({}, { sort: { timestamp: -1 } })
+        return AirQuality.find({date:{$gt:(function(){
+            var d = new Date();
+            d.setDate(d.getDate()-1);
+            return d;
+        })()}}, { sort: { date: -1 } })
+    },
+    airQualityListHistory: function () {
+        return AirQuality.find({date:{$lt:(function(){
+            var d = new Date();
+            d.setDate(d.getDate()-1);
+            return d;
+        })()}}, { sort: { date: -1 } })
     }
 });
 
@@ -40,7 +51,7 @@ Template.airQualityReview.events({
         var update = Session.get('auditStatus');
         update.auditOption = t.$('textarea').val().trim()
         console.log(update)
-        Meteor.call('auditAirQuality',Session.get('auditID'),update,function(err,res){
+        Meteor.call('auditAirQuality', Session.get('auditID'), update, function (err, res) {
             if (err) Util.modal('空气质量预报审核', err);
             t.$('#auditOption').modal('hide');
         })

@@ -150,7 +150,7 @@ BLL.mobile = {
         var d2 = new Date(date);
         d2.setSeconds(d2.getSeconds() + 1);
         var data = DataAirQuality.findOne({ areaCode: code, date: { $gt: d1, $lt: d2 } });
-        return data ? data.description : null;
+        return data ? data.description : '';
       })(),
       weatherPridiction: (function () {
         var res = [{

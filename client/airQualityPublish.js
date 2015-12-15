@@ -16,7 +16,11 @@ Template.airQualityPublish.helpers({
         return moment(date).format('MM-DD')
     },
     airQualityList: function () {
-        return AirQuality.find({cityCode:Number(Session.get('cityCode'))}, { sort: { timestamp: -1 } })
+        return AirQuality.find({cityCode:Number(Session.get('cityCode')),date:{$lt:(function(){
+            var d = new Date();
+            d.setDate(d.getDate()-1);
+            return d;
+        })()}}, { sort: { date: -1 } })
     },
     statusColor: function (statusCode) {
         if(statusCode)
