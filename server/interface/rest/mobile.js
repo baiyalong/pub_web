@@ -65,3 +65,9 @@ Api.addRoute('terminalStatus/', {
         return BLL.mobile.terminalStatus(this.bodyParams);
     }
 })
+
+Api.addRoute('airForecast', {
+    get: function () {
+        return BLL.mobile.airForecast();
+    }
+})

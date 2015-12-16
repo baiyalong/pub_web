@@ -8,6 +8,36 @@ Template.dataImportExport.helpers({
 
 Template.dataImportExport.events({
 
+    'click .template': function (e, t) {
+        switch (e.target.parentNode.parentNode.id) {
+            case 'dStation': break;
+            case 'dCorrect': break;
+            case 'dLimit': break;
+            // case 'dWarning': break;
+            // case 'dForcast': break;
+            default: ;
+        }
+    },
+    'click .import': function (e, t) {
+        switch (e.target.parentNode.parentNode.id) {
+            case 'dStation': break;
+            case 'dCorrect': break;
+            case 'dLimit': break;
+            // case 'dWarning': break;
+            // case 'dForcast': break;
+            default: ;
+        }
+    },
+    'click .export': function (e, t) {
+        switch (e.target.parentNode.parentNode.id) {
+            case 'dStation': break;
+            case 'dCorrect': break;
+            case 'dLimit': break;
+            case 'dWarning': break;
+            case 'dForcast': break;
+            default: ;
+        }
+    },
     'mouseenter tbody>tr': function (e, t) {
         var id = e.target.getAttribute('id');
         if (!id) return;

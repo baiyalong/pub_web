@@ -9,5 +9,6 @@ scheduleJobs = {
 	syncDataCityDaily: {},
 	syncDataStationHourly: {},
 	syncDataStationDaily: {},
+	syncDataAirForecast:{},
 	weather: {}
 }

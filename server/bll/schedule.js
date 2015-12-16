@@ -51,4 +51,13 @@ scheduleJobs.syncDataCityDaily = {
     mysql.syncDataCityDaily();
   }
 }
+
+scheduleJobs.syncDataAirForecast = {
+  schedule: function (parser) {
+    return parser.text('every 1 h');
+  },
+  job: function () {
+    mysql.syncDataAirForecast();
+  }
+}
   

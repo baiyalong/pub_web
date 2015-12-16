@@ -46,3 +46,4 @@ jparker:crypto-hmac
 jparker:crypto-base64
 jparker:crypto-sha1
 pcel:mysql
+harrison:papa-parse

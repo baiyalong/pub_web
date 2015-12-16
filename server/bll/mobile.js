@@ -124,19 +124,8 @@ BLL.mobile = {
         return DataAirQuality.find({ areaCode: code, date: { $gt: new Date() } }).map(function (e) {
           return [
             moment(e.date).format('MM月DD日'),
-            (function (value) {
-              return ['优', '良', '轻度污染', '中度污染', '重度污染', '严重污染'][(function () {
-                if (value > 0 && value <= 50) return 0;
-                if (value > 50 && value <= 100) return 1;
-                if (value > 100 && value <= 150) return 2;
-                if (value > 150 && value <= 200) return 3;
-                if (value > 200 && value <= 300) return 4;
-                if (value > 300) return 5;
-              })()]
-            })(e.airQualityIndex),
-            (function (code) {
-              return ['SO₂', 'NO₂', 'O₃', 'CO', 'PM2.5', 'PM10'][code % 100]
-            })(e.primaryPollutant)
+            e.airIndexLevel,
+            e.primaryPollutant
           ]
         })
       })(),
@@ -410,7 +399,7 @@ BLL.mobile = {
         if (deviceType == 'IOS') {
           return app.conf;
         } else {
-          return FileFS.findOne({
+          return app.conf || FileFS.findOne({
             _id: app.app
           }).url();
         }
@@ -632,5 +621,14 @@ BLL.mobile = {
       return 200;
     } else
       return 400;
+  },
+  airForecast: function () {
+    var data = DataAirForecast.findOne({}, { sort: { publishtime: -1 } })
+    return {
+      date: (function (s) {
+        return s.slice(0, 4) + '年' + s.slice(4, 6) + '月' + s.slice(6, 8) + '日'
+      })(data.publishtime),
+      content: data.publishcontent
+    }
   }
 }

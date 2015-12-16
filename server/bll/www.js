@@ -9,7 +9,10 @@ BLL.www = {
     airQualityForcast: function () {
         return {
             title: '内蒙古自治区污染预报',
-            content: '12月8日起，我区多地再遭雾霾伏击。12月9日，呼和浩特市政府发布空气质量蓝色预警：受不利的大气扩散条件影响，12月9日、11~12日，全市空气质量可能出现重度污染。同时，自治区气象局发布消息，预计未来3天，我区河套地区、中东部偏南及西部偏南地区雾、霾天气仍将持续，空气质量以中度、重度污染为主',
+            content: (function () {
+                var data = DataAirForecast.findOne({}, { sort: { publishtime: -1 } })
+                return data ? data.publishcontent || '' : '';
+            })(),
             detail: (function () {
                 var res = [];
                 for (var i = 1; i <= 3; i++) {
@@ -34,22 +37,9 @@ BLL.www = {
                                     return {
                                         code: Math.floor(e.areaCode / 100) * 100,
                                         name: Area.findOne({ code: Math.floor(e.areaCode / 100) * 100 }).name,
-                                        primaryPollutant: (function (code) {
-                                            return ['SO₂', 'NO₂', 'O₃', 'CO', 'PM2.5', 'PM10'][code % 100]
-                                        })(e.primaryPollutant),
-                                        airQualityLevel: (function (code) {
-                                            return ['一级', '二级', '三级', '四级', '五级', '六级'][code - 1]
-                                        })(e.airIndexLevel),
-                                        airQualityClass: (function (value) {
-                                            return ['优', '良', '轻度污染', '中度污染', '重度污染', '严重污染'][(function () {
-                                                if (value > 0 && value <= 50) return 0;
-                                                if (value > 50 && value <= 100) return 1;
-                                                if (value > 100 && value <= 150) return 2;
-                                                if (value > 150 && value <= 200) return 3;
-                                                if (value > 200 && value <= 300) return 4;
-                                                if (value > 300) return 5;
-                                            })()]
-                                        })(e.airQualityIndex),
+                                        primaryPollutant: e.primaryPollutant,
+                                        airQualityLevel: e.airIndexLevel,
+                                        airQualityClass: e.airIndexLevel,
                                         airQualityValue: e.airQualityIndex,
                                         visibility: e.visibility
                                     }

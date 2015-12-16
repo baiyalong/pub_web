@@ -46,8 +46,8 @@
                                 <th>日期</th>
                                 <th>首要污染物</th>
                                 <th>空气指数级别</th>
-                                <th>空气质量指数</th>
-                                <th>能见度</th>
+                                <th>AQI</th>
+                                <th>能见度(米)</th>
                                 <th>
                                     <button class="btn btn-default add btn-sm">添加</button>
                                 </th>
@@ -60,22 +60,22 @@
                                 <td>
                                     <select class="form-control input-sm primaryPollutant">
                                         {{#each selectPrimaryPollutant primaryPollutant}}
-                                        <option value="{{pollutantCode}}" selected="{{selected}}">{{pollutantName}}</option>
+                                        <option value="{{name}}" selected="{{selected}}">{{name}}</option>
                                         {{/each}}
                                     </select>
                                 </td>
                                 <td>
                                     <select class="form-control input-sm airIndexLevel">
                                         {{#each selectAirIndexLevel airIndexLevel}}
-                                        <option value="{{code}}" selected="{{selected}}">{{name}}</option>
+                                        <option value="{{name}}" selected="{{selected}}">{{name}}</option>
                                         {{/each}}
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="number" class="form-control input-sm airQualityIndex" value="{{airQualityIndex}}">
+                                    <input type="text" class="form-control input-sm airQualityIndex" value="{{airQualityIndex}}">
                                 </td>
                                 <td>
-                                    <input type="number" class="form-control input-sm visibility" value="{{visibility}}">
+                                    <input type="text" class="form-control input-sm visibility" value="{{visibility}}">
                                 </td>
                                 <td>
                                     {{#if showDetele}}
@@ -117,8 +117,8 @@
                             <tr>
                                 <th width='12%'>时间</th>
                                 <th width='10%'>城市</th>
-                                <th width='30%'>污染预报详情</th>
-                                <th width='40%'>未来污染趋势</th>
+                                <th width='40%'>污染预报详情</th>
+                                <th width='30%'>未来污染趋势</th>
                                 <th width='10%'>状态</th>
                             </tr>
                         </thead>
@@ -134,16 +134,16 @@
                                                 <th>日期</th>
                                                 <th>污染物</th>
                                                 <th>级别</th>
-                                                <th>指数</th>
-                                                <th>能见度</th>
+                                                <th>AQI</th>
+                                                <th>能见度(米)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {{#each applyContent.detail}}
                                             <tr>
                                                 <td>{{momentShort date}}</td>
-                                                <td>{{getPrimaryPollutant primaryPollutant}}</td>
-                                                <td>{{getAirIndexLevel airIndexLevel}}</td>
+                                                <td>{{primaryPollutant}}</td>
+                                                <td>{{airIndexLevel}}</td>
                                                 <td>{{airQualityIndex}}</td>
                                                 <td>{{visibility}}</td>
                                             </tr>

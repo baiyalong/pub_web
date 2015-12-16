@@ -107,13 +107,13 @@ FileFS.allow({
 Meteor.methods({
     'downloadApp': function (deviceType) {
         var config = JSON.parse(Assets.getText("config.json"));
-        var app = MobileApp.findOne({deviceType: deviceType}, {sort: {timestamp: -1}})
+        var app = MobileApp.findOne({ deviceType: deviceType }, { sort: { timestamp: -1 } })
         var res = '';
         var id = '';
         if (deviceType == 'IOS') {
             res = 'itms-services://?action=download-manifest&url=' + app.conf
         } else {
-            res = FileFS.findOne({_id: app.app}).url()
+            res = app.conf || FileFS.findOne({ _id: app.app }).url()
         }
         return res;
     }

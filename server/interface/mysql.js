@@ -98,9 +98,27 @@ mysql = {
 		data.forEach(function (e) {
 			DataCityDaily.insert(e);
 		})
+	},
+	syncDataAirForecast:function(){
+		var t = DataAirForecast.findOne({}, { sort: { publishtime: -1 } }).publishtime;
+		var t='2015101010'
+		var f = new Future();
+		mysqlPool.getConnection(function (err, connection) {
+			connection.query(
+				'select * from T_AIR_FORECAST_NMINFO where publishtime > ? order by publishtime;',
+				[t],
+				function (err, rows) {
+					connection.release();
+					f.return(rows);
+				})
+		})
+		var data = f.wait();
+		data.forEach(function (e) {
+			DataAirForecast.insert(e);
+		})
 	}
 }
-
+// mysql.syncDataAirForecast()
 // var d1 = new Date('2014-01-01')
 // var d2 = new Date()
 // while (d1 <= d2) {

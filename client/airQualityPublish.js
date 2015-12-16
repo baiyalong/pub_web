@@ -3,12 +3,12 @@
  */
 
 Template.airQualityPublish.helpers({
-    getPrimaryPollutant: function (primaryPollutant) {
-        return Pollutant.findOne({ pollutantCode: Number(primaryPollutant) }).pollutantName
-    },
-    getAirIndexLevel: function (airIndexLevel) {
-        return ['一级', '二级', '三级', '四级', '五级', '六级'][airIndexLevel - 1]
-    },
+    // getPrimaryPollutant: function (primaryPollutant) {
+    //     return Pollutant.findOne({ pollutantCode: Number(primaryPollutant) }).pollutantName
+    // },
+    // getAirIndexLevel: function (airIndexLevel) {
+    //     return ['一级', '二级', '三级', '四级', '五级', '六级'][airIndexLevel - 1]
+    // },
     moment: function (date) {
         return moment(date).format('YYYY-MM-DD')
     },
@@ -39,30 +39,39 @@ Template.airQualityPublish.helpers({
         var applied = Session.get('airQuality');
         if(applied)return applied.applyContent.description;
     },
-    selectPrimaryPollutant: function (code) {
-        var res = Pollutant.find().fetch().filter(function (e) {
-            return e.pollutantCode != 90
-        })
-        res.unshift({ pollutantCode: 0, pollutantName: '--请选择--' })
-        res.forEach(function (e) {
-            if (e.pollutantCode == code)
-                e.selected = 'selected'
-        });
-        return res;
+    selectPrimaryPollutant: function (name) {
+        return [{ code: 0, name: '--请选择--' },
+            { code: 1, name: 'SO₂' },
+            { code: 2, name: 'NO₂' },
+            { code: 3, name: 'O₃' },
+            { code: 4, name: 'CO' },
+            { code: 5, name: 'PM10' },
+            { code: 6, name: 'PM2.5' },
+            ]
+            .map(function (e) {
+                if (e.name == name)
+                    e.selected = 'selected'
+                return e;
+            })
     },
-    selectAirIndexLevel: function (code) {
-        var res = [{ code: 0, name: '--请选择--' },
-            { code: 1, name: '一级' },
-            { code: 2, name: '二级' },
-            { code: 3, name: '三级' },
-            { code: 4, name: '四级' },
-            { code: 5, name: '五级' },
-            { code: 6, name: '六级' }]
-        res.forEach(function (e) {
-            if (e.code == code)
-                e.selected = 'selected'
-        })
-        return res;
+    selectAirIndexLevel: function (name) {
+        return [{ code: 0, name: '--请选择--' },
+            { code: 1, name: '优' },
+            { code: 2, name: '优-良' },
+            { code: 3, name: '良' },
+            { code: 4, name: '良-轻度污染' },
+            { code: 5, name: '轻度污染' },
+            { code: 6, name: '轻度-中度污染' },
+            { code: 7, name: '中度污染' },
+            { code: 8, name: '中度-重度污染' },
+            { code: 9, name: '重度污染' },
+            { code: 10, name: '重度-严重污染' },
+            { code: 11, name: '严重污染' }]
+            .map(function (e) {
+                if (e.name == name)
+                    e.selected = 'selected'
+                return e;
+            })
     },
     forecastList: function () {
         var applied = Session.get('airQuality');
@@ -201,15 +210,15 @@ Template.airQualityPublish.events({
                     t.$('table.forecastDetail tbody tr').each(function () {
                         var line = {
                             date: t.$(this).attr('date'),
-                            primaryPollutant: Number(t.$(this).find('select.primaryPollutant').val()),
-                            airIndexLevel: Number(t.$(this).find('select.airIndexLevel').val()),
-                            airQualityIndex: Number(t.$(this).find('input.airQualityIndex').val().trim()),
-                            visibility: Number(t.$(this).find('input.visibility').val().trim()),
+                            primaryPollutant: t.$(this).find('select.primaryPollutant').val(),
+                            airIndexLevel: t.$(this).find('select.airIndexLevel').val(),
+                            airQualityIndex: t.$(this).find('input.airQualityIndex').val().trim(),
+                            visibility: t.$(this).find('input.visibility').val().trim(),
                         }
-                        if (line.primaryPollutant == 0 ||
-                            line.airIndexLevel == 0 ||
-                            isNaN(line.airQualityIndex) || line.airQualityIndex <= 0 ||
-                            isNaN(line.visibility) || line.visibility <= 0)
+                        if (line.primaryPollutant == '' ||
+                            line.airIndexLevel == '' ||
+                            line.airQualityIndex == '' ||
+                            line.visibility == '')
                             err = true;
                         res.push(line)
                     })
@@ -225,69 +234,6 @@ Template.airQualityPublish.events({
                     Util.modal('空气质量预报发布', err.message)
                 else
                     Util.modal('空气质量预报发布', '提交成功！')
-            })
-        }
-        console.log(data); return;
-
-
-
-
-        var _id = Session.get('_id');
-        if (_id == '') { //new
-            AirQuality.insert(airQuality, function (err, id) {
-                if (err)
-                    Util.modal('空气质量预报发布', err)
-                else {
-                    Util.modal('空气质量预报发布', '提交成功！')
-                    $('textarea').val('')
-                    Session.set('_id', '')
-                    $('#date').val(moment(new Date()).format('YYYY-MM-DD'));
-                    var city = parseInt($('#city').val())
-                    var county = parseInt($('#county').val())
-                    if (!isNaN(city) && !isNaN(county)) {
-                        var select = false;
-                        $('#county option').each(function () {
-                            var county = parseInt($(this).attr('value'))
-                            if (county > city && county < (city + 100)) {
-                                $(this).show()
-                                if (!select) {
-                                    select = true;
-                                    $('#county').val(county)
-                                }
-                            } else {
-                                $(this).hide()
-                            }
-                        })
-                    }
-                }
-            });
-        } else { //edit
-            AirQuality.update({ _id: _id }, { $set: airQuality }, function (err) {
-                if (err)
-                    Util.modal('空气质量预报发布', err)
-                else {
-                    Util.modal('空气质量预报发布', '更新成功！')
-                    $('textarea').val('')
-                    Session.set('_id', '')
-                    $('#date').val(moment(new Date()).format('YYYY-MM-DD'));
-                    var city = parseInt($('#city').val())
-                    var county = parseInt($('#county').val())
-                    if (!isNaN(city) && !isNaN(county)) {
-                        var select = false;
-                        $('#county option').each(function () {
-                            var county = parseInt($(this).attr('value'))
-                            if (county > city && county < (city + 100)) {
-                                $(this).show()
-                                if (!select) {
-                                    select = true;
-                                    $('#county').val(county)
-                                }
-                            } else {
-                                $(this).hide()
-                            }
-                        })
-                    }
-                }
             })
         }
     },
@@ -312,22 +258,6 @@ Template.airQualityPublish.events({
                 }
             })
         }
-    },
-    'click .edit': function () {
-        $('#date').val(moment(this.date).format('YYYY-MM-DD'));
-        $('#city').val(this.cityCode);
-        $('#county').val(this.countyCode);
-        $('textarea').val(this.content);
-        Session.set('_id', this._id)
-    },
-    'click .remove': function () {
-        AirQuality.remove({ _id: this._id }, function (err) {
-            if (err)
-                Util.modal('空气质量预报发布', err)
-            else {
-                Util.modal('空气质量预报发布', '删除成功！')
-            }
-        })
     },
     'mouseenter tbody>tr': function () {
         $('#' + this._id).css({

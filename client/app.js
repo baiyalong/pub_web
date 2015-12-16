@@ -19,9 +19,9 @@ Template.app.onRendered(function () {
                 if (err)console.log(err);
                 else {
                     //Session.set(e, res)
-                    if (e == 'Android') {
-                        res = window.location.origin + res.substring(res.indexOf('/cfs/'))
-                    }
+                    // if (e == 'Android') {
+                    //     res = window.location.origin + res.substring(res.indexOf('/cfs/'))
+                    // }
                     $('a.' + e).attr('href', res)
                 }
             })

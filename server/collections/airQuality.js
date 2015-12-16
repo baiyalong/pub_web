@@ -43,16 +43,16 @@ AirQuality.attachSchema(new SimpleSchema({
         type: Date
     },
     "applyContent.detail.$.primaryPollutant": {
-        type: Number
+        type: String
     },
     "applyContent.detail.$.airIndexLevel": {
-        type: Number
+        type: String
     },
     "applyContent.detail.$.airQualityIndex": {
-        type: Number
+        type: String
     },
     "applyContent.detail.$.visibility": {
-        type: Number
+        type: String
     },
     "applyContent.description": {
         type: String,
@@ -79,18 +79,26 @@ DataAirQuality.attachSchema(new SimpleSchema({
         type: Number
     },
     primaryPollutant: {
-        type: Number, optional: true
+        type: String, optional: true
     },
     airIndexLevel: {
-        type: Number, optional: true
+        type: String, optional: true
     },
     airQualityIndex: {
-        type: Number, optional: true
+        type: String, optional: true
     },
     visibility: {
-        type: Number, optional: true
+        type: String, optional: true
     },
     description: {
+        type: String, optional: true
+    }
+}))
+DataAirForecast.attachSchema(new SimpleSchema({
+    publishtime: {
+        type: String
+    },
+    publishcontent: {
         type: String, optional: true
     }
 }))
@@ -125,6 +133,14 @@ Meteor.publish('dataAirQuality', function () {
 })
 
 Meteor.methods({
+    'removeAirQuality': function (id, real) {
+        var areaCode = AirQuality.findOne({ _id: id }).areaCode;
+        AirQuality.remove({ _id: id })
+        if (real) {
+            DataAirQuality.remove({ areaCode: areaCode, date: { $gt: new Date() } })
+        }
+        
+    },
     'applyAirQuality':function(data){
         AirQuality.upsert({ areaCode: data.areaCode, date: { $gte: (function(){
                 var d = new Date(data.date);
@@ -147,6 +163,7 @@ Meteor.methods({
                 return { d1: d1, d2: d2 }
             }
             var audit = AirQuality.findOne({ _id: id })
+
             audit.applyContent.detail.forEach(function(e){
                 var date = ds(e.date);
                 DataAirQuality.upsert({ areaCode: audit.areaCode, date: { $gt: date.d1, $lt: date.d2 } },

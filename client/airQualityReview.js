@@ -18,12 +18,6 @@ Template.airQualityReview.helpers({
     statusColor: function (statusCode) {
         return statusCode == 1 ? 'green' : statusCode == -1 ? 'red' : '';
     },
-    getPrimaryPollutant: function (primaryPollutant) {
-        return Pollutant.findOne({ pollutantCode: Number(primaryPollutant) }).pollutantName
-    },
-    getAirIndexLevel: function (airIndexLevel) {
-        return ['一级', '二级', '三级', '四级', '五级', '六级'][airIndexLevel - 1]
-    },
     moment: function (date) {
         return moment(date).format('YYYY-MM-DD')
     },
@@ -71,11 +65,11 @@ Template.airQualityReview.events({
         t.$('#auditOption').modal();
     },
     'click .remove': function () {
-        AirQuality.remove({ _id: this._id }, function (err) {
+        Meteor.call('removeAirQuality', this._id, this.statusCode, function (err, res) {
             if (err) Util.modal('空气质量预报审核', err);
             else
                 Util.modal('空气质量预报审核', '删除成功！');
-        });
+        })
     },
     'mouseenter tbody>tr': function () {
         $('#' + this._id).css({
