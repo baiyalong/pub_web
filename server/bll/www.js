@@ -73,19 +73,8 @@ BLL.www = {
                 return DataAirQuality.find({ areaCode: { $gt: id, $lt: id + 100 }, date: { $gt: new Date() } }).map(function (e) {
                     return {
                         time: moment(e.date).format('MM月DD日'),
-                        airQuality: (function (value) {
-                            return ['优', '良', '轻度污染', '中度污染', '重度污染', '严重污染'][(function () {
-                                if (value > 0 && value <= 50) return 0;
-                                if (value > 50 && value <= 100) return 1;
-                                if (value > 100 && value <= 150) return 2;
-                                if (value > 150 && value <= 200) return 3;
-                                if (value > 200 && value <= 300) return 4;
-                                if (value > 300) return 5;
-                            })()]
-                        })(e.airQualityIndex),
-                        primaryPollutant: (function (code) {
-                            return ['SO₂', 'NO₂', 'O₃', 'CO', 'PM2.5', 'PM10'][code % 100]
-                        })(e.primaryPollutant)
+                        airQuality: e.airIndexLevel,
+                        primaryPollutant: e.primaryPollutant
                     }
                 })
             })(),
@@ -159,7 +148,8 @@ BLL.www = {
                 return res;
             })(pollutant),
             monitorStationList: (function (arr) {
-                return Station.find({ $and: [{ UniqueCode: { $gt: id * 1000 } }, { UniqueCode: { $lt: (id + 1) * 1000 } }] }, {
+                return Station.find({ $and: [{ UniqueCode: { $gt: id * 1000 } }, { UniqueCode: { $lt: (id + 1) * 1000 } },
+                {enableStatus:true},{publishStatus:true}] }, {
                     sort: { UniqueCode: 1 },
                     fields: { UniqueCode: 1, PositionName: 1 }
                 }).map(function (e) {

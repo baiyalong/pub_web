@@ -215,8 +215,8 @@ Template.airQualityPublish.events({
                             airQualityIndex: t.$(this).find('input.airQualityIndex').val().trim(),
                             visibility: t.$(this).find('input.visibility').val().trim(),
                         }
-                        if (line.primaryPollutant == '' ||
-                            line.airIndexLevel == '' ||
+                        if (line.primaryPollutant == '--请选择--' ||
+                            line.airIndexLevel == '--请选择--' ||
                             line.airQualityIndex == '' ||
                             line.visibility == '')
                             err = true;

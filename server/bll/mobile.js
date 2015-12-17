@@ -219,7 +219,7 @@ BLL.mobile = {
         }, {
           type: 103,
           name: 'CO',
-          value: parseInt(real.CO * 1000) + 'μg/m³'
+          value: Math.floor(Number(real.CO) * 1000) + 'μg/m³'
         }, ]
     }
     return res;
@@ -357,7 +357,9 @@ BLL.mobile = {
       areaId: parseInt(id),
       stationMonitor: (function (id) {
         return Station.find({
-          countyCode: id
+          countyCode: id,
+          enableStatus: true,
+          publishStatus: true
         }, {
             sort: {
               UniqueCode: 1
@@ -378,7 +380,7 @@ BLL.mobile = {
               o3: data['102'],
               so2: data['100'],
               no2: data['101'],
-              co: data['103'] * 1000,
+              co: Math.floor(Number(data['103']) * 1000),
             }
           })
       })(parseInt(id))
@@ -463,7 +465,7 @@ BLL.mobile = {
                 O3: Number(data['O3']),
                 SO2: Number(data['SO2']),
                 NO2: Number(data['NO2']),
-                CO: Number(data['CO']) * 1000,
+                CO: Math.floor(Number(data['CO']) * 1000),
                 timestamp: moment(data.TimePoint).format('YYYY-MM-DD HH:mm:ss'),
                 airQualityLevel: data['Quality'],
                 primaryPollutant: data['PrimaryPollutant'],
@@ -504,7 +506,7 @@ BLL.mobile = {
       // }
       case 2:
         {
-          res = Station.find().map(function (e) {
+          res = Station.find({ enableStatus: true, publishStatus: true }).map(function (e) {
             var data = DataStationHourly.findOne({ stationCode: e.UniqueCode }, { sort: { monitorTime: -1 } });
             return {
               code: e.UniqueCode,
@@ -517,7 +519,7 @@ BLL.mobile = {
               O3: data['102'],
               SO2: data['100'],
               NO2: data['101'],
-              CO: data['103'] * 1000,
+              CO: Math.floor(Number(data['103']) * 1000),
               timestamp: moment(data.monitorTime).format('YYYY-MM-DD HH:mm:ss')
             }
           })

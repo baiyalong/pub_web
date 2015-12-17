@@ -164,6 +164,8 @@ Meteor.methods({
             }
             var audit = AirQuality.findOne({ _id: id })
 
+            DataAirQuality.remove({ areaCode: audit.areaCode, date: { $gt: new Date() } })
+
             audit.applyContent.detail.forEach(function(e){
                 var date = ds(e.date);
                 DataAirQuality.upsert({ areaCode: audit.areaCode, date: { $gt: date.d1, $lt: date.d2 } },
