@@ -43,7 +43,7 @@ Api.addRoute('getLatestVersion/:deviceType', {
 
 Api.addRoute('map/:level', {
     get: function () {
-        return BLL.mobile.map(this.urlParams.level);
+        return BLL.mobile.map(this.urlParams.level,this.queryParams);
     }
 })
 

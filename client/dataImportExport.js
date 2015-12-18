@@ -3,24 +3,18 @@
  */
 
 Template.dataImportExport.helpers({
+    cityList: function () {
+        return Area.find()
+    },
+    stationList: function () {
+        return Station.find()
+    },
 
 });
 
 Template.dataImportExport.events({
-
-    'click .template': function (e, t) {
-        switch (e.target.parentNode.parentNode.id) {
-            case 'dStation':
-
-                break;
-            case 'dCorrect': break;
-            case 'dLimit': break;
-            // case 'dWarning': break;
-            // case 'dForcast': break;
-            default: ;
-        }
-    },
     'click .import': function (e, t) {
+        t.$('#fileUpload').click();
         switch (e.target.parentNode.parentNode.id) {
             case 'dStation': break;
             case 'dCorrect': break;
@@ -41,7 +35,9 @@ Template.dataImportExport.events({
                     }
                 })
                 break;
-            case 'dCorrect': break;
+            case 'dCorrect':
+                t.$('#modalCorrect').modal();
+                break;
             case 'dLimit': break;
             case 'dWarning': break;
             case 'dForcast': break;
@@ -62,10 +58,63 @@ Template.dataImportExport.events({
         t.$('#' + id).css({
             'border': '1px dashed #D8D8D8',
         })
-    }
+    },
+    'change #city': function () {
+        var city = parseInt($('#city').val())
+        var select = false;
+        $('#station option').each(function () {
+            var position = parseInt($(this).attr('value'))
+            if (position > city * 1000 && position < (city + 1) * 1000) {
+                $(this).show()
+                if (!select) {
+                    select = true;
+                    $('#station').val(position)
+                }
+            } else {
+                $(this).hide()
+            }
+        })
+    },
+    'change #station': function () {
+    },
 });
 
 Template.dataImportExport.onRendered(function () {
+
+
+    $('#date').datepicker({
+        language: "zh-CN",
+        //autoclose: true
+    });
+    //$('#date').datepicker('setDate', new Date())
+    $('#date').datepicker('setDate', new Date());
+    $('#date').datepicker('setStartDate', (function () {
+        var d = new Date();
+        d.setDate(d.getDate() - 60);
+        return d;
+    })())
+    $('#date').datepicker('setEndDate', new Date())
+
+
+    $('#city').val(150100)
+    var city = parseInt($('#city').val())
+    var station = parseInt($('#station').val())
+    if (!isNaN(city) && !isNaN(station)) {
+        var select = false;
+        $('#station option').each(function () {
+            var position = parseInt($(this).attr('value'))
+            if (position > city * 1000 && position < (city + 1) * 1000) {
+                $(this).show()
+                if (!select) {
+                    select = true;
+                    $('#station').val(position)
+                }
+            } else {
+                $(this).hide()
+            }
+        })
+    }
+
 
 
 }
@@ -79,7 +128,7 @@ Template.dataImportExport.onCreated(function () {
 
 function downloadFile(fileName, content) {
     var aLink = document.createElement('a');
-    var blob = new Blob([content]);
+    var blob = new Blob(["\ufeff" + content], { type: 'application/vnd.ms-excel;charset=gb2312' });
     var evt = document.createEvent("HTMLEvents");
     evt.initEvent("click", false, false);
     aLink.download = fileName;

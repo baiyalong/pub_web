@@ -13,42 +13,34 @@ BLL.www = {
                 var data = DataAirForecast.findOne({}, { sort: { publishtime: -1 } })
                 return data ? data.publishcontent || '' : '';
             })(),
-            detail: (function () {
-                var res = [];
-                for (var i = 1; i <= 3; i++) {
-                    res.push({
-                        date: (function () {
-                            var date = new Date();
-                            date.setDate(date.getDate() + i);
-                            return moment(date).format('MM月DD日');
-                        })(),
-                        value: (function () {
-                            var date = new Date();
-                            date.setHours(0);
-                            date.setMinutes(0);
-                            date.setSeconds(0);
-                            date.setDate(date.getDate() + i);
-                            var d1 = new Date(date);
-                            d1.setSeconds(d1.getSeconds() - 1);
-                            var d2 = new Date(date);
-                            d2.setSeconds(d2.getSeconds() + 1);
-                            return DataAirQuality.find({ date: { $gt: d1, $lt: d2 } }, { sort: { cityCode: 1 } })
-                                .map(function (e) {
-                                    return {
-                                        code: Math.floor(e.areaCode / 100) * 100,
-                                        name: Area.findOne({ code: Math.floor(e.areaCode / 100) * 100 }).name,
-                                        primaryPollutant: e.primaryPollutant,
-                                        airQualityLevel: e.airIndexLevel,
-                                        airQualityClass: e.airIndexLevel,
-                                        airQualityValue: e.airQualityIndex,
-                                        visibility: e.visibility
-                                    }
-                                });
-                        })()
-                    })
+            date:(function(){
+                function date(i) {
+                    var date = new Date();
+                    date.setDate(date.getDate() + i);
+                    return moment(date).format('MM月DD日');
                 }
-                return res;
-            })()
+                return [date(1),date(2),date(3)]
+            })(),
+            detail: (function () {
+                var data = DataAirQuality.find({ date: { $gt: new Date() } }, { sort: { areaCode: 1,date:1 },fields:{_id:0} }).map(function(e){
+                    e.code = Math.floor(e.areaCode/100)*100
+                    return e;
+                });
+                return Area.find({code:{$mod:[100,0],$not:{$mod:[1000,0]}}},{sort:{code:1},fields:{_id:0,weatherID:0}}).map(function(e){
+                    return {
+                        code:e.code,
+                        name:e.name,
+                        content:data.filter(function(ee){return ee.code==e.code}).map(function(e){
+                            delete e.areaCode;
+                            delete e.code;
+                            delete e.date;
+                            return e;
+                        })
+                    };
+                }).filter(function(e){
+                    return e.content.length!=0
+                });
+            })(),
         }
     },
     cityDetail: function (id) {
@@ -161,7 +153,7 @@ BLL.www = {
                         "PM2.5": data['105'],
                         PM10: data['104'],
                         O3: data['102'],
-                        CO: data['103'] * 1000,
+                        CO: Math.floor(Number(data['103']) * 1000),
                         SO2: data['100'],
                         NO2: data['101']
                     };

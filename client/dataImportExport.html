@@ -20,7 +20,6 @@
                         <tr id='dStation'>
                             <td>发布点位信息 </td>
                             <td>
-                                <button class="btn btn-default  btn-sm template">模版下载</button>
                                 <button class="btn btn-default  btn-sm import">导入数据</button>
                                 <button class="btn btn-default  btn-sm export">导出数据</button>
                             </td>
@@ -28,7 +27,6 @@
                         <tr id='dCorrect'>
                             <td>点位数据修正 </td>
                             <td>
-                                <button class="btn btn-default  btn-sm template">模版下载</button>
                                 <button class="btn btn-default  btn-sm import">导入数据</button>
                                 <button class="btn btn-default  btn-sm export">导出数据</button>
                             </td>
@@ -36,7 +34,6 @@
                         <tr id='dLimit'>
                             <td class="ll">污染物发布限值</td>
                             <td>
-                                <button class="btn btn-default  btn-sm template">模版下载</button>
                                 <button class="btn btn-default  btn-sm import">导入数据</button>
                                 <button class="btn btn-default  btn-sm export">导出数据</button>
                             </td>
@@ -44,7 +41,6 @@
                         <tr id='dWarning'>
                             <td class="ll">紧急污染预告发布历史记录</td>
                             <td>
-                                <button class="btn btn-default  btn-sm template" style="visibility:hidden;">模版下载</button>
                                 <button class="btn btn-default  btn-sm import" style="visibility:hidden;">导入数据</button>
                                 <button class="btn btn-default  btn-sm export">导出数据</button>
                             </td>
@@ -52,7 +48,6 @@
                         <tr id='dForcast'>
                             <td class="ll">空气质量预报审核历史记录</td>
                             <td>
-                                <button class="btn btn-default  btn-sm template" style="visibility:hidden;">模版下载</button>
                                 <button class="btn btn-default  btn-sm import" style="visibility:hidden;">导入数据</button>
                                 <button class="btn btn-default  btn-sm export">导出数据</button>
                             </td>
@@ -61,6 +56,50 @@
                 </table>
             </div>
         </div>
+
+
+        <input type="file" style="display:none" id='fileUpload' />
+
+        <div id="modalCorrect" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">点位数据导出</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="date">日期</label>
+                                <input type="text" class="form-control input-sm" id="date">
+                            </div>
+                            <div class="form-group">
+                                <label for="city">盟市</label>
+                                <select class="form-control input-sm" id="city">
+                                    {{#each cityList}}
+                                    <option value="{{code}}">{{name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="station">监测点</label>
+                                <select class="form-control input-sm" id="station">
+                                    {{#each stationList}}
+                                    <option value="{{UniqueCode}}">{{PositionName}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-default downloadCorrect">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
     </div>
 </template>

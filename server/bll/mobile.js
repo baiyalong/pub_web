@@ -57,7 +57,7 @@ BLL.mobile = {
         $eq: code
       }
     })
-    if (!area) return;
+    if (!area) return { err: 'area not found!' };
     var weather = Weather.findOne({
       areaid: area.weatherID
     });
@@ -411,7 +411,8 @@ BLL.mobile = {
       description: app.description || ''
     }
   },
-  map: function (level) {
+  map: function (level, param) {
+    var type = param.type;
     var res = [];
     var rand = function () {
       return Math.floor(Math.random() * 500)
@@ -436,25 +437,49 @@ BLL.mobile = {
     switch (parseInt(level)) {
       case 0:
         {
-          res = Area.find({
-            $and: [{
-              code: {
-                $mod: [100, 0]
-              }
-            }, {
-                code: {
-                  $not: {
-                    $mod: [10000, 0]
-                  }
-                }
-              }]
-          }, {
-              sort: {
-                code: 1
-              }
-            }).map(function (e) {
-              var data = DataCityHourly.findOne({ CityCode: e.code }, { sort: { TimePoint: -1 } });
-              return {
+          var list = null;
+          if(!type||type=='hour'){
+            list = DataCityHourly.findOne({},{sort: { TimePoint: -1 }});
+            list = DataCityHourly.find({TimePoint:{$gt:(function(){
+              var date = new Date(list.TimePoint);
+              date.setUTCMinutes(date.getMinutes()-1);
+              return date;
+            })()}},{}).map(function(e){e.code=e.CityCode;return e;})
+          }
+          else if(type=='day'){
+            list = DataCityDaily.findOne({}, { sort: { MONITORTIME: -1 } });
+            list = DataCityDaily.find({MONITORTIME:{$gt:(function(){
+              var date = new Date(list.MONITORTIME);
+              date.setUTCMinutes(date.getMinutes()-1);
+              return date;
+            })()}},{}).map(function(e){e.code=Number(e.CITYCODE);return e;})
+          }
+          return Area.find({ code: { $mod: [100, 0], $not: { $mod: [1000, 0] } } }, { sort: { code: 1 } }).map(function (e) {
+            var data = list.filter(function (ee) { return e.code == ee.code })
+            if (!data || data.length == 0) return;
+            data = data[0];
+            var res = {
+              code: e.code,
+              name: e.name,
+              longitude: e.longitude,
+              latitude: e.latitude,
+              aqi: Number(data['AQI']),
+              PM25: Number(data['PM2_5']),
+              PM10: Number(data['PM10']),
+              O3: Number(data['O3']),
+              SO2: Number(data['SO2']),
+              NO2: Number(data['NO2']),
+              CO: Math.floor(Number(data['CO']) * 1000),
+            }
+            if (!type);
+            else if (type == 'hour') {
+              res.timestamp = moment(data.TimePoint).format('YYYY-MM-DD HH:mm:ss');
+              res.airQualityLevel = data['Quality'];
+              res.primaryPollutant = data['PrimaryPollutant'];
+              res.healthAdvice = healthAdvice(Number(data['AQI']));
+            }
+            else if (type == 'day') {
+              res = {
                 code: e.code,
                 name: e.name,
                 longitude: e.longitude,
@@ -462,17 +487,18 @@ BLL.mobile = {
                 aqi: Number(data['AQI']),
                 PM25: Number(data['PM2_5']),
                 PM10: Number(data['PM10']),
-                O3: Number(data['O3']),
+                O3: Number(data['O3_1H']),
                 SO2: Number(data['SO2']),
                 NO2: Number(data['NO2']),
                 CO: Math.floor(Number(data['CO']) * 1000),
-                timestamp: moment(data.TimePoint).format('YYYY-MM-DD HH:mm:ss'),
-                airQualityLevel: data['Quality'],
-                primaryPollutant: data['PrimaryPollutant'],
-                healthAdvice: healthAdvice(Number(data['AQI']))
               }
-            })
-          break;
+              res.timestamp = moment(data.MONITORTIME).format('YYYY-MM-DD');
+              res.airQualityLevel = data['TYPENAME'];
+              res.primaryPollutant = data['PRIMARYPOLLUTANT'];
+              res.healthAdvice = data['DESCRIPTION'];
+            }
+            return res;
+          })
         }
       case 1:
       // {
@@ -506,9 +532,28 @@ BLL.mobile = {
       // }
       case 2:
         {
-          res = Station.find({ enableStatus: true, publishStatus: true }).map(function (e) {
-            var data = DataStationHourly.findOne({ stationCode: e.UniqueCode }, { sort: { monitorTime: -1 } });
-            return {
+          var list = null;
+          if(!type||type=='hour'){
+            list = DataStationHourly.findOne({},{sort: { monitorTime: -1 }});
+            list = DataStationHourly.find({monitorTime:{$gt:(function(){
+              var date = new Date(list.monitorTime);
+              date.setUTCMinutes(date.getMinutes()-1);
+              return date;
+            })()}},{}).map(function(e){e.code=e.stationCode;return e;})
+          }
+          else if(type=='day'){
+            list = DataStationDaily.findOne({}, { sort: { MONITORTIME: -1 } });
+            list = DataStationDaily.find({MONITORTIME:{$gt:(function(){
+              var date = new Date(list.MONITORTIME);
+              date.setUTCMinutes(date.getMinutes()-1);
+              return date;
+            })()}},{}).map(function(e){e.code=Number(e.UNIQUECODE);return e;})
+          }
+          return Station.find({}, { sort: { UniqueCode: 1 } }).map(function (e) {
+            var data = list.filter(function (ee) { return e.UniqueCode == ee.code })
+            if (!data || data.length == 0) return;
+            data = data[0];
+            var res = {
               code: e.UniqueCode,
               name: e.PositionName,
               longitude: e.Longitude,
@@ -520,14 +565,33 @@ BLL.mobile = {
               SO2: data['100'],
               NO2: data['101'],
               CO: Math.floor(Number(data['103']) * 1000),
-              timestamp: moment(data.monitorTime).format('YYYY-MM-DD HH:mm:ss')
             }
+            if (!type);
+            else if (type == 'hour') {
+              res.timestamp = moment(data.monitorTime).format('YYYY-MM-DD HH:mm:ss');
+            }
+            else if (type == 'day') {
+              res = {
+                code: e.UniqueCode,
+                name: e.PositionName,
+                longitude: e.Longitude,
+                latitude: e.Latitude,
+                aqi: Number(data['AQI']),
+                PM25: Number(data['PM2_5']),
+                PM10: Number(data['PM10']),
+                O3: Number(data['O3_1H']),
+                SO2: Number(data['SO2']),
+                NO2: Number(data['NO2']),
+                CO: Math.floor(Number(data['CO']) * 1000),
+              }
+              res.timestamp = moment(data.MONITORTIME).format('YYYY-MM-DD');
+            }
+            return res;
           })
         }
       default:
-        { }
+        { return {err:'err param !'}}
     }
-    return res;
   },
   pollutantLimit: function () {
     var arr = Pollutant.find({
@@ -562,34 +626,52 @@ BLL.mobile = {
     }
   },
   rank: function (day) {
-    return Area.find({
-      code: {
-        $not: {
-          $mod: [100, 0]
-        }
+    var day = Number(day)
+    if (isNaN(day) || [0, 30, 60, 90].indexOf(day) == -1) return { err: 'error param !' }
+    var area = Area.find({ code: { $not: { $mod: [1000, 0] } } }).fetch();
+    var res = area.filter(function (e) { return e.code % 100 == 0 }).map(function (e) {
+      var county = area.filter(function (ee) { return ee.code % e.code < 100 })[1];//主城区
+      return {
+        cityCode: e.code,
+        cityName: e.name,
+        countyCode: county.code,
+        countyName: county.name
       }
-    }).fetch().filter(function (e) {
-      return e.code % 100 == 1
-    }).map(function (e) {
-      var res = {
-        cityCode: Math.floor(e.code / 100) * 100,
-        cityName: Area.findOne({
-          code: Math.floor(e.code / 100) * 100
-        }).name,
-        countyCode: e.code,
-        countyName: e.name,
-      }
-      if (parseInt(day) == 0) {
-        var data = DataCityHourly.findOne({ CityCode: res.cityCode }, { sort: { TimePoint: -1 } })
-        res.aqi = Number(data['AQI']);
-        res.PM25 = Number(data['PM2_5']);
-        res.PM10 = Number(data['PM10']);
-        res.O3 = Number(data['O3']);
-        res.SO2 = Number(data['SO2']);
-        res.NO2 = Number(data['NO2']);
-        res.CO = Math.floor(Number(data['CO']) * 1000);
-      } else {
-        var data = DataCityDaily.find({ CITYCODE: res.cityCode.toString() }, { sort: { MONITORTIME: -1 }, limit: parseInt(day) }).fetch()
+    })
+    var list = null;
+    if(day==0){
+      list = DataCityHourly.findOne({ }, { sort: { TimePoint: -1 } })
+      list = DataCityHourly.find({TimePoint:{$gt:(function(){
+        var date = new Date(list.TimePoint);
+        date.setMinutes(date.getMinutes()-1);
+        return date;
+      })()}},{}).map(function(e){e.code=e.CityCode;return e;})
+      return res.map(function(e){
+        var data = list.filter(function(ee){return ee.code==e.cityCode;});
+        if(!data||data.length==0)return;
+        data = data[0];
+        e.aqi = Number(data['AQI']);
+        e.PM25 = Number(data['PM2_5']);
+        e.PM10 = Number(data['PM10']);
+        e.O3 = Number(data['O3']);
+        e.SO2 = Number(data['SO2']);
+        e.NO2 = Number(data['NO2']);
+        e.CO = Math.floor(Number(data['CO']) * 1000);
+        return e;
+      }).sort(function (a, b) {
+        return a.aqi - b.aqi;
+      })
+    }
+    else{
+      list = DataCityDaily.findOne({ }, { sort: { MONITORTIME: -1 } })
+      list = DataCityDaily.find({MONITORTIME:{$gt:(function(){
+        var date = new Date(list.MONITORTIME);
+        date.setDate(date.setDate()-day);
+        return date;
+      })()}},{}).map(function(e){e.code=Number(e.CITYCODE);return e;})
+      return res.map(function(e){
+        var data = list.filter(function(ee){return ee.code==e.cityCode;});
+        if(!data||data.length==0)return;
         var sum = data.reduce(function (p, c, i, a) {
           var arr = ['AQI', 'PM2_5', 'PM10', 'O3_1H', 'SO2', 'NO2', 'CO']
           var res = {}
@@ -599,18 +681,18 @@ BLL.mobile = {
           return res;
         })
         var avg = function (e) { return Math.round(e / Number(day)) }
-        res.aqi = avg(sum['AQI']);
-        res.PM25 = avg(sum['PM2_5']);
-        res.PM10 = avg(sum['PM10']);
-        res.O3 = avg(sum['O3_1H']);
-        res.SO2 = avg(sum['SO2']);
-        res.NO2 = avg(sum['NO2']);
-        res.CO = avg(sum['CO'] * 1000);
-      }
-      return res;
-    }).sort(function (a, b) {
-      return a.aqi - b.aqi;
-    })
+        e.aqi = avg(sum['AQI']);
+        e.PM25 = avg(sum['PM2_5']);
+        e.PM10 = avg(sum['PM10']);
+        e.O3 = avg(sum['O3_1H']);
+        e.SO2 = avg(sum['SO2']);
+        e.NO2 = avg(sum['NO2']);
+        e.CO = avg(sum['CO'] * 1000);
+        return e;
+      }).sort(function (a, b) {
+        return a.aqi - b.aqi;
+      })
+    }
   },
   terminalStatus: function (req) {
     //console.log('req,', req)
