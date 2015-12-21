@@ -46,5 +46,6 @@ Meteor.methods({
     limitUpdate: function (id, value) {
         if (id && value && !isNaN(Number(value)))
             Pollutant.update({ _id: id }, { $set: { limit: Number(value) } })
-    }
+    },
+    
 })

@@ -32,21 +32,21 @@
                             </td>
                         </tr>
                         <tr id='dLimit'>
-                            <td class="ll">污染物发布限值</td>
+                            <td>污染物发布限值</td>
                             <td>
                                 <button class="btn btn-default  btn-sm import">导入数据</button>
                                 <button class="btn btn-default  btn-sm export">导出数据</button>
                             </td>
                         </tr>
                         <tr id='dWarning'>
-                            <td class="ll">紧急污染预告发布历史记录</td>
+                            <td>紧急污染预告发布历史记录</td>
                             <td>
                                 <button class="btn btn-default  btn-sm import" style="visibility:hidden;">导入数据</button>
                                 <button class="btn btn-default  btn-sm export">导出数据</button>
                             </td>
                         </tr>
                         <tr id='dForecast'>
-                            <td class="ll">空气质量预报审核历史记录</td>
+                            <td>空气质量预报审核历史记录</td>
                             <td>
                                 <button class="btn btn-default  btn-sm import" style="visibility:hidden;">导入数据</button>
                                 <button class="btn btn-default  btn-sm export">导出数据</button>
@@ -100,6 +100,162 @@
         </div>
 
 
+        <div id="modalImportStation" class="modal fade">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">导入发布点位信息<span
+                                style="color:red">&nbsp;&nbsp;{{err}}</span>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-condensed table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>名称</th>
+                                    <th>盟市</th>
+                                    <th>旗县</th>
+                                    <th>经度</th>
+                                    <th>纬度</th>
+                                    <th>开启</th>
+                                    <th>发布</th>
+                                    <th>操作结果</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each importDataList}}
+                                <tr>
+                                    <td>{{UniqueCode}}</td>
+                                    <td>{{PositionName}}</td>
+                                    <td>{{Area}}</td>
+                                    <td>{{countyName}}</td>
+                                    <td>{{Longitude}}</td>
+                                    <td>{{Latitude}}</td>
+                                    <td>{{enableStatus}}</td>
+                                    <td>{{publishStatus}}</td>
+                                    <th>{{importResult}}</th>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-default importConfirm">导入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modalImportCorrect" class="modal fade">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">导入点位数据修正<span
+                                style="color:red">&nbsp;&nbsp;{{err}}</span>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-condensed table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>站点编号</th>
+                                    <th width='10%'>采集时间</th>
+                                    <th>SO2</th>
+                                    <th>NO2</th>
+                                    <th>O3</th>
+                                    <th>CO</th>
+                                    <th>PM10</th>
+                                    <th>PM2.5</th>
+                                    <th>NOx</th>
+                                    <th>NO</th>
+                                    <th>风速</th>
+                                    <th>风向</th>
+                                    <th>气压</th>
+                                    <th>气温</th>
+                                    <th>湿度</th>
+                                    <th>能见度</th>
+                                    <th>AQI</th>
+                                    <th>操作结果</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each importDataList}}
+                                <tr>
+                                    <td>{{stationCode}}</td>
+                                    <td>{{monitorTime}}</td>
+                                    <td>{{SO2}}</td>
+                                    <td>{{NO2}}</td>
+                                    <td>{{O3}}</td>
+                                    <td>{{CO}}</td>
+                                    <td>{{PM10}}</td>
+                                    <td>{{[PM2.5]}}</td>
+                                    <td>{{NOx}}</td>
+                                    <td>{{NO}}</td>
+                                    <td>{{[风速]}}</td>
+                                    <td>{{[风向]}}</td>
+                                    <td>{{[气压]}}</td>
+                                    <td>{{[气温]}}</td>
+                                    <td>{{[湿度]}}</td>
+                                    <td>{{[能见度]}}</td>
+                                    <td>{{AQI}}</td>
+                                    <td>{{importResult}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-default importConfirm">导入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="modalImportLimit" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">导入污染物发布限值<span
+                                style="color:red">&nbsp;&nbsp;{{err}}</span>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-condensed table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>污染物编号</th>
+                                    <th>污染物名称</th>
+                                    <th>中文名称</th>
+                                    <th>发布限值</th>
+                                    <th>操作结果</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each importDataList}}
+                                <tr>
+                                    <td>{{pollutantCode}}</td>
+                                    <td>{{pollutantName}}</td>
+                                    <td>{{chineseName}}</td>
+                                    <td>{{limit}}</td>
+                                    <th>{{importResult}}</th>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-default importConfirm">导入</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </template>

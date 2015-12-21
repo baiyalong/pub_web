@@ -3,6 +3,14 @@
  */
 
 Template.dataImportExport.helpers({
+    err: function () { return Session.get('err') },
+    importDataList: function () {
+        var dataList = Session.get('importDataList') || [];
+        return dataList.map(function (e) {
+            e.importResult = e.res == undefined ? '' : e.res ? '成功' : '失败';
+            return e;
+        });
+    },
     cityList: function () {
         return Area.find()
     },
@@ -13,14 +21,84 @@ Template.dataImportExport.helpers({
 });
 
 Template.dataImportExport.events({
-    'click .import': function (e, t) {
-        t.$('#fileUpload').click();
-        switch (e.target.parentNode.parentNode.id) {
-            case 'dStation': break;
-            case 'dCorrect': break;
-            case 'dLimit': break;
+    'click .importConfirm': function () {
+        function callMethod(methodName) {
+            Meteor.call(methodName, Session.get('importDataList'), function (err, res) {
+                if (err) alert(err)
+                Session.set('importDataList', res)
+            })
+        }
+        switch (Session.get('importType')) {
+            case 'Station':
+                callMethod('importStation')
+                break;
+            case 'Correct':
+                callMethod('importCorrect')
+                break;
+            case 'Limit':
+                callMethod('importLimit')
+                break;
             default: ;
         }
+    },
+    'click .import': function (e, t) {
+        switch (e.target.parentNode.parentNode.id) {
+            case 'dStation':
+                Session.set('importType', 'Station')
+                break;
+            case 'dCorrect':
+                Session.set('importType', 'Correct')
+                break;
+            case 'dLimit':
+                Session.set('importType', 'Limit')
+                break;
+            default: ;
+        }
+        t.$('#fileUpload').val('');
+        t.$('#fileUpload').click();
+    },
+    'change #fileUpload': function (e, t) {
+        var file = e.target.files[0];
+        var arr = file.name.split('.');
+        if (arr[arr.length - 1].toLowerCase() != 'csv' || file.type != 'application/vnd.ms-excel') {
+            alert('文件格式错误！');
+            return;
+        }
+
+        var reader = new FileReader();
+        reader.readAsText(file)
+        reader.onload = function (e) {
+            var fileContent = e.target.result;
+            Papa.parse(fileContent, {
+                header: true,
+                // worker: true,
+                encoding: 'GB2312',
+                complete: function (results) {
+                    // console.log(results);
+                    if (results.errors.length != 0) {
+                        alert('文件解析错误！');
+                        return;
+                    }
+                    Session.set('importDataList', results.data)
+                    Session.set('err', null)
+                    switch (Session.get('importType')) {
+                        case 'Station':
+                            t.$('#modalImportStation').modal();
+                            break;
+                        case 'Correct':
+                            t.$('#modalImportCorrect').modal();
+                            break;
+                        case 'Limit':
+                            t.$('#modalImportLimit').modal();
+                            break;
+                        default: ;
+                    }
+
+                }
+            });
+        }
+
+
     },
     'click .export': function (e, t) {
         switch (e.target.parentNode.parentNode.id) {
@@ -36,7 +114,7 @@ Template.dataImportExport.events({
             case 'dCorrect':
                 t.$('#modalCorrect').modal();
                 break;
-            case 'dLimit': 
+            case 'dLimit':
                 Meteor.call('exportLimit', function (err, res) {
                     if (err) console.log(err)
                     else {
@@ -45,7 +123,7 @@ Template.dataImportExport.events({
                     }
                 })
                 break;
-            case 'dWarning': 
+            case 'dWarning':
                 Meteor.call('exportWarning', function (err, res) {
                     if (err) console.log(err)
                     else {
@@ -54,7 +132,7 @@ Template.dataImportExport.events({
                     }
                 })
                 break;
-            case 'dForecast': 
+            case 'dForecast':
                 Meteor.call('exportForecast', function (err, res) {
                     if (err) console.log(err)
                     else {

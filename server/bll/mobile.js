@@ -666,7 +666,8 @@ BLL.mobile = {
       list = DataCityDaily.findOne({ }, { sort: { MONITORTIME: -1 } })
       list = DataCityDaily.find({MONITORTIME:{$gt:(function(){
         var date = new Date(list.MONITORTIME);
-        date.setDate(date.setDate()-day);
+        date.setDate(date.getDate()-day);
+        date.setMinutes(date.getMinutes()-1)
         return date;
       })()}},{}).map(function(e){e.code=Number(e.CITYCODE);return e;})
       return res.map(function(e){

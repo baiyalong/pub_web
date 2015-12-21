@@ -1,4 +1,46 @@
 Meteor.methods({
+    importStation: function (dataList) {
+        return dataList.map(function (e) {
+            var res = null;
+            try {
+                // res = Station.update({ pollutantCode: Number(e.pollutantCode) }, { $set: { limit: Number(e.limit) } })
+            } catch (err) {
+                res = null;
+                console.log(err)
+            } finally {
+                e.res = res ? true : false;
+            }
+            return e;
+        })
+    },
+    importCorrect: function (dataList) {
+        return dataList.map(function (e) {
+            var res = null;
+            try {
+                // res = DataStationHourly.update({ pollutantCode: Number(e.pollutantCode) }, { $set: { limit: Number(e.limit) } })
+            } catch (err) {
+                res = null;
+                console.log(err)
+            } finally {
+                e.res = res ? true : false;
+            }
+            return e;
+        })
+    },
+    importLimit: function (dataList) {
+        return dataList.map(function (e) {
+            var res = null;
+            try {
+                res = Pollutant.update({ pollutantCode: Number(e.pollutantCode) }, { $set: { limit: Number(e.limit) } })
+            } catch (err) {
+                res = null;
+                console.log(err)
+            } finally {
+                e.res = res ? true : false;
+            }
+            return e;
+        })
+    },
     exportStation: function () {
         return Station.find({}, { sort: { StationId: 1 }, fields: { _id: 0 } }).fetch()
     },
