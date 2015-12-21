@@ -19,8 +19,6 @@ Template.dataImportExport.events({
             case 'dStation': break;
             case 'dCorrect': break;
             case 'dLimit': break;
-            // case 'dWarning': break;
-            // case 'dForcast': break;
             default: ;
         }
     },
@@ -38,11 +36,50 @@ Template.dataImportExport.events({
             case 'dCorrect':
                 t.$('#modalCorrect').modal();
                 break;
-            case 'dLimit': break;
-            case 'dWarning': break;
-            case 'dForcast': break;
+            case 'dLimit': 
+                Meteor.call('exportLimit', function (err, res) {
+                    if (err) console.log(err)
+                    else {
+                        downloadFile('污染物发布限值.csv',
+                            Papa.unparse(JSON.stringify(res)))
+                    }
+                })
+                break;
+            case 'dWarning': 
+                Meteor.call('exportWarning', function (err, res) {
+                    if (err) console.log(err)
+                    else {
+                        downloadFile('紧急污染预告发布历史记录.csv',
+                            Papa.unparse(JSON.stringify(res)))
+                    }
+                })
+                break;
+            case 'dForecast': 
+                Meteor.call('exportForecast', function (err, res) {
+                    if (err) console.log(err)
+                    else {
+                        downloadFile('空气质量预报审核历史记录.csv',
+                            Papa.unparse(JSON.stringify(res)))
+                    }
+                })
+                break;
             default: ;
         }
+    },
+    'click .downloadCorrect': function (e, t) {
+        var date = $('#date').datepicker('getDate');
+        var city = parseInt($('#city').val());
+        var station = parseInt($('#station').val());
+        // console.log(date, city, station)
+        Meteor.call('exportCorrect', date, station, function (err, res) {
+            // console.log(err,res)
+            if (err) console.log(err)
+            else {
+                downloadFile('点位数据修正列表.csv',
+                    Papa.unparse(JSON.stringify(res)))
+            }
+            t.$('#modalCorrect').modal('hide');
+        })
     },
     'mouseenter tbody>tr': function (e, t) {
         var id = e.target.getAttribute('id');
