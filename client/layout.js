@@ -13,7 +13,7 @@ Template.layout.helpers({
             return true;
     },
     menu: function () {
-        var city = Area.find({$and: [{code: {$mod: [100, 0]}}, {code: {$not: {$mod: [10000, 0]}}}]}, {sort: {code: 1}})
+        var city = Area.find({ $and: [{ code: { $mod: [100, 0] } }, { code: { $not: { $mod: [10000, 0] } } }] }, { sort: { code: 1 } })
             .map(function (e) {
                 return e.code.toString()
             })
@@ -25,7 +25,7 @@ Template.layout.helpers({
         });
         arr.forEach(function (e) {
             var path = window.location.pathname;
-            if (e.path == '/'+path.split('/')[1])
+            if (e.path == '/' + path.split('/')[1])
                 e.active = 'active'
             else
                 e.active = null;
@@ -39,7 +39,7 @@ Template.layout.events({
 
     'click .logout': function (e) {
         Meteor.logout(function (err) {
-            if (err)Util.modal('用户注销', err)
+            if (err) Util.modal('用户注销', err)
             else
                 Router.go('/')
         })
@@ -47,11 +47,11 @@ Template.layout.events({
 });
 
 Template.layout.onRendered(function () {
-
-    }
-);
+    $('.modal-backdrop.fade.in').remove()
+}
+    );
 
 Template.layout.onCreated(function () {
 
-    }
-);
+}
+    );

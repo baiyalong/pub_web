@@ -15,7 +15,7 @@ Template.dataImportExport.helpers({
         return Area.find()
     },
     stationList: function () {
-        return Station.find()
+        return Session.get('stationList')
     },
 
 });
@@ -81,15 +81,34 @@ Template.dataImportExport.events({
                     }
                     Session.set('importDataList', results.data)
                     Session.set('err', null)
+
+                    function verify_modal(properties, modal) {
+                        var err = false;
+                        if (!results.data || results.data.length == 0) err = true;
+                        if (!err)
+                            results.data.forEach(function (e) {
+                                properties.forEach(function (ee) {
+                                    if (e[ee] === undefined) err = true;
+                                })
+                            })
+                        if (!err)
+                            t.$(modal).modal();
+                        if (err) alert('文件格式错误！');
+                    }
                     switch (Session.get('importType')) {
                         case 'Station':
-                            t.$('#modalImportStation').modal();
+                            verify_modal(['StationId', 'PositionName', 'Area', 'UniqueCode', 'StationCode', 'StationCode',
+                                'Longitude', 'Latitude', 'enableStatus', 'publishStatus', 'countyCode', 'countyName'],
+                                '#modalImportStation')
                             break;
                         case 'Correct':
-                            t.$('#modalImportCorrect').modal();
+                            verify_modal(['150100051', 'monitorTime', 'SO2', 'NO2', 'O3', 'CO', 'PM10', 'PM2.5', 'NOx', 'NO',
+                                '风速', '风向', '气压', '气温', '湿度', '能见度', 'AQI'],
+                                '#modalImportCorrect')
                             break;
                         case 'Limit':
-                            t.$('#modalImportLimit').modal();
+                            verify_modal(['pollutantCode', 'pollutantName', 'chineseName', 'limit'],
+                                '#modalImportLimit')
                             break;
                         default: ;
                     }
@@ -176,19 +195,9 @@ Template.dataImportExport.events({
     },
     'change #city': function () {
         var city = parseInt($('#city').val())
-        var select = false;
-        $('#station option').each(function () {
-            var position = parseInt($(this).attr('value'))
-            if (position > city * 1000 && position < (city + 1) * 1000) {
-                $(this).show()
-                if (!select) {
-                    select = true;
-                    $('#station').val(position)
-                }
-            } else {
-                $(this).hide()
-            }
-        })
+        Session.set('stationList', Station.find().fetch().filter(function (e) {
+            return e.UniqueCode > city * 1000 && e.UniqueCode < (city + 1) * 1000
+        }))
     },
     'change #station': function () {
     },
@@ -214,21 +223,9 @@ Template.dataImportExport.onRendered(function () {
     $('#city').val(150100)
     var city = parseInt($('#city').val())
     var station = parseInt($('#station').val())
-    if (!isNaN(city) && !isNaN(station)) {
-        var select = false;
-        $('#station option').each(function () {
-            var position = parseInt($(this).attr('value'))
-            if (position > city * 1000 && position < (city + 1) * 1000) {
-                $(this).show()
-                if (!select) {
-                    select = true;
-                    $('#station').val(position)
-                }
-            } else {
-                $(this).hide()
-            }
-        })
-    }
+    Session.set('stationList', Station.find().fetch().filter(function (e) {
+        return e.UniqueCode > city * 1000 && e.UniqueCode < (city + 1) * 1000
+    }))
 
 
 

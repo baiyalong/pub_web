@@ -51,13 +51,37 @@ BLL.mobile = {
     }
   },
   areaDetail: function (id) {
-    var code = parseInt(id)
+    var code = Number(id)
+    if(code%100==0)return {err:'error param!'}
     var area = Area.findOne({
       code: {
         $eq: code
       }
     })
     if (!area) return { err: 'area not found!' };
+    
+    var limit = (function () {
+        var arr = Pollutant.find({ limit: { $exists: true } }, { sort: { pollutantCode: 1 } }).fetch();
+        var fun = function (code) {
+            return arr.filter(function (e) {
+                return e.pollutantCode == code
+            })[0].limit;
+        }
+        return {
+            AQI: fun(90),
+            'PM2.5': fun(105),
+            PM10: fun(104),
+            O3: fun(102),
+            SO2: fun(100),
+            NO2: fun(101),
+            CO: fun(103)
+        }
+    })();
+
+    function filter(name, value) {
+        return Math.min(value, limit[name])
+    }
+        
     var weather = Weather.findOne({
       areaid: area.weatherID
     });
@@ -194,33 +218,33 @@ BLL.mobile = {
         }
       });
     if (real) {
-      res.aqi = parseInt(real.AQI);
-      res.healthyAdviceList = healthyAdrr(parseInt(real.AQI))
+      res.aqi = filter('AQI',Number(real.AQI));
+      res.healthyAdviceList = healthyAdrr(Number(real.AQI))
       res.pollutantLevel = [{
-        type: 105,
-        name: 'PM2.5',
-        value: parseInt(real.PM2_5) + 'μg/m³'
+          type: 105,
+          name: 'PM2.5',
+          value: filter('PM2.5', Number(real.PM2_5)) + 'μg/m³'
       }, {
-          type: 104,
-          name: 'PM10',
-          value: parseInt(real.PM10) + 'μg/m³'
-        }, {
-          type: 102,
-          name: 'O₃',
-          value: parseInt(real.O3) + 'μg/m³'
-        }, {
-          type: 100,
-          name: 'SO₂',
-          value: parseInt(real.SO2) + 'μg/m³'
-        }, {
-          type: 101,
-          name: 'NO₂',
-          value: parseInt(real.NO2) + 'μg/m³'
-        }, {
-          type: 103,
-          name: 'CO',
-          value: Math.floor(Number(real.CO) * 1000) + 'μg/m³'
-        }, ]
+              type: 104,
+              name: 'PM10',
+              value: filter('PM10', Number(real.PM10)) + 'μg/m³'
+          }, {
+              type: 102,
+              name: 'O₃',
+              value: filter('O3', Number(real.O3)) + 'μg/m³'
+          }, {
+              type: 100,
+              name: 'SO₂',
+              value: filter('SO2', Number(real.SO2)) + 'μg/m³'
+          }, {
+              type: 101,
+              name: 'NO₂',
+              value: filter('NO2', Number(real.NO2)) + 'μg/m³'
+          }, {
+              type: 103,
+              name: 'CO',
+              value: filter('CO', Math.floor(Number(real.CO) * 1000)) + 'μg/m³'
+          }, ]
     }
     return res;
   },
@@ -245,6 +269,36 @@ BLL.mobile = {
         if (aqiType == 105) return 'PM2_5';
       }
     }
+     var limit = (function () {
+            var arr = Pollutant.find({ limit: { $exists: true } }, { sort: { pollutantCode: 1 } }).fetch();
+            var fun = function (code) {
+                return arr.filter(function (e) {
+                    return e.pollutantCode == code
+                })[0].limit;
+            }
+            return {
+                AQI: fun(90),
+                'PM2.5': fun(105),
+                PM10: fun(104),
+                O3: fun(102),
+                SO2: fun(100),
+                NO2: fun(101),
+                CO: fun(103)
+            }
+        })();
+        
+     function filter(value) {
+         var name = null;
+         var aqiType = parseInt(param.aqiType);
+         if (aqiType == 90) name = 'AQI';
+         if (aqiType == 100) name = 'SO2';
+         if (aqiType == 101) name = 'NO2';
+         if (aqiType == 102) name = 'O3';
+         if (aqiType == 103) name = 'CO';
+         if (aqiType == 104) name = 'PM10';
+         if (aqiType == 105) name = 'PM2.5';
+         return Math.min(value, limit[name])
+     }
     return {
       areaId: parseInt(param.areaId),
       aqiType: parseInt(param.aqiType), //AQI:90
@@ -262,7 +316,7 @@ BLL.mobile = {
           var arr1 = [];
           var t1 = data[0];
           while (moment(t1.TimePoint).format('YYYY-MM-DD') == day1) {
-            arr1.push(moment(t1.TimePoint).format('HH') + '@' + t1[type(0)]);
+            arr1.push(moment(t1.TimePoint).format('HH') + '@' + filter(t1[type(0)]));
             data.shift();
             t1 = data[0];
           }
@@ -275,7 +329,7 @@ BLL.mobile = {
           var arr2 = [];
           var t2 = data[0];
           while (moment(t2.TimePoint).format('YYYY-MM-DD') == day2) {
-            arr2.push(moment(t2.TimePoint).format('HH') + '@' + t2[type(0)]);
+            arr2.push(moment(t2.TimePoint).format('HH') + '@' + filter(t2[type(0)]));
             data.shift();
             t2 = data[0];
           }
@@ -288,7 +342,7 @@ BLL.mobile = {
           var arr3 = [];
           var t3 = data[0];
           while (moment(t3.TimePoint).format('YYYY-MM-DD') == day3) {
-            arr3.push(moment(t3.TimePoint).format('HH') + '@' + t3[type(0)]);
+            arr3.push(moment(t3.TimePoint).format('HH') + '@' + filter(t3[type(0)]));
             data.shift();
             t3 = data[0];
           }
@@ -308,7 +362,7 @@ BLL.mobile = {
           var arr1 = [];
           var t1 = data[0];
           while (moment(t1.MONITORTIME).format('YYYY-MM') == day1) {
-            arr1.push(moment(t1.MONITORTIME).format('DD') + '@' + t1[type(1)]);
+            arr1.push(moment(t1.MONITORTIME).format('DD') + '@' + filter(t1[type(1)]));
             data.shift();
             t1 = data[0];
           }
@@ -321,7 +375,7 @@ BLL.mobile = {
           var arr2 = [];
           var t2 = data[0];
           while (moment(t2.MONITORTIME).format('YYYY-MM') == day2) {
-            arr2.push(moment(t2.MONITORTIME).format('DD') + '@' + t2[type(1)]);
+            arr2.push(moment(t2.MONITORTIME).format('DD') + '@' + filter(t2[type(1)]));
             data.shift();
             t2 = data[0];
           }
@@ -334,7 +388,7 @@ BLL.mobile = {
           var arr3 = [];
           var t3 = data[0];
           while (moment(t3.MONITORTIME).format('YYYY-MM') == day3) {
-            arr3.push(moment(t3.MONITORTIME).format('DD') + '@' + t3[type(1)]);
+            arr3.push(moment(t3.MONITORTIME).format('DD') + '@' + filter(t3[type(1)]));
             data.shift();
             t3 = data[0];
           }
@@ -353,6 +407,27 @@ BLL.mobile = {
     // var num = function () {
     //   return Math.floor(Math.random() * 500)
     // }
+             var limit = (function () {
+            var arr = Pollutant.find({ limit: { $exists: true } }, { sort: { pollutantCode: 1 } }).fetch();
+            var fun = function (code) {
+                return arr.filter(function (e) {
+                    return e.pollutantCode == code
+                })[0].limit;
+            }
+            return {
+                AQI: fun(90),
+                'PM2.5': fun(105),
+                PM10: fun(104),
+                O3: fun(102),
+                SO2: fun(100),
+                NO2: fun(101),
+                CO: fun(103)
+            }
+        })();
+        
+        function filter(name,value){
+            return Math.min(value,limit[name])
+        }
     return {
       areaId: parseInt(id),
       stationMonitor: (function (id) {
@@ -374,13 +449,13 @@ BLL.mobile = {
               code: e.UniqueCode,
               name: e.PositionName,
               topPollution: 'PM2.5',
-              aqi: data['AQI'],
-              pm25: data['105'],
-              pm10: data['104'],
-              o3: data['102'],
-              so2: data['100'],
-              no2: data['101'],
-              co: Math.floor(Number(data['103']) * 1000),
+              aqi: filter('AQI',data['AQI']),
+              pm25: filter('PM2.5',data['105']),
+              pm10: filter('PM10',data['104']),
+              o3: filter('O3',data['102']),
+              so2: filter('SO2',data['100']),
+              no2: filter('NO2',data['101']),
+              co: filter('CO',Math.floor(Number(data['103']) * 1000)),
             }
           })
       })(parseInt(id))
@@ -413,6 +488,27 @@ BLL.mobile = {
   },
   map: function (level, param) {
     var type = param.type;
+         var limit = (function () {
+            var arr = Pollutant.find({ limit: { $exists: true } }, { sort: { pollutantCode: 1 } }).fetch();
+            var fun = function (code) {
+                return arr.filter(function (e) {
+                    return e.pollutantCode == code
+                })[0].limit;
+            }
+            return {
+                AQI: fun(90),
+                'PM2.5': fun(105),
+                PM10: fun(104),
+                O3: fun(102),
+                SO2: fun(100),
+                NO2: fun(101),
+                CO: fun(103)
+            }
+        })();
+        
+        function filter(name,value){
+            return Math.min(value,limit[name])
+        }
     var res = [];
     var rand = function () {
       return Math.floor(Math.random() * 500)
@@ -463,13 +559,13 @@ BLL.mobile = {
               name: e.name,
               longitude: e.longitude,
               latitude: e.latitude,
-              aqi: Number(data['AQI']),
-              PM25: Number(data['PM2_5']),
-              PM10: Number(data['PM10']),
-              O3: Number(data['O3']),
-              SO2: Number(data['SO2']),
-              NO2: Number(data['NO2']),
-              CO: Math.floor(Number(data['CO']) * 1000),
+              aqi:filter('AQI', Number(data['AQI'])),
+              PM25:filter('PM2.5', Number(data['PM2_5'])),
+              PM10: filter('PM10',Number(data['PM10'])),
+              O3: filter('O3',Number(data['O3'])),
+              SO2: filter('SO2',Number(data['SO2'])),
+              NO2: filter('NO2',Number(data['NO2'])),
+              CO: filter('CO',Math.floor(Number(data['CO']) * 1000)),
             }
             if (!type);
             else if (type == 'hour') {
@@ -484,13 +580,13 @@ BLL.mobile = {
                 name: e.name,
                 longitude: e.longitude,
                 latitude: e.latitude,
-                aqi: Number(data['AQI']),
-                PM25: Number(data['PM2_5']),
-                PM10: Number(data['PM10']),
-                O3: Number(data['O3_1H']),
-                SO2: Number(data['SO2']),
-                NO2: Number(data['NO2']),
-                CO: Math.floor(Number(data['CO']) * 1000),
+                aqi: filter('AQI',Number(data['AQI'])),
+                PM25: filter('PM2.5',Number(data['PM2_5'])),
+                PM10: filter('PM10',Number(data['PM10'])),
+                O3: filter('O3',Number(data['O3_1H'])),
+                SO2: filter('SO2',Number(data['SO2'])),
+                NO2: filter('NO2',Number(data['NO2'])),
+                CO: filter('CO',Math.floor(Number(data['CO']) * 1000)),
               }
               res.timestamp = moment(data.MONITORTIME).format('YYYY-MM-DD');
               res.airQualityLevel = data['TYPENAME'];
@@ -558,13 +654,13 @@ BLL.mobile = {
               name: e.PositionName,
               longitude: e.Longitude,
               latitude: e.Latitude,
-              aqi: data['AQI'],
-              PM25: data['105'],
-              PM10: data['104'],
-              O3: data['102'],
-              SO2: data['100'],
-              NO2: data['101'],
-              CO: Math.floor(Number(data['103']) * 1000),
+              aqi: filter('AQI',data['AQI']),
+              PM25:filter('PM2.5', data['105']),
+              PM10: filter('PM10',data['104']),
+              O3: filter('O3',data['102']),
+              SO2: filter('SO2',data['100']),
+              NO2: filter('NO2',data['101']),
+              CO: filter('CO',Math.floor(Number(data['103']) * 1000)),
             }
             if (!type);
             else if (type == 'hour') {
@@ -576,13 +672,13 @@ BLL.mobile = {
                 name: e.PositionName,
                 longitude: e.Longitude,
                 latitude: e.Latitude,
-                aqi: Number(data['AQI']),
-                PM25: Number(data['PM2_5']),
-                PM10: Number(data['PM10']),
-                O3: Number(data['O3_1H']),
-                SO2: Number(data['SO2']),
-                NO2: Number(data['NO2']),
-                CO: Math.floor(Number(data['CO']) * 1000),
+                aqi: filter('AQI',Number(data['AQI'])),
+                PM25:filter('PM2.5', Number(data['PM2_5'])),
+                PM10:filter('PM10', Number(data['PM10'])),
+                O3: filter('O3',Number(data['O3_1H'])),
+                SO2: filter('SO2',Number(data['SO2'])),
+                NO2: filter('NO2',Number(data['NO2'])),
+                CO: filter('CO',Math.floor(Number(data['CO']) * 1000)),
               }
               res.timestamp = moment(data.MONITORTIME).format('YYYY-MM-DD');
             }
@@ -594,40 +690,49 @@ BLL.mobile = {
     }
   },
   pollutantLimit: function () {
-    var arr = Pollutant.find({
-      $and: [{
-        pollutantCode: {
-          $gte: 90
-        }
-      }, {
-          pollutantCode: {
-            $lte: 105
-          }
-        }]
-    }, {
-        sort: {
-          pollutantCode: 1
-        }
-      }).fetch();
-    var fun = function (code) {
-      return arr.filter(function (e) {
-        return e.pollutantCode == code
-      })[0].limit;
-    }
-    return {
-      AQI: fun(90),
-      'PM2.5': fun(105),
-      PM25: fun(105),
-      PM10: fun(104),
-      O3: fun(102),
-      SO2: fun(100),
-      NO2: fun(101),
-      CO: fun(103)
-    }
+      var arr = Pollutant.find({ limit: { $exists: true } }, { sort: { pollutantCode: 1 } }).fetch();
+      var fun = function (code) {
+          return arr.filter(function (e) {
+              return e.pollutantCode == code
+          })[0].limit;
+      }
+      return {
+          AQI: fun(90),
+          'PM2.5': fun(105),
+          PM25: fun(105),
+          PM10: fun(104),
+          O3: fun(102),
+          SO2: fun(100),
+          NO2: fun(101),
+          CO: fun(103)
+      }
   },
   rank: function (day) {
     var day = Number(day)
     if (isNaN(day) || [0, 30, 60, 90].indexOf(day) == -1) return { err: 'error param !' }
+    
+     var limit = (function () {
+            var arr = Pollutant.find({ limit: { $exists: true } }, { sort: { pollutantCode: 1 } }).fetch();
+            var fun = function (code) {
+                return arr.filter(function (e) {
+                    return e.pollutantCode == code
+                })[0].limit;
+            }
+            return {
+                AQI: fun(90),
+                'PM2.5': fun(105),
+                PM10: fun(104),
+                O3: fun(102),
+                SO2: fun(100),
+                NO2: fun(101),
+                CO: fun(103)
+            }
+        })();
+        
+        function filter(name,value){
+            return Math.min(value,limit[name])
+        }
+        
     var area = Area.find({ code: { $not: { $mod: [1000, 0] } } }).fetch();
     var res = area.filter(function (e) { return e.code % 100 == 0 }).map(function (e) {
       var county = area.filter(function (ee) { return ee.code % e.code < 100 })[1];//主城区
@@ -650,13 +755,13 @@ BLL.mobile = {
         var data = list.filter(function(ee){return ee.code==e.cityCode;});
         if(!data||data.length==0)return;
         data = data[0];
-        e.aqi = Number(data['AQI']);
-        e.PM25 = Number(data['PM2_5']);
-        e.PM10 = Number(data['PM10']);
-        e.O3 = Number(data['O3']);
-        e.SO2 = Number(data['SO2']);
-        e.NO2 = Number(data['NO2']);
-        e.CO = Math.floor(Number(data['CO']) * 1000);
+        e.aqi = filter('AQI',Number(data['AQI']));
+        e.PM25 =filter('PM2.5', Number(data['PM2_5']));
+        e.PM10 =filter('PM10', Number(data['PM10']));
+        e.O3 =filter('O3', Number(data['O3']));
+        e.SO2 =filter('SO2', Number(data['SO2']));
+        e.NO2 = filter('NO2',Number(data['NO2']));
+        e.CO = filter('CO',Math.floor(Number(data['CO']) * 1000));
         return e;
       }).sort(function (a, b) {
         return a.aqi - b.aqi;
@@ -682,13 +787,13 @@ BLL.mobile = {
           return res;
         })
         var avg = function (e) { return Math.round(e / Number(day)) }
-        e.aqi = avg(sum['AQI']);
-        e.PM25 = avg(sum['PM2_5']);
-        e.PM10 = avg(sum['PM10']);
-        e.O3 = avg(sum['O3_1H']);
-        e.SO2 = avg(sum['SO2']);
-        e.NO2 = avg(sum['NO2']);
-        e.CO = avg(sum['CO'] * 1000);
+        e.aqi = filter('AQI',avg(sum['AQI']));
+        e.PM25 = filter('PM2.5',avg(sum['PM2_5']));
+        e.PM10 =filter('PM10', avg(sum['PM10']));
+        e.O3 =filter('O3', avg(sum['O3_1H']));
+        e.SO2 = filter('SO2',avg(sum['SO2']));
+        e.NO2 =filter('NO2', avg(sum['NO2']));
+        e.CO =filter('CO', avg(sum['CO'] * 1000));
         return e;
       }).sort(function (a, b) {
         return a.aqi - b.aqi;

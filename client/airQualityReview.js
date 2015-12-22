@@ -51,6 +51,7 @@ Template.airQualityReview.events({
         })
     },
     'click .pass': function (e, t) {
+        t.$('textarea').val('')
         Session.set('err', null);
         Session.set('title', '审核通过')
         Session.set('auditID', this._id)
@@ -58,6 +59,7 @@ Template.airQualityReview.events({
         t.$('#auditOption').modal();
     },
     'click .back': function (e, t) {
+        t.$('textarea').val('')
         Session.set('err', null);
         Session.set('title', '退回修改')
         Session.set('auditID', this._id)
@@ -65,11 +67,12 @@ Template.airQualityReview.events({
         t.$('#auditOption').modal();
     },
     'click .remove': function () {
-        Meteor.call('removeAirQuality', this._id, this.statusCode, function (err, res) {
-            if (err) Util.modal('空气质量预报审核', err);
-            else
-                Util.modal('空气质量预报审核', '删除成功！');
-        })
+        if (confirm('确认要删除吗？'))
+            Meteor.call('removeAirQuality', this._id, this.statusCode, function (err, res) {
+                if (err) Util.modal('空气质量预报审核', err);
+                else
+                    Util.modal('空气质量预报审核', '删除成功！');
+            })
     },
     'mouseenter tbody>tr': function () {
         $('#' + this._id).css({

@@ -3,7 +3,19 @@ Meteor.methods({
         return dataList.map(function (e) {
             var res = null;
             try {
-                // res = Station.update({ pollutantCode: Number(e.pollutantCode) }, { $set: { limit: Number(e.limit) } })
+                res = Station.upsert({ UniqueCode: Number(e.UniqueCode) }, { $set: { 
+                    StationId: Number(e.StationId),
+                    PositionName: e.PositionName,
+                    Area: e.Area,
+                    UniqueCode: Number(e.UniqueCode),
+                    StationCode: e.StationCode,
+                    Longitude: Number(e.Longitude),
+                    Latitude: Number(e.Latitude),
+                    enableStatus: e.enableStatus.toLowerCase() == 'true' ? true : false,
+                    publishStatus: e.publishStatus.toLowerCase() == 'true' ? true : false,
+                    countyCode: Number(e.countyCode),
+                    countyName: e.countyName,
+                    } })
             } catch (err) {
                 res = null;
                 console.log(err)
@@ -17,7 +29,36 @@ Meteor.methods({
         return dataList.map(function (e) {
             var res = null;
             try {
-                // res = DataStationHourly.update({ pollutantCode: Number(e.pollutantCode) }, { $set: { limit: Number(e.limit) } })
+                 res = DataStationHourly.upsert({ stationCode: Number(e.stationCode),monitorTime:{
+                     $gt:(function(){
+                         var d = new Date(e.monitorTime);
+                         d.setMinutes(d.getMinutes()-1);
+                         return d;
+                         })(),
+                     $lt:(function(){
+                         var d = new Date(e.monitorTime);
+                         d.setMinutes(d.getMinutes() + 1);
+                         return d;
+                     })()
+                 } }, { $set: { 
+                         stationCode: Number(e.stationCode),
+                         monitorTime: new Date(e.monitorTime),
+                         '100':Number(e['SO2']),
+                         '101':Number(e['NO2']),
+                         '102':Number(e['O3']),
+                         '103':Number(e['CO']),
+                         '104':Number(e['PM10']),
+                         '105':Number(e['PM2.5']),
+                         '106':Number(e['NOx']),
+                         '107':Number(e['NO']),
+                         '108':Number(e['风速']),
+                         '109':Number(e['风向']),
+                         '110':Number(e['气压']),
+                         '111':Number(e['气温']),
+                         '112':Number(e['湿度']),
+                         '118':Number(e['能见度']),
+                         'AQI':Number(e['AQI']),
+                  } })
             } catch (err) {
                 res = null;
                 console.log(err)

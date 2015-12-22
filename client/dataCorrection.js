@@ -7,10 +7,12 @@ Template.dataCorrection.helpers({
         return Area.find()
     },
     stationList: function () {
-        return Station.find()
+        return Session.get('stationList')
     },
     dataList: function () {
-        return DataStationHourly.find();
+        return DataStationHourly.find().fetch().sort(function (a, b) {
+            return a.monitorTime - b.monitorTime;
+        });
     },
     moment: function (t) {
         return moment(t).format('HH:mm:ss');
@@ -30,19 +32,9 @@ Template.dataCorrection.helpers({
 Template.dataCorrection.events({
     'change #city': function () {
         var city = parseInt($('#city').val())
-        var select = false;
-        $('#station option').each(function () {
-            var position = parseInt($(this).attr('value'))
-            if (position > city * 1000 && position < (city + 1) * 1000) {
-                $(this).show()
-                if (!select) {
-                    select = true;
-                    $('#station').val(position)
-                }
-            } else {
-                $(this).hide()
-            }
-        })
+        Session.set('stationList', Station.find().fetch().filter(function (e) {
+            return e.UniqueCode > city * 1000 && e.UniqueCode < (city + 1) * 1000
+        }))
     },
     'change #station': function () {
     },
@@ -92,26 +84,13 @@ Template.dataCorrection.onRendered(function () {
     })())
     $('#date').datepicker('setEndDate', new Date())
 
-
-    $('#city').val(Math.floor(Number(this.data.stationCode) / 1000))
-    var city = parseInt($('#city').val())
-    var station = parseInt($('#station').val())
-    if (!isNaN(city) && !isNaN(station)) {
-        var select = false;
-        $('#station option').each(function () {
-            var position = parseInt($(this).attr('value'))
-            if (position > city * 1000 && position < (city + 1) * 1000) {
-                $(this).show()
-                if (!select) {
-                    select = true;
-                    $('#station').val(position)
-                }
-            } else {
-                $(this).hide()
-            }
-        })
-    }
-    $('#station').val(Number(this.data.stationCode))
+    var city = Math.floor(Number(this.data.stationCode) / 1000);
+    var station = Number(this.data.stationCode)
+    Session.set('stationList', Station.find().fetch().filter(function (e) {
+        return e.UniqueCode > city * 1000 && e.UniqueCode < (city + 1) * 1000
+    }))
+    $('#city').val(city)
+    $('#station').val(station)
 
 
     $('.editableCorrection').editable({
