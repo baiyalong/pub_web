@@ -50,55 +50,55 @@
                     <div class="col-md-11">
                         <table>
                             <thead>
-                            <tr>
-                                <th width='12%'>发布时间</th>
-                                <th width='12%'>发布城市</th>
-                                <th>发布内容</th>
-                                <th></th>
-                            </tr>
+                                <tr>
+                                    <th width='13%'>发布时间</th>
+                                    <th width='12%'>发布城市</th>
+                                    <th>发布内容</th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
-                            {{#each warningList}}
-                            <tr id="{{_id}}">
-                                <td>{{moment}}</td>
-                                <td>{{cityName}}</td>
-                                <td>{{content}}</td>
-                                <td>
-                                    <a class="remove btn btn-default btn-sm">删除</a>
-                                </td>
-                            </tr>
-                            {{/each}}
+                                {{#each warningList}}
+                                <tr id="{{_id}}">
+                                    <td>{{moment}}</td>
+                                    <td>{{cityName}}</td>
+                                    <td>{{content}}</td>
+                                    <td>
+                                        <a class="remove btn btn-default btn-sm">删除</a>
+                                    </td>
+                                </tr>
+                                {{/each}}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            
+
             <div id="warningPasswordModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">{{title}}<span
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">{{title}}<span
                                 style="color:red">&nbsp;&nbsp;{{err}}</span>
                         </h4>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="password">密码</label>
-                                <input type="password" class="form-control" id="warningPassword" required="required" />
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default cancelWarningPassword" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-default saveWarningPassword">确定</button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="password">密码</label>
+                                    <input type="password" class="form-control" id="warningPassword" required="required" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default cancelWarningPassword" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-default saveWarningPassword">确定</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
+
         </div>
     </div>
 </template>

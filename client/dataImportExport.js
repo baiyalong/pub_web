@@ -102,7 +102,7 @@ Template.dataImportExport.events({
                                 '#modalImportStation')
                             break;
                         case 'Correct':
-                            verify_modal(['150100051', 'monitorTime', 'SO2', 'NO2', 'O3', 'CO', 'PM10', 'PM2.5', 'NOx', 'NO',
+                            verify_modal(['stationCode', 'monitorTime', 'SO2', 'NO2', 'O3', 'CO', 'PM10', 'PM2.5', 'NOx', 'NO',
                                 '风速', '风向', '气压', '气温', '湿度', '能见度', 'AQI'],
                                 '#modalImportCorrect')
                             break;
@@ -239,11 +239,16 @@ Template.dataImportExport.onCreated(function () {
 
 
 function downloadFile(fileName, content) {
-    var aLink = document.createElement('a');
+
     var blob = new Blob(["\ufeff" + content], { type: 'application/vnd.ms-excel;charset=gb2312' });
-    var evt = document.createEvent("HTMLEvents");
-    evt.initEvent("click", false, false);
-    aLink.download = fileName;
-    aLink.href = URL.createObjectURL(blob);
-    aLink.dispatchEvent(evt);
+    if (navigator.appVersion.toString().indexOf('.NET') > 0)
+        window.navigator.msSaveBlob(blob, fileName);
+    else {
+        var aLink = document.createElement('a');
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("click", false, false);
+        aLink.setAttribute('download', fileName);
+        aLink.setAttribute('href', URL.createObjectURL(blob))
+        aLink.dispatchEvent(evt);
+    }
 }

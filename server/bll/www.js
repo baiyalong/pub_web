@@ -8,7 +8,7 @@ BLL.www = {
     },
     airQualityForcast: function () {
         return {
-            title: '内蒙古自治区污染预报',
+            title: '内蒙古自治区空气质量预报',
             content: (function () {
                 var data = DataAirForecast.findOne({}, { sort: { publishtime: -1 } })
                 return data ? data.publishcontent || '' : '';

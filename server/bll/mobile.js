@@ -8,10 +8,11 @@ BLL.mobile = {
     return area.filter(function (e) {
       return e.code % 1000 != 0 && e.code % 100 == 0;
     }).map(function (e) {
-      e.areaArray = area.filter(function (ee) {
-        return ee.code > e.code && ee.code < (e.code + 100)
-      }).slice(0, 1)
-      return e;
+        e.areaArray = area.filter(function (ee) {
+            if (e.code == 152500) return ee.code > e.code + 1 && ee.code < (e.code + 100)
+            else return ee.code > e.code && ee.code < (e.code + 100)
+        }).slice(0, 1)
+        return e;
     })
   },
   cityBasic: function (id) {
@@ -461,7 +462,7 @@ BLL.mobile = {
       })(parseInt(id))
     }
   },
-  getLatestVersion: function (deviceType) {
+  getLatestVersion: function (deviceType,host) {
     var app = MobileApp.findOne({
       deviceType: deviceType
     }, {
@@ -476,7 +477,7 @@ BLL.mobile = {
         if (deviceType == 'IOS') {
           return app.conf;
         } else {
-          return app.conf || FileFS.findOne({
+          return app.conf || 'http://'+host+FileFS.findOne({
             _id: app.app
           }).url();
         }
@@ -675,7 +676,7 @@ BLL.mobile = {
                 aqi: filter('AQI',Number(data['AQI'])),
                 PM25:filter('PM2.5', Number(data['PM2_5'])),
                 PM10:filter('PM10', Number(data['PM10'])),
-                O3: filter('O3',Number(data['O3_1H'])),
+                O3: filter('O3',Number(data['O3'])),
                 SO2: filter('SO2',Number(data['SO2'])),
                 NO2: filter('NO2',Number(data['NO2'])),
                 CO: filter('CO',Math.floor(Number(data['CO']) * 1000)),
@@ -735,7 +736,8 @@ BLL.mobile = {
         
     var area = Area.find({ code: { $not: { $mod: [1000, 0] } } }).fetch();
     var res = area.filter(function (e) { return e.code % 100 == 0 }).map(function (e) {
-      var county = area.filter(function (ee) { return ee.code % e.code < 100 })[1];//主城区
+        var county = area.filter(function (ee) { return ee.code % e.code < 100 })[1];//主城区
+        if (e.code == 152500) county = area.filter(function (ee) { return ee.code % e.code < 100 })[2];//锡林郭勒
       return {
         cityCode: e.code,
         cityName: e.name,

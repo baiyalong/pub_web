@@ -16,9 +16,11 @@ Template.login.events({
             Util.modal('用户登录', '请输入密码！')
         else
             Meteor.loginWithPassword(username, password, function (err) {
-                if (err.reason == "User not found") Util.modal('用户登录', '用户名不存在！')
-                if (err.reason == "Incorrect password") Util.modal('用户登录', '密码错误！')
-                else if (err) Util.modal('用户登录', err)
+                if (err) {
+                    if (err.reason == "User not found") Util.modal('用户登录', '用户名不存在！')
+                    else if (err.reason == "Incorrect password") Util.modal('用户登录', '密码错误！')
+                    else Util.modal('用户登录', err)
+                }
                 else
                     Router.go('/')
             })

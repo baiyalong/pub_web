@@ -18,6 +18,7 @@ Meteor.methods({
     },
     'updateUser': function (username, password, role) {
         var user = Meteor.users.findOne({username: username})
+        if(password)
         Accounts.setPassword(user._id, password)
         Roles.setUserRoles(user._id, role)
     },

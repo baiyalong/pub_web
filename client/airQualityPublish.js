@@ -171,22 +171,22 @@ Template.airQualityPublish.events({
         if (line == 1);
         else if (line == 2 || line == 3) Session.set('showLine', line - 1);
     },
-    'change #city': function () {
-        var city = parseInt($('#city').val())
-        var select = false;
-        $('#county option').each(function () {
-            var county = parseInt($(this).attr('value'))
-            if (county > city && county < (city + 100)) {
-                $(this).show()
-                if (!select) {
-                    select = true;
-                    $('#county').val(county)
-                }
-            } else {
-                $(this).hide()
-            }
-        })
-    },
+    // 'change #city': function () {
+    //     var city = parseInt($('#city').val())
+    //     var select = false;
+    //     $('#county option').each(function () {
+    //         var county = parseInt($(this).attr('value'))
+    //         if (county > city && county < (city + 100)) {
+    //             $(this).show()
+    //             if (!select) {
+    //                 select = true;
+    //                 $('#county').val(county)
+    //             }
+    //         } else {
+    //             $(this).hide()
+    //         }
+    //     })
+    // },
     'click .save': function (e, t) {
         // var content = $('textarea').val();
         // // if (content.replace(/(^\s*)|(\s*$)/g, "").length == 0) {
@@ -284,32 +284,36 @@ Template.airQualityPublish.onRendered(function () {
     $('#date').datepicker('setStartDate', new Date())
     //$('#date').datepicker('setEndDate', new Date())
 
+    var city = null, county = null;
     var role = Roles.getRolesForUser(Meteor.userId())
-    if (role && role[0])
-        $('#city').val(role[0])
+    if (role && role[0]) city = Number(role[0])
+    if (city == 152500) county = 152502;
+    else county = city + 1;
+    $('#city').val(city)
+    $('#county').val(county)
 
+    // var city = parseInt($('#city').val())
+    // var county = parseInt($('#county').val())
+    // if(county==152501)county=152502;
+    // if (!isNaN(city) && !isNaN(county)) {
+    //     var select = false;
+    //     $('#county option').each(function () {
+    //         var county = parseInt($(this).attr('value'))
+    //         if (county > city && county < (city + 100)) {
+    //             $(this).show()
+    //             if (!select) {
+    //                 select = true;
+    //                 $('#county').val(county)
+    //             }
+    //         } else {
+    //             $(this).hide()
+    //         }
+    //     })
+    // }
 
-    var city = parseInt($('#city').val())
-    var county = parseInt($('#county').val())
-    if (!isNaN(city) && !isNaN(county)) {
-        var select = false;
-        $('#county option').each(function () {
-            var county = parseInt($(this).attr('value'))
-            if (county > city && county < (city + 100)) {
-                $(this).show()
-                if (!select) {
-                    select = true;
-                    $('#county').val(county)
-                }
-            } else {
-                $(this).hide()
-            }
-        })
-    }
-
-    Session.set('cityCode',$('#city').val())
-    Session.set('areaCode', $('#county').val())
-    Session.set('showLine',1)
+    Session.set('cityCode', city)
+    Session.set('areaCode', county)
+    Session.set('showLine', 1)
     
     
     this.autorun(function(){

@@ -37,13 +37,13 @@ Api.addRoute('stationMonitor/:id', {
 
 Api.addRoute('getLatestVersion/:deviceType', {
     get: function () {
-        return BLL.mobile.getLatestVersion(this.urlParams.deviceType);
+        return BLL.mobile.getLatestVersion(this.urlParams.deviceType, this.request.headers.host);
     }
 })
 
 Api.addRoute('map/:level', {
     get: function () {
-        return BLL.mobile.map(this.urlParams.level,this.queryParams);
+        return BLL.mobile.map(this.urlParams.level, this.queryParams);
     }
 })
 

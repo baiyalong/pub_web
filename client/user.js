@@ -3,11 +3,11 @@
  */
 
 Template.user.helpers({
-    'readonly': function () {
+    'disabled': function () {
         if (Session.get('title') == '修改用户')
-            return 'readonly';
+            return 'disabled';
         if (Session.get('title') == '紧急污染预告推送密码设置')
-            return 'readonly';
+            return 'disabled';
     },
     'title': function () {
         return Session.get('title')
@@ -85,10 +85,12 @@ Template.user.events({
         t.$('#userModal').modal();
     },
     'click .edit': function (e, t) {
+        var fakePassword = Math.random().toString(36).substr(2)
+        Session.set('fakePassword', fakePassword);
         Session.set('title', '修改用户');
         Session.set('err', null);
         t.$('#username').val(this.username)
-        t.$('#password').val('')
+        t.$('#password').val(fakePassword)
         t.$('#userModal').modal();
     },
     'click .remove': function (e, t) {
@@ -121,6 +123,7 @@ Template.user.events({
             }
         }
         else if (Session.get('title') == '修改用户') {
+            if (password == Session.get('fakePassword')) password = null;
             Meteor.call('updateUser', username, password, role, function (err, res) {
                 if (err)
                     Session.set('err', err.message)
