@@ -309,53 +309,30 @@ BLL.mobile = {
         var cityCode = Math.floor(parseInt(param.areaId) / 100) * 100;
         if (parseInt(timeInterval) == 0) //hour
         {
-          var data = DataCityHourly.find({ CityCode: cityCode }, { sort: { TimePoint: -1 }, limit: 100 }).fetch();
+          var data = DataCityHourly.find({ CityCode: cityCode }, { sort: { TimePoint: -1 }, limit: 7*24 }).fetch();
           data.forEach(function (e) {
             e['CO'] = Math.floor(e['CO'] * 1000);
           })
-          var day1 = moment(data[0].TimePoint).format('YYYY-MM-DD');
-          var arr1 = [];
-          var t1 = data[0];
-          while (moment(t1.TimePoint).format('YYYY-MM-DD') == day1) {
-            arr1.push(moment(t1.TimePoint).format('HH') + '@' + filter(t1[type(0)]));
-            data.shift();
-            t1 = data[0];
+          
+          while(data.length!=0) {
+              var day = moment(data[0].TimePoint).format('YYYY-MM-DD');
+              var arr1 = [];
+              var t = data[0];
+              while (t&&moment(t.TimePoint).format('YYYY-MM-DD') == day) {
+                  arr1.push(moment(t.TimePoint).format('HH') + '@' + filter(t[type(0)]));
+                  data.shift();
+                  t = data[0];
+              }
+              arr.push({
+                  date: day,
+                  aqi: arr1.reverse()
+              })
           }
-          arr.push({
-            date: day1,
-            aqi: arr1.reverse()
-          })
-
-          var day2 = moment(data[0].TimePoint).format('YYYY-MM-DD');
-          var arr2 = [];
-          var t2 = data[0];
-          while (moment(t2.TimePoint).format('YYYY-MM-DD') == day2) {
-            arr2.push(moment(t2.TimePoint).format('HH') + '@' + filter(t2[type(0)]));
-            data.shift();
-            t2 = data[0];
-          }
-          arr.push({
-            date: day2,
-            aqi: arr2.reverse()
-          })
-
-          var day3 = moment(data[0].TimePoint).format('YYYY-MM-DD');
-          var arr3 = [];
-          var t3 = data[0];
-          while (moment(t3.TimePoint).format('YYYY-MM-DD') == day3) {
-            arr3.push(moment(t3.TimePoint).format('HH') + '@' + filter(t3[type(0)]));
-            data.shift();
-            t3 = data[0];
-          }
-          arr.push({
-            date: day3,
-            aqi: arr3.reverse()
-          })
 
           // arr.reverse();
         } else if (parseInt(timeInterval) == 1) //day
         {
-          var data = DataCityDaily.find({ CITYCODE: cityCode.toString() }, { sort: { MONITORTIME: -1 }, limit: 100 }).fetch();
+          var data = DataCityDaily.find({ CITYCODE: cityCode.toString() }, { sort: { MONITORTIME: -1 }, limit: 60 }).fetch();
           data.forEach(function (e) {
             e['CO'] = Math.floor(e['CO'] * 1000);
           })
@@ -388,7 +365,7 @@ BLL.mobile = {
           var day3 = moment(data[0].MONITORTIME).format('YYYY-MM');
           var arr3 = [];
           var t3 = data[0];
-          while (moment(t3.MONITORTIME).format('YYYY-MM') == day3) {
+          while (t3&&moment(t3.MONITORTIME).format('YYYY-MM') == day3) {
             arr3.push(moment(t3.MONITORTIME).format('DD') + '@' + filter(t3[type(1)]));
             data.shift();
             t3 = data[0];

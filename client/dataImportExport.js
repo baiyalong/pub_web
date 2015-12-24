@@ -61,61 +61,57 @@ Template.dataImportExport.events({
         var file = e.target.files[0];
         var arr = file.name.split('.');
         if (arr[arr.length - 1].toLowerCase() != 'csv' || file.type != 'application/vnd.ms-excel') {
-            alert('文件格式错误！');
+            alert('文件类型错误!\n请确认文件后缀名是".csv",以及文件类型是"application/vnd.ms-excel"');
             return;
         }
 
-        var reader = new FileReader();
-        reader.readAsText(file)
-        reader.onload = function (e) {
-            var fileContent = e.target.result;
-            Papa.parse(fileContent, {
-                header: true,
-                // worker: true,
-                encoding: 'GB2312',
-                complete: function (results) {
-                    // console.log(results);
-                    if (results.errors.length != 0) {
-                        alert('文件解析错误！');
-                        return;
-                    }
-                    Session.set('importDataList', results.data)
-                    Session.set('err', null)
-
-                    function verify_modal(properties, modal) {
-                        var err = false;
-                        if (!results.data || results.data.length == 0) err = true;
-                        if (!err)
-                            results.data.forEach(function (e) {
-                                properties.forEach(function (ee) {
-                                    if (e[ee] === undefined) err = true;
-                                })
-                            })
-                        if (!err)
-                            t.$(modal).modal();
-                        if (err) alert('文件格式错误！');
-                    }
-                    switch (Session.get('importType')) {
-                        case 'Station':
-                            verify_modal(['StationId', 'PositionName', 'Area', 'UniqueCode', 'StationCode', 'StationCode',
-                                'Longitude', 'Latitude', 'enableStatus', 'publishStatus', 'countyCode', 'countyName'],
-                                '#modalImportStation')
-                            break;
-                        case 'Correct':
-                            verify_modal(['stationCode', 'monitorTime', 'SO2', 'NO2', 'O3', 'CO', 'PM10', 'PM2.5', 'NOx', 'NO',
-                                '风速', '风向', '气压', '气温', '湿度', '能见度', 'AQI'],
-                                '#modalImportCorrect')
-                            break;
-                        case 'Limit':
-                            verify_modal(['pollutantCode', 'pollutantName', 'chineseName', 'limit'],
-                                '#modalImportLimit')
-                            break;
-                        default: ;
-                    }
-
+        Papa.parse(file, {
+            header: true,
+            dynamicTyping: true,
+            skipEmptyLines: true,
+            // worker: true,
+            encoding: 'GB2312',
+            complete: function (results) {
+                // console.log(results);
+                if (results.errors.length != 0) {
+                    alert('文件解析错误!\n请确认文件的格式是标准的csv格式,分隔符为","');
+                    return;
                 }
-            });
-        }
+                Session.set('importDataList', results.data)
+                Session.set('err', null)
+
+                function verify_modal(properties, modal) {
+                    var err = false;
+                    if (!results.data || results.data.length == 0) err = true;
+                    if (!err)
+                        results.data.forEach(function (e) {
+                            properties.forEach(function (ee) {
+                                if (e[ee] === undefined) err = true;
+                            })
+                        })
+                    if (!err)
+                        t.$(modal).modal();
+                    if (err) alert('文件格式错误!\n请检查表格内容是否缺少必须的列');
+                }
+                switch (Session.get('importType')) {
+                    case 'Station':
+                        verify_modal(['StationId', 'PositionName', 'Area', 'UniqueCode', 'StationCode', 'StationCode',
+                            'Longitude', 'Latitude', 'enableStatus', 'publishStatus', 'countyCode', 'countyName'],
+                            '#modalImportStation')
+                        break;
+                    case 'Correct':
+                        verify_modal(['stationCode', 'monitorTime', 'SO2', 'NO2', 'O3', 'CO', 'PM10', 'PM2.5', 'NOx', 'NO',
+                            '风速', '风向', '气压', '气温', '湿度', '能见度', 'AQI'],
+                            '#modalImportCorrect')
+                        break;
+                    case 'Limit':
+                        verify_modal(['pollutantCode', 'pollutantName', 'chineseName', 'limit'],
+                            '#modalImportLimit')
+                        break;
+                    default: ;
+                }
+            }
+        });
 
 
     },

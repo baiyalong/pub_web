@@ -4,24 +4,24 @@
 
 
 Station.attachSchema(new SimpleSchema({
-    "StationId": {type: Number},
-    "PositionName": {type: String},
-    "Area": {type: String},
-    "UniqueCode": {type: Number},
-    "StationCode": {type: String},
-    "StationPic": {type: Number},
-    "Longitude": {type: Number, decimal: true},
-    "Latitude": {type: Number, decimal: true},
-    "Address": {type: Number},
-    "PollutantCodes": {type: String},
-    "StationTypeId": {type: Number},
-    "Status": {type: Number},
-    "BuildDate": {type: String},
-    "Phone": {type: Number},
-    "Manager": {type: Number},
-    "Description": {type: String},
-    "IsMonitor": {type: Number},
-    "IsContrast": {type: Number},
+    "StationId": { type: Number },
+    "PositionName": { type: String },
+    "Area": { type: String },
+    "UniqueCode": { type: Number },
+    "StationCode": { type: String },
+    "StationPic": { type: Number, optional: true },
+    "Longitude": { type: Number, decimal: true },
+    "Latitude": { type: Number, decimal: true },
+    "Address": { type: Number, optional: true },
+    "PollutantCodes": { type: String, optional: true },
+    "StationTypeId": { type: Number, optional: true },
+    "Status": { type: Number, optional: true },
+    "BuildDate": { type: String, optional: true },
+    "Phone": { type: Number, optional: true },
+    "Manager": { type: Number, optional: true },
+    "Description": { type: String, optional: true },
+    "IsMonitor": { type: Number, optional: true },
+    "IsContrast": { type: Number, optional: true },
     enableStatus: {
         type: Boolean, autoValue: function () {
             if (this.isInsert)
@@ -52,8 +52,8 @@ Station.allow({
 
 Meteor.publish('station', function (city) {
     if (city && !isNaN(Number(city)))
-        return Station.find({$and: [{UniqueCode: {$gte: Number(city) * 1000}}, {UniqueCode: {$lt: (Number(city) + 1) * 1000}}]}, {
-            sort: {UniqueCode: 1},
+        return Station.find({ $and: [{ UniqueCode: { $gte: Number(city) * 1000 } }, { UniqueCode: { $lt: (Number(city) + 1) * 1000 } }] }, {
+            sort: { UniqueCode: 1 },
             fields: {
                 UniqueCode: 1,
                 PositionName: 1,
@@ -65,7 +65,7 @@ Meteor.publish('station', function (city) {
             }
         });
     return Station.find({}, {
-        sort: {UniqueCode: 1},
+        sort: { UniqueCode: 1 },
         fields: {
             UniqueCode: 1,
             PositionName: 1,

@@ -11,8 +11,8 @@ Meteor.methods({
                     StationCode: e.StationCode,
                     Longitude: Number(e.Longitude),
                     Latitude: Number(e.Latitude),
-                    enableStatus: e.enableStatus.toLowerCase() == 'true' ? true : false,
-                    publishStatus: e.publishStatus.toLowerCase() == 'true' ? true : false,
+                    enableStatus: e.enableStatus,
+                    publishStatus: e.publishStatus,
                     countyCode: Number(e.countyCode),
                     countyName: e.countyName,
                     } })

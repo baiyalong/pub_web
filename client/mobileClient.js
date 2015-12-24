@@ -49,6 +49,7 @@ Template.mobileClient.events({
         $('#deviceType').attr('disabled', false)
         $('#version').attr('disabled', false)
         $('#app').attr('disabled', false)
+        $('#app').parent().attr('hidden', false)
         $('#logo').attr('disabled', false)
         $('#conf').attr('disabled', false)
         $('#description').attr('disabled', false)
@@ -171,6 +172,7 @@ Template.mobileClient.events({
         $('#deviceType').attr('disabled', true)
         $('#version').attr('disabled', true)
         $('#app').attr('disabled', true)
+        $('#app').parent().attr('hidden', true)
         $('#logo').attr('disabled', true)
         $('#conf').attr('disabled', false)
         $('#description').attr('disabled', false)
@@ -187,13 +189,16 @@ Template.mobileClient.events({
         //Meteor.call('appRemove', this._id, function () {
         //    Util.modal('移动客户端管理', '删除成功！');
         //})
-        var app = MobileApp.findOne({ _id: this._id })
-        if (app) {
-            if (app.app) FileFS.remove({ _id: app.app })
-            if (app.logo) FileFS.remove({ _id: app.logo })
-            //if (app.conf)FileFS.remove({_id: app.conf})
+        if (confirm('确认要删除吗？')) {
+            var app = MobileApp.findOne({ _id: this._id })
+            if (app) {
+                if (app.app) FileFS.remove({ _id: app.app })
+                if (app.logo) FileFS.remove({ _id: app.logo })
+                //if (app.conf)FileFS.remove({_id: app.conf})
+            }
+            MobileApp.remove({ _id: this._id })
         }
-        MobileApp.remove({ _id: this._id })
+
     },
     'mouseenter tbody>tr': function () {
         $('#' + this._id).css({
