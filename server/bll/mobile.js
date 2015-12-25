@@ -625,7 +625,7 @@ BLL.mobile = {
           }
           return Station.find({}, { sort: { UniqueCode: 1 } }).map(function (e) {
             var data = list.filter(function (ee) { return e.UniqueCode == ee.code })
-            if (!data || data.length == 0) return;
+            if (!data || data.length == 0)return;
             data = data[0];
             var res = {
               code: e.UniqueCode,
@@ -661,7 +661,7 @@ BLL.mobile = {
               res.timestamp = moment(data.MONITORTIME).format('YYYY-MM-DD');
             }
             return res;
-          })
+          }).filter(function(e){return e;})
         }
       default:
         { return {err:'err param !'}}
