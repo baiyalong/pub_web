@@ -750,13 +750,14 @@ BLL.mobile = {
       list = DataCityDaily.findOne({ }, { sort: { MONITORTIME: -1 } })
       list = DataCityDaily.find({MONITORTIME:{$gt:(function(){
         var date = new Date(list.MONITORTIME);
-        date.setDate(date.getDate()-day);
+        date.setDate(date.getDate()-day+1);
         date.setMinutes(date.getMinutes()-1)
         return date;
       })()}},{}).map(function(e){e.code=Number(e.CITYCODE);return e;})
       return res.map(function(e){
         var data = list.filter(function(ee){return ee.code==e.cityCode;});
         if(!data||data.length==0)return;
+        // console.log(data.filter(function(e){return e.CITYCODE=='150100'}).map(function(e){return {CODE:e.CITYCODE,AQI:e.AQI}}).reverse().length)
         var sum = data.reduce(function (p, c, i, a) {
           var arr = ['AQI', 'PM2_5', 'PM10', 'O3_1H', 'SO2', 'NO2', 'CO']
           var res = {}

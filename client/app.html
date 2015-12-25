@@ -1,18 +1,27 @@
 <template name="app">
     <style>
         body {
+            margin: 0;
             padding: 0;
         }
     </style>
     <div class="app container-fluid">
-        <img class="logo" src="logo.png"/>
-
-        <div class="title">
-            <p class="text-center">内蒙古空气质量指数</p>
+        <div id='modal-overlay'>
+            <div class="modal-data">
+                <img class="arraw" src="weixinarrow.png"/>
+                <p class="text-left">微信内无法下载，请点击右上角按钮，先选择<span style="color: rgb(255, 153, 0)">[在浏览器中打开]</span>，再选择您的手机系统</p>
+            </div>
         </div>
-        <div class="btns">
-            <a class="btn btn-default Android" target="_blank">Android</a>
-            <a class="btn btn-default IOS" target="_blank">IOS</a>
+        <div>
+            <img class="logo" src="logo.png" />
+
+            <div class="title">
+                <p class="text-center">内蒙古空气质量指数客户端</p>
+            </div>
+            <div class="btns">
+                <a class="btn btn-default Android" target="_blank">Android</a>
+                <a class="btn btn-default IOS" target="_blank">IOS</a>
+            </div>
         </div>
     </div>
 </template>

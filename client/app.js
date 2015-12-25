@@ -12,24 +12,38 @@ Template.app.helpers({
 Template.app.events({});
 
 Template.app.onRendered(function () {
-        var deviceType = ['IOS', 'Android'];
-        deviceType.forEach(function (e) {
-            Meteor.call('downloadApp', e, function (err, res) {
-                //console.log('callback',e)
-                if (err)console.log(err);
-                else {
-                    //Session.set(e, res)
-                    // if (e == 'Android') {
-                    //     res = window.location.origin + res.substring(res.indexOf('/cfs/'))
-                    // }
-                    $('a.' + e).attr('href', res)
-                }
-            })
-        })
+    function isWeiXin() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            return true;
+        } else {
+            return false;
+        }
     }
-);
+    if (!isWeiXin()) {
+        $('#modal-overlay').css('display', 'none')
+    }
+
+
+    var deviceType = ['IOS', 'Android'];
+    deviceType.forEach(function (e) {
+        Meteor.call('downloadApp', e, function (err, res) {
+            //console.log('callback',e)
+            if (err) console.log(err);
+            else {
+                //Session.set(e, res)
+                // if (e == 'Android') {
+                //     res = window.location.origin + res.substring(res.indexOf('/cfs/'))
+                // }
+                $('a.' + e).attr('href', res)
+            }
+        })
+    })
+}
+    );
 
 Template.app.onCreated(function () {
+    
 
-    }
-);
+}
+    );
