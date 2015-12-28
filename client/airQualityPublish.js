@@ -288,6 +288,7 @@ Template.airQualityPublish.onRendered(function () {
     var role = Roles.getRolesForUser(Meteor.userId())
     if (role && role[0]) city = Number(role[0])
     if (city == 152500) county = 152502;
+    else if (city == 152900) county = 152921;
     else county = city + 1;
     $('#city').val(city)
     $('#county').val(county)
