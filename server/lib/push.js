@@ -14,8 +14,8 @@ Push2IOS = {
     options: {
         production: true,
 
-        cert: Meteor.rootPath + '/assets/app/cert.pem',
-        key: Meteor.rootPath + '/assets/app/key.pem',
+        cert: Meteor.rootPath + '/assets/app/key/cert.pem',
+        key: Meteor.rootPath + '/assets/app/key/key.pem',
 
         "batchFeedback": true,
         "interval": 300
