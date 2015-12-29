@@ -1,3 +1,5 @@
+.login{
+    
 .form-signin {
     max-width: 330px;
     padding: 15px;
@@ -27,14 +29,34 @@
     z-index: 2;
 }
 
-.form-signin input[type="text"] {
+#username {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
-    margin-bottom: 10px;
+#password {
+    margin-bottom: -1px;
+    border-radius: 0;
+}
+
+#verifyCode {
+    width: 150px;
+    margin-bottom: -1px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+button {
+    margin-top: 25px;
+}
+
+#img{
+    float: right;
+    height: 44px;
+    width: 150px;
+    border:1px solid lightgray;
+    border-left-width: 0;
+}
 }

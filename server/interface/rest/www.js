@@ -18,8 +18,22 @@ Api.addRoute('area', {
     }
 })
 
-Api.addRoute('airQualityForcast',{
-    get:function(){
+Api.addRoute('airQualityForcast', {
+    get: function () {
         return BLL.www.airQualityForcast();
+    }
+})
+
+Api.addRoute('verifyCode/:connection', {
+    get: function () {
+        // console.log(this.request.headers)
+        // console.log('api verifyCode', this.urlParams.connection)
+        return {
+            statusCode: 200,
+            headers: {
+                'Content-Type': 'image/png'
+            },
+            body: getVerifyCode(this.urlParams.connection)
+        };
     }
 })

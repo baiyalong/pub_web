@@ -9,7 +9,12 @@ Template.app.helpers({
     //}
 });
 
-Template.app.events({});
+Template.app.events({
+    'click #IOS': function (e, t) {
+        e.preventDefault();
+        alert('IOS版本正在提交苹果审核 请您耐心等待')
+    }
+});
 
 Template.app.onRendered(function () {
     function isWeiXin() {
@@ -43,7 +48,7 @@ Template.app.onRendered(function () {
     );
 
 Template.app.onCreated(function () {
-    
+
 
 }
     );

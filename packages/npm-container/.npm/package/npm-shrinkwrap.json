@@ -18,6 +18,14 @@
           "version": "1.4.1"
         }
       }
+    },
+    "captchapng": {
+      "version": "0.0.1",
+      "dependencies": {
+        "pnglib": {
+          "version": "0.0.1"
+        }
+      }
     }
   }
 }

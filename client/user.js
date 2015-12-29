@@ -29,7 +29,12 @@ Template.user.helpers({
                 value: e.code.toString()
             })
         });
-        return res;
+        var role = Session.get('roleSelect')
+        return res.map(function(e){
+            if(role==e.value)
+            e.selected = 'selected'
+            return e;
+        });
     },
     'roleName': function (r) {
         if (!r) return;
@@ -80,6 +85,7 @@ Template.user.events({
     'click .add': function (e, t) {
         Session.set('title', '添加用户');
         Session.set('err', null);
+        Session.set('roleSelect', null)
         t.$('#username').val('')
         t.$('#password').val('')
         t.$('#userModal').modal();
@@ -89,6 +95,7 @@ Template.user.events({
         Session.set('fakePassword', fakePassword);
         Session.set('title', '修改用户');
         Session.set('err', null);
+        Session.set('roleSelect', this.roles[0])
         t.$('#username').val(this.username)
         t.$('#password').val(fakePassword)
         t.$('#userModal').modal();

@@ -1,0 +1,1 @@
+captchapng = Meteor.npmRequire("captchapng");
