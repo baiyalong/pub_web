@@ -3,16 +3,26 @@
  */
 
 Template.dataImportExport.helpers({
+    getBool: function (b) {
+        return b ? '是' : '否'
+    },
     err: function () { return Session.get('err') },
     importDataList: function () {
         var dataList = Session.get('importDataList') || [];
         return dataList.map(function (e) {
+            // console.log(e)
+            // if (e.enableStatus) e.enableStatus = e.enableStatus == true ? '是' : '否';
+            // if (e.publishStatus) e.publishStatus = e.publishStatus == true ? '是' : '否';
+            if (e.countyCode) {
+                var county = Area.findOne({ code: Number(e.countyCode) })
+                e.countyName = county ? county.name : '';
+            }
             e.importResult = e.res == undefined ? '' : e.res ? '成功' : '失败';
             return e;
         });
     },
     cityList: function () {
-        return Area.find()
+        return Area.find({ code: { $mod: [100, 0] } })
     },
     stationList: function () {
         return Session.get('stationList')

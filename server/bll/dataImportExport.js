@@ -3,6 +3,7 @@ Meteor.methods({
         return dataList.map(function (e) {
             var res = null;
             try {
+                var area = Area.find().fetch();
                 res = Station.upsert({ UniqueCode: Number(e.UniqueCode) }, { $set: { 
                     StationId: Number(e.StationId),
                     PositionName: e.PositionName,
@@ -14,7 +15,12 @@ Meteor.methods({
                     enableStatus: e.enableStatus,
                     publishStatus: e.publishStatus,
                     countyCode: Number(e.countyCode),
-                    countyName: e.countyName,
+                    countyName: (function () {
+                        //   var county = area.filter(function(e){return e.code==Number(e.countyCode)})[0]
+                        //   return county?county.name:'';
+                        var county = Area.findOne({ code: Number(e.countyCode) })
+                        return county ? county.name : '';
+                    })()
                     } })
             } catch (err) {
                 res = null;
