@@ -3,48 +3,78 @@
  */
 
 Template.ipTrustList.helpers({
+    title: function () { return 'IP地址信任列表' },
+    err: function () { return Session.get('err') },
     ipList: function () {
-        return IPTrustList.find({}, {sort: {'timestamp': -1}});
+        return IPTrustList.find({}, { sort: { 'timestamp': -1 } });
     }
 });
 
 Template.ipTrustList.events({
-    'click .cancel': function () {
-        $('#ipAddr').val('');
-        $('#description').val('');
+    'click .edit': function (e, t) {
+        Session.set('err', null)
+        Session.set('editID', this._id)
+        t.$('#ipAddr').val(this.ipAddr);
+        t.$('#description').val(this.description);
+        t.$('#appModal').modal()
     },
-    'click .save': function () {
-        var ipAddr = $('#ipAddr').val().trim();
-        var description = $('#description').val().trim();
+    'click button.add': function (e, t) {
+        Session.set('err', null)
+        Session.set('editID', null)
+        t.$('#appModal').modal()
+    },
+    'click .cancel': function (e, t) {
+        t.$('#ipAddr').val('');
+        t.$('#description').val('');
+    },
+    'click .save': function (e, t) {
+        Session.set('err', null)
+        var ipAddr = t.$('#ipAddr').val().trim();
+        var description = t.$('#description').val().trim();
         if (ipAddr == '') {
-            alert('IP地址不能为空！');
+            Session.set('err', 'IP地址不能为空！');
             return;
         }
         var exp = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
         var reg = ipAddr.match(exp);
         if (reg == null) {
-            alert('IP地址格式不正确！');
+            Session.set('err', 'IP地址格式不正确！');
             return;
         }
-        if (description == null) {
-            alert('描述不能为空！');
+        if (description == '') {
+            Session.set('err', '描述不能为空！');
             return;
         }
-        Meteor.call('addNewIP', ipAddr, description, function (err) {
-            if (err)Util.modal('IP地址信任列表', err);
-            else {
-                Util.modal('IP地址信任列表', '添加成功！');
-                $('#ipAddr').val('');
-                $('#description').val('');
-            }
-        })
+        var id = Session.get('editID')
+        if (id) {
+            Meteor.call('updateIP', id, ipAddr, description, function (err) {
+                if (err) Util.modal('IP地址信任列表', err);
+                else {
+                    t.$('#appModal').modal('hide')
+                    Util.modal('IP地址信任列表', '更新成功！');
+                    t.$('#ipAddr').val('');
+                    t.$('#description').val('');
+                }
+            })
+        } else {
+            Meteor.call('addNewIP', ipAddr, description, function (err) {
+                if (err) Util.modal('IP地址信任列表', err);
+                else {
+                    t.$('#appModal').modal('hide')
+                    Util.modal('IP地址信任列表', '添加成功！');
+                    t.$('#ipAddr').val('');
+                    t.$('#description').val('');
+                }
+            })
+        }
     },
     'click .remove': function () {
-        IPTrustList.remove({_id: this._id}, function (err) {
-            if (err)Util.modal('IP地址信任列表', err);
-            else
-                Util.modal('IP地址信任列表', '删除成功！');
-        });
+        if (confirm('确认要删除吗？'))
+            IPTrustList.remove({ _id: this._id }, function (err) {
+                if (err) Util.modal('IP地址信任列表', err);
+                else;
+                // Util.modal('IP地址信任列表', '删除成功！');
+            });
     },
     'mouseenter tbody>tr': function () {
         $('#' + this._id).css({
@@ -61,8 +91,8 @@ Template.ipTrustList.events({
 
 Template.ipTrustList.onRendered(function () {
 
-    }
-);
+}
+    );
 
 Template.ipTrustList.onCreated(function () {
 
