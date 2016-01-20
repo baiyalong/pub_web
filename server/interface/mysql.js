@@ -66,7 +66,9 @@ mysql = {
         })
     },
     syncDataCityHourly: function () {
-        var t = DataCityHourly.findOne({}, { sort: { TimePoint: -1 } }).TimePoint;
+        var t = DataCityHourly.findOne({}, { sort: { TimePoint: -1 } })
+if(t)t=t.TimePoint;
+else return false;
         var f = new Future();
         mysqlPool.getConnection(function (err, connection) {
             connection.query(
@@ -118,13 +120,35 @@ mysql = {
     }
 }
 // mysql.syncDataAirForecast()
-// var d1 = new Date('2014-01-01')
-// var d2 = new Date()
-// while (d1 <= d2) {
-// 	mysql.syncDataCityHourly(d1);
-// 	console.log(d1);
-// 	d1.setDate(d1.getDate() + 1);
-// }
+//
+/*
+
+ var  sssyncDataCityHourly=function (d1,d2) {
+       // var t = DataCityHourly.findOne({}, { sort: { TimePoint: -1 } }).TimePoint;
+        var f = new Future();
+        mysqlPool.getConnection(function (err, connection) {
+            connection.query(
+                'select * from AIR_CITYHOUR_AQI_DATA where TimePoint >? and TimePoint <? ;',
+                [d1,d2],
+                function (err, rows) {
+                    connection.release();
+                    f.return(rows);
+                })
+        })
+        var data = f.wait();
+        data.forEach(function (e) {
+            DataCityHourly.insert(e);
+        })
+    }
+ var d1 = new Date('2014-01-01')
+ var d2 = new Date()
+ while (d1 <= d2) {
+  var dd=new Date(d1)
+  dd.setDate(dd.getDate()+1)
+ 	sssyncDataCityHourly(moment(d1).format('YYYY-MM-DD HH:mm:ss'),moment(dd).format('YYYY-MM-DD HH:mm:ss'));
+ 	console.log(d1,dd);
+ 	d1.setDate(d1.getDate() + 1);
+ }
 
 
 
@@ -140,27 +164,29 @@ mysql = {
 
 // console.log(res)
 
-// function sssync(date) {
-//     // var t = DataCityDaily.findOne({}, { sort: { MONITORTIME: -1 } }).MONITORTIME;
-//     var f = new Future();
-//     mysqlPool.getConnection(function (err, connection) {
-//         connection.query(
-//             'select * from AIR_CITYDAY_AQI_SRC where MONITORTIME = ?;',
-//             [date],
-//             function (err, rows) {
-//                 connection.release();
-//                 f.return(rows);
-//             })
-//     })
-//     var data = f.wait();
-//     data.forEach(function (e) {
-//         DataCityDaily.upsert({ ID: e.ID }, { $set: e });
-//     })
-// }
+ function sssync(date) {
+     // var t = DataCityDaily.findOne({}, { sort: { MONITORTIME: -1 } }).MONITORTIME;
+     var f = new Future();
+     mysqlPool.getConnection(function (err, connection) {
+         connection.query(
+             'select * from AIR_CITYDAY_AQI_SRC where MONITORTIME = ?;',
+             [date],
+             function (err, rows) {
+                 connection.release();
+                 f.return(rows);
+             })
+     })
+     var data = f.wait();
+     data.forEach(function (e) {
+         DataCityDaily.upsert({ ID: e.ID }, { $set: e });
+     })
+ }
 
-// var date = new Date('2015-01-01')
-// while (date <= new Date()) {
-//     sssync(moment(date).format('YYYY-MM-DD'))
-//     console.log(moment(date).format('YYYY-MM-DD'));
-//     date.setDate(date.getDate() + 1)
-// }
+ var date = new Date('2014-01-01')
+ while (date <= new Date()) {
+     sssync(moment(date).format('YYYY-MM-DD'))
+     console.log('sync city daily'+moment(date).format('YYYY-MM-DD'));
+     date.setDate(date.getDate() + 1)
+ }
+
+*/

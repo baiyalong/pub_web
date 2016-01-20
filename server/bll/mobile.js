@@ -336,10 +336,11 @@ BLL.mobile = {
           data.forEach(function (e) {
             e['CO'] = Math.floor(e['CO'] * 1000);
           })
+if(data[0]){
           var day1 = moment(data[0].MONITORTIME).format('YYYY-MM');
           var arr1 = [];
           var t1 = data[0];
-          while (moment(t1.MONITORTIME).format('YYYY-MM') == day1) {
+          while (t1&&moment(t1.MONITORTIME).format('YYYY-MM') == day1) {
             arr1.push(moment(t1.MONITORTIME).format('DD') + '@' + filter(t1[type(1)]));
             data.shift();
             t1 = data[0];
@@ -348,11 +349,12 @@ BLL.mobile = {
             date: day1,
             aqi: arr1.reverse()
           })
-
+}
+if(data[0]){
           var day2 = moment(data[0].MONITORTIME).format('YYYY-MM');
           var arr2 = [];
           var t2 = data[0];
-          while (moment(t2.MONITORTIME).format('YYYY-MM') == day2) {
+          while (t2&&moment(t2.MONITORTIME).format('YYYY-MM') == day2) {
             arr2.push(moment(t2.MONITORTIME).format('DD') + '@' + filter(t2[type(1)]));
             data.shift();
             t2 = data[0];
@@ -361,7 +363,8 @@ BLL.mobile = {
             date: day2,
             aqi: arr2.reverse()
           })
-
+}
+if(data[0]){
           var day3 = moment(data[0].MONITORTIME).format('YYYY-MM');
           var arr3 = [];
           var t3 = data[0];
@@ -374,7 +377,7 @@ BLL.mobile = {
             date: day3,
             aqi: arr3.reverse()
           })
-
+}
           // arr.reverse();
         }
         return arr.reverse();

@@ -16,7 +16,7 @@ scheduleJobs.weather = {
 
 scheduleJobs.syncDataStationHourly = {
   schedule: function (parser) {
-    return parser.text('every 1 h');
+    return parser.text('every 5 m');
   },
   job: function () {
     mysql.syncDataStationHourly();
@@ -35,7 +35,7 @@ scheduleJobs.syncDataStationDaily = {
 
 scheduleJobs.syncDataCityHourly = {
   schedule: function (parser) {
-    return parser.text('every 1 h');
+    return parser.text('every 5 m');
   },
   job: function () {
     mysql.syncDataCityHourly();

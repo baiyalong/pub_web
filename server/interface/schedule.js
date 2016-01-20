@@ -12,5 +12,6 @@ for (var s in scheduleJobs) {
   });
 }
 
-
+if(!ENV_INTERFACE){
 SyncedCron.start();
+}
