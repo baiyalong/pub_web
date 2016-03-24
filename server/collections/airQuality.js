@@ -127,8 +127,8 @@ DataAirQuality.allow({
         return true;
     }
 })
-Meteor.publish('airQuality', function () {
-    return AirQuality.find();
+Meteor.publish('airQuality', function (limit) {
+    return AirQuality.find({},{sort:{date:-1},limit:limit});
 })
 Meteor.publish('dataAirQuality', function () {
     return DataAirQuality.find();

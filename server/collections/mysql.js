@@ -1,7 +1,7 @@
 
 
 
-Meteor.publish('dataStationHourly', function (stationCode, date) {
+Meteor.publish('dataStationHourly', function(stationCode, date) {
     var dateFrom = new Date(Number(date));
     dateFrom.setHours(0);
     dateFrom.setMinutes(0);
@@ -17,18 +17,18 @@ Meteor.publish('dataStationHourly', function (stationCode, date) {
 })
 
 DataStationHourly.allow({
-    'update': function () {
+    'update': function() {
         return true;
     }
 })
 
 
-Meteor.publish('dataStationHourlyReSyncRecord', function () {
-    return DataStationHourlyReSyncRecord.find()
+Meteor.publish('dataStationHourlyReSyncRecord', function(limit) {
+    return DataStationHourlyReSyncRecord.find({}, { sort: { tStart: -1 }, limit: limit })
 })
 
 DataStationHourlyReSyncRecord.allow({
-    'remove': function () {
+    'remove': function() {
         return true;
     }
 })

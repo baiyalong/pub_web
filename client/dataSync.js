@@ -3,17 +3,17 @@
  */
 
 Template.dataSync.helpers({
-    recordList: function () {
-        return DataStationHourlyReSyncRecord.find({},{sort:{tStart:-1}}).map(function (e) {
-            return {
-                _id:e._id,
-                date: moment(e.date).format('YYYY-MM-DD'),
-                success: e.success ? '成功' : '失败',
-                tStart: moment(e.tStart).format('YYYY-MM-DD HH:mm:ss'),
-                tEnd: moment(e.tEnd).format('YYYY-MM-DD HH:mm:ss')
-            }
-        })
-    }
+    // recordList: function () {
+    //     return DataStationHourlyReSyncRecord.find({},{sort:{tStart:-1}}).map(function (e) {
+    //         return {
+    //             _id:e._id,
+    //             date: moment(e.date).format('YYYY-MM-DD'),
+    //             success: e.success ? '成功' : '失败',
+    //             tStart: moment(e.tStart).format('YYYY-MM-DD HH:mm:ss'),
+    //             tEnd: moment(e.tEnd).format('YYYY-MM-DD HH:mm:ss')
+    //         }
+    //     })
+    // }
 });
 
 Template.dataSync.events({
