@@ -12,8 +12,9 @@ Template.app.helpers({
 Template.app.events({
     'click #IOS': function (e, t) {
         e.preventDefault();
-        alert('IOS版本正在提交苹果审核 请您耐心等待')
-    }
+//        alert('IOS版本正在提交苹果审核 请您耐心等待')
+	window.open("https://itunes.apple.com/us/app/nei-meng-gu-kong-qi-zhi-liang/id1069761161?mt=8")  
+  }
 });
 
 Template.app.onRendered(function () {

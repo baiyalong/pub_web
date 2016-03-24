@@ -47,7 +47,7 @@
                                 <th>首要污染物</th>
                                 <th>空气质量级别</th>
                                 <th>AQI</th>
-                                <th>能见度(米)</th>
+                                <th>AQI范围</th>
                                 <th>
                                     <button class="btn btn-default add btn-sm">添加</button>
                                 </th>
@@ -75,7 +75,9 @@
                                     <input type="text" class="form-control input-sm airQualityIndex" value="{{airQualityIndex}}">
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control input-sm visibility" value="{{visibility}}">
+                                    <input type="number" min="0" class="form-control input-sm aqiMin" value="{{aqiMin}}" style="width:20px"/>
+                                    <span> - </span>
+                                    <input type="number" min="0" class="form-control input-sm aqiMax" value="{{aqiMax}}" style="width:50px"/>
                                 </td>
                                 <td>
                                     {{#if showDetele}}
@@ -135,7 +137,6 @@
                                                 <th>污染物</th>
                                                 <th>级别</th>
                                                 <th>AQI</th>
-                                                <th>能见度(米)</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -145,7 +146,6 @@
                                                 <td>{{primaryPollutant}}</td>
                                                 <td>{{airIndexLevel}}</td>
                                                 <td>{{airQualityIndex}}</td>
-                                                <td>{{visibility}}</td>
                                             </tr>
                                             {{/each}}
                                         </tbody>

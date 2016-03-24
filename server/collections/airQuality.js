@@ -49,10 +49,12 @@ AirQuality.attachSchema(new SimpleSchema({
         type: String
     },
     "applyContent.detail.$.airQualityIndex": {
-        type: String
+        type: String,
+        optional: true
     },
     "applyContent.detail.$.visibility": {
-        type: String
+        type: String,
+        optional: true
     },
     "applyContent.description": {
         type: String,

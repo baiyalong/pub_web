@@ -533,7 +533,16 @@ if(data[0]){
           }
           return Area.find({ code: { $mod: [100, 0], $not: { $mod: [1000, 0] } } }, { sort: { code: 1 } }).map(function (e) {
             var data = list.filter(function (ee) { return e.code == ee.code })
-            if (!data || data.length == 0) return;
+            if (!data || data.length == 0) {
+			if(type=='hour'){
+				data=DataCityHourly.findOne({CityCode:e.code},{sort:{TimePoint:-1}})
+				data=[data]			
+			}
+			else if(type=='day'){
+				data=DataCityDaily.findOne({CITYCODE:e.code.toString()},{sort:{MONITORTIME:-1}})
+				data=[data]
+			}
+		};
             data = data[0];
             var res = {
               code: e.code,
@@ -575,7 +584,7 @@ if(data[0]){
               res.healthAdvice = data['DESCRIPTION'];
             }
             return res;
-          })
+          }).filter(function(e){return e})
         }
       case 1:
       // {
@@ -628,7 +637,15 @@ if(data[0]){
           }
           return Station.find({}, { sort: { UniqueCode: 1 } }).map(function (e) {
             var data = list.filter(function (ee) { return e.UniqueCode == ee.code })
-            if (!data || data.length == 0)return;
+            if (!data || data.length == 0){
+			if(type=='hour'){
+				data=DataStationHourly.findOne({stationCode:e.UniqueCode},{sort:{monitorTime:-1}})
+				data=[data]
+			}else if(type=='day'){
+				data=DataStationDaily.findOne({UNIQUECODE:e.UniqueCode.toString()},{sort:{MONITORTIME:-1}})
+				data=[data]
+			}
+		};
             data = data[0];
             var res = {
               code: e.UniqueCode,

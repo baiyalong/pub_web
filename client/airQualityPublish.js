@@ -121,7 +121,6 @@ Template.airQualityPublish.helpers({
                 res.primaryPollutant = data.primaryPollutant;
                 res.airIndexLevel = data.airIndexLevel;
                 res.airQualityIndex = data.airQualityIndex;
-                res.visibility = data.visibility;
             }
             return res;
         }
@@ -213,12 +212,10 @@ Template.airQualityPublish.events({
                             primaryPollutant: t.$(this).find('select.primaryPollutant').val(),
                             airIndexLevel: t.$(this).find('select.airIndexLevel').val(),
                             airQualityIndex: t.$(this).find('input.airQualityIndex').val().trim(),
-                            visibility: t.$(this).find('input.visibility').val().trim(),
                         }
                         if (line.primaryPollutant == '--请选择--' ||
                             line.airIndexLevel == '--请选择--' ||
-                            line.airQualityIndex == '' ||
-                            line.visibility == '')
+                            line.airQualityIndex == '' )
                             err = true;
                         res.push(line)
                     })
