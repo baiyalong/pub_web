@@ -47,7 +47,6 @@
                                 <th>首要污染物</th>
                                 <th>空气质量级别</th>
                                 <th>AQI</th>
-                                <th>AQI范围</th>
                                 <th>
                                     <button class="btn btn-default add btn-sm">添加</button>
                                 </th>
@@ -73,11 +72,6 @@
                                 </td>
                                 <td>
                                     <input type="text" class="form-control input-sm airQualityIndex" value="{{airQualityIndex}}">
-                                </td>
-                                <td>
-                                    <input type="number" min="0" class="form-control input-sm aqiMin" value="{{aqiMin}}" style="width:20px"/>
-                                    <span> - </span>
-                                    <input type="number" min="0" class="form-control input-sm aqiMax" value="{{aqiMax}}" style="width:50px"/>
                                 </td>
                                 <td>
                                     {{#if showDetele}}

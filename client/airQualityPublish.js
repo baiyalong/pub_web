@@ -41,6 +41,7 @@ Template.airQualityPublish.helpers({
     },
     selectPrimaryPollutant: function (name) {
         return [{ code: 0, name: '--请选择--' },
+            {code:-1,name:'-'},
             { code: 1, name: 'SO₂' },
             { code: 2, name: 'NO₂' },
             { code: 3, name: 'O₃' },
@@ -160,6 +161,61 @@ Template.airQualityPublish.helpers({
 });
 
 Template.airQualityPublish.events({
+    'change .airQualityIndex': function(e, t) {
+       // var aqi = t.$(this).find('input.airQualityIndex').val().trim();
+       var aqi = e.target.value;
+    //    console.log(aqi)
+        if (!/\d-\d/.test(aqi)) return;
+        var arr = aqi.split('-');
+        var min = parseInt(arr[0]), max = parseInt(arr[1]);
+        if (!(min <= max && min >= 0)) return;
+
+        var rule = [0, 50, 100, 150, 200, 300, 9999]
+        var res = 0;
+        function inRange(val, min, max) {
+            return val > min && val <= max;
+        }
+        if (inRange(max, rule[0], rule[1])) res = 1;
+        else if (inRange(min, rule[0], rule[1]) && inRange(max, rule[1], rule[2])) res = 2;
+        else if (inRange(min, rule[1], rule[2]) && inRange(max, rule[1], rule[2])) res = 3;
+        else if (inRange(min, rule[1], rule[2]) && inRange(max, rule[2], rule[3])) res = 4;
+        else if (inRange(min, rule[2], rule[3]) && inRange(max, rule[2], rule[3])) res = 5;
+        else if (inRange(min, rule[2], rule[3]) && inRange(max, rule[3], rule[4])) res = 6;
+        else if (inRange(min, rule[3], rule[4]) && inRange(max, rule[3], rule[4])) res = 7;
+        else if (inRange(min, rule[3], rule[4]) && inRange(max, rule[4], rule[5])) res = 8;
+        else if (inRange(min, rule[4], rule[5]) && inRange(max, rule[4], rule[5])) res = 9;
+        else if (inRange(min, rule[4], rule[5]) && inRange(max, rule[5], rule[6])) res = 10;
+        else if (inRange(min, rule[5], rule[6])) res = 11;
+        else { alert('数值范围过大！'); return; }
+
+        // t.$(this).find('select.airIndexLevel').val(res);
+        var text = [{ code: 0, name: '--请选择--' },
+            { code: 1, name: '优' },
+            { code: 2, name: '优-良' },
+            { code: 3, name: '良' },
+            { code: 4, name: '良-轻度污染' },
+            { code: 5, name: '轻度污染' },
+            { code: 6, name: '轻度-中度污染' },
+            { code: 7, name: '中度污染' },
+            { code: 8, name: '中度-重度污染' },
+            { code: 9, name: '重度污染' },
+            { code: 10, name: '重度-严重污染' },
+            { code: 11, name: '严重污染' }];
+
+        $(e.target.parentNode.parentNode).find('select.airIndexLevel')
+        .val(text.filter(function(e) { return e.code == res })[0].name)
+
+        if(res==1)
+            $(e.target.parentNode.parentNode).find('select.primaryPollutant').val('-')
+        
+    },
+    // 'blur .aqiMin':function(e,t){
+    //    var min = t.$(this).find('input.aqiMin').val().trim();
+    //    console.log(min)
+    // },
+    // 'blur .aqiMax':function(e,t){
+        
+    // },
     'click .add': function () {
         var line = Session.get('showLine') || 1;
         if (line == 1 || line == 2) Session.set('showLine', line + 1);
