@@ -14,15 +14,24 @@ BLL.www = {
                 return data ? data.publishcontent || '' : '';
             })(),
             date:(function(){
-                function date(i) {
-                    var date = new Date();
+                var res;
+                function date(dd, i) {
+                    var date = new Date(dd);
                     date.setDate(date.getDate() + i);
                     return moment(date).format('MM月DD日');
                 }
-                return [date(1),date(2),date(3)]
+                var d = DataAirQuality.findOne({description:{$exists:false},primaryPollutant:{$exists:true}},{sort:{date:1}})
+                if(d){
+                    var dd = d.date;
+                    res = [date(dd,0),date(dd,1),date(dd,2)]
+                }else{
+                    var dd = new Date();
+                    res = [date(dd,1),date(dd,2),date(dd,3)]
+                }
+                return res;
             })(),
             detail: (function () {
-                var data = DataAirQuality.find({ date: { $gt: new Date() } }, { sort: { areaCode: 1,date:1 },fields:{_id:0} }).map(function(e){
+                var data = DataAirQuality.find({description:{$exists:false},primaryPollutant:{$exists:true}}, { sort: { areaCode: 1,date:1 },fields:{_id:0} }).map(function(e){
                     e.code = Math.floor(e.areaCode/100)*100
                     return e;
                 });
@@ -33,7 +42,8 @@ BLL.www = {
                         content:data.filter(function(ee){return ee.code==e.code}).map(function(e){
                             delete e.areaCode;
                             delete e.code;
-                            delete e.date;
+                           // delete e.date;
+                            e.date = moment(e.date).format('YYYY-MM-DD')
                             return e;
                         })
                     };
@@ -65,8 +75,10 @@ BLL.www = {
             }
         })();
         
-        function filter(name,value){
-            return Math.min(value,limit[name])
+        function filter(name, value) {
+                     if (value === null || isNaN(value)) value = 0;
+            var res = Math.min(value, limit[name])
+            return Math.max(res, 0)
         }
         
         var city = Area.findOne({ code: id })
@@ -86,7 +98,7 @@ BLL.www = {
                 level: data['Quality']
             },
             airQualityForecast: (function () {
-                return DataAirQuality.find({ areaCode: { $gt: id, $lt: id + 100 }, date: { $gt: new Date() } }).map(function (e) {
+                return DataAirQuality.find({description:{$exists:false},primaryPollutant:{$exists:true}, areaCode: { $gt: id, $lt: id + 100 } }).map(function (e) {
                     return {
                         time: moment(e.date).format('MM月DD日'),
                         airQuality: e.airIndexLevel,

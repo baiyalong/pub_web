@@ -1,0 +1,72 @@
+.weibo{
+
+
+  .topic {
+    height: auto;
+    p {
+      margin: 27px auto 9px 30px;
+      color: #28B779;
+      font-weight: bolder;
+      font-size: medium;
+    }
+  }
+
+  .divider {
+    height: 1px;
+    background: #E7E7E7;
+    margin-bottom: 20px;
+    div {
+      height: 2px;
+      background: #28B779;
+      margin-left: 30px;
+      width: 100px;
+      position: relative;
+      top: -1px;
+    }
+  }
+
+  .list > div {
+    padding-left: 30px;
+    padding-right: 0;
+  }
+
+  .list table {
+    border: 1px solid #D8D8D8;
+    width: 100%;
+    empty-cells: hide;
+    border-collapse: collapse;
+    margin: 0;
+    thead {
+      background: #F1F1F1;
+    }
+    tbody tr {
+      border: 1px dashed #D8D8D8;
+    }
+    tbody tr:hover {
+      background: #E1EEE7;
+    }
+    tr {
+      height: 30px;
+      max-height: 30px;
+      overflow: auto;
+    }
+    th, td {
+      height: 30px;
+      vertical-align: middle;
+      padding-left: 20px;
+    }
+    input {
+      width: 50px;
+      max-width: 50px;
+      overflow: auto;
+      text-align: right;
+      padding: 5px;
+      margin: auto;
+    }
+  }
+
+  button.add {
+    margin: 0 auto 20px 30px;
+  }
+
+}

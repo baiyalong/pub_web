@@ -1,0 +1,21 @@
+<template name="pages">
+    <div class="pages">
+        <ul class="pagination">
+            <li>
+                <button class="page pre btn btn-sm" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </button>
+            </li>
+            {{#each pageList}}
+            <li>
+                <button class="page btn btn-sm {{active}}">{{page}}</button>
+            </li>
+            {{/each}}
+            <li>
+                <button class="page next btn btn-sm" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </button>
+            </li>
+        </ul>
+    </div>
+</template>

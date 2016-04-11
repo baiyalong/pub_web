@@ -91,8 +91,15 @@
     //  max-width: 40px;
     //  overflow: auto;
     //}
+     tr {
+    height: 30px;
+    max-height: 30px;
+    overflow: auto;
+  }
     th, td {
-      text-align: center;
+         height: 30px;
+    vertical-align: middle;
+    padding-left: 20px;
     }
     //input {
     //  text-align: right;

@@ -6,6 +6,9 @@
  */
 
 Template.airQualityReview.helpers({
+        airQualityModel:function(){
+        return Session.get('airQualityModel')
+    },
     title: function () {
         return Session.get('title')
     },
@@ -16,7 +19,7 @@ Template.airQualityReview.helpers({
         return statusCode == 0;
     },
     statusColor: function (statusCode) {
-        return statusCode == 1 ? 'green' : statusCode == -1 ? 'red' : '';
+        return statusCode = 1 ? 'green' : statusCode == -1 ? 'red' : '';
     },
     moment: function (date) {
         return moment(date).format('YYYY-MM-DD')
@@ -37,10 +40,23 @@ Template.airQualityReview.helpers({
             d.setDate(d.getDate()-1);
             return d;
         })()}}, { sort: { date: -1 } })
-    }
+    },
+   
 });
 
 Template.airQualityReview.events({
+    'click .pubBtn':function(e,t){
+        Meteor.call('publishAirQuality',function(err,res){
+            if(err)
+                Util.modal('空气质量预报审核', err);
+            else 
+                Util.modal('空气质量预报审核', '发布成功！');
+        })
+    },
+    'click .detail':function(e,t){
+        Session.set('airQualityModel',this)
+        t.$('#airQualityDetailModal').modal()
+    },
     'click .audit': function (e, t) {
         var update = Session.get('auditStatus');
         update.auditOption = t.$('textarea').val().trim()
@@ -87,11 +103,19 @@ Template.airQualityReview.events({
     }
 });
 
-Template.airQualityReview.onRendered(function () {
-
+Template.airQualityReview.onRendered(function() {
+    // $('.mainR').scroll(function() {
+    //     var scrollValue = Session.get('scrollValue')
+    //     if ($('.mainR').scrollTop() > scrollValue) {
+    //         Session.set('limit', Session.get('limit') + 20);
+    //         Session.set('scrollValue', scrollValue + $('.mainR').height())
+    //     }
+    // });
 }
-    );
+);
 
-Template.airQualityReview.onCreated(function () {
-
+Template.airQualityReview.onCreated(function() {
+    Session.set('pages_method', 'airQuality_pages')
+    Session.set('collection', 'airQuality')
+    Session.set('filter',{})
 })

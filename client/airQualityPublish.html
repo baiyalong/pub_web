@@ -57,21 +57,21 @@
                             <tr id="{{_id}}" date="{{date}}">
                                 <td>{{dateString}}</td>
                                 <td>
-                                    <select class="form-control input-sm primaryPollutant">
+                                    <select style="margin-left:0" class="form-control input-sm primaryPollutant">
                                         {{#each selectPrimaryPollutant primaryPollutant}}
                                         <option value="{{name}}" selected="{{selected}}">{{name}}</option>
                                         {{/each}}
                                     </select>
                                 </td>
                                 <td>
-                                    <select class="form-control input-sm airIndexLevel">
+                                    <select style="margin-left:0" class="form-control input-sm airIndexLevel">
                                         {{#each selectAirIndexLevel airIndexLevel}}
                                         <option value="{{name}}" selected="{{selected}}">{{name}}</option>
                                         {{/each}}
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" class="form-control input-sm airQualityIndex" value="{{airQualityIndex}}">
+                                    <input style="margin-left:0" type="text" class="form-control input-sm airQualityIndex" value="{{airQualityIndex}}">
                                 </td>
                                 <td>
                                     {{#if showDetele}}
@@ -111,11 +111,10 @@
                     <table>
                         <thead>
                             <tr>
-                                <th width='12%'>时间</th>
-                                <th width='10%'>城市</th>
-                                <th width='40%'>污染预报详情</th>
-                                <th width='30%'>未来污染趋势</th>
-                                <th width='10%'>状态</th>
+                                <th>时间</th>
+                                <th>城市</th>
+                                <th>状态</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -124,42 +123,89 @@
                                 <td>{{moment date}}</td>
                                 <td>{{cityName}}</td>
                                 <td>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>日期</th>
-                                                <th>污染物</th>
-                                                <th>级别</th>
-                                                <th>AQI</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {{#each applyContent.detail}}
-                                            <tr>
-                                                <td>{{momentShort date}}</td>
-                                                <td>{{primaryPollutant}}</td>
-                                                <td>{{airIndexLevel}}</td>
-                                                <td>{{airQualityIndex}}</td>
-                                            </tr>
-                                            {{/each}}
-                                        </tbody>
-                                    </table>
+                                    <span class="{{statusColor statusCode}}">{{statusName}}</span>
                                 </td>
                                 <td>
-                                    <p class="text-left">{{applyContent.description}}</p>
-                                </td>
-                                <td>
-                                    <p class="{{statusColor statusCode}}">{{statusName}}</p>
+                                    <a class="detail btn btn-default btn-sm">详情</a>
                                 </td>
                             </tr>
                             {{/each}}
                         </tbody>
                     </table>
+                    {{>pages}}
                 </div>
             </div>
         </div>
 
 
+
+        <div id="airQualityDetailModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">空气质量预报详情<span
+                                style="color:red">&nbsp;&nbsp;{{err}}</span>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover table-condensed table-bordered">
+                            <tbody>
+                                {{#with airQualityModel}}
+                                <tr>
+                                    <th>发布时间</th>
+                                    <td>{{moment date}}</td>
+                                </tr>
+                                <tr>
+                                    <th>城市</th>
+                                    <td>{{cityName}}</td>
+                                </tr>
+                                <tr>
+                                    <th>状态</th>
+                                    <td>
+                                        <span class="{{statusColor statusCode}}">{{statusName}}</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>污染预报详情</th>
+                                    <td>
+                                        <table class="table table-condensed" style="margin:0">
+                                            <thead>
+                                                <tr>
+                                                    <th>预报日期</th>
+                                                    <th>首要污染物</th>
+                                                    <th>空气质量级别</th>
+                                                    <th>AQI</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{#each applyContent.detail}}
+                                                <tr>
+                                                    <td>{{moment date}}</td>
+                                                    <td>{{primaryPollutant}}</td>
+                                                    <td>{{airIndexLevel}}</td>
+                                                    <td>{{airQualityIndex}}</td>
+                                                </tr>
+                                                {{/each}}
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>未来污染趋势</th>
+                                    <td><span>{{applyContent.description}}</span></td>
+                                </tr>
+                                {{/with}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default " data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-default " data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </template>

@@ -67,5 +67,10 @@ menu = [
         name: '空气质量预报发布',
         imgSrc: '/yubaosh.png',
         role: 'publish'
+    },{
+        path: '/weibo',
+        name: '微博发布管理',
+        imgSrc: '/yubaosh.png',
+        role: 'admin'
     },
 ]

@@ -1,7 +1,16 @@
 ///**
 // * Created by bai on 2015/9/6.
 // */
-Meteor.startup(function () {
+Meteor.startup(function() {
+    if (WeiboConfig.find().count() == 0)
+        WeiboConfig.insert({
+            weiboAccount:'weiboAccount',
+            weiboPassword:'weiboPassword',
+            autoPublish:false,
+            timerSchedule:'0:00',
+            waitData:false,
+            template:'template'
+        })
     //
     //    //admin user
     //    if (Meteor.users.find().count() == 0) {

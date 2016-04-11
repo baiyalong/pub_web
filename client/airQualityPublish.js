@@ -3,6 +3,9 @@
  */
 
 Template.airQualityPublish.helpers({
+    airQualityModel:function(){
+        return Session.get('airQualityModel')
+    },
     // getPrimaryPollutant: function (primaryPollutant) {
     //     return Pollutant.findOne({ pollutantCode: Number(primaryPollutant) }).pollutantName
     // },
@@ -24,11 +27,11 @@ Template.airQualityPublish.helpers({
     },
     statusColor: function (statusCode) {
         if(statusCode)
-            return statusCode == 1 ? 'green' : statusCode == -1 ? 'red' : '';
+            return statusCode >= 1 ? 'green' : statusCode == -1 ? 'red' : '';
         var applied = Session.get('airQuality');
         if (applied) {
             var statusCode = applied.statusCode;
-            return statusCode == 1 ? 'green' : statusCode == -1 ? 'red' : '';
+            return statusCode >= 1 ? 'green' : statusCode == -1 ? 'red' : '';
         }
     },
     auditOption:function(){
@@ -116,7 +119,7 @@ Template.airQualityPublish.helpers({
                 d1.setSeconds(d1.getSeconds() - 1);
                 var d2 = new Date(date);
                 d2.setSeconds(d2.getSeconds() + 1);
-                data = DataAirQuality.findOne({ areaCode: areaCode, date: { $gte: d1, $lte: d2 } })
+                data = DataAirQuality.findOne({ areaCode: areaCode, date: { $gte: d1, $lte: d2 },description:{$exists:false} })
             }
             if (data) {
                 res.primaryPollutant = data.primaryPollutant;
@@ -161,6 +164,10 @@ Template.airQualityPublish.helpers({
 });
 
 Template.airQualityPublish.events({
+    'click .detail':function(e,t){
+        Session.set('airQualityModel',this)
+        t.$('#airQualityDetailModal').modal()
+    },
     'change .airQualityIndex': function(e, t) {
        // var aqi = t.$(this).find('input.airQualityIndex').val().trim();
        var aqi = e.target.value;
@@ -277,7 +284,7 @@ Template.airQualityPublish.events({
                     })
                     return res;
                 })(),
-                description: t.$('textarea').val().trim()
+                description: t.$('textarea').val().trim()||''
             }
         }
         if (err) Util.modal('空气质量预报发布', '输入参数错误！')
@@ -393,11 +400,26 @@ Template.airQualityPublish.onRendered(function () {
         Session.set('showLine', res.applyContent.detail.length)
         // console.log(res)
     })
+    
+    //  $('.mainR').scroll(function() {
+    //     var scrollValue = Session.get('scrollValue')
+    //     if ($('.mainR').scrollTop() > scrollValue) {
+    //         Session.set('limit', Session.get('limit') + 20);
+    //         Session.set('scrollValue', scrollValue + $('.mainR').height())
+    //     }
+    // });
+    
 }
     )
 ;
 
-Template.airQualityPublish.onCreated(function () {
+Template.airQualityPublish.onCreated(function() {
+    Session.set('pages_method', 'airQuality_pages')
+    Session.set('collection', 'airQuality')
 
+    var city = null;
+    var role = Roles.getRolesForUser(Meteor.userId())
+    if (role && role[0]) city = Number(role[0])
+    Session.set('filter', { cityCode: city })
 }
-    );
+);

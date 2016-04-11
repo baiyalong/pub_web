@@ -80,16 +80,20 @@ BLL.mobile = {
     })();
 
     function filter(name, value) {
-        return Math.min(value, limit[name])
+                 if (value === null || isNaN(value)) value = 0;
+        var res =  Math.min(value, limit[name])
+        return Math.max(res,0)
     }
         
     var weather = Weather.findOne({
       areaid: area.weatherID
     });
     var f = weather.content.f.f1;
+    
     var num = function () {
-      return Math.floor(Math.random() * 500);
+      return Math.floor(Math.random() * 500);   //假数据
     }
+    
     var healthyAdrr = function (aqi) {
       var l = 0;
       if (aqi <= 100) l = 0;
@@ -146,7 +150,7 @@ BLL.mobile = {
         }, ],
       healthyAdviceList: healthyAdrr(aqi),
       aqPridictionList: (function () {
-        return DataAirQuality.find({ areaCode: code, date: { $gt: new Date() } }).map(function (e) {
+        return DataAirQuality.find({ areaCode: code, description: { $exists: false },primaryPollutant:{$exists:true}}).map(function (e) {
           return [
             moment(e.date).format('MM月DD日'),
             e.airIndexLevel,
@@ -155,16 +159,16 @@ BLL.mobile = {
         })
       })(),
       airQualityPridiction: (function () {
-        var date = new Date();
-        date.setHours(0);
-        date.setMinutes(0);
-        date.setSeconds(0);
-        var d1 = new Date(date);
-        d1.setSeconds(d1.getSeconds() - 1);
-        var d2 = new Date(date);
-        d2.setSeconds(d2.getSeconds() + 1);
-        var data = DataAirQuality.findOne({ areaCode: code, date: { $gt: d1, $lt: d2 } });
-        return data ? data.description : '';
+        // var date = new Date();
+        // date.setHours(0);
+        // date.setMinutes(0);
+        // date.setSeconds(0);
+        // var d1 = new Date(date);
+        // d1.setSeconds(d1.getSeconds() - 1);
+        // var d2 = new Date(date);
+        // d2.setSeconds(d2.getSeconds() + 1);
+          var data = DataAirQuality.findOne({ areaCode: code, description: { $exists: true } });
+          return data ? data.description : '';
       })(),
       weatherPridiction: (function () {
         var res = [{
@@ -218,8 +222,10 @@ BLL.mobile = {
           TimePoint: -1
         }
       });
+      //    真实数据
     if (real) {
       res.aqi = filter('AQI',Number(real.AQI));
+      res.primaryPollutant = real.PrimaryPollutant;
       res.healthyAdviceList = healthyAdrr(Number(real.AQI))
       res.pollutantLevel = [{
           type: 105,
@@ -289,6 +295,7 @@ BLL.mobile = {
         })();
         
      function filter(value) {
+                  if (value === null || isNaN(value)) value = 0;
          var name = null;
          var aqiType = parseInt(param.aqiType);
          if (aqiType == 90) name = 'AQI';
@@ -298,7 +305,8 @@ BLL.mobile = {
          if (aqiType == 103) name = 'CO';
          if (aqiType == 104) name = 'PM10';
          if (aqiType == 105) name = 'PM2.5';
-         return Math.min(value, limit[name])
+         var res = Math.min(value, limit[name])
+         return Math.max(res,0)
      }
     return {
       areaId: parseInt(param.areaId),
@@ -407,7 +415,9 @@ if(data[0]){
         })();
         
         function filter(name,value){
-            return Math.min(value,limit[name])
+                     if (value === null || isNaN(value)) value = 0;
+            var res = Math.min(value,limit[name])
+            return Math.max(res,0)
         }
     return {
       areaId: parseInt(id),
@@ -426,10 +436,14 @@ if(data[0]){
             }
           }).map(function (e) {
             var data = DataStationHourly.findOne({ stationCode: e.UniqueCode }, { sort: { monitorTime: -1 } })
+            var primaryPollutant = data['PRIMARYPOLLUTANT'];
+            if(!primaryPollutant||primaryPollutant==0)primaryPollutant='-';
+            else primaryPollutant = primaryPollutant.toString();
             return {
               code: e.UniqueCode,
               name: e.PositionName,
               topPollution: 'PM2.5',
+              primaryPollutant:primaryPollutant,
               aqi: filter('AQI',data['AQI']),
               pm25: filter('PM2.5',data['105']),
               pm10: filter('PM10',data['104']),
@@ -488,7 +502,9 @@ if(data[0]){
         })();
         
         function filter(name,value){
-            return Math.min(value,limit[name])
+                     if (value === null || isNaN(value)) value = 0;
+            var res =  Math.min(value,limit[name])
+            return Math.max(res,0)
         }
     var res = [];
     var rand = function () {
@@ -727,9 +743,11 @@ if(data[0]){
             }
         })();
         
-        function filter(name,value){
-            return Math.min(value,limit[name])
-        }
+     function filter(name, value) {
+         if (value === null || isNaN(value)) value = 0;
+         var res = Math.min(value, limit[name])
+         return Math.max(res, 0)
+     }
         
     var area = Area.find({ code: { $not: { $mod: [1000, 0] } } }).fetch();
     var res = area.filter(function (e) { return e.code % 100 == 0 }).map(function (e) {
@@ -778,25 +796,43 @@ if(data[0]){
         var data = list.filter(function(ee){return ee.code==e.cityCode;});
         if(!data||data.length==0)return;
         // console.log(data.filter(function(e){return e.CITYCODE=='150100'}).map(function(e){return {CODE:e.CITYCODE,AQI:e.AQI}}).reverse().length)
-        var sum = data.reduce(function (p, c, i, a) {
-          var arr = ['AQI', 'PM2_5', 'PM10', 'O3_1H', 'SO2', 'NO2', 'CO']
-          var res = {}
-          arr.forEach(function (e) {
-            res[e] = p[e] + c[e]
-          })
-          return res;
+        var arr = ['AQI', 'PM2_5', 'PM10', 'O3_8H', 'SO2', 'NO2', 'CO']
+        var avg_count = {}
+        arr.forEach(function(e) {
+            avg_count[e] = 0
         })
-        var avg = function (e) { return Math.round(e / Number(day)) }
-        e.aqi = filter('AQI',avg(sum['AQI']));
-        e.PM25 = filter('PM2.5',avg(sum['PM2_5']));
-        e.PM10 =filter('PM10', avg(sum['PM10']));
-        e.O3 =filter('O3', avg(sum['O3_1H']));
-        e.SO2 = filter('SO2',avg(sum['SO2']));
-        e.NO2 =filter('NO2', avg(sum['NO2']));
-        e.CO =filter('CO', avg(sum['CO'] * 1000));
+        var sum = data.map(function(e, i, a) {
+            // console.log(e)
+            var res = {}
+            arr.forEach(function(ee) {
+                if (e[ee] <= 0) avg_count[ee]++;
+                var name = '';
+                if (ee == 'PM2_5') name = 'PM2.5';
+                else if (ee == 'O3_8H') name = 'O3';
+                else name = ee;
+                res[ee] = filter(name, e[ee])
+            })
+            return res;
+        }).reduce(function(p, c, i, a) {
+            var res = {}
+            arr.forEach(function(e) {
+                res[e] = p[e] + c[e]
+            })
+            return res;
+        })
+        // console.log(sum)
+        // console.log(avg_count)
+        var avg = function(name, sum) { return Math.round(sum / (Number(day) - avg_count[name])) }
+        e.aqi = filter('AQI', avg('AQI', sum['AQI']));
+        e.PM25 = filter('PM2.5', avg('PM2_5', sum['PM2_5']));
+        e.PM10 = filter('PM10', avg('PM10', sum['PM10']));
+        e.O3 = filter('O3', avg('O3_8H', sum['O3_8H']));
+        e.SO2 = filter('SO2', avg('SO2', sum['SO2']));
+        e.NO2 = filter('NO2', avg('NO2', sum['NO2']));
+        e.CO = filter('CO', avg('CO', sum['CO'] * 1000));
         return e;
-      }).sort(function (a, b) {
-        return a.aqi - b.aqi;
+      }).sort(function(a, b) {
+          return a.aqi - b.aqi;
       })
     }
   },

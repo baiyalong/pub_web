@@ -17,7 +17,6 @@ mrt:moment-timezone
 cfs:standard-packages
 cfs:gridfs
 fourseven:scss
-standard-minifiers
 meteor-base
 mobile-experience
 mongo
@@ -47,3 +46,5 @@ jparker:crypto-base64
 jparker:crypto-sha1
 pcel:mysql
 harrison:papa-parse
+standard-minifier-css
+standard-minifier-js

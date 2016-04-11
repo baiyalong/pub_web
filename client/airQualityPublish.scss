@@ -98,14 +98,15 @@
       background: #E1EEE7;
     }
     tr {
-      height: 40px;
-      max-height: 40px;
+      height: 30px;
+      max-height: 30px;
       overflow: auto;
     }
     th, td {
-      text-align: center;
-      height: 40px;
+    //   text-align: center;
+      height: 30px;
       vertical-align: middle;
+      padding-left: 20px
     }
     input {
       width: 100px;
