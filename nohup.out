@@ -8563,3 +8563,7 @@
 [34mI20160411-11:50:00.427(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
 [34mI20160411-11:50:01.973(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
 [34mI20160411-11:51:43.262(8)? [39mMon Apr 11 2016 00:00:00 GMT+0800 (CST)
+[34mI20160411-11:55:00.005(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160411-11:55:00.008(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160411-11:55:00.430(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160411-11:55:01.849(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
