@@ -502,7 +502,7 @@ if(data[0]){
         })();
         
         function filter(name,value){
-                     if (value === null || isNaN(value)) value = 0;
+                     if (value===undefined||value === null || isNaN(value)) value = 0;
             var res =  Math.min(value,limit[name])
             return Math.max(res,0)
         }
@@ -663,6 +663,7 @@ if(data[0]){
 			}
 		};
             data = data[0];
+            if(!data)return {err:'no data !'}
             var res = {
               code: e.UniqueCode,
               name: e.PositionName,

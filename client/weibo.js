@@ -41,6 +41,16 @@ Template.weibo.events({
             if (err) val = err;
             Util.modal('微博发布配置', val)
         })
+
+        //查询授权
+
+        //授权
+        // Meteor.call('weibo_authorize', function(err, res) {
+        //     if (err)
+        //         Util.modal('微博授权', err)
+        // })
+        window.open('https://api.weibo.com/oauth2/authorize?client_id=3733414340&redirect_uri=http://106.74.0.132:4000/api/weibo/redirect_uri/')
+
     },
     'click .detail': function(e, t) {
         //modal

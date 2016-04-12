@@ -93,20 +93,28 @@ Meteor.methods({
         if (!filter) filter = {}
         return Math.round(WeiboRecord.find(filter).count() / count)
     },
-    weiboPublish: function() {
+    weiboPublish: function(content) {
         var config = WeiboConfig.findOne();
         var varList = Meteor.call('weiboVarList');
         
-        //weibo login  --OAuth2
-        
-        
-        //weibo  publish 
-        Http.call('POST','https://api.weibo.com/2/statuses/update.json',{data:{
-            access_token:'',
-            status:'' //URLEncode <140
+        //weibo access token   --OAuth2
+        HTTP.call('POST','https://api.weibo.com/oauth2/access_token',{data:{
+            client_id:'3733414340',
+            client_secret:'a0bb1256365fe8304398d7f9641d5488',
+            grant_type:'authorization_code',
+            code:config.code,
+            redirect_uri:'http://106.74.0.132:4000/api/weibo/redirect_uri/'
         }},function(err,res){
-            console.log(err,res)
+            if(err)console.log('weibo access token  ',err,res)
+            else
+                HTTP.call('POST','https://api.weibo.com/2/statuses/update.json',{data:{
+                    access_token:res.access_token,
+                    status:data //URLEncode <140
+                }},function(err,res){
+                    console.log('weibo  publish',err,res)
+                })
         })
+        
 
     },
     weiboCronStart: function() {
@@ -123,5 +131,17 @@ Meteor.methods({
     },
     weiboCronStop: function() {
         SyncedCron.remove('weibo')
-    }
+    },
+    
+    
+    weibo_authorize:function(){
+        HTTP.call('POST','https://api.weibo.com/oauth2/authorize',{data:{
+            client_id:3733414340,
+            redirect_uri:'http://106.74.0.132:4000/api/weibo/redirect_uri'
+        }},function(err,res){
+            console.log(err,res)
+        })
+    },
+    weibo_accessToken:function(){},
+    
 });
