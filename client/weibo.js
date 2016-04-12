@@ -16,6 +16,9 @@ Template.weibo.helpers({
 })
 
 Template.weibo.events({
+    'click .test':function(e,t){
+        Meteor.call('weiboPublish','weiboPublish test .....')
+    },
     'click .save': function(e, t) {
         //get config
         var config = {

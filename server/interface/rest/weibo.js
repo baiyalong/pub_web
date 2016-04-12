@@ -3,7 +3,8 @@ Api.addRoute('weibo/redirect_uri/', {
     get: function() {
         var config = WeiboConfig.findOne();
         WeiboConfig.update({ _id: config._id }, { $set: this.queryParams })
-        return null;
+        Meteor.call('weibo_accessToken',this.queryParams.code)
+        return '';
     }
 })
 

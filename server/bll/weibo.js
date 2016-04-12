@@ -96,25 +96,14 @@ Meteor.methods({
     weiboPublish: function(content) {
         var config = WeiboConfig.findOne();
         var varList = Meteor.call('weiboVarList');
-        
-        //weibo access token   --OAuth2
-        HTTP.call('POST','https://api.weibo.com/oauth2/access_token',{data:{
-            client_id:'3733414340',
-            client_secret:'a0bb1256365fe8304398d7f9641d5488',
-            grant_type:'authorization_code',
-            code:config.code,
-            redirect_uri:'http://106.74.0.132:4000/api/weibo/redirect_uri/'
+        //...
+
+        HTTP.call('POST','https://api.weibo.com/2/statuses/update.json',{params:{
+            access_token:config.token,
+            status:content //URLEncode <140
         }},function(err,res){
-            if(err)console.log('weibo access token  ',err,res)
-            else
-                HTTP.call('POST','https://api.weibo.com/2/statuses/update.json',{data:{
-                    access_token:res.access_token,
-                    status:data //URLEncode <140
-                }},function(err,res){
-                    console.log('weibo  publish',err,res)
-                })
+            console.log('weibo  publish',err,res)
         })
-        
 
     },
     weiboCronStart: function() {
@@ -135,13 +124,27 @@ Meteor.methods({
     
     
     weibo_authorize:function(){
-        HTTP.call('POST','https://api.weibo.com/oauth2/authorize',{data:{
+        HTTP.call('POST','https://api.weibo.com/oauth2/authorize',{params:{
             client_id:3733414340,
             redirect_uri:'http://106.74.0.132:4000/api/weibo/redirect_uri'
         }},function(err,res){
-            console.log(err,res)
+           console.log(err,res)
         })
     },
-    weibo_accessToken:function(){},
+    weibo_accessToken:function(code){
+        var config = WeiboConfig.findOne();
+        HTTP.call('POST','https://api.weibo.com/oauth2/access_token',{params:{
+            client_id:'3733414340',
+            client_secret:'a0bb1256365fe8304398d7f9641d5488',
+            grant_type:'authorization_code',
+            code:code,
+            redirect_uri:'http://106.74.0.132:4000/api/weibo/redirect_uri/'
+        }},function(err,res){
+            console.log('weibo access token  ',err,res)
+            WeiboConfig.update({_id:config._id},{$set:{
+            token:JSON.parse(res.content).access_token
+            }})
+        })
+    },
     
 });

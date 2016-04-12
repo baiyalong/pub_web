@@ -24,6 +24,14 @@ WeiboConfig.attachSchema(new SimpleSchema({
     },
     template: {
         type: String
+    },
+    code:{
+        type:String,
+        optional:true
+    },
+    token:{
+        type:String,
+        optional:true
     }
 }));
 

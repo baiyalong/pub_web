@@ -14105,3 +14105,666 @@
 [34mI20160412-17:05:00.417(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
 [34mI20160412-17:05:01.871(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
 => Client modified -- refreshing
+[34mI20160412-17:10:00.008(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-17:10:00.012(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-17:10:00.434(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-17:10:02.033(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-17:15:00.009(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-17:15:00.014(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-17:15:00.429(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-17:15:01.832(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-17:20:00.005(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-17:20:00.008(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-17:20:00.399(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-17:20:01.776(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-17:25:00.007(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-17:25:00.012(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-17:25:00.442(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-17:25:01.860(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-17:30:00.003(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-17:30:00.004(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-17:30:00.325(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-17:30:01.660(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-17:35:00.003(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-17:35:00.005(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-17:35:00.390(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-17:35:34.959(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-17:40:00.005(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-17:40:00.008(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-17:40:00.410(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-17:40:01.871(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-17:45:00.007(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-17:45:00.011(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-17:45:00.412(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-17:45:01.849(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-17:50:00.007(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-17:50:00.011(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-17:50:00.468(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-17:50:01.924(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-17:55:00.007(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-17:55:00.010(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-17:55:00.413(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-17:55:01.793(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-18:00:00.010(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationDaily".
+[34mI20160412-18:00:00.014(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataAirForecast".
+[34mI20160412-18:00:00.017(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "weather".
+[34mI20160412-18:00:00.145(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "weather".
+[34mI20160412-18:00:00.147(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityDaily".
+[34mI20160412-18:00:00.150(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-18:00:00.152(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-18:00:00.158(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataAirForecast".
+[34mI20160412-18:00:00.173(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityDaily".
+[34mI20160412-18:00:00.205(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationDaily".
+[34mI20160412-18:00:00.552(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-18:00:01.117(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080102&type=forecast_v&date=201604121800&appid=efb1b1&key=cpsHJ%2FghXAQBJmcjclCusqzg9E0%3D { numberAffected: 1 }
+[34mI20160412-18:00:02.041(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-18:00:02.080(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080201&type=forecast_v&date=201604121800&appid=efb1b1&key=SxxirXDc3ewFvftk7bVK6ZDLEDs%3D { numberAffected: 1 }
+[34mI20160412-18:00:02.087(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080106&type=forecast_v&date=201604121800&appid=efb1b1&key=HvFmOgzub4lTY03cb615whv%2BGmU%3D { numberAffected: 1 }
+[34mI20160412-18:00:02.123(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080105&type=forecast_v&date=201604121800&appid=efb1b1&key=LN%2Fdvu8ms271zmL4b75FhiShh4A%3D { numberAffected: 1 }
+[34mI20160412-18:00:03.008(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080202&type=forecast_v&date=201604121800&appid=efb1b1&key=KSmV5qJqCoMowqEUzbXrL4pMZsI%3D { numberAffected: 1 }
+[34mI20160412-18:00:03.053(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080205&type=forecast_v&date=201604121800&appid=efb1b1&key=xNvNQ2TXndGtE6Jhtwr6DFu5%2FT4%3D { numberAffected: 1 }
+[34mI20160412-18:00:03.897(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080301&type=forecast_v&date=201604121800&appid=efb1b1&key=eSI5T6c14LbJbds%2BGiBmKD83sVg%3D { numberAffected: 1 }
+[34mI20160412-18:00:03.919(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080401&type=forecast_v&date=201604121800&appid=efb1b1&key=FduBzi5GVBgXLS8X3YxQtijVSSQ%3D { numberAffected: 1 }
+[34mI20160412-18:00:03.949(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080207&type=forecast_v&date=201604121800&appid=efb1b1&key=6FPWtgYs8E%2FDLbMzBUmzHhlGX6c%3D { numberAffected: 1 }
+[34mI20160412-18:00:04.217(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080204&type=forecast_v&date=201604121800&appid=efb1b1&key=KZR9A%2FVgcaWpqFTCpQJPAQo%2BYVQ%3D { numberAffected: 1 }
+[34mI20160412-18:00:04.728(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080403&type=forecast_v&date=201604121800&appid=efb1b1&key=so6rEWS30KrCWG8VPeeGv1QtYyQ%3D { numberAffected: 1 }
+[34mI20160412-18:00:04.809(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080406&type=forecast_v&date=201604121800&appid=efb1b1&key=Ro4bA0WuR7%2Bo9dlG6rj8IsK5OJk%3D { numberAffected: 1 }
+[34mI20160412-18:00:05.552(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080407&type=forecast_v&date=201604121800&appid=efb1b1&key=nkdsN8lTh6n7vr4LeEe8H1wqO70%3D { numberAffected: 1 }
+[34mI20160412-18:00:05.593(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080408&type=forecast_v&date=201604121800&appid=efb1b1&key=Up684iD6g1MXX7IqRSJLgvJ6M4c%3D { numberAffected: 1 }
+[34mI20160412-18:00:05.637(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080409&type=forecast_v&date=201604121800&appid=efb1b1&key=PfCNIMqMQz%2Fz4bK8LBFOWZWPOzE%3D { numberAffected: 1 }
+[34mI20160412-18:00:05.743(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080410&type=forecast_v&date=201604121800&appid=efb1b1&key=V6qppRauQjQkS1k%2Bn2WbSbrLbHE%3D { numberAffected: 1 }
+[34mI20160412-18:00:06.389(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080411&type=forecast_v&date=201604121800&appid=efb1b1&key=KnGgk%2BTebUav3L8Bf6ptzMNpdZE%3D { numberAffected: 1 }
+[34mI20160412-18:00:06.420(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080412&type=forecast_v&date=201604121800&appid=efb1b1&key=cjmKzk7wnrzzT08Ty%2FET4wf%2FuIY%3D { numberAffected: 1 }
+[34mI20160412-18:00:06.445(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080501&type=forecast_v&date=201604121800&appid=efb1b1&key=EuKYiWsrPxNOx%2FmKH6S7lRAI7Vw%3D { numberAffected: 1 }
+[34mI20160412-18:00:07.257(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080504&type=forecast_v&date=201604121800&appid=efb1b1&key=hP1IKtH2LBU1KyTDkw30L%2BaY0ME%3D { numberAffected: 1 }
+[34mI20160412-18:00:07.677(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080503&type=forecast_v&date=201604121800&appid=efb1b1&key=hB5QgjOu37a7WI%2BnJvcMaYmrqFE%3D { numberAffected: 1 }
+[34mI20160412-18:00:08.093(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080507&type=forecast_v&date=201604121800&appid=efb1b1&key=5PxA3en0rRr7oZkXXEtQucH1sqk%3D { numberAffected: 1 }
+[34mI20160412-18:00:08.566(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080510&type=forecast_v&date=201604121800&appid=efb1b1&key=o3C8muOjqe6NfHv3X%2FQy%2Bwy9Sio%3D { numberAffected: 1 }
+[34mI20160412-18:00:08.985(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080511&type=forecast_v&date=201604121800&appid=efb1b1&key=F75O%2BSK6yOlvJ8NsJQ366vXpAww%3D { numberAffected: 1 }
+[34mI20160412-18:00:09.214(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080603&type=forecast_v&date=201604121800&appid=efb1b1&key=kas5WHl3xV5ycO4hfbEkMs4aXqY%3D { numberAffected: 1 }
+[34mI20160412-18:00:09.482(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080604&type=forecast_v&date=201604121800&appid=efb1b1&key=BeNA8kkwaUkHsRiebtlN1o9LFVo%3D { numberAffected: 1 }
+[34mI20160412-18:00:09.998(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080605&type=forecast_v&date=201604121800&appid=efb1b1&key=wYd28Z%2FfTPxTPNZ9In789gXb82Y%3D { numberAffected: 1 }
+[34mI20160412-18:00:10.082(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080607&type=forecast_v&date=201604121800&appid=efb1b1&key=rAUPEuvFDoHwor0VwxLJDHqzuQ0%3D { numberAffected: 1 }
+[34mI20160412-18:00:10.364(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080608&type=forecast_v&date=201604121800&appid=efb1b1&key=lIIONPr%2FggxgBhll%2FOBGProfaSM%3D { numberAffected: 1 }
+[34mI20160412-18:00:10.838(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080610&type=forecast_v&date=201604121800&appid=efb1b1&key=GsDLpSXDrYB1SucXdcvUFXa78Rg%3D { numberAffected: 1 }
+[34mI20160412-18:00:10.894(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080609&type=forecast_v&date=201604121800&appid=efb1b1&key=vFa%2FcfBG4YV9k64kMSHb87sYzzM%3D { numberAffected: 1 }
+[34mI20160412-18:00:11.066(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080611&type=forecast_v&date=201604121800&appid=efb1b1&key=EXHF4lPYADadj7xp%2FemiY9Zkd4M%3D { numberAffected: 1 }
+[34mI20160412-18:00:11.650(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080613&type=forecast_v&date=201604121800&appid=efb1b1&key=UEtsf4OvXASOlIeaTs%2FfbZ6wjOM%3D { numberAffected: 1 }
+[34mI20160412-18:00:11.810(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080614&type=forecast_v&date=201604121800&appid=efb1b1&key=%2FeacgDeTopp%2FkxtyGU2HH6ow04M%3D { numberAffected: 1 }
+[34mI20160412-18:00:12.031(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080701&type=forecast_v&date=201604121800&appid=efb1b1&key=xH9ycyOyjH%2FKvoX9YRv28zhWmhA%3D { numberAffected: 1 }
+[34mI20160412-18:00:12.458(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080703&type=forecast_v&date=201604121800&appid=efb1b1&key=FjHUrBf85krbTty0BtJD4QCXh0Q%3D { numberAffected: 1 }
+[34mI20160412-18:00:12.782(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080705&type=forecast_v&date=201604121800&appid=efb1b1&key=Aijh5iPhHxUBwcVNEKcmvtWcNow%3D { numberAffected: 1 }
+[34mI20160412-18:00:12.836(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080704&type=forecast_v&date=201604121800&appid=efb1b1&key=VPexuxg8QvOtOH2PUzUXnWhOniI%3D { numberAffected: 1 }
+[34mI20160412-18:00:13.290(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080707&type=forecast_v&date=201604121800&appid=efb1b1&key=oIS1GO4LVJVCJRvDjaU5Q6vbpb4%3D { numberAffected: 1 }
+[34mI20160412-18:00:13.722(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080709&type=forecast_v&date=201604121800&appid=efb1b1&key=ttcsAhwuGcGU%2BxV%2BCays04BoGzc%3D { numberAffected: 1 }
+[34mI20160412-18:00:14.274(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080711&type=forecast_v&date=201604121800&appid=efb1b1&key=Ppc4npN2Pbil5pwfZ6kyj%2BlaYY4%3D { numberAffected: 1 }
+[34mI20160412-18:00:14.678(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080801&type=forecast_v&date=201604121800&appid=efb1b1&key=hq08O7HuDu7YqSFRYEtlqLJd268%3D { numberAffected: 1 }
+[34mI20160412-18:00:14.722(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080713&type=forecast_v&date=201604121800&appid=efb1b1&key=7EeQg%2FQ%2FuCSyqYh5RoKvnMQWHEk%3D { numberAffected: 1 }
+[34mI20160412-18:00:14.758(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080712&type=forecast_v&date=201604121800&appid=efb1b1&key=pQfiIlrG0i7ORgFtuf5T5ii1dF8%3D { numberAffected: 1 }
+[34mI20160412-18:00:15.294(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080802&type=forecast_v&date=201604121800&appid=efb1b1&key=pk3wqdyYXiOgTJR5JA7ahFZzo%2Fk%3D { numberAffected: 1 }
+[34mI20160412-18:00:15.738(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080804&type=forecast_v&date=201604121800&appid=efb1b1&key=2pfu%2BkW9lxaMZvPraF8tN6TWClk%3D { numberAffected: 1 }
+[34mI20160412-18:00:15.790(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080805&type=forecast_v&date=201604121800&appid=efb1b1&key=rDIsR%2BMjOUZyhlUpiQBUn1DUlnU%3D { numberAffected: 1 }
+[34mI20160412-18:00:16.326(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080806&type=forecast_v&date=201604121800&appid=efb1b1&key=i37CiTiNAP3MGusWGOkcFWId6Nw%3D { numberAffected: 1 }
+[34mI20160412-18:00:16.598(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080808&type=forecast_v&date=201604121800&appid=efb1b1&key=8rMu1VXgkZHcjj%2BUf2IulPWlGpw%3D { numberAffected: 1 }
+[34mI20160412-18:00:16.822(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080809&type=forecast_v&date=201604121800&appid=efb1b1&key=AQp3a%2FQRv%2B%2FFI%2BUs%2B1gLQtYw4s4%3D { numberAffected: 1 }
+[34mI20160412-18:00:17.295(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080810&type=forecast_v&date=201604121800&appid=efb1b1&key=YFYJ4nMTIl6oPumpatIxGoSrMTM%3D { numberAffected: 1 }
+[34mI20160412-18:00:17.602(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080901&type=forecast_v&date=201604121800&appid=efb1b1&key=u91X20mYU%2Fc7JfH%2BWl59vGJ35PA%3D { numberAffected: 1 }
+[34mI20160412-18:00:17.666(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080903&type=forecast_v&date=201604121800&appid=efb1b1&key=VX9rx4OwqKk2oBnkC6nlbNB4fj4%3D { numberAffected: 1 }
+[34mI20160412-18:00:17.694(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080807&type=forecast_v&date=201604121800&appid=efb1b1&key=THP2NyPuDSIgPwI8oBhH6EXrII8%3D { numberAffected: 1 }
+[34mI20160412-18:00:17.834(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080904&type=forecast_v&date=201604121800&appid=efb1b1&key=RvJNF5i2OEZiTU7nwwStZ6%2BcfcE%3D { numberAffected: 1 }
+[34mI20160412-18:00:18.581(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080908&type=forecast_v&date=201604121800&appid=efb1b1&key=Ezf1oyL2%2FmheXiu7tRikgkLbtZ8%3D { numberAffected: 1 }
+[34mI20160412-18:00:19.201(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080910&type=forecast_v&date=201604121800&appid=efb1b1&key=ucA4%2F9x7B8YFI8xMySlr9lvXG3s%3D { numberAffected: 1 }
+[34mI20160412-18:00:19.413(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080911&type=forecast_v&date=201604121800&appid=efb1b1&key=g33%2F7torzqXBkjJ%2FTME45ve4TD4%3D { numberAffected: 1 }
+[34mI20160412-18:00:19.633(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080913&type=forecast_v&date=201604121800&appid=efb1b1&key=GcwfHvRdbdaKKurWieUzzTSJ0pE%3D { numberAffected: 1 }
+[34mI20160412-18:00:19.753(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080912&type=forecast_v&date=201604121800&appid=efb1b1&key=vleBCy5ybEWdictUuV%2BYVtkBqgM%3D { numberAffected: 1 }
+[34mI20160412-18:00:20.133(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080914&type=forecast_v&date=201604121800&appid=efb1b1&key=udblzD9oUK1ODzYU3NHNd85YFas%3D { numberAffected: 1 }
+[34mI20160412-18:00:20.633(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080916&type=forecast_v&date=201604121800&appid=efb1b1&key=Ydw7ohHU4J2rfWPZm%2F9gVGbJEqs%3D { numberAffected: 1 }
+[34mI20160412-18:00:21.310(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080917&type=forecast_v&date=201604121800&appid=efb1b1&key=69e6jsSqgHmmhyMK8LJcmLWNpeA%3D { numberAffected: 1 }
+[34mI20160412-18:00:21.353(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081002&type=forecast_v&date=201604121800&appid=efb1b1&key=Wo4MeN33QnLyFcVPAv7sjt60rUQ%3D { numberAffected: 1 }
+[34mI20160412-18:00:22.625(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081003&type=forecast_v&date=201604121800&appid=efb1b1&key=2%2BWYk44G99W32xYnmPm1hnlAdWQ%3D { numberAffected: 1 }
+[34mI20160412-18:00:22.669(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081007&type=forecast_v&date=201604121800&appid=efb1b1&key=wzei0Dwe6iFGxdzKdqHD8n5GW6A%3D { numberAffected: 1 }
+[34mI20160412-18:00:23.189(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081009&type=forecast_v&date=201604121800&appid=efb1b1&key=3rDpzJ%2F%2BKyw9MPicex2s%2FKjyQzQ%3D { numberAffected: 1 }
+[34mI20160412-18:00:23.264(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081008&type=forecast_v&date=201604121800&appid=efb1b1&key=nf80EVwk10%2BmiyhaNp1YK3EV5rs%3D { numberAffected: 1 }
+[34mI20160412-18:00:23.264(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081005&type=forecast_v&date=201604121800&appid=efb1b1&key=euNjzcsaMqL1iR9ONLIzntuokyU%3D { numberAffected: 1 }
+[34mI20160412-18:00:23.397(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081010&type=forecast_v&date=201604121800&appid=efb1b1&key=bvnjF80EdhYksbBCSH8pYftS6wA%3D { numberAffected: 1 }
+[34mI20160412-18:00:23.749(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081011&type=forecast_v&date=201604121800&appid=efb1b1&key=0yPXCw%2B6cXhf8qxnMwuR8qYf4fg%3D { numberAffected: 1 }
+[34mI20160412-18:00:24.329(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081012&type=forecast_v&date=201604121800&appid=efb1b1&key=i5Kq7tuRw%2F8dEqQ7fk10UKWkEsE%3D { numberAffected: 1 }
+[34mI20160412-18:00:24.357(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081014&type=forecast_v&date=201604121800&appid=efb1b1&key=ngouB8SbHDv0c3eZTx87sW54aY8%3D { numberAffected: 1 }
+[34mI20160412-18:00:24.861(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081016&type=forecast_v&date=201604121800&appid=efb1b1&key=SyQpNs4WDw7sOMGXhh6qvR8wzkU%3D { numberAffected: 1 }
+[34mI20160412-18:00:25.273(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081102&type=forecast_v&date=201604121800&appid=efb1b1&key=H5vwcqNxLwReb7a2f4tvTe%2FFV7o%3D { numberAffected: 1 }
+[34mI20160412-18:00:25.317(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081103&type=forecast_v&date=201604121800&appid=efb1b1&key=kTfd0AeHYB7LpL9esYuHoKcDMps%3D { numberAffected: 1 }
+[34mI20160412-18:00:25.869(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081104&type=forecast_v&date=201604121800&appid=efb1b1&key=uYW2l04tlT%2BfJQ%2FZMQ4whPrL3Uc%3D { numberAffected: 1 }
+[34mI20160412-18:00:26.205(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081105&type=forecast_v&date=201604121800&appid=efb1b1&key=fyuulH18OdMXlSIxVWC5zrSrc4s%3D { numberAffected: 1 }
+[34mI20160412-18:00:26.341(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081106&type=forecast_v&date=201604121800&appid=efb1b1&key=YaQgOs2CfoxPJNoiM8I%2BgnAfk2s%3D { numberAffected: 1 }
+[34mI20160412-18:00:26.377(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081107&type=forecast_v&date=201604121800&appid=efb1b1&key=pS1V9UCioo7dt4sosxIk7Z5WkV4%3D { numberAffected: 1 }
+[34mI20160412-18:00:26.781(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081006&type=forecast_v&date=201604121800&appid=efb1b1&key=mhDqOwfvp6wFvhT1SQk%2F9mnAWHI%3D { numberAffected: 1 }
+[34mI20160412-18:00:26.901(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081108&type=forecast_v&date=201604121800&appid=efb1b1&key=uUBAuUeUQpVrnG8KWzIm8x%2FfxyI%3D { numberAffected: 1 }
+[34mI20160412-18:00:27.209(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081109&type=forecast_v&date=201604121800&appid=efb1b1&key=gRCm9BeXYdTdEnw9fT%2BWJhk9FPc%3D { numberAffected: 1 }
+[34mI20160412-18:00:27.333(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081202&type=forecast_v&date=201604121800&appid=efb1b1&key=P8Poqy9uuiS9nBr2ME64KTjfHic%3D { numberAffected: 1 }
+[34mI20160412-18:00:27.361(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081201&type=forecast_v&date=201604121800&appid=efb1b1&key=bFZhVemz3mJwx0eZ2tjreZSsx4Y%3D { numberAffected: 1 }
+[34mI20160412-18:00:27.909(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081203&type=forecast_v&date=201604121800&appid=efb1b1&key=lpwm05%2FyCtIoLRIvFAQTk8NwQj0%3D { numberAffected: 1 }
+[34mI20160412-18:00:28.141(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081204&type=forecast_v&date=201604121800&appid=efb1b1&key=y%2B4JZOomUccJEy9kYHz30EbMfww%3D { numberAffected: 1 }
+[34mI20160412-18:00:28.353(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081205&type=forecast_v&date=201604121800&appid=efb1b1&key=iuFPrw1fKkPyqqkxmTfkm86NwdE%3D { numberAffected: 1 }
+[34mI20160412-18:00:28.372(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081206&type=forecast_v&date=201604121800&appid=efb1b1&key=ilYJBtT3NeSnOMZS%2FiXYV2UvHYM%3D { numberAffected: 1 }
+[34mI20160412-18:00:28.937(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081207&type=forecast_v&date=201604121800&appid=efb1b1&key=aYWOk9CFwoCc63FXs6ozmkfN4sE%3D { numberAffected: 1 }
+[34mI20160412-18:00:29.161(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081208&type=forecast_v&date=201604121800&appid=efb1b1&key=lkc%2B0zSU54xgn8RchAojeqzaN3M%3D { numberAffected: 1 }
+[34mI20160412-18:00:29.413(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081209&type=forecast_v&date=201604121800&appid=efb1b1&key=5SJm1I47uZ6K6l9izoW%2F8alVGw8%3D { numberAffected: 1 }
+[34mI20160412-18:00:29.417(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081210&type=forecast_v&date=201604121800&appid=efb1b1&key=7zMS1vp4AnAUXmYhGolwJwMuxcg%3D { numberAffected: 1 }
+[34mI20160412-18:00:29.905(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081211&type=forecast_v&date=201604121800&appid=efb1b1&key=Y41XvY7voKNrQlauJOm1kqYdEA0%3D { numberAffected: 1 }
+[34mI20160412-18:00:30.433(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080203&type=forecast_v&date=201604121800&appid=efb1b1&key=3PlN6CanyvoOghhkcK%2Bc0dGFJk0%3D { numberAffected: 1 }
+[34mI20160412-18:00:30.445(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080107&type=forecast_v&date=201604121800&appid=efb1b1&key=iEN51jwbXSqIMDAEIPBcotJrajs%3D { numberAffected: 1 }
+[34mI20160412-18:00:31.450(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080404&type=forecast_v&date=201604121800&appid=efb1b1&key=uYK5iCvDz9QwjLT3x4nKGC405Qo%3D { numberAffected: 1 }
+[34mI20160412-18:00:31.981(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080502&type=forecast_v&date=201604121800&appid=efb1b1&key=q8Qq29In45O087XLns1ey3tP4%2B4%3D { numberAffected: 1 }
+[34mI20160412-18:00:32.161(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080104&type=forecast_v&date=201604121800&appid=efb1b1&key=hx%2FUcZHtmuUrFP%2BK6hfFl%2FHs2K0%3D { numberAffected: 1 }
+[34mI20160412-18:00:32.333(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080402&type=forecast_v&date=201604121800&appid=efb1b1&key=yLyTTqNfMRSOZiHtjv%2BAh8IanGI%3D { numberAffected: 1 }
+[34mI20160412-18:00:33.557(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080601&type=forecast_v&date=201604121800&appid=efb1b1&key=jCS%2BCCGvDlGw9m%2Ftt6RJKCEaYwY%3D { numberAffected: 1 }
+[34mI20160412-18:00:34.221(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081212&type=forecast_v&date=201604121800&appid=efb1b1&key=Fy1X6%2FXJybEQUzfWM8SDUL8rWSU%3D { numberAffected: 1 }
+[34mI20160412-18:00:34.244(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080606&type=forecast_v&date=201604121800&appid=efb1b1&key=wzaeDG6wECIFa84sV9CcLAPSEKk%3D { numberAffected: 1 }
+[34mI20160412-18:00:34.457(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080612&type=forecast_v&date=201604121800&appid=efb1b1&key=xyjmZg%2FOChFWFeUfp2bNtjz47gI%3D { numberAffected: 1 }
+[34mI20160412-18:00:35.261(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080615&type=forecast_v&date=201604121800&appid=efb1b1&key=EUGfpNWH1Q3ph7ga4KKyddG0FoI%3D { numberAffected: 1 }
+[34mI20160412-18:00:35.317(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080706&type=forecast_v&date=201604121800&appid=efb1b1&key=kl%2BAFmG9n1XICGou%2BDzDXAFGB2I%3D { numberAffected: 1 }
+[34mI20160412-18:00:35.537(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080708&type=forecast_v&date=201604121800&appid=efb1b1&key=t5cAjnjcwQULJF2EX4UMh8ybFCI%3D { numberAffected: 1 }
+[34mI20160412-18:00:35.607(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080103&type=forecast_v&date=201604121800&appid=efb1b1&key=RVPLnfc9LlZsqMojHFP6Xq2Ywx8%3D { numberAffected: 1 }
+[34mI20160412-18:00:35.763(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080505&type=forecast_v&date=201604121800&appid=efb1b1&key=CpshII0HBAT2hNieajDA83pHnWY%3D { numberAffected: 1 }
+[34mI20160412-18:00:36.234(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080710&type=forecast_v&date=201604121800&appid=efb1b1&key=aDRPrgSGLrMywvGdyF2GQF8DSnU%3D { numberAffected: 1 }
+[34mI20160412-18:00:36.273(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080803&type=forecast_v&date=201604121800&appid=efb1b1&key=zhYXz0LSVXHMW%2BWZ2QTZQKNc%2FRo%3D { numberAffected: 1 }
+[34mI20160412-18:00:37.038(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080508&type=forecast_v&date=201604121800&appid=efb1b1&key=wdrqUT%2BOEkvBSRQoKH0l%2BeKCqaA%3D { numberAffected: 1 }
+[34mI20160412-18:00:37.253(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080907&type=forecast_v&date=201604121800&appid=efb1b1&key=yTR6hKwkASgy8kcLvdKzMCeivpw%3D { numberAffected: 1 }
+[34mI20160412-18:00:37.665(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080915&type=forecast_v&date=201604121800&appid=efb1b1&key=e%2Bv91F6tJFuJgYghDNuBUGl6qyg%3D { numberAffected: 1 }
+[34mI20160412-18:00:38.049(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081001&type=forecast_v&date=201604121800&appid=efb1b1&key=wYXOX%2BhwcLF4EU6QLb2c7gNsHvY%3D { numberAffected: 1 }
+[34mI20160412-18:00:38.261(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081004&type=forecast_v&date=201604121800&appid=efb1b1&key=fGHq6ilEALfFxmznQxvT7WChE68%3D { numberAffected: 1 }
+[34mI20160412-18:00:38.325(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081015&type=forecast_v&date=201604121800&appid=efb1b1&key=YgVokaQBilbu5Sd5SZxSEpztb8E%3D { numberAffected: 1 }
+[34mI20160412-18:00:38.725(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081101&type=forecast_v&date=201604121800&appid=efb1b1&key=fkO3RSVkMjkNBDvI9eZzHDMas6c%3D { numberAffected: 1 }
+[34mI20160412-18:00:39.085(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080206&type=forecast_v&date=201604121800&appid=efb1b1&key=ABWifSecEoLwfBrcjeSXaIm1kQ0%3D { numberAffected: 1 }
+[34mI20160412-18:00:39.273(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080506&type=forecast_v&date=201604121800&appid=efb1b1&key=%2Bs9zFU%2BvQo1qWUxLuZIgPXOjM98%3D { numberAffected: 1 }
+[34mI20160412-18:00:39.425(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080509&type=forecast_v&date=201604121800&appid=efb1b1&key=pypz41AXAQkK83Bi6PCy5qKQu0I%3D { numberAffected: 1 }
+[34mI20160412-18:00:39.797(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080906&type=forecast_v&date=201604121800&appid=efb1b1&key=t9RSHMSttm8aNtn%2BDIZQH5Zs6m0%3D { numberAffected: 1 }
+[34mI20160412-18:00:40.077(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080909&type=forecast_v&date=201604121800&appid=efb1b1&key=v1gIkZGtK3OUmRMxy8lxa%2ByCOOo%3D { numberAffected: 1 }
+[34mI20160412-18:00:52.966(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080101&type=forecast_v&date=201604121800&appid=efb1b1&key=7BOhE8ZNVz49HjLFmHjazfRaFyU%3D { numberAffected: 1 }
+=> Server modified -- restarting...                                   => Meteor server restarted[34mI20160412-18:02:12.284(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityHourly" next run @Tue Apr 12 2016 18:05:00 GMT+0800 (CST)
+[34mI20160412-18:02:12.287(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityDaily" next run @Tue Apr 12 2016 18:02:12 GMT+0800 (CST)
+[34mI20160412-18:02:12.289(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationHourly" next run @Tue Apr 12 2016 18:05:00 GMT+0800 (CST)
+[34mI20160412-18:02:12.292(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationDaily" next run @Tue Apr 12 2016 18:02:12 GMT+0800 (CST)
+[34mI20160412-18:02:12.293(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataAirForecast" next run @Tue Apr 12 2016 18:02:12 GMT+0800 (CST)
+[34mI20160412-18:02:12.295(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "weather" next run @Tue Apr 12 2016 18:02:12 GMT+0800 (CST)
+
+=> Client modified -- refreshing
+[34mI20160412-18:03:06.036(8)? [39mweibo access token   { [Error: failed [400] {"error":"invalid_request","error_code":21323,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"miss client id or secret"}]
+[34mI20160412-18:03:06.037(8)? [39m  response: 
+[34mI20160412-18:03:06.038(8)? [39m   { statusCode: 400,
+[34mI20160412-18:03:06.038(8)? [39m     content: '{"error":"invalid_request","error_code":21323,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"miss client id or secret"}',
+[34mI20160412-18:03:06.039(8)? [39m     headers: 
+[34mI20160412-18:03:06.039(8)? [39m      { server: 'nginx/1.6.1',
+[34mI20160412-18:03:06.039(8)? [39m        date: 'Tue, 12 Apr 2016 10:03:06 GMT',
+[34mI20160412-18:03:06.040(8)? [39m        'transfer-encoding': 'chunked',
+[34mI20160412-18:03:06.040(8)? [39m        connection: 'keep-alive',
+[34mI20160412-18:03:06.040(8)? [39m        pragma: 'No-cache',
+[34mI20160412-18:03:06.041(8)? [39m        'cache-control': 'no-cache',
+[34mI20160412-18:03:06.041(8)? [39m        expires: 'Thu, 01 Jan 1970 00:00:00 GMT',
+[34mI20160412-18:03:06.041(8)? [39m        'api-server-ip': '10.73.89.46' },
+[34mI20160412-18:03:06.041(8)? [39m     data: null } } { statusCode: 400,
+[34mI20160412-18:03:06.042(8)? [39m  content: '{"error":"invalid_request","error_code":21323,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"miss client id or secret"}',
+[34mI20160412-18:03:06.042(8)? [39m  headers: 
+[34mI20160412-18:03:06.042(8)? [39m   { server: 'nginx/1.6.1',
+[34mI20160412-18:03:06.043(8)? [39m     date: 'Tue, 12 Apr 2016 10:03:06 GMT',
+[34mI20160412-18:03:06.043(8)? [39m     'transfer-encoding': 'chunked',
+[34mI20160412-18:03:06.043(8)? [39m     connection: 'keep-alive',
+[34mI20160412-18:03:06.043(8)? [39m     pragma: 'No-cache',
+[34mI20160412-18:03:06.044(8)? [39m     'cache-control': 'no-cache',
+[34mI20160412-18:03:06.044(8)? [39m     expires: 'Thu, 01 Jan 1970 00:00:00 GMT',
+[34mI20160412-18:03:06.044(8)? [39m     'api-server-ip': '10.73.89.46' },
+[34mI20160412-18:03:06.044(8)? [39m  data: null }
+[34mI20160412-18:05:00.048(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-18:05:00.054(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-18:05:00.434(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-18:05:01.899(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+=> Server modified -- restarting...                                   [34mI20160412-18:10:08.227(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityHourly" next run @Tue Apr 12 2016 18:10:08 GMT+0800 (CST)
+[34mI20160412-18:10:08.230(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityDaily" next run @Tue Apr 12 2016 18:10:08 GMT+0800 (CST)
+[34mI20160412-18:10:08.233(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationHourly" next run @Tue Apr 12 2016 18:10:08 GMT+0800 (CST)
+[34mI20160412-18:10:08.236(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationDaily" next run @Tue Apr 12 2016 18:10:08 GMT+0800 (CST)
+[34mI20160412-18:10:08.238(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataAirForecast" next run @Tue Apr 12 2016 18:10:08 GMT+0800 (CST)
+[34mI20160412-18:10:08.240(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "weather" next run @Tue Apr 12 2016 18:10:08 GMT+0800 (CST)
+=> Meteor server restarted
+[34mI20160412-18:10:37.703(8)? [39mweibo access token   { [Error: failed [400] {"error":"invalid_grant","error_code":21325,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"invalid authorization code:undefined"}]
+[34mI20160412-18:10:37.704(8)? [39m  response: 
+[34mI20160412-18:10:37.704(8)? [39m   { statusCode: 400,
+[34mI20160412-18:10:37.705(8)? [39m     content: '{"error":"invalid_grant","error_code":21325,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"invalid authorization code:undefined"}',
+[34mI20160412-18:10:37.705(8)? [39m     headers: 
+[34mI20160412-18:10:37.705(8)? [39m      { server: 'nginx/1.6.1',
+[34mI20160412-18:10:37.706(8)? [39m        date: 'Tue, 12 Apr 2016 10:10:37 GMT',
+[34mI20160412-18:10:37.706(8)? [39m        'transfer-encoding': 'chunked',
+[34mI20160412-18:10:37.706(8)? [39m        connection: 'keep-alive',
+[34mI20160412-18:10:37.707(8)? [39m        pragma: 'No-cache',
+[34mI20160412-18:10:37.707(8)? [39m        'cache-control': 'no-cache',
+[34mI20160412-18:10:37.707(8)? [39m        expires: 'Thu, 01 Jan 1970 00:00:00 GMT',
+[34mI20160412-18:10:37.707(8)? [39m        'api-server-ip': '10.73.89.47' },
+[34mI20160412-18:10:37.708(8)? [39m     data: null } } { statusCode: 400,
+[34mI20160412-18:10:37.708(8)? [39m  content: '{"error":"invalid_grant","error_code":21325,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"invalid authorization code:undefined"}',
+[34mI20160412-18:10:37.708(8)? [39m  headers: 
+[34mI20160412-18:10:37.709(8)? [39m   { server: 'nginx/1.6.1',
+[34mI20160412-18:10:37.709(8)? [39m     date: 'Tue, 12 Apr 2016 10:10:37 GMT',
+[34mI20160412-18:10:37.709(8)? [39m     'transfer-encoding': 'chunked',
+[34mI20160412-18:10:37.710(8)? [39m     connection: 'keep-alive',
+[34mI20160412-18:10:37.710(8)? [39m     pragma: 'No-cache',
+[34mI20160412-18:10:37.710(8)? [39m     'cache-control': 'no-cache',
+[34mI20160412-18:10:37.711(8)? [39m     expires: 'Thu, 01 Jan 1970 00:00:00 GMT',
+[34mI20160412-18:10:37.711(8)? [39m     'api-server-ip': '10.73.89.47' },
+[34mI20160412-18:10:37.712(8)? [39m  data: null }
+[34mI20160412-18:15:00.042(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-18:15:00.047(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-18:15:00.455(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-18:15:01.975(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+=> Server modified -- restarting...                                   => Server modified -- restarting...                                   [34mI20160412-18:18:40.529(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityHourly" next run @Tue Apr 12 2016 18:20:00 GMT+0800 (CST)
+[34mI20160412-18:18:40.531(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityDaily" next run @Tue Apr 12 2016 18:18:40 GMT+0800 (CST)
+[34mI20160412-18:18:40.533(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationHourly" next run @Tue Apr 12 2016 18:20:00 GMT+0800 (CST)
+[34mI20160412-18:18:40.535(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationDaily" next run @Tue Apr 12 2016 18:18:40 GMT+0800 (CST)
+[34mI20160412-18:18:40.537(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataAirForecast" next run @Tue Apr 12 2016 18:18:40 GMT+0800 (CST)
+[34mI20160412-18:18:40.538(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "weather" next run @Tue Apr 12 2016 18:18:40 GMT+0800 (CST)
+=> Meteor server restarted
+[34mI20160412-18:20:00.017(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-18:20:00.024(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-18:20:00.489(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-18:20:02.042(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+=> Client modified -- refreshing
+=> Server modified -- restarting...                                   [34mI20160412-18:20:50.997(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityHourly" next run @Tue Apr 12 2016 18:20:50 GMT+0800 (CST)
+[34mI20160412-18:20:50.999(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityDaily" next run @Tue Apr 12 2016 18:20:50 GMT+0800 (CST)
+[34mI20160412-18:20:51.002(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationHourly" next run @Tue Apr 12 2016 18:20:51 GMT+0800 (CST)
+[34mI20160412-18:20:51.004(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationDaily" next run @Tue Apr 12 2016 18:20:51 GMT+0800 (CST)
+[34mI20160412-18:20:51.006(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataAirForecast" next run @Tue Apr 12 2016 18:20:51 GMT+0800 (CST)
+[34mI20160412-18:20:51.007(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "weather" next run @Tue Apr 12 2016 18:20:51 GMT+0800 (CST)
+=> Meteor server restarted
+[34mI20160412-18:21:16.568(8)? [39mException in callback of async function: ReferenceError: data is not defined
+[34mI20160412-18:21:16.572(8)? [39m    at app/server/bll/weibo.js:112:28
+[34mI20160412-18:21:16.572(8)? [39m    at runWithEnvironment (packages/meteor.js:1154:24)
+=> Server modified -- restarting...                                   [34mI20160412-18:22:59.239(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityHourly" next run @Tue Apr 12 2016 18:25:00 GMT+0800 (CST)
+[34mI20160412-18:22:59.242(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityDaily" next run @Tue Apr 12 2016 18:22:59 GMT+0800 (CST)
+[34mI20160412-18:22:59.244(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationHourly" next run @Tue Apr 12 2016 18:25:00 GMT+0800 (CST)
+[34mI20160412-18:22:59.247(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationDaily" next run @Tue Apr 12 2016 18:22:59 GMT+0800 (CST)
+[34mI20160412-18:22:59.249(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataAirForecast" next run @Tue Apr 12 2016 18:22:59 GMT+0800 (CST)
+[34mI20160412-18:22:59.251(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "weather" next run @Tue Apr 12 2016 18:22:59 GMT+0800 (CST)
+=> Meteor server restarted
+[34mI20160412-18:23:13.837(8)? [39mweibo access token   { [Error: failed [400] {"error":"invalid_grant","error_code":21325,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"invalid authorization code:266650528e6aedf17860718ad43c05d6"}]
+[34mI20160412-18:23:13.839(8)? [39m  response: 
+[34mI20160412-18:23:13.840(8)? [39m   { statusCode: 400,
+[34mI20160412-18:23:13.840(8)? [39m     content: '{"error":"invalid_grant","error_code":21325,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"invalid authorization code:266650528e6aedf17860718ad43c05d6"}',
+[34mI20160412-18:23:13.840(8)? [39m     headers: 
+[34mI20160412-18:23:13.841(8)? [39m      { server: 'nginx/1.6.1',
+[34mI20160412-18:23:13.841(8)? [39m        date: 'Tue, 12 Apr 2016 10:23:13 GMT',
+[34mI20160412-18:23:13.842(8)? [39m        'transfer-encoding': 'chunked',
+[34mI20160412-18:23:13.842(8)? [39m        connection: 'keep-alive',
+[34mI20160412-18:23:13.843(8)? [39m        pragma: 'No-cache',
+[34mI20160412-18:23:13.843(8)? [39m        'cache-control': 'no-cache',
+[34mI20160412-18:23:13.843(8)? [39m        expires: 'Thu, 01 Jan 1970 00:00:00 GMT',
+[34mI20160412-18:23:13.844(8)? [39m        'api-server-ip': '10.75.2.82' },
+[34mI20160412-18:23:13.844(8)? [39m     data: null } } { statusCode: 400,
+[34mI20160412-18:23:13.845(8)? [39m  content: '{"error":"invalid_grant","error_code":21325,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"invalid authorization code:266650528e6aedf17860718ad43c05d6"}',
+[34mI20160412-18:23:13.845(8)? [39m  headers: 
+[34mI20160412-18:23:13.846(8)? [39m   { server: 'nginx/1.6.1',
+[34mI20160412-18:23:13.846(8)? [39m     date: 'Tue, 12 Apr 2016 10:23:13 GMT',
+[34mI20160412-18:23:13.846(8)? [39m     'transfer-encoding': 'chunked',
+[34mI20160412-18:23:13.847(8)? [39m     connection: 'keep-alive',
+[34mI20160412-18:23:13.847(8)? [39m     pragma: 'No-cache',
+[34mI20160412-18:23:13.848(8)? [39m     'cache-control': 'no-cache',
+[34mI20160412-18:23:13.848(8)? [39m     expires: 'Thu, 01 Jan 1970 00:00:00 GMT',
+[34mI20160412-18:23:13.848(8)? [39m     'api-server-ip': '10.75.2.82' },
+[34mI20160412-18:23:13.849(8)? [39m  data: null }
+[34mI20160412-18:25:00.011(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-18:25:00.014(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-18:25:00.403(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-18:25:01.999(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-18:29:57.600(8)? [39mweibo  publish { [Error: failed [403] {"error":"invalid_access_token","error_code":21332,"request":"/2/statuses/update.json"}]
+[34mI20160412-18:29:57.602(8)? [39m  response: 
+[34mI20160412-18:29:57.602(8)? [39m   { statusCode: 403,
+[34mI20160412-18:29:57.603(8)? [39m     content: '{"error":"invalid_access_token","error_code":21332,"request":"/2/statuses/update.json"}',
+[34mI20160412-18:29:57.603(8)? [39m     headers: 
+[34mI20160412-18:29:57.604(8)? [39m      { server: 'nginx/1.6.1',
+[34mI20160412-18:29:57.605(8)? [39m        date: 'Tue, 12 Apr 2016 10:29:57 GMT',
+[34mI20160412-18:29:57.605(8)? [39m        'content-type': 'application/json;charset=UTF-8',
+[34mI20160412-18:29:57.605(8)? [39m        'transfer-encoding': 'chunked',
+[34mI20160412-18:29:57.606(8)? [39m        connection: 'keep-alive',
+[34mI20160412-18:29:57.606(8)? [39m        'api-server-ip': '10.77.108.129',
+[34mI20160412-18:29:57.607(8)? [39m        vary: 'Accept-Encoding' },
+[34mI20160412-18:29:57.607(8)? [39m     data: 
+[34mI20160412-18:29:57.608(8)? [39m      { error: 'invalid_access_token',
+[34mI20160412-18:29:57.608(8)? [39m        error_code: 21332,
+[34mI20160412-18:29:57.609(8)? [39m        request: '/2/statuses/update.json' } } } { statusCode: 403,
+[34mI20160412-18:29:57.609(8)? [39m  content: '{"error":"invalid_access_token","error_code":21332,"request":"/2/statuses/update.json"}',
+[34mI20160412-18:29:57.610(8)? [39m  headers: 
+[34mI20160412-18:29:57.610(8)? [39m   { server: 'nginx/1.6.1',
+[34mI20160412-18:29:57.611(8)? [39m     date: 'Tue, 12 Apr 2016 10:29:57 GMT',
+[34mI20160412-18:29:57.611(8)? [39m     'content-type': 'application/json;charset=UTF-8',
+[34mI20160412-18:29:57.612(8)? [39m     'transfer-encoding': 'chunked',
+[34mI20160412-18:29:57.613(8)? [39m     connection: 'keep-alive',
+[34mI20160412-18:29:57.613(8)? [39m     'api-server-ip': '10.77.108.129',
+[34mI20160412-18:29:57.613(8)? [39m     vary: 'Accept-Encoding' },
+[34mI20160412-18:29:57.614(8)? [39m  data: 
+[34mI20160412-18:29:57.614(8)? [39m   { error: 'invalid_access_token',
+[34mI20160412-18:29:57.615(8)? [39m     error_code: 21332,
+[34mI20160412-18:29:57.615(8)? [39m     request: '/2/statuses/update.json' } }
+[34mI20160412-18:30:00.007(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-18:30:00.012(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-18:30:00.410(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-18:30:01.911(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+=> Server modified -- restarting...                                   [34mI20160412-18:32:59.777(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityHourly" next run @Tue Apr 12 2016 18:35:00 GMT+0800 (CST)
+[34mI20160412-18:32:59.779(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityDaily" next run @Tue Apr 12 2016 18:32:59 GMT+0800 (CST)
+[34mI20160412-18:32:59.781(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationHourly" next run @Tue Apr 12 2016 18:35:00 GMT+0800 (CST)
+[34mI20160412-18:32:59.784(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationDaily" next run @Tue Apr 12 2016 18:32:59 GMT+0800 (CST)
+[34mI20160412-18:32:59.785(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataAirForecast" next run @Tue Apr 12 2016 18:32:59 GMT+0800 (CST)
+[34mI20160412-18:32:59.787(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "weather" next run @Tue Apr 12 2016 18:32:59 GMT+0800 (CST)
+=> Meteor server restarted
+[34mI20160412-18:33:15.706(8)? [39mweibo access token   { [Error: failed [400] {"error":"invalid_grant","error_code":21325,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"invalid authorization code:b5ea02ddef8c0ff61e1d9414a3265eae"}]
+[34mI20160412-18:33:15.707(8)? [39m  response: 
+[34mI20160412-18:33:15.707(8)? [39m   { statusCode: 400,
+[34mI20160412-18:33:15.708(8)? [39m     content: '{"error":"invalid_grant","error_code":21325,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"invalid authorization code:b5ea02ddef8c0ff61e1d9414a3265eae"}',
+[34mI20160412-18:33:15.708(8)? [39m     headers: 
+[34mI20160412-18:33:15.708(8)? [39m      { server: 'nginx/1.6.1',
+[34mI20160412-18:33:15.708(8)? [39m        date: 'Tue, 12 Apr 2016 10:33:15 GMT',
+[34mI20160412-18:33:15.709(8)? [39m        'transfer-encoding': 'chunked',
+[34mI20160412-18:33:15.709(8)? [39m        connection: 'keep-alive',
+[34mI20160412-18:33:15.709(8)? [39m        pragma: 'No-cache',
+[34mI20160412-18:33:15.710(8)? [39m        'cache-control': 'no-cache',
+[34mI20160412-18:33:15.710(8)? [39m        expires: 'Thu, 01 Jan 1970 00:00:00 GMT',
+[34mI20160412-18:33:15.710(8)? [39m        'api-server-ip': '10.73.89.48' },
+[34mI20160412-18:33:15.711(8)? [39m     data: null } } { statusCode: 400,
+[34mI20160412-18:33:15.711(8)? [39m  content: '{"error":"invalid_grant","error_code":21325,"request":"/oauth2/access_token","error_uri":"/oauth2/access_token","error_description":"invalid authorization code:b5ea02ddef8c0ff61e1d9414a3265eae"}',
+[34mI20160412-18:33:15.711(8)? [39m  headers: 
+[34mI20160412-18:33:15.711(8)? [39m   { server: 'nginx/1.6.1',
+[34mI20160412-18:33:15.712(8)? [39m     date: 'Tue, 12 Apr 2016 10:33:15 GMT',
+[34mI20160412-18:33:15.712(8)? [39m     'transfer-encoding': 'chunked',
+[34mI20160412-18:33:15.712(8)? [39m     connection: 'keep-alive',
+[34mI20160412-18:33:15.713(8)? [39m     pragma: 'No-cache',
+[34mI20160412-18:33:15.713(8)? [39m     'cache-control': 'no-cache',
+[34mI20160412-18:33:15.713(8)? [39m     expires: 'Thu, 01 Jan 1970 00:00:00 GMT',
+[34mI20160412-18:33:15.714(8)? [39m     'api-server-ip': '10.73.89.48' },
+[34mI20160412-18:33:15.714(8)? [39m  data: null }
+[34mI20160412-18:35:00.011(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-18:35:00.017(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-18:35:00.425(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-18:35:01.902(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-18:40:00.010(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-18:40:00.015(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-18:40:00.427(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-18:40:40.164(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-18:45:00.003(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-18:45:00.005(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-18:45:00.410(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-18:45:01.977(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-18:50:00.005(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-18:50:00.011(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-18:50:00.413(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-18:50:01.926(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+=> Server modified -- restarting...                                   => Server modified -- restarting...                                   [34mI20160412-18:52:19.143(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityHourly" next run @Tue Apr 12 2016 18:55:00 GMT+0800 (CST)
+[34mI20160412-18:52:19.146(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityDaily" next run @Tue Apr 12 2016 18:52:19 GMT+0800 (CST)
+[34mI20160412-18:52:19.148(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationHourly" next run @Tue Apr 12 2016 18:55:00 GMT+0800 (CST)
+[34mI20160412-18:52:19.151(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationDaily" next run @Tue Apr 12 2016 18:52:19 GMT+0800 (CST)
+[34mI20160412-18:52:19.152(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataAirForecast" next run @Tue Apr 12 2016 18:52:19 GMT+0800 (CST)
+[34mI20160412-18:52:19.154(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "weather" next run @Tue Apr 12 2016 18:52:19 GMT+0800 (CST)
+=> Meteor server restarted
+[34mI20160412-18:53:03.986(8)? [39mweibo  publish { [Error: failed [403] {"error":"invalid_access_token","error_code":21332,"request":"/2/statuses/update.json"}]
+[34mI20160412-18:53:03.987(8)? [39m  response: 
+[34mI20160412-18:53:03.987(8)? [39m   { statusCode: 403,
+[34mI20160412-18:53:03.987(8)? [39m     content: '{"error":"invalid_access_token","error_code":21332,"request":"/2/statuses/update.json"}',
+[34mI20160412-18:53:03.988(8)? [39m     headers: 
+[34mI20160412-18:53:03.988(8)? [39m      { server: 'nginx/1.6.1',
+[34mI20160412-18:53:03.988(8)? [39m        date: 'Tue, 12 Apr 2016 10:53:03 GMT',
+[34mI20160412-18:53:03.988(8)? [39m        'content-type': 'application/json;charset=UTF-8',
+[34mI20160412-18:53:03.988(8)? [39m        'transfer-encoding': 'chunked',
+[34mI20160412-18:53:03.989(8)? [39m        connection: 'keep-alive',
+[34mI20160412-18:53:03.989(8)? [39m        'api-server-ip': '10.77.108.213',
+[34mI20160412-18:53:03.989(8)? [39m        vary: 'Accept-Encoding' },
+[34mI20160412-18:53:03.989(8)? [39m     data: 
+[34mI20160412-18:53:03.989(8)? [39m      { error: 'invalid_access_token',
+[34mI20160412-18:53:03.989(8)? [39m        error_code: 21332,
+[34mI20160412-18:53:03.990(8)? [39m        request: '/2/statuses/update.json' } } } { statusCode: 403,
+[34mI20160412-18:53:03.990(8)? [39m  content: '{"error":"invalid_access_token","error_code":21332,"request":"/2/statuses/update.json"}',
+[34mI20160412-18:53:03.990(8)? [39m  headers: 
+[34mI20160412-18:53:03.990(8)? [39m   { server: 'nginx/1.6.1',
+[34mI20160412-18:53:03.990(8)? [39m     date: 'Tue, 12 Apr 2016 10:53:03 GMT',
+[34mI20160412-18:53:03.991(8)? [39m     'content-type': 'application/json;charset=UTF-8',
+[34mI20160412-18:53:03.991(8)? [39m     'transfer-encoding': 'chunked',
+[34mI20160412-18:53:03.991(8)? [39m     connection: 'keep-alive',
+[34mI20160412-18:53:03.991(8)? [39m     'api-server-ip': '10.77.108.213',
+[34mI20160412-18:53:03.991(8)? [39m     vary: 'Accept-Encoding' },
+[34mI20160412-18:53:03.992(8)? [39m  data: 
+[34mI20160412-18:53:03.992(8)? [39m   { error: 'invalid_access_token',
+[34mI20160412-18:53:03.992(8)? [39m     error_code: 21332,
+[34mI20160412-18:53:03.992(8)? [39m     request: '/2/statuses/update.json' } }
+[34mI20160412-18:55:00.013(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-18:55:00.016(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-18:55:00.399(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-18:55:01.761(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+=> Server modified -- restarting...                                   => Server modified -- restarting...                                   [34mI20160412-18:59:50.249(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityHourly" next run @Tue Apr 12 2016 19:00:00 GMT+0800 (CST)
+[34mI20160412-18:59:50.252(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataCityDaily" next run @Tue Apr 12 2016 18:59:50 GMT+0800 (CST)
+[34mI20160412-18:59:50.254(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationHourly" next run @Tue Apr 12 2016 19:00:00 GMT+0800 (CST)
+[34mI20160412-18:59:50.257(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataStationDaily" next run @Tue Apr 12 2016 18:59:50 GMT+0800 (CST)
+[34mI20160412-18:59:50.259(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "syncDataAirForecast" next run @Tue Apr 12 2016 18:59:50 GMT+0800 (CST)
+[34mI20160412-18:59:50.261(8) (percolate_synced-cron.js:87) [39mSyncedCron: Scheduled "weather" next run @Tue Apr 12 2016 18:59:50 GMT+0800 (CST)
+=> Meteor server restarted
+[34mI20160412-19:00:00.019(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationDaily".
+[34mI20160412-19:00:00.025(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-19:00:00.029(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataAirForecast".
+[34mI20160412-19:00:00.034(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "weather".
+[34mI20160412-19:00:00.207(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "weather".
+[34mI20160412-19:00:00.211(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityDaily".
+[34mI20160412-19:00:00.216(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-19:00:00.232(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataAirForecast".
+[34mI20160412-19:00:00.240(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityDaily".
+[34mI20160412-19:00:00.248(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationDaily".
+[34mI20160412-19:00:00.275(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080101&type=forecast_v&date=201604121900&appid=efb1b1&key=fwNGcm11geUOY0st665lbMvhpH0%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.280(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080104&type=forecast_v&date=201604121900&appid=efb1b1&key=IKA9gJ%2FAY9xseJ2uPlXSKJs1jmM%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.290(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080105&type=forecast_v&date=201604121900&appid=efb1b1&key=E7X7%2BQKs8jqLZzFyMZeNWJZxv5c%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.329(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080106&type=forecast_v&date=201604121900&appid=efb1b1&key=qWNe%2BHmVtMMQ2ly3JQcnr%2Bp2E%2FQ%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.329(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080107&type=forecast_v&date=201604121900&appid=efb1b1&key=byWE%2FOIAcNaFHkXQ14gG%2BCWae4c%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.329(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080201&type=forecast_v&date=201604121900&appid=efb1b1&key=awZK7hQCarIhw%2F3eTgs5%2B%2B5AiwM%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.338(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080203&type=forecast_v&date=201604121900&appid=efb1b1&key=ZbW5gzoOeYOWkBO%2FehHYbyhD7Ko%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.368(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080205&type=forecast_v&date=201604121900&appid=efb1b1&key=R8sXNt9fJn%2BXMnrDbkqQvJa9oHk%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.369(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080204&type=forecast_v&date=201604121900&appid=efb1b1&key=huSp2F29l%2BEVnHgvWaO9cg04ONY%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.369(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080207&type=forecast_v&date=201604121900&appid=efb1b1&key=bFqdtVt1l69vMCMDfxn%2Bxaip71A%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.376(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080402&type=forecast_v&date=201604121900&appid=efb1b1&key=JwA%2BZAs%2Bja5mc4WSJh0LwnZeZ68%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.398(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080301&type=forecast_v&date=201604121900&appid=efb1b1&key=W4XSpZSmWrElB4%2Btvf00eOF9%2BAY%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.425(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080403&type=forecast_v&date=201604121900&appid=efb1b1&key=H8QW6e3Ei9IQDPOCWNLURbLtzPM%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.425(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080409&type=forecast_v&date=201604121900&appid=efb1b1&key=9RmnAAvthcZniZQv%2BqBS76Wn3%2Bw%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.432(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080404&type=forecast_v&date=201604121900&appid=efb1b1&key=zZ%2FlEaFnGQwtS56QY7%2BjMW6N1%2BE%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.432(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080410&type=forecast_v&date=201604121900&appid=efb1b1&key=xlb%2FGVwDNaqwtEvW1l2hbyjS6i0%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.432(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080408&type=forecast_v&date=201604121900&appid=efb1b1&key=pEUOhIlwB3O4oYy97VDFgV0c3Gg%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.435(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080406&type=forecast_v&date=201604121900&appid=efb1b1&key=a7gj4jx%2ByZQEJbs%2FWc370QrL0%2FM%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.447(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-19:00:00.450(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080412&type=forecast_v&date=201604121900&appid=efb1b1&key=phfzJcnL3lOc8gMJirc47QnHP2U%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.450(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080501&type=forecast_v&date=201604121900&appid=efb1b1&key=OEu0KC7KM5oaD9wzXXYFK5zTzdY%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.450(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080502&type=forecast_v&date=201604121900&appid=efb1b1&key=d7nMqzSRXLy8CvGK%2BlAlu5jrdm8%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.506(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080509&type=forecast_v&date=201604121900&appid=efb1b1&key=Zusut7EJgzESkGoFYFTcWj5Fq3c%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.506(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080506&type=forecast_v&date=201604121900&appid=efb1b1&key=JA39zmfDqdyWDXFzr%2BjfSV2JY0g%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.506(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080505&type=forecast_v&date=201604121900&appid=efb1b1&key=cH4vIoinEurWBQKpUwDpTIcUv8g%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.506(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080511&type=forecast_v&date=201604121900&appid=efb1b1&key=vdCJhE9HlgKqhLC9%2FNDgOwWzWwA%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.507(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080510&type=forecast_v&date=201604121900&appid=efb1b1&key=3fo18uuYb4HJvZbAXfanHj0qKOc%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.507(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080601&type=forecast_v&date=201604121900&appid=efb1b1&key=4HNv5v21PaWvJoRM%2FXyJX4G7Mvk%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.510(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080504&type=forecast_v&date=201604121900&appid=efb1b1&key=nZvU4ZkdGGHpPpiP%2BNK0SeLMOmw%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.511(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080603&type=forecast_v&date=201604121900&appid=efb1b1&key=IbpySdkhuPDjiqdw3AV6FEElRvQ%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.521(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080604&type=forecast_v&date=201604121900&appid=efb1b1&key=8lfwTZ4aWf4bYrI%2FxPhfOr3nh2A%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.550(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080605&type=forecast_v&date=201604121900&appid=efb1b1&key=XLnYDkuGHVqtz5WakTdaFml4Bbw%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.578(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080610&type=forecast_v&date=201604121900&appid=efb1b1&key=Xj0MLHWmb0Xwnm84vGpBONpgKvg%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.579(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080701&type=forecast_v&date=201604121900&appid=efb1b1&key=4c02OT9gQ7V12LGYG03nITPTCY0%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.580(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080607&type=forecast_v&date=201604121900&appid=efb1b1&key=LMYtDgEZy2vjzsY%2ByDm92L1XApU%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.580(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080614&type=forecast_v&date=201604121900&appid=efb1b1&key=iOFNr%2Fl62%2BGYu5PqAcUrojzviEw%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.580(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080606&type=forecast_v&date=201604121900&appid=efb1b1&key=mGWO1HWEhUCSOugxs1UrCCOtAFo%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.583(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080609&type=forecast_v&date=201604121900&appid=efb1b1&key=s7kUTqEoI33Vfg8pTzGoMvVljak%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.590(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080103&type=forecast_v&date=201604121900&appid=efb1b1&key=B5vkQlUQ4b3BNKcIpoE%2BYMCKNLc%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.591(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080202&type=forecast_v&date=201604121900&appid=efb1b1&key=4SfXqK8q0f1thLGvbdgBnRsOgl8%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.591(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080206&type=forecast_v&date=201604121900&appid=efb1b1&key=wgwB9IXU%2FxV5WNwTlEypPXb2yyE%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.592(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080407&type=forecast_v&date=201604121900&appid=efb1b1&key=03DDyuh9l3zimIWfu7veWhQkQp8%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.593(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080411&type=forecast_v&date=201604121900&appid=efb1b1&key=aWM%2BU59eZnW42nhdJOzuWJKdlt8%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.593(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080503&type=forecast_v&date=201604121900&appid=efb1b1&key=tzBIEPcfdE11CiWK6zfBiyaUPNw%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.593(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080508&type=forecast_v&date=201604121900&appid=efb1b1&key=jOQPm8xHUS7sgQqqjOOg8R1gwYo%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.593(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080608&type=forecast_v&date=201604121900&appid=efb1b1&key=qHn5YVQY8dHoDJC%2B%2BTMPZdXF1iw%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.594(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080703&type=forecast_v&date=201604121900&appid=efb1b1&key=C6q1UUvxVFWstCibRQFPYMQ3X5w%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.597(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080611&type=forecast_v&date=201604121900&appid=efb1b1&key=05LpvSSxg9fpmXdKQqYcNe%2BPxhs%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.597(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080704&type=forecast_v&date=201604121900&appid=efb1b1&key=iQuevf3%2FNBoHyGlZWYnPLH5w4dE%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.597(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080615&type=forecast_v&date=201604121900&appid=efb1b1&key=Qi5VPao6meE6JJ2c1r%2FNwSntus0%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.600(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080705&type=forecast_v&date=201604121900&appid=efb1b1&key=a2ZRsu4dNZ%2BEB6vXO5K9yHNzTm0%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.676(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080708&type=forecast_v&date=201604121900&appid=efb1b1&key=0QcfQE9T6S7RSArhVs34rcvU8oQ%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.676(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080711&type=forecast_v&date=201604121900&appid=efb1b1&key=Cx%2Fta6uEpY5gktNwGpXE5oWD1HU%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.676(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080707&type=forecast_v&date=201604121900&appid=efb1b1&key=yRFWwMsTE9O%2Be%2BBx798FtK9YCMQ%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.677(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080801&type=forecast_v&date=201604121900&appid=efb1b1&key=ezNcTIerTv%2BD%2FtDlGAwWl98OgDc%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.677(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080706&type=forecast_v&date=201604121900&appid=efb1b1&key=jnzt87K2k%2FWe%2FGJYLUeY77%2FOTVQ%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.677(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080713&type=forecast_v&date=201604121900&appid=efb1b1&key=COjiiPAOewXnrBVSjeHtvuapDrE%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.677(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080712&type=forecast_v&date=201604121900&appid=efb1b1&key=M5xfb1QPiGucHj8G2NdNw9CEWsU%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.678(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080804&type=forecast_v&date=201604121900&appid=efb1b1&key=XwGjsV7y%2FMotWw5Vf28%2BoKHtbC0%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.678(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080710&type=forecast_v&date=201604121900&appid=efb1b1&key=AdUZGCIFvbPhYe9GWQLKrFsG32c%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.678(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080803&type=forecast_v&date=201604121900&appid=efb1b1&key=D82A9%2FS%2FgVqYHrreWmcAovdbb4U%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.678(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080805&type=forecast_v&date=201604121900&appid=efb1b1&key=aGRorx9bofLL97QkgrNALkGQgz8%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.679(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080802&type=forecast_v&date=201604121900&appid=efb1b1&key=ZVZks6JvNDjoKsMGsTxLk%2F5puxo%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.767(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080806&type=forecast_v&date=201604121900&appid=efb1b1&key=yuUKdnh08wVS8ab7046Y8sGrTZ0%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.768(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080809&type=forecast_v&date=201604121900&appid=efb1b1&key=2R2t6Ub0RgMWx%2FXm1ijEx7K7Yb8%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.768(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080906&type=forecast_v&date=201604121900&appid=efb1b1&key=Pn3eXwETaN8HL64hvYGCMp0Tx0E%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.768(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080807&type=forecast_v&date=201604121900&appid=efb1b1&key=RwHA3Whz3pQCRfqbBXzSkm%2BQGdg%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.768(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080901&type=forecast_v&date=201604121900&appid=efb1b1&key=qHfjN73lv6ZPwItmvpPPyR%2FcTTY%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.768(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080910&type=forecast_v&date=201604121900&appid=efb1b1&key=1z%2Fi8vIvG%2FyIn94V88Rqub0thJw%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.769(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080903&type=forecast_v&date=201604121900&appid=efb1b1&key=um484HJcIl%2Bh5zybS3lwXAVLKBg%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.769(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080904&type=forecast_v&date=201604121900&appid=efb1b1&key=NmuJpTGnscgOq5528VCjuQy6Ons%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.769(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080909&type=forecast_v&date=201604121900&appid=efb1b1&key=C0nr8EHHGWviBkXpso3%2Flx78n8U%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.769(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080810&type=forecast_v&date=201604121900&appid=efb1b1&key=gtpkm3ZhN4R3u6SnwBmH1LGNLFU%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.769(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080908&type=forecast_v&date=201604121900&appid=efb1b1&key=HhWv8%2Bp3YzKjpJiAcwsRdPfX8UA%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.770(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080911&type=forecast_v&date=201604121900&appid=efb1b1&key=lzOjrI6TrZEdogz5ed2N%2B3D3eco%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.770(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080808&type=forecast_v&date=201604121900&appid=efb1b1&key=o4o7J%2F7FmNnUjzLYeDA2Ee7W%2B9c%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.770(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080907&type=forecast_v&date=201604121900&appid=efb1b1&key=DC9BSvqcoVSvvzfFVuSIaO9Wp28%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.770(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080916&type=forecast_v&date=201604121900&appid=efb1b1&key=48aNGG6HLUSuQyZLtY1xbiD4oF8%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.783(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080917&type=forecast_v&date=201604121900&appid=efb1b1&key=UVn20Mm98bCvPGfJM2hKwgM0TKY%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.784(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080913&type=forecast_v&date=201604121900&appid=efb1b1&key=eKzyq09E7a2plCm%2BIwuCtWgCHKA%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.784(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081003&type=forecast_v&date=201604121900&appid=efb1b1&key=nnEOjqjao7Mng1u1s2%2FAgmcMavE%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.784(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081002&type=forecast_v&date=201604121900&appid=efb1b1&key=f0jyMT0meDZquLq%2FnOVzXl4%2BaD8%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.784(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080912&type=forecast_v&date=201604121900&appid=efb1b1&key=KBYNE2bMzQuXThnZ7wDeMJmb%2BL4%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.785(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081004&type=forecast_v&date=201604121900&appid=efb1b1&key=FFY6AHdfhNcLsGeR62II9Pm%2FB6E%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.785(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081006&type=forecast_v&date=201604121900&appid=efb1b1&key=xN7RKGYXUF%2FldNZd%2B%2BpTAIc0LiU%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.785(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081005&type=forecast_v&date=201604121900&appid=efb1b1&key=4nnCW98P%2BAVBBq8BKcTY%2BvgspUk%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.785(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081007&type=forecast_v&date=201604121900&appid=efb1b1&key=7q5C9yKIff6zslpQT7slXc75fF0%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.796(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081008&type=forecast_v&date=201604121900&appid=efb1b1&key=%2B5JGoNBTp5mUBsZaYuLSL9oC%2Bf8%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.796(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081010&type=forecast_v&date=201604121900&appid=efb1b1&key=c6qdE64Z1JmL3rG2QcdUDocW11I%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.797(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081009&type=forecast_v&date=201604121900&appid=efb1b1&key=dvuj%2FB5j%2BFxRuVH3Jgns4eKAp%2B0%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.806(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081012&type=forecast_v&date=201604121900&appid=efb1b1&key=fXB%2FKyS8N0XZsWbhVX%2FSe1V3ol0%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.812(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081016&type=forecast_v&date=201604121900&appid=efb1b1&key=EA%2BAcl8%2BucW60sIf5EBUE2NWGMI%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.812(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081011&type=forecast_v&date=201604121900&appid=efb1b1&key=WvuQLG3uA6bOXMqSLvLUB6gmz4U%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.813(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081014&type=forecast_v&date=201604121900&appid=efb1b1&key=8xCuBC%2FuXXa%2FZOWRUoi2bX89Tr4%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.819(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081102&type=forecast_v&date=201604121900&appid=efb1b1&key=xTmYMDqDY412cG%2FGs4shN9%2FOyo0%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.827(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081103&type=forecast_v&date=201604121900&appid=efb1b1&key=lyZio79wmIL9NYbp2NdR%2BoMbmCs%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.840(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081105&type=forecast_v&date=201604121900&appid=efb1b1&key=gRVM8RR6PvQPFAhtC2Rkd%2FaHX2w%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.841(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081104&type=forecast_v&date=201604121900&appid=efb1b1&key=nzGm82Z9SfB3AG0kIcXDT0nE2b4%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.846(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081106&type=forecast_v&date=201604121900&appid=efb1b1&key=ChZKKVywZ538aLIL6ToQWkndL7w%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.851(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081107&type=forecast_v&date=201604121900&appid=efb1b1&key=ETysFVF1ByO645OT2CjFluWyG0U%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.852(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081108&type=forecast_v&date=201604121900&appid=efb1b1&key=JlukKG5OYnP797%2BTodQ2n9xhKDY%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.857(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081109&type=forecast_v&date=201604121900&appid=efb1b1&key=jSh3b3vC3JoR85bjfyvOxw1QJKE%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.857(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081201&type=forecast_v&date=201604121900&appid=efb1b1&key=BveS8F5FYPaSGjPA1yLUvEe7iFw%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.864(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081202&type=forecast_v&date=201604121900&appid=efb1b1&key=sI826V4okISpwIxf0O3J%2BtTzpRI%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.875(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081204&type=forecast_v&date=201604121900&appid=efb1b1&key=7T4hHi03oqRot9CaHuDuNHz3AzQ%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.898(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081207&type=forecast_v&date=201604121900&appid=efb1b1&key=ERWzmVZ5bTkVUrpFpXVuas1MaJY%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.898(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081206&type=forecast_v&date=201604121900&appid=efb1b1&key=4PsEds9eOYk8KRLZefJaK%2FEZaxo%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.900(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081208&type=forecast_v&date=201604121900&appid=efb1b1&key=TlT3%2FoEC57cUU4RURLHsRw40PB4%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.913(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081210&type=forecast_v&date=201604121900&appid=efb1b1&key=T8u8wM35NZ8wlJzzOSTbpCZyklc%3D { numberAffected: 1 }
+[34mI20160412-19:00:00.929(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081212&type=forecast_v&date=201604121900&appid=efb1b1&key=EQyEdUdXXRUgBUHnaEB5yP9fRLY%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.036(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080612&type=forecast_v&date=201604121900&appid=efb1b1&key=uo0K7IR5BlNLcOgEJrvizCE8RgM%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.036(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080709&type=forecast_v&date=201604121900&appid=efb1b1&key=6adGIAFW2YWAvFxL49OogYNwYm8%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.036(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081001&type=forecast_v&date=201604121900&appid=efb1b1&key=cpgsXV3UqbWatfCIuVlnaZCZjzY%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.036(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080914&type=forecast_v&date=201604121900&appid=efb1b1&key=QVbCJrQZZmqb%2BLSaiVkln4z9Dhs%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.256(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081203&type=forecast_v&date=201604121900&appid=efb1b1&key=%2FYAt6RT2yLadiePZuI8sij7mR9M%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.315(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081205&type=forecast_v&date=201604121900&appid=efb1b1&key=ODkLYLabXBZsWtmNSOc7pN%2BLEqo%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.900(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081209&type=forecast_v&date=201604121900&appid=efb1b1&key=grj9QGNlcmowqw813%2BGmxpXNilg%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.923(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081211&type=forecast_v&date=201604121900&appid=efb1b1&key=NFuiEg1A%2FjAI2iFhmeEhOrxsO9M%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.926(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080102&type=forecast_v&date=201604121900&appid=efb1b1&key=iO6PDWkr9krq4MDAvpb2TB30Ypo%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.935(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080401&type=forecast_v&date=201604121900&appid=efb1b1&key=wObhMG7aMyAlt9GREbPbdfwJ%2Bgc%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.950(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080613&type=forecast_v&date=201604121900&appid=efb1b1&key=71b8lYPNjZVscQ0CgbSaBQi%2FPnM%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.988(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080915&type=forecast_v&date=201604121900&appid=efb1b1&key=q0hNm73%2B23Z70uDHuZO6jpNQp%2F8%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.991(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081015&type=forecast_v&date=201604121900&appid=efb1b1&key=odTRrReUIk4jfrhws3BbBERF9C0%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.991(8)? [39mhttp://open.weather.com.cn/data/?areaid=101081101&type=forecast_v&date=201604121900&appid=efb1b1&key=0jdKENr0voF1nnzzaZd9J%2Ff7PTs%3D { numberAffected: 1 }
+[34mI20160412-19:00:01.999(8)? [39mhttp://open.weather.com.cn/data/?areaid=101080507&type=forecast_v&date=201604121900&appid=efb1b1&key=6AgAGENoL3%2BDzpKi4x5AMiHg9Ls%3D { numberAffected: 1 }
+[34mI20160412-19:00:02.338(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
+[34mI20160412-19:01:40.076(8)? [39mweibo  publish null { statusCode: 200,
+[34mI20160412-19:01:40.077(8)? [39m  content: '{"created_at":"Tue Apr 12 19:01:39 +0800 2016","id":3963514257256903,"mid":"3963514257256903","idstr":"3963514257256903","text":"weiboPublish test .....","textLength":23,"source_allowclick":0,"source_type":1,"source":"<a href=\\"http://open.weibo.com\\" rel=\\"nofollow\\">未通过审核应用</a>","favorited":false,"truncated":false,"in_reply_to_status_id":"","in_reply_to_user_id":"","in_reply_to_screen_name":"","pic_urls":[],"geo":null,"user":{"id":2162030213,"idstr":"2162030213","class":1,"screen_name":"儿歌____","name":"儿歌____","province":"100","city":"1000","location":"其他","description":"我勇敢看明天的模样不管未来怎样","url":"","profile_image_url":"http://tp2.sinaimg.cn/2162030213/50/5685284786/1","cover_image_phone":"http://ww1.sinaimg.cn/crop.0.0.640.640.640/549d0121tw1egm1kjly3jj20hs0hsq4f.jpg","profile_url":"u/2162030213","domain":"","weihao":"","gender":"m","followers_count":8,"friends_count":65,"pagefriends_count":0,"statuses_count":86,"favourites_count":1,"created_at":"Fri Aug 16 14:50:03 +0800 2013","following":false,"allow_all_act_msg":false,"geo_enabled":true,"verified":false,"verified_type":-1,"remark":"","ptype":0,"allow_all_comment":true,"avatar_large":"http://tp2.sinaimg.cn/2162030213/180/5685284786/1","avatar_hd":"http://tva3.sinaimg.cn/crop.0.0.480.480.1024/80ddf685jw8ecrkocjqscj20dc0dcgnr.jpg","verified_reason":"","verified_trade":"","verified_reason_url":"","verified_source":"","verified_source_url":"","follow_me":false,"online_status":0,"bi_followers_count":0,"lang":"zh-cn","star":0,"mbtype":0,"mbrank":0,"block_word":0,"block_app":0,"credit_score":80,"user_ability":0,"urank":6},"reposts_count":0,"comments_count":0,"attitudes_count":0,"isLongText":false,"mlevel":0,"visible":{"type":0,"list_id":0},"biz_feature":0,"darwin_tags":[],"hot_weibo_tags":[],"text_tag_tips":[],"userType":257}',
+[34mI20160412-19:01:40.078(8)? [39m  headers: 
+[34mI20160412-19:01:40.078(8)? [39m   { server: 'nginx/1.6.1',
+[34mI20160412-19:01:40.078(8)? [39m     date: 'Tue, 12 Apr 2016 11:01:40 GMT',
+[34mI20160412-19:01:40.079(8)? [39m     'content-type': 'application/json;charset=UTF-8',
+[34mI20160412-19:01:40.079(8)? [39m     'transfer-encoding': 'chunked',
+[34mI20160412-19:01:40.080(8)? [39m     connection: 'keep-alive',
+[34mI20160412-19:01:40.080(8)? [39m     'api-server-ip': '10.77.108.38',
+[34mI20160412-19:01:40.080(8)? [39m     vary: 'Accept-Encoding' },
+[34mI20160412-19:01:40.081(8)? [39m  data: 
+[34mI20160412-19:01:40.081(8)? [39m   { created_at: 'Tue Apr 12 19:01:39 +0800 2016',
+[34mI20160412-19:01:40.082(8)? [39m     id: 3963514257256903,
+[34mI20160412-19:01:40.082(8)? [39m     mid: '3963514257256903',
+[34mI20160412-19:01:40.082(8)? [39m     idstr: '3963514257256903',
+[34mI20160412-19:01:40.083(8)? [39m     text: 'weiboPublish test .....',
+[34mI20160412-19:01:40.083(8)? [39m     textLength: 23,
+[34mI20160412-19:01:40.084(8)? [39m     source_allowclick: 0,
+[34mI20160412-19:01:40.084(8)? [39m     source_type: 1,
+[34mI20160412-19:01:40.084(8)? [39m     source: '<a href="http://open.weibo.com" rel="nofollow">未通过审核应用</a>',
+[34mI20160412-19:01:40.085(8)? [39m     favorited: false,
+[34mI20160412-19:01:40.085(8)? [39m     truncated: false,
+[34mI20160412-19:01:40.086(8)? [39m     in_reply_to_status_id: '',
+[34mI20160412-19:01:40.086(8)? [39m     in_reply_to_user_id: '',
+[34mI20160412-19:01:40.087(8)? [39m     in_reply_to_screen_name: '',
+[34mI20160412-19:01:40.087(8)? [39m     pic_urls: [],
+[34mI20160412-19:01:40.087(8)? [39m     geo: null,
+[34mI20160412-19:01:40.088(8)? [39m     user: 
+[34mI20160412-19:01:40.088(8)? [39m      { id: 2162030213,
+[34mI20160412-19:01:40.088(8)? [39m        idstr: '2162030213',
+[34mI20160412-19:01:40.089(8)? [39m        class: 1,
+[34mI20160412-19:01:40.089(8)? [39m        screen_name: '儿歌____',
+[34mI20160412-19:01:40.090(8)? [39m        name: '儿歌____',
+[34mI20160412-19:01:40.090(8)? [39m        province: '100',
+[34mI20160412-19:01:40.090(8)? [39m        city: '1000',
+[34mI20160412-19:01:40.091(8)? [39m        location: '其他',
+[34mI20160412-19:01:40.091(8)? [39m        description: '我勇敢看明天的模样不管未来怎样',
+[34mI20160412-19:01:40.091(8)? [39m        url: '',
+[34mI20160412-19:01:40.092(8)? [39m        profile_image_url: 'http://tp2.sinaimg.cn/2162030213/50/5685284786/1',
+[34mI20160412-19:01:40.092(8)? [39m        cover_image_phone: 'http://ww1.sinaimg.cn/crop.0.0.640.640.640/549d0121tw1egm1kjly3jj20hs0hsq4f.jpg',
+[34mI20160412-19:01:40.093(8)? [39m        profile_url: 'u/2162030213',
+[34mI20160412-19:01:40.093(8)? [39m        domain: '',
+[34mI20160412-19:01:40.093(8)? [39m        weihao: '',
+[34mI20160412-19:01:40.094(8)? [39m        gender: 'm',
+[34mI20160412-19:01:40.094(8)? [39m        followers_count: 8,
+[34mI20160412-19:01:40.095(8)? [39m        friends_count: 65,
+[34mI20160412-19:01:40.095(8)? [39m        pagefriends_count: 0,
+[34mI20160412-19:01:40.095(8)? [39m        statuses_count: 86,
+[34mI20160412-19:01:40.096(8)? [39m        favourites_count: 1,
+[34mI20160412-19:01:40.096(8)? [39m        created_at: 'Fri Aug 16 14:50:03 +0800 2013',
+[34mI20160412-19:01:40.096(8)? [39m        following: false,
+[34mI20160412-19:01:40.097(8)? [39m        allow_all_act_msg: false,
+[34mI20160412-19:01:40.097(8)? [39m        geo_enabled: true,
+[34mI20160412-19:01:40.098(8)? [39m        verified: false,
+[34mI20160412-19:01:40.098(8)? [39m        verified_type: -1,
+[34mI20160412-19:01:40.098(8)? [39m        remark: '',
+[34mI20160412-19:01:40.099(8)? [39m        ptype: 0,
+[34mI20160412-19:01:40.099(8)? [39m        allow_all_comment: true,
+[34mI20160412-19:01:40.099(8)? [39m        avatar_large: 'http://tp2.sinaimg.cn/2162030213/180/5685284786/1',
+[34mI20160412-19:01:40.100(8)? [39m        avatar_hd: 'http://tva3.sinaimg.cn/crop.0.0.480.480.1024/80ddf685jw8ecrkocjqscj20dc0dcgnr.jpg',
+[34mI20160412-19:01:40.100(8)? [39m        verified_reason: '',
+[34mI20160412-19:01:40.100(8)? [39m        verified_trade: '',
+[34mI20160412-19:01:40.101(8)? [39m        verified_reason_url: '',
+[34mI20160412-19:01:40.101(8)? [39m        verified_source: '',
+[34mI20160412-19:01:40.101(8)? [39m        verified_source_url: '',
+[34mI20160412-19:01:40.102(8)? [39m        follow_me: false,
+[34mI20160412-19:01:40.102(8)? [39m        online_status: 0,
+[34mI20160412-19:01:40.102(8)? [39m        bi_followers_count: 0,
+[34mI20160412-19:01:40.103(8)? [39m        lang: 'zh-cn',
+[34mI20160412-19:01:40.104(8)? [39m        star: 0,
+[34mI20160412-19:01:40.104(8)? [39m        mbtype: 0,
+[34mI20160412-19:01:40.105(8)? [39m        mbrank: 0,
+[34mI20160412-19:01:40.105(8)? [39m        block_word: 0,
+[34mI20160412-19:01:40.105(8)? [39m        block_app: 0,
+[34mI20160412-19:01:40.106(8)? [39m        credit_score: 80,
+[34mI20160412-19:01:40.106(8)? [39m        user_ability: 0,
+[34mI20160412-19:01:40.106(8)? [39m        urank: 6 },
+[34mI20160412-19:01:40.107(8)? [39m     reposts_count: 0,
+[34mI20160412-19:01:40.107(8)? [39m     comments_count: 0,
+[34mI20160412-19:01:40.107(8)? [39m     attitudes_count: 0,
+[34mI20160412-19:01:40.108(8)? [39m     isLongText: false,
+[34mI20160412-19:01:40.108(8)? [39m     mlevel: 0,
+[34mI20160412-19:01:40.108(8)? [39m     visible: { type: 0, list_id: 0 },
+[34mI20160412-19:01:40.109(8)? [39m     biz_feature: 0,
+[34mI20160412-19:01:40.109(8)? [39m     darwin_tags: [],
+[34mI20160412-19:01:40.109(8)? [39m     hot_weibo_tags: [],
+[34mI20160412-19:01:40.110(8)? [39m     text_tag_tips: [],
+[34mI20160412-19:01:40.110(8)? [39m     userType: 257 } }
+[34mI20160412-19:05:00.007(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataCityHourly".
+[34mI20160412-19:05:00.013(8) (percolate_synced-cron.js:87) [39mSyncedCron: Starting "syncDataStationHourly".
+[34mI20160412-19:05:00.478(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataCityHourly".
+[34mI20160412-19:05:01.866(8) (percolate_synced-cron.js:87) [39mSyncedCron: Finished "syncDataStationHourly".
