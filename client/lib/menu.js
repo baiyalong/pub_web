@@ -70,7 +70,7 @@ menu = [
     },{
         path: '/weibo',
         name: '微博发布管理',
-        imgSrc: '/yubaosh.png',
+        imgSrc: '/weibo.png',
         role: 'admin'
     },
 ]
