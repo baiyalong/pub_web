@@ -1,16 +1,26 @@
 
 Meteor.methods({
-    weiboVarList: function() {
+    weiboVarList: function () {
         function aqiDaily(cityCode) {
-            var data = DataCityDaily.findOne({ CITYCODE: cityCode.toString() }, { sort: { MONITORTIME: -1 } })
-            return data && data.AQI ? data.AQI : 0;
+
+            var dateFrom = new Date();
+            dateFrom.setHours(0);
+            dateFrom.setMinutes(0);
+            dateFrom.setSeconds(0);
+            dateFrom.setDate(dateFrom.getDate() - 1);
+            dateFrom.setSeconds(dateFrom.getSeconds() - 1);
+            var dateTo = new Date(dateFrom);
+            dateTo.setDate(dateTo.getDate() + 1);
+
+            var data = DataCityDaily.findOne({ CITYCODE: cityCode.toString(), MONITORTIME: { $gt: dateFrom, $lt: dateTo } }, { sort: { MONITORTIME: -1 } })
+            return data && data.AQI ? data.AQI : null;
         }
         return [
             {
                 code: '0',
                 name: '&&todayforecast',
                 description: '今天的全区空气质量预报信息',
-                value: (function() {
+                value: (function () {
                     var data = DataAirForecast.findOne({}, { sort: { publishtime: -1 } })
                     return data ? data.publishcontent || '' : '';
                 })()
@@ -89,62 +99,125 @@ Meteor.methods({
             },
         ]
     },
-    'weiboRecord_pages': function(count, filter) {
+    'weiboRecord_pages': function (count, filter) {
         if (!filter) filter = {}
         return Math.round(WeiboRecord.find(filter).count() / count)
     },
-    weiboPublish: function(content) {
-        var config = WeiboConfig.findOne();
-        var varList = Meteor.call('weiboVarList');
-        //...
-
-        HTTP.call('POST','https://api.weibo.com/2/statuses/update.json',{params:{
-            access_token:config.token,
-            status:content //URLEncode <140
-        }},function(err,res){
-            console.log('weibo  publish',err,res)
-        })
-
-    },
-    weiboCronStart: function() {
+    weiboCronStart: function () {
         SyncedCron.add({
             name: 'weibo',
-            schedule: function(parser) {
+            schedule: function (parser) {
                 // parser is a later.parse object
                 return parser.text('every 10 s');
             },
-            job: function() {
+            job: function () {
                 console.log('weibo -- ' + new Date())
             }
         });
     },
-    weiboCronStop: function() {
+    weiboCronStop: function () {
         SyncedCron.remove('weibo')
     },
-    
-    
-    weibo_authorize:function(){
-        HTTP.call('POST','https://api.weibo.com/oauth2/authorize',{params:{
-            client_id:3733414340,
-            redirect_uri:'http://106.74.0.132:4000/api/weibo/redirect_uri'
-        }},function(err,res){
-           console.log(err,res)
+
+
+    weibo_authorize: function () {
+        HTTP.call('POST', 'https://api.weibo.com/oauth2/authorize', {
+            params: {
+                client_id: _weibo_app_key,
+                redirect_uri: _weibo_app_redirect_url
+            }
+        }, function (err, res) {
+            console.log(err, res)
         })
     },
-    weibo_accessToken:function(code){
+    weibo_accessToken: function (code) {
         var config = WeiboConfig.findOne();
-        HTTP.call('POST','https://api.weibo.com/oauth2/access_token',{params:{
-            client_id:'3733414340',
-            client_secret:'a0bb1256365fe8304398d7f9641d5488',
-            grant_type:'authorization_code',
-            code:code,
-            redirect_uri:'http://106.74.0.132:4000/api/weibo/redirect_uri/'
-        }},function(err,res){
-            console.log('weibo access token  ',err,res)
-            WeiboConfig.update({_id:config._id},{$set:{
-            token:JSON.parse(res.content).access_token
-            }})
+        HTTP.call('POST', 'https://api.weibo.com/oauth2/access_token', {
+            params: {
+                client_id: _weibo_app_key,
+                client_secret: _weibo_app_secret,
+                grant_type: 'authorization_code',
+                code: code,
+                redirect_uri: _weibo_app_redirect_url
+            }
+        }, function (err, res) {
+            if (err)
+                console.log('weibo_accessToken  error  ', err, res)
+            else
+                WeiboConfig.update(config._id, {
+                    $set: {
+                        code: code,
+                        token: JSON.parse(res.content).access_token
+                    }
+                })
         })
     },
-    
+    weibo_getTokenInfo: function () {
+        var config = WeiboConfig.findOne();
+        HTTP.call('POST', 'https://api.weibo.com/oauth2/get_token_info', {
+            params: {
+                access_token: config.token
+            }
+        }, function (err, res) {
+            console.log('weibo_getTokenInfo  ', err, res)
+        })
+    },
+    weibo_revokeAuth: function () {
+        var config = WeiboConfig.findOne();
+        HTTP.call('POST', 'https://api.weibo.com/oauth2/revokeoauth2', {
+            params: {
+                access_token: config.token
+            }
+        }, function (err, res) {
+            // console.log('weibo_revokeAuth  ', err, res)
+            WeiboConfig.update(config._id, { $set: { token: '' } })
+        })
+    },
+    weibo_publish: function (content) {
+        var config = WeiboConfig.findOne();
+        content = Meteor.call('weibo_analyzeContent', content)
+        if (config && !config.token)
+            throw new Meteor.Error('微博帐号未授权！')
+        else if (content && content.length > 140)
+            throw new Meteor.Error('内容不超过140个汉字!')
+        else {
+            HTTP.call('POST', 'https://api.weibo.com/2/statuses/update.json', {
+                params: {
+                    access_token: config.token,
+                    status: content
+                }
+            }, function (err, res) {
+                console.log('weibo_publish  ', err, res)
+            })
+        }
+    },
+    weibo_saveConfig: function () {
+
+
+    },
+    weibo_analyzeContent: function (content) {
+        var varList = Meteor.call('weiboVarList');
+        varList.forEach(function (e) {
+            content = content.replace(e.name, e.value)
+        })
+        if (content && content.length > 140)
+            throw new Meteor.Error('内容不超过140个汉字!')
+        return content;
+    },
+    weibo_getAppInfo: function () {
+        return {
+            _weibo_app_key: _weibo_app_key,
+            _weibo_app_redirect_url: _weibo_app_redirect_url
+        }
+    }
 });
+
+
+const _weibo_app_key = '3986222912';
+const _weibo_app_secret = '05b6b7cbcd76a22137b41ebf43b14ec3';
+const _weibo_app_redirect_url = 'http://106.74.0.132:3000/weibo';
+
+
+
+// 用户名：nmgybyj@163.COM
+// 密码：ybyj4632119

@@ -7,9 +7,6 @@ WeiboConfig.attachSchema(new SimpleSchema({
     weiboAccount: {
         type: String
     },
-    weiboPassword: {
-        type: String
-    },
     autoPublish: {
         type: Boolean,
         optional: true
@@ -25,20 +22,24 @@ WeiboConfig.attachSchema(new SimpleSchema({
     template: {
         type: String
     },
-    code:{
-        type:String,
-        optional:true
+    code: {
+        type: String,
+        optional: true
     },
-    token:{
-        type:String,
-        optional:true
+    token: {
+        type: String,
+        optional: true
+    },
+    expires: {
+        type: String,
+        optional: true
     }
 }));
 
 WeiboRecord.attachSchema(new SimpleSchema({
     date: {
         type: Date,
-        autoValue: function() {
+        autoValue: function () {
             return new Date();
         }
     },
@@ -52,27 +53,27 @@ WeiboRecord.attachSchema(new SimpleSchema({
 
 
 WeiboConfig.allow({
-    insert: function() {
+    insert: function () {
         //TODO roles auth here
         return true;
-    }, update: function() {
+    }, update: function () {
         //TODO roles auth here
         return true;
     }
 })
 
 WeiboRecord.allow({
-    insert: function() {
+    insert: function () {
         //TODO roles auth here
         return true;
     }
 })
 
-Meteor.publish('weiboConfig', function() {
+Meteor.publish('weiboConfig', function () {
     return WeiboConfig.find();
 })
 
-Meteor.publish('weiboRecord', function() {
+Meteor.publish('weiboRecord', function () {
     return WeiboRecord.find();
 })
 
