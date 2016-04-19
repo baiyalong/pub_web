@@ -12,7 +12,16 @@ Template.weibo.helpers({
     recordList: function () {
         return WeiboRecord.find()
     },
-
+    auth_status: function () {
+        var config = WeiboConfig.findOne()
+        return config.token ? { color: 'green', text: '已授权' } : { color: 'red', text: '未授权' }
+    },
+    date_helper: function (date) {
+        return moment(date).format('YYYY-MM-DD HH:mm:ss')
+    },
+    status_helper: function (status) {
+        return status ? '成功' : '失败'
+    }
 })
 
 Template.weibo.events({
@@ -30,7 +39,7 @@ Template.weibo.events({
     'click .revokeAuth': function (e, r) {
         e.preventDefault();
         Meteor.call('weibo_revokeAuth', function (err, res) {
-            Util.modal('微博解除授权', '解除授权成功！')
+            Util.modal('微博解除授权', err || '解除授权成功！')
         })
     },
     'click .preview': function (e, t) {
@@ -43,6 +52,7 @@ Template.weibo.events({
         e.preventDefault();
         Meteor.call('weibo_publish', t.$('#template').val().trim(), function (err, res) {
             Util.modal('微博发布', err || '微博发布成功！')
+            WeiboRecord.insert(err ? { status: false, error: JSON.stringify(err) } : { status: true })
         })
     },
     'click .saveConfig': function (e, t) {
@@ -58,6 +68,7 @@ Template.weibo.events({
         var err = null;
         // if (config.timerSchedule == '') err = '自动发布时间不能为空！'
         if (config.template == '') err = '发布信息不能为空！'
+        if (!/^(0?\d{1}|1\d{1}|2[0-3]):([0-5]\d{1})$/.test(config.timerSchedule)) err = '时间格式不正确！'
         if (err) {
             Util.modal('微博发布配置', err);
             return;
@@ -68,37 +79,53 @@ Template.weibo.events({
             Util.modal('微博发布配置', '微博帐号未授权！')
         else
             //update config
-            WeiboConfig.update({ _id: WeiboConfig.findOne()._id }, { $set: config }, function (err, res) {
+            WeiboConfig.update(weibo_config._id, { $set: config }, function (err, res) {
                 Util.modal('微博发布配置', err || '保存成功！')
+                if (!err) {
+                    //autoPublish
+                    Meteor.call(config.autoPublish ? 'weiboCronReset' : 'weiboCronStop')
+                }
             })
-
-
     },
-    'click .detail': function (e, t) {
-        //modal
-        t.$('#weiboModal').modal()
+    'click .remove': function (e, t) {
+        WeiboRecord.remove(this._id)
     },
     'mouseenter tbody>tr': function () {
-        $('#' + this.code).css({
+        var id = this.code||this._id;
+        $('#' + id).css({
             'border': '2px solid #186E37',
             'border-width': '0 0 0 2px'
         })
     },
     'mouseleave tbody>tr': function () {
-        $('#' + this.code).css({
+        var id = this.code||this._id;
+        $('#' + id).css({
             'border': '1px dashed #D8D8D8',
         })
     }
 })
 
 Template.weibo.onRendered(function () {
+    var weibo_config = WeiboConfig.findOne();
     var code = window.location.search.split('=');
     if (code && code.length == 2 && code[0] == '?code') {
         code = code[1];
-        Meteor.call('weibo_accessToken', code, function (err, res) {
-            if (err) Util.modal('微博授权', err)
-        })
+        if (code != weibo_config.code)
+            Meteor.call('weibo_accessToken', code, function (err, res) {
+                Util.modal('微博授权', err || '授权成功！')
+            })
     }
+
+
+    if (weibo_config.token)
+        Meteor.call('weibo_getTokenInfo', function (err, res) {
+            if (err)
+                WeiboConfig.update(weibo_config._id, {
+                    $set: {
+                        token: ''
+                    }
+                })
+        })
 }
 );
 

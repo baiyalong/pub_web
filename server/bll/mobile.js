@@ -25,6 +25,7 @@ BLL.mobile = {
         $eq: code
       }
     })
+    if(!city)return {err:'can not find the city !'}
     var weather = Weather.findOne({
       areaid: city.weatherID
     });

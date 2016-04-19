@@ -57,9 +57,14 @@
             </div>
             <div class="col-md-6">
                 <form class="form-inline">
-                    <p>微博账号
+                    <p>            
+                        {{#with auth_status}}
+                        <span style='color:{{color}}'>
+                                        {{text}}
+                        </span> 
+                        {{/with}}
                     </p>
-                    <p>授权有效期
+                    <p>
                     </p>
                     <button class="btn btn-default btn-sm authorize">授权</button>
                     <button class="btn btn-default btn-sm revokeAuth">解除授权</button>
@@ -83,19 +88,19 @@
                     <thead>
                         <tr>
                             <th>发布时间</th>
-                            <th>发布内容</th>
                             <th>发布状态</th>
+                            <th>描述</th>
                             <th>操作</th>
                         </tr>
                     </thead>
                     <tbody>
                         {{#each recordList}}
-                        <tr>
-                            <td>{{date}}</td>
-                            <td>{{content}}</td>
-                            <td>{{status}}</td>
+                        <tr id='{{_id}}'>
+                            <td>{{date_helper date}}</td>
+                            <td>{{status_helper status}}</td>
+                            <td>{{error}}</td>
                             <td>
-                                <a class="detail btn btn-default btn-sm">详情</a>
+                                <a class="remove btn btn-default btn-sm">删除</a>
                             </td>
                         </tr>
                         {{/each}}

@@ -104,35 +104,38 @@ Meteor.methods({
         return Math.round(WeiboRecord.find(filter).count() / count)
     },
     weiboCronStart: function () {
+        var config = WeiboConfig.findOne();
         SyncedCron.add({
             name: 'weibo',
             schedule: function (parser) {
                 // parser is a later.parse object
-                return parser.text('every 10 s');
+                return parser.text('at ' + config.timerSchedule);
             },
             job: function () {
-                console.log('weibo -- ' + new Date())
+                Meteor.call('weibo_autoPublish')
             }
         });
     },
     weiboCronStop: function () {
         SyncedCron.remove('weibo')
     },
-
-
+    weiboCronReset: function () {
+        Meteor.call('weiboCronStop')
+        Meteor.call('weiboCronStart')
+    },
     weibo_authorize: function () {
-        HTTP.call('POST', 'https://api.weibo.com/oauth2/authorize', {
+        this.unblock();
+        return HTTP.call('POST', 'https://api.weibo.com/oauth2/authorize', {
             params: {
                 client_id: _weibo_app_key,
                 redirect_uri: _weibo_app_redirect_url
             }
-        }, function (err, res) {
-            console.log(err, res)
         })
     },
     weibo_accessToken: function (code) {
+        this.unblock();
         var config = WeiboConfig.findOne();
-        HTTP.call('POST', 'https://api.weibo.com/oauth2/access_token', {
+        var res = HTTP.call('POST', 'https://api.weibo.com/oauth2/access_token', {
             params: {
                 client_id: _weibo_app_key,
                 client_secret: _weibo_app_secret,
@@ -140,55 +143,77 @@ Meteor.methods({
                 code: code,
                 redirect_uri: _weibo_app_redirect_url
             }
-        }, function (err, res) {
-            if (err)
-                console.log('weibo_accessToken  error  ', err, res)
-            else
-                WeiboConfig.update(config._id, {
-                    $set: {
-                        code: code,
-                        token: JSON.parse(res.content).access_token
-                    }
-                })
         })
+
+        return WeiboConfig.update(config._id, {
+            $set: {
+                code: code,
+                token: JSON.parse(res.content).access_token
+            }
+        })
+
     },
     weibo_getTokenInfo: function () {
+        this.unblock();
         var config = WeiboConfig.findOne();
-        HTTP.call('POST', 'https://api.weibo.com/oauth2/get_token_info', {
+        return HTTP.call('POST', 'https://api.weibo.com/oauth2/get_token_info', {
             params: {
                 access_token: config.token
             }
-        }, function (err, res) {
-            console.log('weibo_getTokenInfo  ', err, res)
         })
     },
     weibo_revokeAuth: function () {
+        this.unblock();
         var config = WeiboConfig.findOne();
         HTTP.call('POST', 'https://api.weibo.com/oauth2/revokeoauth2', {
             params: {
                 access_token: config.token
             }
-        }, function (err, res) {
-            // console.log('weibo_revokeAuth  ', err, res)
-            WeiboConfig.update(config._id, { $set: { token: '' } })
         })
+        return WeiboConfig.update(config._id, { $set: { token: '' } })
     },
     weibo_publish: function (content) {
+        this.unblock();
         var config = WeiboConfig.findOne();
+        if (!content) content = config.template;
         content = Meteor.call('weibo_analyzeContent', content)
         if (config && !config.token)
             throw new Meteor.Error('微博帐号未授权！')
         else if (content && content.length > 140)
             throw new Meteor.Error('内容不超过140个汉字!')
         else {
-            HTTP.call('POST', 'https://api.weibo.com/2/statuses/update.json', {
+            return HTTP.call('POST', 'https://api.weibo.com/2/statuses/update.json', {
                 params: {
                     access_token: config.token,
                     status: content
                 }
-            }, function (err, res) {
-                console.log('weibo_publish  ', err, res)
             })
+        }
+    },
+    weibo_autoPublish: function () {
+        try {
+            Meteor.call('weibo_waitData')
+            Meteor.call('weibo_publish')
+            WeiboRecord.insert({ status: true })
+        } catch (e) {
+            WeiboRecord.insert({ status: false, error: JSON.stringify(e) })
+        }
+    },
+    weibo_waitData: function () {
+        var config = WeiboConfig.findOne();
+        if (config.waitData) {
+            var wait = function () {
+                var res = false;
+                var varList = Meteor.call('weiboVarList');
+                varList.forEach(function (e) {
+                    if (e.value === null)
+                        res = true;
+                })
+                return res;
+            }
+            while (wait()) {
+                Meteor.sleep(1000 * 60 * 10); //10min
+            }
         }
     },
     weibo_saveConfig: function () {

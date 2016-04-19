@@ -44,10 +44,15 @@ WeiboRecord.attachSchema(new SimpleSchema({
         }
     },
     content: {
-        type: String
+        type: String,
+        optional: true
     },
     status: {
         type: Boolean
+    },
+    error: {
+        type: String,
+        optional: true
     }
 }));
 
@@ -65,6 +70,9 @@ WeiboConfig.allow({
 WeiboRecord.allow({
     insert: function () {
         //TODO roles auth here
+        return true;
+    },
+    remove: function () {
         return true;
     }
 })
