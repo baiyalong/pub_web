@@ -91,14 +91,14 @@ Template.weibo.events({
         WeiboRecord.remove(this._id)
     },
     'mouseenter tbody>tr': function () {
-        var id = this.code||this._id;
+        var id = this.code || this._id;
         $('#' + id).css({
             'border': '2px solid #186E37',
             'border-width': '0 0 0 2px'
         })
     },
     'mouseleave tbody>tr': function () {
-        var id = this.code||this._id;
+        var id = this.code || this._id;
         $('#' + id).css({
             'border': '1px dashed #D8D8D8',
         })
