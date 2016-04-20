@@ -5,7 +5,8 @@
 
 WeiboConfig.attachSchema(new SimpleSchema({
     weiboAccount: {
-        type: String
+        type: String,
+        optional: true
     },
     autoPublish: {
         type: Boolean,
@@ -30,8 +31,12 @@ WeiboConfig.attachSchema(new SimpleSchema({
         type: String,
         optional: true
     },
-    expires: {
+    expires_in: {
         type: String,
+        optional: true
+    },
+    auth_time: {
+        type: Date,
         optional: true
     }
 }));

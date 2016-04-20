@@ -144,11 +144,13 @@ Meteor.methods({
                 redirect_uri: _weibo_app_redirect_url
             }
         })
-
+        var resp = JSON.parse(res.content);
         return WeiboConfig.update(config._id, {
             $set: {
                 code: code,
-                token: JSON.parse(res.content).access_token
+                token: resp.access_token,
+                auth_time: new Date(),
+                expires_in: resp.expires_in
             }
         })
 

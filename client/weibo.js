@@ -15,6 +15,7 @@ Template.weibo.helpers({
     auth_status: function () {
         var config = WeiboConfig.findOne()
         return config.token ? { color: 'green', text: '已授权' } : { color: 'red', text: '未授权' }
+        //+ '&nbsp&nbsp' + moment(config.auth_time).format('YYYY-MM-DD HH:mm:ss') + '&nbsp&nbsp' + config.expires_in / 3600 + '小时' + '有效期'
     },
     date_helper: function (date) {
         return moment(date).format('YYYY-MM-DD HH:mm:ss')
