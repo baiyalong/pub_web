@@ -1,16 +1,20 @@
 ///**
 // * Created by bai on 2015/9/6.
 // */
-Meteor.startup(function() {
+Meteor.startup(function () {
     if (WeiboConfig.find().count() == 0)
         WeiboConfig.insert({
             // weiboAccount:'weiboAccount',
             // weiboPassword:'weiboPassword',
-            autoPublish:false,
-            timerSchedule:'8:00',
-            waitData:false,
-            template:''
+            autoPublish: false,
+            timerSchedule: '8:00',
+            waitData: false,
+            template: ''
         })
+
+    var config = WeiboConfig.findOne();
+    if (config && config.autoPublish)
+        Meteor.call(config.autoPublish ? 'weiboCronStart' : 'weiboCronStop')
     //
     //    //admin user
     //    if (Meteor.users.find().count() == 0) {
