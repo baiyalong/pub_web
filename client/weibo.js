@@ -118,7 +118,7 @@ Template.weibo.onRendered(function () {
     }
 
 
-    if (weibo_config.token)
+    else if (weibo_config.token) {
         Meteor.call('weibo_getTokenInfo', function (err, res) {
             if (err)
                 WeiboConfig.update(weibo_config._id, {
@@ -127,6 +127,8 @@ Template.weibo.onRendered(function () {
                     }
                 })
         })
+    }
+
 }
 );
 

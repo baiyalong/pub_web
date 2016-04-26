@@ -14,7 +14,14 @@ Meteor.startup(function () {
 
     var config = WeiboConfig.findOne();
     if (config && config.autoPublish)
-        Meteor.call(config.autoPublish ? 'weiboCronStart' : 'weiboCronStop')
+        Meteor.call('weiboCronStart')
+
+
+
+
+
+
+
     //
     //    //admin user
     //    if (Meteor.users.find().count() == 0) {
