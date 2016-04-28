@@ -31,7 +31,7 @@ Meteor.methods({
     areaList: function (params) {
         {
             var areaIdList = params.ids;
-            areaIdList = areaIdList ? areaIdList.split('-').map((e) => {
+            areaIdList = areaIdList ? areaIdList.split('-').map(function (e) {
                 return Math.floor(Number(e) / 100) * 100;
             }) : null;
 
@@ -98,7 +98,7 @@ Meteor.methods({
             });
 
             if (areaIdList) {
-                res = res.filter((e) => {
+                res = res.filter(function (e) {
                     return areaIdList.indexOf(e.cityCode) != -1;
                 })
             }
