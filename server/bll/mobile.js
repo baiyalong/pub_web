@@ -226,6 +226,7 @@ BLL.mobile = {
     //    真实数据
     if (real) {
       res.aqi = filter('AQI', Number(real.AQI));
+      res.updateTime = moment(real.TimePoint).format('YYYY-MM-DD HH:mm:ss')
       res.primaryPollutant = Meteor.call('primaryPollutant_filter', real.PrimaryPollutant);
       res.healthyAdviceList = healthyAdrr(Number(real.AQI))
       res.pollutantLevel = [{
