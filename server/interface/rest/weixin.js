@@ -30,7 +30,7 @@ Api.addRoute('areaList', {
 Meteor.methods({
     areaList: function (params) {
         {
-            var areaIdList = params.ids;
+            var areaIdList = params ? params.ids : null;
             areaIdList = areaIdList ? areaIdList.split('-').map(function (e) {
                 return Math.floor(Number(e) / 100) * 100;
             }) : null;
