@@ -858,6 +858,8 @@ BLL.mobile = {
         e.NO2 = filter('NO2', avg('NO2', sum['NO2']));
         e.CO = filter('CO', avg('CO', sum['CO'] * 1000));
         return e;
+      }).filter(function(e){
+        return e!=null;
       }).sort(function (a, b) {
         return a.aqi - b.aqi;
       })
