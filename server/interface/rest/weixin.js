@@ -27,6 +27,44 @@ Api.addRoute('areaList', {
     }
 })
 
+Api.addRoute('areaDetailList', {
+    get: function () {
+        var areaIdList = this.queryParams ? this.queryParams.ids : null;
+        areaIdList = areaIdList ? areaIdList.split('-') : null;
+        if (!areaIdList)
+            return { err: 'err params !' }
+        else
+            return areaIdList.map(function (e) {
+                return BLL.mobile.areaDetail(e);
+            })
+
+    }
+})
+
+Api.addRoute('areaDetailList2', {
+    get: function () {
+        var areaIdList = this.queryParams ? this.queryParams.ids : null;
+        areaIdList = areaIdList ? areaIdList.split('-').map(function (e) { return Number(e); }) : null;
+        if (!areaIdList)
+            return { err: 'err params !' }
+        else
+            return areaIdList.map(function (e) {
+                var areaDetail = BLL.mobile.areaDetail(e);
+                areaDetail.areaCode = areaDetail.areaId;
+                var cityCode = Math.floor(areaDetail.areaCode / 100) * 100;
+                var city = {
+                    cityCode: cityCode,
+                    cityName: Area.findOne({ code: cityCode }).name,
+                    weather: areaDetail.weather,
+                    temperature: areaDetail.temperature,
+                    areaList: [areaDetail]
+                }
+
+                return city;
+            })
+    }
+})
+
 Meteor.methods({
     areaList: function (params) {
         {
