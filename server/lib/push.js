@@ -5,7 +5,7 @@
 //Push = {}
 
 Push2Android = {
-    path: "http://127.0.0.1:8989/MQTT/send_mqtt.php"
+    path: "http://127.0.0.1:8787/MQTT/send_mqtt.php"
 }
 
 
