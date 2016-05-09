@@ -607,7 +607,8 @@ BLL.mobile = {
               res.timestamp = moment(data.MONITORTIME).format('YYYY-MM-DD');
               res.airQualityLevel = data['TYPENAME'];
               res.primaryPollutant = Meteor.call('primaryPollutant_filter', data['PRIMARYPOLLUTANT']);
-              res.healthAdvice = data['DESCRIPTION'];
+              //res.healthAdvice = data['DESCRIPTION'];
+              res.healthAdvice = healthAdvice(Number(data['AQI']));
             }
             return res;
           }).filter(function (e) { return e })
