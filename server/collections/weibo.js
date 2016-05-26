@@ -86,8 +86,8 @@ Meteor.publish('weiboConfig', function () {
     return WeiboConfig.find();
 })
 
-Meteor.publish('weiboRecord', function () {
-    return WeiboRecord.find();
+Meteor.publish('weiboRecord', function (page, count) {
+    return WeiboRecord.find({}, { sort: { date: -1 }, skip: (page - 1) * count, limit: count });
 })
 
 

@@ -25,6 +25,7 @@ DataStationHourly.allow({
 
 Meteor.publish('dataStationHourlyReSyncRecord', function(page, count) {
     return DataStationHourlyReSyncRecord.find({}, { sort: { tStart: -1 }, skip: (page - 1) * count, limit: count })
+    
 })
 
 DataStationHourlyReSyncRecord.allow({

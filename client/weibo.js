@@ -10,7 +10,7 @@ Template.weibo.helpers({
         return WeiboConfig.findOne()
     },
     recordList: function () {
-        return WeiboRecord.find()
+        return WeiboRecord.find({}, { $sort: { date: -1 } })
     },
     auth_status: function () {
         var config = WeiboConfig.findOne()
