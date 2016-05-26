@@ -806,7 +806,7 @@ BLL.mobile = {
         return e;
       }).sort(function (a, b) {
         return a.aqi - b.aqi;
-      })
+      }).filter(function(e){return e!=null;})
     }
     else {
       list = DataCityDaily.findOne({}, { sort: { MONITORTIME: -1 } })
