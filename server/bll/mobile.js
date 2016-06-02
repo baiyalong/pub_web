@@ -741,6 +741,197 @@ BLL.mobile = {
       CO: fun(103)
     }
   },
+
+
+  rankList: function (param) {
+    var limit = (function () {
+      var arr = Pollutant.find({ limit: { $exists: true } }, { sort: { pollutantCode: 1 } }).fetch();
+      var fun = function (code) {
+        return arr.filter(function (e) {
+          return e.pollutantCode == code
+        })[0].limit;
+      }
+      return {
+        AQI: fun(90),
+        'PM2.5': fun(105),
+        PM10: fun(104),
+        O3: fun(102),
+        SO2: fun(100),
+        NO2: fun(101),
+        CO: fun(103)
+      }
+    })();
+    function filter(name, value) {
+      if (value === null || isNaN(value)) value = 0;
+      var res = Math.min(value, limit[name])
+      return Math.max(res, 0)
+    }
+    var area = Area.find({ code: { $not: { $mod: [1000, 0] } } }).fetch();
+    var res = area.filter(function (e) { return e.code % 100 == 0 }).map(function (e) {
+      var county = area.filter(function (ee) { return ee.code % e.code < 100 })[1];//主城区
+      if (e.code == 152500) county = area.filter(function (ee) { return ee.code % e.code < 100 })[2];//锡林郭勒
+      return {
+        cityCode: e.code,
+        cityName: e.name,
+        countyCode: county.code,
+        countyName: county.name
+      }
+    })
+    var list = null;
+    if (param == 'now') {
+      list = DataCityHourly.findOne({}, { sort: { TimePoint: -1 } })
+      list = DataCityHourly.find({
+        TimePoint: {
+          $gt: (function () {
+            var date = new Date(list.TimePoint);
+            date.setMinutes(date.getMinutes() - 1);
+            return date;
+          })()
+        }
+      }, {}).map(function (e) { e.code = e.CityCode; return e; })
+      res = res.map(function (e) {
+        var data = list.filter(function (ee) { return ee.code == e.cityCode; });
+        if (!data || data.length == 0) return;
+        data = data[0];
+        e.aqi = filter('AQI', Number(data['AQI']));
+        e.PM25 = filter('PM2.5', Number(data['PM2_5']));
+        e.PM10 = filter('PM10', Number(data['PM10']));
+        e.O3 = filter('O3', Number(data['O3']));
+        e.SO2 = filter('SO2', Number(data['SO2']));
+        e.NO2 = filter('NO2', Number(data['NO2']));
+        e.CO = filter('CO', Math.floor(Number(data['CO']) * 1000));
+        return e;
+      }).sort(function (a, b) {
+        return a.aqi - b.aqi;
+      }).filter(function (e) { return e != null; })
+    } else if (param == 'lastMonth') {
+      var dateFrom = (function () {
+        var date = new Date();
+        date.setHours(0);
+        date.setMinutes(0);
+        date.setSeconds(0);
+        date.setDate(1);
+        date.setMonth(date.getMonth() - 1);
+        return date;
+      })();
+      var dateTo = (function () {
+        var date = new Date(dateFrom);
+        date.setMonth(date.getMonth() + 1);
+        return date;
+      })();
+      var dateRange = (function () {
+        return Math.floor((dateTo - dateFrom) / 1000 / 60 / 60 / 24)
+      })()
+      list = DataCityDaily.findOne({}, { sort: { MONITORTIME: -1 } })
+      list = DataCityDaily.find({ MONITORTIME: { $gt: dateFrom, $lt: dateTo } }, {}).map(function (e) { e.code = Number(e.CITYCODE); return e; })
+      res = res.map(function (e) {
+        var data = list.filter(function (ee) { return ee.code == e.cityCode; });
+        if (!data || data.length == 0) return;
+        var arr = ['AQI', 'PM2_5', 'PM10', 'O3_8H', 'SO2', 'NO2', 'CO']
+        var avg_count = {}
+        arr.forEach(function (e) {
+          avg_count[e] = 0
+        })
+        var sum = data.map(function (e, i, a) {
+          var res = {}
+          arr.forEach(function (ee) {
+            if (e[ee] <= 0) avg_count[ee]++;
+            var name = '';
+            if (ee == 'PM2_5') name = 'PM2.5';
+            else if (ee == 'O3_8H') name = 'O3';
+            else name = ee;
+            res[ee] = filter(name, e[ee])
+          })
+          return res;
+        }).reduce(function (p, c, i, a) {
+          var res = {}
+          arr.forEach(function (e) {
+            res[e] = p[e] + c[e]
+          })
+          return res;
+        })
+        var avg = function (name, sum) { return Math.round(sum / (Number(dateRange) - avg_count[name])) }
+        e.aqi = filter('AQI', avg('AQI', sum['AQI']));
+        e.PM25 = filter('PM2.5', avg('PM2_5', sum['PM2_5']));
+        e.PM10 = filter('PM10', avg('PM10', sum['PM10']));
+        e.O3 = filter('O3', avg('O3_8H', sum['O3_8H']));
+        e.SO2 = filter('SO2', avg('SO2', sum['SO2']));
+        e.NO2 = filter('NO2', avg('NO2', sum['NO2']));
+        e.CO = filter('CO', avg('CO', sum['CO'] * 1000));
+        return e;
+      }).filter(function (e) {
+        return e != null;
+      }).sort(function (a, b) {
+        return a.aqi - b.aqi;
+      })
+    } else if (param == 'lastQuarter') {
+      var dateFrom = (function () {
+        var date = new Date();
+        date.setHours(0);
+        date.setMinutes(0);
+        date.setSeconds(0);
+        date.setDate(1);
+        var month = date.getMonth();
+        var monthBefore = 3 + month % 3;
+        date.setMonth(date.getMonth() - monthBefore);
+        return date;
+      })();
+      var dateTo = (function () {
+        var date = new Date(dateFrom);
+        date.setMonth(date.getMonth() + 3);
+        return date;
+      })();
+      var dateRange = (function () {
+        return Math.floor((dateTo - dateFrom) / 1000 / 60 / 60 / 24)
+      })()
+      list = DataCityDaily.findOne({}, { sort: { MONITORTIME: -1 } })
+      list = DataCityDaily.find({ MONITORTIME: { $gt: dateFrom, $lt: dateTo } }, {}).map(function (e) { e.code = Number(e.CITYCODE); return e; })
+      res = res.map(function (e) {
+        var data = list.filter(function (ee) { return ee.code == e.cityCode; });
+        if (!data || data.length == 0) return;
+        var arr = ['AQI', 'PM2_5', 'PM10', 'O3_8H', 'SO2', 'NO2', 'CO']
+        var avg_count = {}
+        arr.forEach(function (e) {
+          avg_count[e] = 0
+        })
+        var sum = data.map(function (e, i, a) {
+          var res = {}
+          arr.forEach(function (ee) {
+            if (e[ee] <= 0) avg_count[ee]++;
+            var name = '';
+            if (ee == 'PM2_5') name = 'PM2.5';
+            else if (ee == 'O3_8H') name = 'O3';
+            else name = ee;
+            res[ee] = filter(name, e[ee])
+          })
+          return res;
+        }).reduce(function (p, c, i, a) {
+          var res = {}
+          arr.forEach(function (e) {
+            res[e] = p[e] + c[e]
+          })
+          return res;
+        })
+        var avg = function (name, sum) { return Math.round(sum / (Number(dateRange) - avg_count[name])) }
+        e.aqi = filter('AQI', avg('AQI', sum['AQI']));
+        e.PM25 = filter('PM2.5', avg('PM2_5', sum['PM2_5']));
+        e.PM10 = filter('PM10', avg('PM10', sum['PM10']));
+        e.O3 = filter('O3', avg('O3_8H', sum['O3_8H']));
+        e.SO2 = filter('SO2', avg('SO2', sum['SO2']));
+        e.NO2 = filter('NO2', avg('NO2', sum['NO2']));
+        e.CO = filter('CO', avg('CO', sum['CO'] * 1000));
+        return e;
+      }).filter(function (e) {
+        return e != null;
+      }).sort(function (a, b) {
+        return a.aqi - b.aqi;
+      })
+    } else {
+      res = { err: 'error params！' }
+    }
+    return res;
+  },
+
   rank: function (day) {
     var day = Number(day)
     if (isNaN(day) || [0, 30, 60, 90].indexOf(day) == -1) return { err: 'error param !' }
@@ -806,7 +997,7 @@ BLL.mobile = {
         return e;
       }).sort(function (a, b) {
         return a.aqi - b.aqi;
-      }).filter(function(e){return e!=null;})
+      }).filter(function (e) { return e != null; })
     }
     else {
       list = DataCityDaily.findOne({}, { sort: { MONITORTIME: -1 } })
@@ -859,13 +1050,15 @@ BLL.mobile = {
         e.NO2 = filter('NO2', avg('NO2', sum['NO2']));
         e.CO = filter('CO', avg('CO', sum['CO'] * 1000));
         return e;
-      }).filter(function(e){
-        return e!=null;
+      }).filter(function (e) {
+        return e != null;
       }).sort(function (a, b) {
         return a.aqi - b.aqi;
       })
     }
   },
+
+
   terminalStatus: function (req) {
     //console.log('req,', req)
     if (req && req.ID && req.ID != '(null)' && req.OS) {

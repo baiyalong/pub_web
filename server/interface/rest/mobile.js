@@ -59,6 +59,12 @@ Api.addRoute('rank/:day', {
     }
 })
 
+Api.addRoute('rankList/:param', {
+    get: function () {
+        return BLL.mobile.rankList(this.urlParams.param);
+    }
+})
+
 Api.addRoute('terminalStatus/', {
     post: function () {
         //console.log(this.bodyParams)
