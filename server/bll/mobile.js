@@ -932,6 +932,7 @@ BLL.mobile = {
     return res;
   },
 
+
   rank: function (day) {
     var day = Number(day)
     if (isNaN(day) || [0, 30, 60, 90].indexOf(day) == -1) return { err: 'error param !' }
@@ -1115,3 +1116,13 @@ Meteor.methods({
     return primaryPollutant;
   }
 })
+
+
+
+
+//----------cache---------------------
+
+Cache['rankList/now'] = BLL.mobile.rankList('now');
+Cache['rankList/lastMonth'] = BLL.mobile.rankList('lastMonth');
+Cache['rankList/lastQuarter'] = BLL.mobile.rankList('lastQuarter');
+//----------------------------------------------------------------

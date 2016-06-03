@@ -61,7 +61,9 @@ Api.addRoute('rank/:day', {
 
 Api.addRoute('rankList/:param', {
     get: function () {
-        return BLL.mobile.rankList(this.urlParams.param);
+        var key = 'rankList/' + this.urlParams.param;
+        if (!Cache[key]) Cache[key] = BLL.mobile.rankList(this.urlParams.param);
+        return Cache[key];
     }
 })
 
@@ -77,3 +79,17 @@ Api.addRoute('airForecast', {
         return BLL.mobile.airForecast();
     }
 })
+
+
+
+
+//-----------cache---------------------------
+Api.addRoute('makeCache/rankList/:param', {
+    get: function () {
+        var key = 'rankList/' + this.urlParams.param;
+        Cache[key] = BLL.mobile.rankList(this.urlParams.param);
+        console.log(new Date(), 'make cache ', key, Cache[key])
+        return Cache[key]
+    }
+})
+

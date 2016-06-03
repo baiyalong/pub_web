@@ -1,17 +1,17 @@
 mysql = {
-    DataSationHourlyReSync: function(date) {
+    DataSationHourlyReSync: function (date) {
         var f = new Future();
-        mysqlPool.getConnection(function(err, connection) {
+        mysqlPool.getConnection(function (err, connection) {
             connection.query(
                 'select * from T_ENV_AUTOMONI_AIRDATA_HOUR_S where datediff(MONITORTIME,?)=0 order by MONITORTIME;',
                 [date],
-                function(err, rows) {
+                function (err, rows) {
                     connection.release();
                     f.return(rows);
                 })
         })
         var data = f.wait();
-        data.forEach(function(e) {
+        data.forEach(function (e) {
             var update = {
                 stationCode: Number(e.POINTCODE),
                 monitorTime: e.MONITORTIME
@@ -23,20 +23,20 @@ mysql = {
             }, { $set: update })
         })
     },
-    syncDataStationHourly: function() {
+    syncDataStationHourly: function () {
         var t = DataStationHourly.findOne({}, { sort: { monitorTime: -1 } }).monitorTime;
         var f = new Future();
-        mysqlPool.getConnection(function(err, connection) {
+        mysqlPool.getConnection(function (err, connection) {
             connection.query(
                 'select * from T_ENV_AUTOMONI_AIRDATA_HOUR_S where MONITORTIME > ? order by MONITORTIME;',
                 [t],
-                function(err, rows) {
+                function (err, rows) {
                     connection.release();
                     f.return(rows);
                 })
         })
         var data = f.wait();
-        data.forEach(function(e) {
+        data.forEach(function (e) {
             var update = {
                 stationCode: Number(e.POINTCODE),
                 monitorTime: e.MONITORTIME
@@ -48,73 +48,86 @@ mysql = {
             }, { $set: update })
         })
     },
-    syncDataStationDaily: function() {
+    syncDataStationDaily: function () {
         var t = DataStationDaily.findOne({}, { sort: { MONITORTIME: -1 } }).MONITORTIME;
         var f = new Future();
-        mysqlPool.getConnection(function(err, connection) {
+        mysqlPool.getConnection(function (err, connection) {
             connection.query(
                 'select * from AIR_STATIONDAY_AQI_SRC where MONITORTIME > ? order by MONITORTIME;',
                 [t],
-                function(err, rows) {
+                function (err, rows) {
                     connection.release();
                     f.return(rows);
                 })
         })
         var data = f.wait();
-        data.forEach(function(e) {
+        data.forEach(function (e) {
             DataStationDaily.insert(e);
         })
     },
-    syncDataCityHourly: function() {
+    syncDataCityHourly: function () {
         var t = DataCityHourly.findOne({}, { sort: { TimePoint: -1 } })
         if (t) t = t.TimePoint;
         else return false;
         var f = new Future();
-        mysqlPool.getConnection(function(err, connection) {
+        mysqlPool.getConnection(function (err, connection) {
             connection.query(
                 'select * from AIR_CITYHOUR_AQI_DATA where TimePoint > ? order by TimePoint;',
                 [t],
-                function(err, rows) {
+                function (err, rows) {
                     connection.release();
                     f.return(rows);
                 })
         })
         var data = f.wait();
-        data.forEach(function(e) {
+        data.forEach(function (e) {
             DataCityHourly.insert(e);
         })
+        if (data && data.length != 0) {
+            HTTP.call('GET', 'http://localhost:4000/api/makeCache/rankList/now', function (err, res) {
+                console.log(new Date(), 'call make cache ', 'http://localhost:4000/api/makeCache/rankList/now', err, res)
+            })
+        }
     },
-    syncDataCityDaily: function() {
+    syncDataCityDaily: function () {
         var t = DataCityDaily.findOne({}, { sort: { MONITORTIME: -1 } }).MONITORTIME;
         var f = new Future();
-        mysqlPool.getConnection(function(err, connection) {
+        mysqlPool.getConnection(function (err, connection) {
             connection.query(
                 'select * from AIR_CITYDAY_AQI_SRC where MONITORTIME > ? order by MONITORTIME;',
                 [t],
-                function(err, rows) {
+                function (err, rows) {
                     connection.release();
                     f.return(rows);
                 })
         })
         var data = f.wait();
-        data.forEach(function(e) {
+        data.forEach(function (e) {
             DataCityDaily.insert(e);
         })
+        if (data && data.length != 0) {
+            HTTP.call('GET', 'http://localhost:4000/api/makeCache/rankList/lastMonth', function (err, res) {
+                console.log(new Date(), 'call make cache ', 'http://localhost:4000/api/makeCache/rankList/lastMonth', err, res)
+            })
+            HTTP.call('GET', 'http://localhost:4000/api/makeCache/rankList/lastQuarter', function (err, res) {
+                console.log(new Date(), 'call make cache ', 'http://localhost:4000/api/makeCache/rankList/lastQuarter', err, res)
+            })
+        }
     },
-    syncDataAirForecast: function() {
+    syncDataAirForecast: function () {
         var t = DataAirForecast.findOne({}, { sort: { publishtime: -1 } }).publishtime;
         var f = new Future();
-        mysqlPool.getConnection(function(err, connection) {
+        mysqlPool.getConnection(function (err, connection) {
             connection.query(
                 'select * from T_AIR_FORECAST_NMINFO where publishtime > ? order by publishtime;',
                 [t],
-                function(err, rows) {
+                function (err, rows) {
                     connection.release();
                     f.return(rows);
                 })
         })
         var data = f.wait();
-        data.forEach(function(e) {
+        data.forEach(function (e) {
             DataAirForecast.insert(e);
         })
     }
