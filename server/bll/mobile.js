@@ -272,7 +272,7 @@ BLL.mobile = {
         if (aqiType == 90) return 'AQI';
         if (aqiType == 100) return 'SO2';
         if (aqiType == 101) return 'NO2';
-        if (aqiType == 102) return 'O3_1H';
+        if (aqiType == 102) return 'O3_8H';
         if (aqiType == 103) return 'CO';
         if (aqiType == 104) return 'PM10';
         if (aqiType == 105) return 'PM2_5';
@@ -599,7 +599,7 @@ BLL.mobile = {
                 aqi: filter('AQI', Number(data['AQI'])),
                 PM25: filter('PM2.5', Number(data['PM2_5'])),
                 PM10: filter('PM10', Number(data['PM10'])),
-                O3: filter('O3', Number(data['O3_1H'])),
+                O3: filter('O3', Number(data['O3_8H'])),
                 SO2: filter('SO2', Number(data['SO2'])),
                 NO2: filter('NO2', Number(data['NO2'])),
                 CO: filter('CO', Math.floor(Number(data['CO']) * 1000)),

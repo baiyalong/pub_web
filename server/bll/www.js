@@ -137,7 +137,7 @@ BLL.www = {
                             value: (function () {
                                 var res = 0;
                                 if (e == 'PM2.5') res = ee['PM2_5'];
-                                else if (e == 'O3') res = ee['O3_1H'];
+                                else if (e == 'O3') res = ee['O3_8H'];
                                 else if (e == 'CO') res = Number(ee['CO']) * 1000;
                                 else res = ee[e];
                                 return filter(e, res);
