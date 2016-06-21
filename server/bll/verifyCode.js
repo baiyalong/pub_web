@@ -4,7 +4,7 @@ VerifyCode.Dict = {}
 VerifyCode.getVerifyCode = function (connection) {
     var rand = parseInt(Math.random() * 9000 + 1000)
     if (VerifyCode.Dict[connection]) {
-        if (VerifyCode.Dict[connection].length >= 2) VerifyCode.Dict[connection].shift()
+        //if (VerifyCode.Dict[connection].length >= 2) VerifyCode.Dict[connection].shift()
         VerifyCode.Dict[connection].push(rand)
     } else {
         VerifyCode.Dict[connection] = [rand];
