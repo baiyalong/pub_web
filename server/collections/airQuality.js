@@ -6,32 +6,37 @@ AirQuality.attachSchema(new SimpleSchema({
     date: {
         type: Date
     },
-    cityCode:{
-        type:Number
-    },
-    cityName:{
-        type:String
-    },
-    areaCode: {
+    cityCode: {
         type: Number
     },
-    areaName:{
-        type:String
+    cityName: {
+        type: String
+    },
+    areaCode: {
+        type: Number,
+        optional: true
+    },
+    areaName: {
+        type: String,
+        optional: true
     },
     statusCode: {
         type: Number
     },
-    statusName:{
-        type:String
-    },
-    applyUserName: {
+    statusName: {
         type: String
     },
+    applyUserName: {
+        type: String,
+        optional: true
+    },
     applyTimestamp: {
-        type: Date
+        type: Date,
+        optional: true
     },
     applyContent: {
-        type: Object
+        type: Object,
+        optional: true
     },
     "applyContent.detail": {
         type: [Object]
@@ -115,7 +120,7 @@ AirQuality.allow({
         return true;
     }
 }
-    )
+)
 DataAirQuality.allow({
     insert: function () {
         return true
@@ -127,37 +132,39 @@ DataAirQuality.allow({
         return true;
     }
 })
-Meteor.publish('airQuality', function(page,count,filter) {
-    if(!filter)filter = {}
-    return AirQuality.find(filter, { sort: { date: -1 },skip:(page-1)*count, limit: count });
+Meteor.publish('airQuality', function (page, count, filter) {
+    if (!filter) filter = {}
+    return AirQuality.find(filter, { sort: { date: -1 }, skip: (page - 1) * count, limit: count });
 })
-Meteor.publish('dataAirQuality', function() {
+Meteor.publish('dataAirQuality', function () {
     return DataAirQuality.find();
 })
 
 Meteor.methods({
-    'airQuality_pages':function(count,filter){
-        if(!filter)filter = {}
-        return Math.round(AirQuality.find(filter).count()/count)
+    'airQuality_pages': function (count, filter) {
+        if (!filter) filter = {}
+        return Math.round(AirQuality.find(filter).count() / count)
     },
     'removeAirQuality': function (id, real) {
-        var areaCode = AirQuality.findOne({ _id: id }).areaCode;
+        var cityCode = AirQuality.findOne({ _id: id }).cityCode;
         AirQuality.remove({ _id: id })
         if (real) {
-            DataAirQuality.remove({ areaCode: areaCode, date: { $gt: new Date() } })
+            DataAirQuality.remove({ cityCode: cityCode, date: { $gt: new Date() } })
         }
-        
+
     },
-    'applyAirQuality':function(data){
-        AirQuality.upsert({ areaCode: data.areaCode, date: { $gte: (function(){
-                var d = new Date(data.date);
-                d.setSeconds(d.getSeconds()-1);
-                return d;
-            })(), $lte: (function(){
-                var d = new Date(data.date);
-                d.setSeconds(d.getSeconds()+1);
-                return d;
-            })() } }, { $set: data })
+    'applyAirQuality': function (data) {
+        AirQuality.update({
+            cityCode: data.cityCode, date: {
+                $gte: (function () {
+                    var d = new Date();
+                    d.setHours(2);
+                    d.setMinutes(0);
+                    d.setSeconds(0);
+                    return d;
+                })()
+            }
+        }, { $set: data })
     },
     'auditAirQuality': function (id, update) {
         AirQuality.update({ _id: id }, { $set: update })
@@ -185,7 +192,7 @@ Meteor.methods({
         //                 visibility:e.visibility
         //                 } })
         //     })
-            
+
         //     var date = ds(audit.date)
         //     DataAirQuality.upsert({ areaCode: audit.areaCode, date: { $gt: date.d1, $lt: date.d2 } },
         //         { $set: { 
@@ -193,26 +200,32 @@ Meteor.methods({
         //             areaCode: audit.areaCode, 
         //             description: audit.applyContent.description 
         //         } })
-// 
+        // 
         // }
     },
-    'publishAirQuality':function(){
+    'publishAirQuality': function () {
         //点击发布按钮，DataAirQuality清空，通过审核的AirQuality更新到DataAirQuality
         //前台接口部分展示DataAirQuality所有数据
-        
+
         DataAirQuality.remove({});
-        AirQuality.find({statusCode:{$gte:1},date:{$gt:(function(){
-            var d = new Date();
-            d.setDate(d.getDate()-1);
-            return d;
-        })()}}).forEach(function(audit) {
-            
-            AirQuality.update({_id:audit._id},{$set:{
-                statusCode:2,
-                statusName:'已发布'
-            }})
-            
-            audit.applyContent.detail.forEach(function(e) {
+        AirQuality.find({
+            statusCode: { $gte: 1 }, date: {
+                $gt: (function () {
+                    var d = new Date();
+                    d.setDate(d.getDate() - 1);
+                    return d;
+                })()
+            }
+        }).forEach(function (audit) {
+
+            AirQuality.update({ _id: audit._id }, {
+                $set: {
+                    statusCode: 2,
+                    statusName: '已发布'
+                }
+            })
+
+            audit.applyContent.detail.forEach(function (e) {
                 DataAirQuality.insert({
                     date: e.date,
                     areaCode: audit.areaCode,
@@ -225,8 +238,38 @@ Meteor.methods({
             DataAirQuality.insert({
                 date: audit.date,
                 areaCode: audit.areaCode,
-                description: audit.applyContent.description||''
+                description: audit.applyContent.description || ''
             })
+        })
+    },
+    'initAirQuality': function () {
+        var date = new Date();
+        var city = Area.find({
+            $and: [{
+                code: {
+                    $mod: [100, 0]
+                }
+            }, {
+                    code: {
+                        $not: {
+                            $mod: [10000, 0]
+                        }
+                    }
+                }]
+        }, { sort: { code: 1 }, fields: { code: 1, name: 1 } }).fetch()
+
+        var init = city.map(function (e) {
+            return {
+                date: date,
+                cityCode: e.code,
+                cityName: e.name,
+                statusCode: -2,
+                statusName: '未提交'
+            }
+        })
+
+        init.forEach(function (e) {
+            AirQuality.insert(e)
         })
     }
 })

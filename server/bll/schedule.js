@@ -4,6 +4,19 @@
 //////��ʱ����
 ////
 ////
+scheduleJobs.airQualityInit = {
+  schedule: function (parser) {
+    //return parser.text('at 2:00 am');
+    return parser.text('at 2:00 am');
+  },
+  job: function () {
+    console.log('initAirQuality start at :', new Date())
+    Meteor.call('initAirQuality', function (err, res) {
+      console.log('initAirQuality end at :', new Date(), err, res)
+    });
+  }
+}
+
 scheduleJobs.weather = {
   schedule: function (parser) {
     //return parser.text('at 2:00 am');
@@ -60,4 +73,4 @@ scheduleJobs.syncDataAirForecast = {
     mysql.syncDataAirForecast();
   }
 }
-  
+

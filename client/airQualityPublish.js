@@ -3,7 +3,7 @@
  */
 
 Template.airQualityPublish.helpers({
-    airQualityModel:function(){
+    airQualityModel: function () {
         return Session.get('airQualityModel')
     },
     // getPrimaryPollutant: function (primaryPollutant) {
@@ -19,39 +19,44 @@ Template.airQualityPublish.helpers({
         return moment(date).format('MM-DD')
     },
     airQualityList: function () {
-        return AirQuality.find({cityCode:Number(Session.get('cityCode')),date:{$lt:(function(){
-            var d = new Date();
-            d.setDate(d.getDate()-1);
-            return d;
-        })()}}, { sort: { date: -1 } })
+        return AirQuality.find({
+            cityCode: Number(Session.get('cityCode')), date: {
+                $lt: (function () {
+                    var d = new Date();
+                    d.setDate(d.getDate() - 1);
+                    return d;
+                })()
+            }
+        }, { sort: { date: -1 } })
     },
     statusColor: function (statusCode) {
-        if(statusCode)
-            return statusCode >= 1 ? 'green' : statusCode == -1 ? 'red' : '';
-        var applied = Session.get('airQuality');
-        if (applied) {
-            var statusCode = applied.statusCode;
-            return statusCode >= 1 ? 'green' : statusCode == -1 ? 'red' : '';
+        var dict = {
+            '-2': 'DarkGray',//未提交
+            '-1': 'DarkRed',//退回修改
+            '0': 'Darkorange',//已提交未审核
+            '1': 'DarkGoldenRod',//审核通过
+            '2': 'DarkGreen',//已发布
         }
+        return dict[statusCode]
     },
-    auditOption:function(){
+    auditOption: function () {
         var applied = Session.get('airQuality');
-        if(applied)return applied.auditOption;
+        if (applied) return applied.auditOption;
     },
-    description:function(){
+    description: function () {
         var applied = Session.get('airQuality');
-        if(applied)return applied.applyContent.description;
+        if (applied) return applied.applyContent.description;
     },
     selectPrimaryPollutant: function (name) {
         return [{ code: 0, name: '--请选择--' },
-            {code:-1,name:'-'},
+            { code: -1, name: '-' },
             { code: 1, name: 'SO₂' },
             { code: 2, name: 'NO₂' },
             { code: 3, name: 'O₃' },
             { code: 4, name: 'CO' },
             { code: 5, name: 'PM10' },
             { code: 6, name: 'PM2.5' },
-            ]
+        ]
             .map(function (e) {
                 if (e.name == name)
                     e.selected = 'selected'
@@ -80,7 +85,7 @@ Template.airQualityPublish.helpers({
     forecastList: function () {
         var applied = Session.get('airQuality');
         var line = Session.get('showLine') || 1;
-        if(applied){
+        if (applied) {
             // line = applied.applyContent.detail.length;
             // Session.set('showLine',line)
         }
@@ -107,9 +112,9 @@ Template.airQualityPublish.helpers({
                 })()
             }
             var data = null;
-            if(applied){
-                data = applied.applyContent.detail[n-1]
-            }else{
+            if (applied) {
+                data = applied.applyContent.detail[n - 1]
+            } else {
                 var date = new Date();
                 date.setDate(date.getDate() + n);
                 date.setHours(0);
@@ -119,7 +124,7 @@ Template.airQualityPublish.helpers({
                 d1.setSeconds(d1.getSeconds() - 1);
                 var d2 = new Date(date);
                 d2.setSeconds(d2.getSeconds() + 1);
-                data = DataAirQuality.findOne({ areaCode: areaCode, date: { $gte: d1, $lte: d2 },description:{$exists:false} })
+                data = DataAirQuality.findOne({ areaCode: areaCode, date: { $gte: d1, $lte: d2 }, description: { $exists: false } })
             }
             if (data) {
                 res.primaryPollutant = data.primaryPollutant;
@@ -136,13 +141,13 @@ Template.airQualityPublish.helpers({
     today: function () {
         return moment(new Date()).format('YYYY-MM-DD')
     },
-    currentStatus: function () {
-            var applied = Session.get('airQuality');
-            var res = '草稿'
-            if(applied){
-                res = applied.statusName;
-            }
-            return res; 
+    currentStatusCode: function () {
+        var applied = Session.get('airQuality');
+        return applied && applied.statusCode || 0;
+    },
+    currentStatusName: function () {
+        var applied = Session.get('airQuality');
+        return applied && applied.statusName || '草稿';
     },
     cityList: function () {
         return Area.find({ $and: [{ code: { $mod: [100, 0] } }, { code: { $not: { $mod: [10000, 0] } } }] }, { sort: { code: 1 } });
@@ -164,14 +169,14 @@ Template.airQualityPublish.helpers({
 });
 
 Template.airQualityPublish.events({
-    'click .detail':function(e,t){
-        Session.set('airQualityModel',this)
+    'click .detail': function (e, t) {
+        Session.set('airQualityModel', this)
         t.$('#airQualityDetailModal').modal()
     },
-    'change .airQualityIndex': function(e, t) {
-       // var aqi = t.$(this).find('input.airQualityIndex').val().trim();
-       var aqi = e.target.value;
-    //    console.log(aqi)
+    'change .airQualityIndex': function (e, t) {
+        // var aqi = t.$(this).find('input.airQualityIndex').val().trim();
+        var aqi = e.target.value;
+        //    console.log(aqi)
         if (!/\d-\d/.test(aqi)) return;
         var arr = aqi.split('-');
         var min = parseInt(arr[0]), max = parseInt(arr[1]);
@@ -210,18 +215,18 @@ Template.airQualityPublish.events({
             { code: 11, name: '严重污染' }];
 
         $(e.target.parentNode.parentNode).find('select.airIndexLevel')
-        .val(text.filter(function(e) { return e.code == res })[0].name)
+            .val(text.filter(function (e) { return e.code == res })[0].name)
 
-        if(res==1)
+        if (res == 1)
             $(e.target.parentNode.parentNode).find('select.primaryPollutant').val('-')
-        
+
     },
     // 'blur .aqiMin':function(e,t){
     //    var min = t.$(this).find('input.aqiMin').val().trim();
     //    console.log(min)
     // },
     // 'blur .aqiMax':function(e,t){
-        
+
     // },
     'click .add': function () {
         var line = Session.get('showLine') || 1;
@@ -257,7 +262,7 @@ Template.airQualityPublish.events({
         // // }
         var err = false;
         var data = {
-            date: (function () { var date = new Date(); date.setHours(0); date.setMinutes(0); date.setSeconds(0); return date; })(),
+            // date: (function () { var date = new Date(); date.setHours(0); date.setMinutes(0); date.setSeconds(0); return date; })(),
             cityCode: Number(t.$('#city').find('option:selected').val()),
             cityName: t.$('#city').find('option:selected').text(),
             areaCode: Number(t.$('#county').find('option:selected').val()),
@@ -278,13 +283,13 @@ Template.airQualityPublish.events({
                         }
                         if (line.primaryPollutant == '--请选择--' ||
                             line.airIndexLevel == '--请选择--' ||
-                            line.airQualityIndex == '' )
+                            line.airQualityIndex == '')
                             err = true;
                         res.push(line)
                     })
                     return res;
                 })(),
-                description: t.$('textarea').val().trim()||''
+                description: t.$('textarea').val().trim() || ''
             }
         }
         if (err) Util.modal('空气质量预报发布', '输入参数错误！')
@@ -375,32 +380,28 @@ Template.airQualityPublish.onRendered(function () {
     Session.set('cityCode', city)
     Session.set('areaCode', county)
     Session.set('showLine', 1)
-    
-    
-    this.autorun(function(){
-        var res = AirQuality.findOne({areaCode:Number($('#county').val()),date:{$gt:(function(){
-            var date = new Date();
-            date.setHours(0);
-            date.setMinutes(0);
-            date.setSeconds(0);
-            var d1 = new Date(date);
-            d1.setSeconds(d1.getSeconds()-1);
-            return d1;
-        }()),$lt:(function(){
-            var date = new Date();
-            date.setHours(0);
-            date.setMinutes(0);
-            date.setSeconds(0);
-            var d2 = new Date(date);
-            d2.setSeconds(d2.getSeconds()+1);
-            return d2;
-        })()}})
-        Session.set('airQuality',res)    
-        if(res)
-        Session.set('showLine', res.applyContent.detail.length)
+
+
+    this.autorun(function () {
+        var res = AirQuality.findOne({
+            areaCode: Number($('#county').val()), date: {
+                $gt: (function () {
+                    var date = new Date();
+                    date.setHours(0);
+                    date.setMinutes(0);
+                    date.setSeconds(0);
+                    var d1 = new Date(date);
+                    d1.setSeconds(d1.getSeconds() - 1);
+                    return d1;
+                } ())
+            }
+        })
+        Session.set('airQuality', res)
+        if (res)
+            Session.set('showLine', res.applyContent.detail.length)
         // console.log(res)
     })
-    
+
     //  $('.mainR').scroll(function() {
     //     var scrollValue = Session.get('scrollValue')
     //     if ($('.mainR').scrollTop() > scrollValue) {
@@ -408,12 +409,12 @@ Template.airQualityPublish.onRendered(function () {
     //         Session.set('scrollValue', scrollValue + $('.mainR').height())
     //     }
     // });
-    
-}
-    )
-;
 
-Template.airQualityPublish.onCreated(function() {
+}
+)
+    ;
+
+Template.airQualityPublish.onCreated(function () {
     Session.set('pages_method', 'airQuality_pages')
     Session.set('collection', 'airQuality')
 

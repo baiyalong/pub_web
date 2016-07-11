@@ -6,7 +6,7 @@
  */
 
 Template.airQualityReview.helpers({
-        airQualityModel:function(){
+    airQualityModel: function () {
         return Session.get('airQualityModel')
     },
     title: function () {
@@ -19,7 +19,14 @@ Template.airQualityReview.helpers({
         return statusCode == 0;
     },
     statusColor: function (statusCode) {
-        return statusCode = 1 ? 'green' : statusCode == -1 ? 'red' : '';
+        var dict = {
+            '-2': 'DarkGray',//未提交
+            '-1': 'DarkRed',//退回修改
+            '0': 'Darkorange',//已提交未审核
+            '1': 'DarkGoldenRod',//审核通过
+            '2': 'DarkGreen',//已发布
+        }
+        return dict[statusCode]
     },
     moment: function (date) {
         return moment(date).format('YYYY-MM-DD')
@@ -28,33 +35,41 @@ Template.airQualityReview.helpers({
         return moment(date).format('MM-DD')
     },
     airQualityList: function () {
-        return AirQuality.find({date:{$gt:(function(){
-            var d = new Date();
-            d.setDate(d.getDate()-1);
-            return d;
-        })()}}, { sort: { date: -1 } })
+        return AirQuality.find({
+            date: {
+                $gt: (function () {
+                    var d = new Date();
+                    d.setDate(d.getDate() - 1);
+                    return d;
+                })()
+            }
+        }, { sort: { date: -1 } })
     },
     airQualityListHistory: function () {
-        return AirQuality.find({date:{$lt:(function(){
-            var d = new Date();
-            d.setDate(d.getDate()-1);
-            return d;
-        })()}}, { sort: { date: -1 } })
+        return AirQuality.find({
+            date: {
+                $lt: (function () {
+                    var d = new Date();
+                    d.setDate(d.getDate() - 1);
+                    return d;
+                })()
+            }
+        }, { sort: { date: -1 } })
     },
-   
+
 });
 
 Template.airQualityReview.events({
-    'click .pubBtn':function(e,t){
-        Meteor.call('publishAirQuality',function(err,res){
-            if(err)
+    'click .pubBtn': function (e, t) {
+        Meteor.call('publishAirQuality', function (err, res) {
+            if (err)
                 Util.modal('空气质量预报审核', err);
-            else 
+            else
                 Util.modal('空气质量预报审核', '发布成功！');
         })
     },
-    'click .detail':function(e,t){
-        Session.set('airQualityModel',this)
+    'click .detail': function (e, t) {
+        Session.set('airQualityModel', this)
         t.$('#airQualityDetailModal').modal()
     },
     'click .audit': function (e, t) {
@@ -103,7 +118,7 @@ Template.airQualityReview.events({
     }
 });
 
-Template.airQualityReview.onRendered(function() {
+Template.airQualityReview.onRendered(function () {
     // $('.mainR').scroll(function() {
     //     var scrollValue = Session.get('scrollValue')
     //     if ($('.mainR').scrollTop() > scrollValue) {
@@ -114,8 +129,8 @@ Template.airQualityReview.onRendered(function() {
 }
 );
 
-Template.airQualityReview.onCreated(function() {
+Template.airQualityReview.onCreated(function () {
     Session.set('pages_method', 'airQuality_pages')
     Session.set('collection', 'airQuality')
-    Session.set('filter',{})
+    Session.set('filter', {})
 })
