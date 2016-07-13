@@ -384,15 +384,13 @@ Template.airQualityPublish.onRendered(function () {
 
     this.autorun(function () {
         var res = AirQuality.findOne({
-            areaCode: Number($('#county').val()), date: {
+            cityCode: Number($('#city').val()), date: {
                 $gt: (function () {
                     var date = new Date();
                     date.setHours(0);
                     date.setMinutes(0);
                     date.setSeconds(0);
-                    var d1 = new Date(date);
-                    d1.setSeconds(d1.getSeconds() - 1);
-                    return d1;
+                    return date;
                 } ())
             }
         })

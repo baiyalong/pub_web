@@ -158,7 +158,7 @@ Meteor.methods({
             cityCode: data.cityCode, date: {
                 $gte: (function () {
                     var d = new Date();
-                    d.setHours(2);
+                    d.setHours(1);
                     d.setMinutes(0);
                     d.setSeconds(0);
                     return d;
