@@ -145,11 +145,28 @@ Meteor.methods({
         if (!filter) filter = {}
         return Math.round(AirQuality.find(filter).count() / count)
     },
-    'removeAirQuality': function (id, real) {
+    'removeAirQuality': function (id, statusCode) {
         var cityCode = AirQuality.findOne({ _id: id }).cityCode;
-        AirQuality.remove({ _id: id })
-        if (real) {
-            DataAirQuality.remove({ cityCode: cityCode, date: { $gt: new Date() } })
+        // AirQuality.remove({ _id: id })
+        AirQuality.update(_id, {
+            $set: {
+                statusCode: -2,
+                statusName: '未提交',
+                applyContent: null,
+            }
+        })
+        if (statusCode == 2) {
+            DataAirQuality.remove({
+                cityCode: cityCode, date: {
+                    $gt: (function () {
+                        var d = new Date();
+                        d.setHours(1);
+                        d.setMinutes(0);
+                        d.setSeconds(0);
+                        return d;
+                    })()
+                }
+            })
         }
 
     },
