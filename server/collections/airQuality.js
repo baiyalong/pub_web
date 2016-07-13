@@ -148,7 +148,7 @@ Meteor.methods({
     'removeAirQuality': function (id, statusCode) {
         var cityCode = AirQuality.findOne({ _id: id }).cityCode;
         // AirQuality.remove({ _id: id })
-        AirQuality.update(_id, {
+        AirQuality.update(id, {
             $set: {
                 statusCode: -2,
                 statusName: '未提交',
