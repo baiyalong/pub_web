@@ -45,7 +45,7 @@ Template.airQualityPublish.helpers({
     },
     description: function () {
         var applied = Session.get('airQuality');
-        if (applied) return applied.applyContent.description;
+        if (applied) return applied.applyContent ? applied.applyContent.description : '';
     },
     selectPrimaryPollutant: function (name) {
         return [{ code: 0, name: '--请选择--' },
@@ -112,7 +112,7 @@ Template.airQualityPublish.helpers({
                 })()
             }
             var data = null;
-            if (applied) {
+            if (applied && applied.applyContent) {
                 data = applied.applyContent.detail[n - 1]
             } else {
                 var date = new Date();
@@ -396,7 +396,7 @@ Template.airQualityPublish.onRendered(function () {
         })
         Session.set('airQuality', res)
         if (res)
-            Session.set('showLine', res.applyContent.detail.length)
+            Session.set('showLine', res.applyContent ? res.applyContent.detail.length : 1)
         // console.log(res)
     })
 
