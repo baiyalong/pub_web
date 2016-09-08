@@ -6,6 +6,23 @@
  */
 
 Template.airQualityReview.helpers({
+    pubBtn_status: function () {
+        var review = AirQuality.find({
+            date: {
+                $gt: (function () {
+                    var d = new Date();
+                    d.setDate(d.getDate() - 1);
+                    return d;
+                })()
+            }
+        }, { sort: { date: -1 } }).fetch();
+        var res = false;
+        review.forEach(function (e) {
+            if (e.statusCode < 1) res = true;
+        })
+
+        return res ? "disabled" : null;
+    },
     airQualityModel: function () {
         return Session.get('airQualityModel')
     },
