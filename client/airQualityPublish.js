@@ -18,6 +18,9 @@ Template.airQualityPublish.helpers({
     momentShort: function (date) {
         return moment(date).format('MM-DD')
     },
+    momentTime: function (date) {
+        return moment(date).format('HH:mm')
+    },
     airQualityList: function () {
         return AirQuality.find({
             cityCode: Number(Session.get('cityCode')), date: {
@@ -49,13 +52,13 @@ Template.airQualityPublish.helpers({
     },
     selectPrimaryPollutant: function (name) {
         return [{ code: 0, name: '--请选择--' },
-            { code: -1, name: '-' },
-            { code: 1, name: 'SO₂' },
-            { code: 2, name: 'NO₂' },
-            { code: 3, name: 'O₃' },
-            { code: 4, name: 'CO' },
-            { code: 5, name: 'PM10' },
-            { code: 6, name: 'PM2.5' },
+        { code: -1, name: '-' },
+        { code: 1, name: 'SO₂' },
+        { code: 2, name: 'NO₂' },
+        { code: 3, name: 'O₃' },
+        { code: 4, name: 'CO' },
+        { code: 5, name: 'PM10' },
+        { code: 6, name: 'PM2.5' },
         ]
             .map(function (e) {
                 if (e.name == name)
@@ -65,17 +68,17 @@ Template.airQualityPublish.helpers({
     },
     selectAirIndexLevel: function (name) {
         return [{ code: 0, name: '--请选择--' },
-            { code: 1, name: '优' },
-            { code: 2, name: '优-良' },
-            { code: 3, name: '良' },
-            { code: 4, name: '良-轻度污染' },
-            { code: 5, name: '轻度污染' },
-            { code: 6, name: '轻度-中度污染' },
-            { code: 7, name: '中度污染' },
-            { code: 8, name: '中度-重度污染' },
-            { code: 9, name: '重度污染' },
-            { code: 10, name: '重度-严重污染' },
-            { code: 11, name: '严重污染' }]
+        { code: 1, name: '优' },
+        { code: 2, name: '优-良' },
+        { code: 3, name: '良' },
+        { code: 4, name: '良-轻度污染' },
+        { code: 5, name: '轻度污染' },
+        { code: 6, name: '轻度-中度污染' },
+        { code: 7, name: '中度污染' },
+        { code: 8, name: '中度-重度污染' },
+        { code: 9, name: '重度污染' },
+        { code: 10, name: '重度-严重污染' },
+        { code: 11, name: '严重污染' }]
             .map(function (e) {
                 if (e.name == name)
                     e.selected = 'selected'
@@ -202,17 +205,17 @@ Template.airQualityPublish.events({
 
         // t.$(this).find('select.airIndexLevel').val(res);
         var text = [{ code: 0, name: '--请选择--' },
-            { code: 1, name: '优' },
-            { code: 2, name: '优-良' },
-            { code: 3, name: '良' },
-            { code: 4, name: '良-轻度污染' },
-            { code: 5, name: '轻度污染' },
-            { code: 6, name: '轻度-中度污染' },
-            { code: 7, name: '中度污染' },
-            { code: 8, name: '中度-重度污染' },
-            { code: 9, name: '重度污染' },
-            { code: 10, name: '重度-严重污染' },
-            { code: 11, name: '严重污染' }];
+        { code: 1, name: '优' },
+        { code: 2, name: '优-良' },
+        { code: 3, name: '良' },
+        { code: 4, name: '良-轻度污染' },
+        { code: 5, name: '轻度污染' },
+        { code: 6, name: '轻度-中度污染' },
+        { code: 7, name: '中度污染' },
+        { code: 8, name: '中度-重度污染' },
+        { code: 9, name: '重度污染' },
+        { code: 10, name: '重度-严重污染' },
+        { code: 11, name: '严重污染' }];
 
         $(e.target.parentNode.parentNode).find('select.airIndexLevel')
             .val(text.filter(function (e) { return e.code == res })[0].name)

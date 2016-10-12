@@ -51,6 +51,9 @@ Template.airQualityReview.helpers({
     momentShort: function (date) {
         return moment(date).format('MM-DD')
     },
+    momentTime: function (date) {
+        return moment(date).format('HH:mm')
+    },
     airQualityList: function () {
         return AirQuality.find({
             date: {
