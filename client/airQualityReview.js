@@ -54,6 +54,10 @@ Template.airQualityReview.helpers({
     momentTime: function (date) {
         return moment(date).format('HH:mm')
     },
+    applyMomentTime: function (statusCode, applyTimestamp) {
+        if (statusCode == -2) return '--:--';
+        else return moment(applyTimestamp).format('HH:mm');
+    },
     airQualityList: function () {
         return AirQuality.find({
             date: {

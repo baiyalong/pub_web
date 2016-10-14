@@ -16,17 +16,16 @@
 					<thead>
 						<tr>
 							<th>日期</th>
-							<th>提交时间</th>
 							<th>城市</th>
 							<th>状态</th>
 							<th>操作</th>
+							<th>提交时间</th>
 						</tr>
 					</thead>
 					<tbody>
 						{{#each airQualityList}}
 						<tr id="{{_id}}">
 							<td>{{moment date}}</td>
-							<td>{{momentTime applyTimestamp}}</td>
 							<td>{{cityName}}</td>
 							<td>
 								<span style="color:{{statusColor statusCode}}">{{statusName}}</span>
@@ -38,6 +37,7 @@
 								<a class="detail btn btn-default btn-sm">详情</a>
 								<a class="remove btn btn-default btn-sm">删除</a>
 							</td>
+							<td>{{applyMomentTime statusCode applyTimestamp}}</td>
 						</tr>
 						{{/each}}
 					</tbody>
