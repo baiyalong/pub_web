@@ -139,11 +139,19 @@ Meteor.publish('airQuality', function (page, count, filter) {
 Meteor.publish('dataAirQuality', function () {
     return DataAirQuality.find();
 })
+Meteor.publish('dataAirForecast', function (page, count, filter) {
+    if (!filter) filter = {}
+    return DataAirForecast.find(filter, { sort: { publishtime: -1 }, skip: (page - 1) * count, limit: count });
+})
 
 Meteor.methods({
     'airQuality_pages': function (count, filter) {
         if (!filter) filter = {}
         return Math.round(AirQuality.find(filter).count() / count)
+    },
+    'dataAirForecast_pages': function (count, filter) {
+        if (!filter) filter = {}
+        return Math.round(DataAirForecast.find(filter).count() / count)
     },
     'removeAirQuality': function (id, statusCode) {
         var cityCode = AirQuality.findOne({ _id: id }).cityCode;
@@ -267,12 +275,12 @@ Meteor.methods({
                     $mod: [100, 0]
                 }
             }, {
-                    code: {
-                        $not: {
-                            $mod: [10000, 0]
-                        }
+                code: {
+                    $not: {
+                        $mod: [10000, 0]
                     }
-                }]
+                }
+            }]
         }, { sort: { code: 1 }, fields: { code: 1, name: 1 } }).fetch()
 
         var init = city.map(function (e) {

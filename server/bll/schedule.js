@@ -70,7 +70,7 @@ scheduleJobs.syncDataAirForecast = {
     return parser.text('every 5 m');
   },
   job: function () {
-    mysql.syncDataAirForecast();
+    // mysql.syncDataAirForecast();
   }
 }
 
