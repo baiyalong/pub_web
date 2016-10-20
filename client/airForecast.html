@@ -1,0 +1,104 @@
+<template name="airForecast">
+    <div class="airForecast">
+        <div class="topic">
+            <p>全区空气质量预报发布</p>
+        </div>
+        <div class="divider">
+            <div></div>
+        </div>
+        <div class="row-fluid select">
+            <div class="col-md-12">
+                <div class="row-fluid">
+                    <div class="col-md-1" style="margin:0;padding:0">
+                        <p><b>发布日期</b></p>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control input-sm" id="date">
+                    </div>
+                    <div class="col-md-9">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid content">
+            <div class="col-md-12">
+                <div class="row-fluid">
+                    <div class="col-md-1">
+                        <p><b>发布内容</b></p>
+                    </div>
+                    <div class="col-md-11">
+                        <textarea class="form-control" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="col-md-2">
+                        <button class="btn btn-default btn-sm cancel">取消发布</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-success btn-sm save">确认发布</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row-fluid list">
+            <div class="col-md-12">
+                <div class="row-fluid">
+                    <div class="col-md-1">
+                        <p><b>发布历史</b></p>
+                    </div>
+                    <div class="col-md-11">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th width='13%'>发布时间</th>
+                                    <th width='12%'>发布城市</th>
+                                    <th>发布内容</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each warningList}}
+                                <tr id="{{_id}}">
+                                    <td>{{moment}}</td>
+                                    <td>{{cityName}}</td>
+                                    <td>{{content}}</td>
+                                    <td>
+                                        <a class="remove btn btn-default btn-sm">删除</a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="warningPasswordModal" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">{{title}}<span
+                                style="color:red">&nbsp;&nbsp;{{err}}</span>
+                        </h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="password">密码</label>
+                                    <input type="password" class="form-control" id="warningPassword" required="required" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default cancelWarningPassword" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-default saveWarningPassword">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>

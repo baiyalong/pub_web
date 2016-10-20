@@ -51,7 +51,7 @@ menu = [
         name: '移动终端状态管理',
         iconClass: 'layout layout_6',
         role: 'admin',
-        hide:true
+        hide: true
     }, {
         path: '/ipTrustList',
         name: 'IP地址信任列表',
@@ -67,10 +67,15 @@ menu = [
         name: '空气质量预报发布',
         imgSrc: '/yubaosh.png',
         role: 'publish'
-    },{
+    }, {
         path: '/weibo',
         name: '微博发布管理',
         imgSrc: '/weibo.png',
         role: 'admin'
-    },
+    }, {
+        path: '/airForecast',
+        name: '全区空气质量预报发布',
+        imgSrc: '/yubaosh.png',
+        role: 'admin'
+    }
 ]
