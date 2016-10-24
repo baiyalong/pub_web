@@ -11,7 +11,7 @@ Template.airForecast.helpers({
     moment: function (publishtime) {
         // var date = new Date(publishtime)
         // if (date == 'Invalid Date')
-        return publishtime && publishtime.slice(0, 4) + '-' + s.slice(4, 6) + '-' + s.slice(6, 8) || ''
+        return publishtime && (publishtime.slice(0, 4) + '-' + publishtime.slice(4, 6) + '-' + publishtime.slice(6, 8))
         // else return moment(date).format('YYYY-MM-DD')
     },
     getDate: function () {
