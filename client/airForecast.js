@@ -9,10 +9,10 @@ Template.airForecast.helpers({
         return DataAirForecast.find({}, { sort: { publishtime: -1 } })
     },
     moment: function (publishtime) {
-        var date = new Date(publishtime)
-        if (date == 'Invalid Date')
+        // var date = new Date(publishtime)
+        // if (date == 'Invalid Date')
             return publishtime.slice(0, 4) + '-' + s.slice(4, 6) + '-' + s.slice(6, 8)
-        else return moment(date).format('YYYY-MM-DD')
+        // else return moment(date).format('YYYY-MM-DD')
     },
 });
 
@@ -24,6 +24,9 @@ Template.airForecast.events({
             return;
         }
         var date = new Date().toLocaleDateString();
+        date = date.split('/')
+        date.push('00')
+        date = date.join('')
         DataAirForecast.upsert({
             publishtime: date
         }, {
