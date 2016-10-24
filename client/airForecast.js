@@ -11,9 +11,12 @@ Template.airForecast.helpers({
     moment: function (publishtime) {
         // var date = new Date(publishtime)
         // if (date == 'Invalid Date')
-            return publishtime.slice(0, 4) + '-' + s.slice(4, 6) + '-' + s.slice(6, 8)
+        return publishtime && publishtime.slice(0, 4) + '-' + s.slice(4, 6) + '-' + s.slice(6, 8) || ''
         // else return moment(date).format('YYYY-MM-DD')
     },
+    getDate: function () {
+        return moment(new Date()).format('YYYY年MM月DD日');
+    }
 });
 
 Template.airForecast.events({
