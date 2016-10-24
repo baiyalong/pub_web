@@ -5,7 +5,7 @@
 Template.airForecast.helpers({
     title: function () { return Session.get('title') },
     err: function () { return Session.get('err') },
-    airForcastList: function () {
+    airForecastList: function () {
         return DataAirForecast.find({}, { sort: { publishtime: -1 } })
     },
     moment: function (publishtime) {
