@@ -132,6 +132,17 @@ DataAirQuality.allow({
         return true;
     }
 })
+DataAirForecast.allow({
+    insert: function () {
+        return true
+    },
+    update: function () {
+        return true
+    },
+    remove: function () {
+        return true;
+    }
+})
 Meteor.publish('airQuality', function (page, count, filter) {
     if (!filter) filter = {}
     return AirQuality.find(filter, { sort: { date: -1 }, skip: (page - 1) * count, limit: count });
