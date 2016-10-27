@@ -156,6 +156,9 @@ Meteor.publish('dataAirForecast', function (page, count, filter) {
 })
 
 Meteor.methods({
+    'dataAirForecast_upsert': function (data) {
+        DataAirForecast.upsert({ publishtime: data.publishtime }, { $set: data });
+    },
     'airQuality_pages': function (count, filter) {
         if (!filter) filter = {}
         return Math.round(AirQuality.find(filter).count() / count)

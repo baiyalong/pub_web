@@ -30,21 +30,17 @@ Template.airForecast.events({
         date = date.split('/')
         date.push('00')
         date = date.join('')
-        DataAirForecast.upsert({
-            publishtime: date
-        }, {
-                $set: {
-                    publishtime: date,
-                    publishcontent: content,
-                }
-            }, function (err, id) {
-                if (err)
-                    Util.modal('全区空气质量预报发布', err)
-                else {
-                    $('textarea').val('')
-                    Util.modal('全区空气质量预报发布', '发布成功！')
-                }
-            });
+        Meteor.call('dataAirForecast_upsert', {
+            publishtime: date,
+            publishcontent: content,
+        }, function (err, id) {
+            if (err)
+                Util.modal('全区空气质量预报发布', err)
+            else {
+                $('textarea').val('')
+                Util.modal('全区空气质量预报发布', '发布成功！')
+            }
+        })
     },
     'click .cancel': function () {
         $('textarea').val('')
