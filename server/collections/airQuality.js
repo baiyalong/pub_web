@@ -157,7 +157,20 @@ Meteor.publish('dataAirForecast', function (page, count, filter) {
 
 Meteor.methods({
     'dataAirForecast_upsert': function (data) {
-        DataAirForecast.upsert({ publishtime: data.publishtime }, { $set: data });
+        var date = new Date();
+        var publishtime = date.getUTCFullYear().toString() +
+            (date.getUTCMonth() + 1).toString() +
+            (function (d) {
+                return d < 10 ? '0' + d : d
+            })(date.getUTCDate()) +
+            '00';
+        DataAirForecast.upsert({ publishtime: publishtime }, {
+            $set:
+            {
+                publishtime: publishtime,
+                publishcontent: data.publishcontent
+            }
+        });
     },
     'airQuality_pages': function (count, filter) {
         if (!filter) filter = {}

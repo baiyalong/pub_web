@@ -26,12 +26,12 @@ Template.airForecast.events({
             Util.modal('全区空气质量预报发布', '发布内容为空！')
             return;
         }
-        var date = new Date().toLocaleDateString();
-        date = date.split('/')
-        date.push('00')
-        date = date.join('')
+        // var date = new Date().toLocaleDateString();
+        // date = date.split('/')
+        // date.push('00')
+        // date = date.join('')
         Meteor.call('dataAirForecast_upsert', {
-            publishtime: date,
+            // publishtime: date,
             publishcontent: content,
         }, function (err, id) {
             if (err)
