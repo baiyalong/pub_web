@@ -30,9 +30,15 @@ Template.weibo.helpers({
 
 Template.weibo.events({
     'change #template': function (e, t) {
-        Meteor.call('weibo_analyzeContent', t.$('#template').val().trim(), function (err, res) {
-            Session.set('wordCount', res.length)
-        })
+        var content = t.$('#template').val().trim();
+        if (content) {
+            var varList = Session.get('weiboVarList');
+            varList.forEach(function (e) {
+                content = content.replace(e.name, e.value)
+            })
+            Session.set('wordCount', content.length)
+        }
+        else Session.set('wordCount', 0)
     },
     'click .authorize': function (e, t) {
         e.preventDefault();
@@ -115,11 +121,14 @@ Template.weibo.events({
 })
 
 Template.weibo.onRendered(function () {
-    var template = $('#template').val().trim();
-    if (template)
-        Meteor.call('weibo_analyzeContent', template, function (err, res) {
-            Session.set('wordCount', res.length)
+    var content = $('#template').val().trim();
+    if (content) {
+        var varList = Session.get('weiboVarList');
+        varList.forEach(function (e) {
+            content = content.replace(e.name, e.value)
         })
+        Session.set('wordCount', content.length)
+    }
     else Session.set('wordCount', 0)
 
     var weibo_config = WeiboConfig.findOne();
@@ -131,18 +140,16 @@ Template.weibo.onRendered(function () {
                 Util.modal('微博授权', err || '授权成功！')
             })
     }
-
-
-    else if (weibo_config.token) {
-        Meteor.call('weibo_getTokenInfo', function (err, res) {
-            if (err)
-                WeiboConfig.update(weibo_config._id, {
-                    $set: {
-                        token: ''
-                    }
-                })
-        })
-    }
+    // else if (weibo_config.token) {
+    //     Meteor.call('weibo_getTokenInfo', function (err, res) {
+    //         if (err)
+    //             WeiboConfig.update(weibo_config._id, {
+    //                 $set: {
+    //                     token: ''
+    //                 }
+    //             })
+    //     })
+    // }
 
 }
 );
