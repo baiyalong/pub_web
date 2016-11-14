@@ -123,11 +123,14 @@ Template.weibo.events({
 Template.weibo.onRendered(function () {
     var content = $('#template').val().trim();
     if (content) {
-        var varList = Session.get('weiboVarList');
-        varList.forEach(function (e) {
-            content = content.replace(e.name, e.value)
+        Meteor.call('weibo_analyzeContent', content, function (err, res) {
+            Session.set('wordCount', res.length)
         })
-        Session.set('wordCount', content.length)
+        // var varList = Session.get('weiboVarList');
+        // varList.forEach(function (e) {
+        //     content = content.replace(e.name, e.value)
+        // })
+        // Session.set('wordCount', content.length)
     }
     else Session.set('wordCount', 0)
 
