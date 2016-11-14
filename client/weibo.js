@@ -22,10 +22,18 @@ Template.weibo.helpers({
     },
     status_helper: function (status) {
         return status ? '成功' : '失败'
+    },
+    wordCount: function () {
+        return Session.get('wordCount')
     }
 })
 
 Template.weibo.events({
+    'change #template': function (e, t) {
+        Meteor.call('weibo_analyzeContent', t.$('#template').val().trim(), function (err, res) {
+            Session.set('wordCount', res.length)
+        })
+    },
     'click .authorize': function (e, t) {
         e.preventDefault();
         Meteor.call('weibo_getAppInfo', function (err, res) {
@@ -107,6 +115,13 @@ Template.weibo.events({
 })
 
 Template.weibo.onRendered(function () {
+    var template = $('#template').val().trim();
+    if (template)
+        Meteor.call('weibo_analyzeContent', template, function (err, res) {
+            Session.set('wordCount', res.length)
+        })
+    else Session.set('wordCount', 0)
+
     var weibo_config = WeiboConfig.findOne();
     var code = window.location.search.split('=');
     if (code && code.length == 2 && code[0] == '?code') {
