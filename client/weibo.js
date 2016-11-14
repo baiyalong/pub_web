@@ -29,7 +29,7 @@ Template.weibo.helpers({
 })
 
 Template.weibo.events({
-    'change #template': function (e, t) {
+    'keypress #template': function (e, t) {
         var content = t.$('#template').val().trim();
         if (content) {
             var varList = Session.get('weiboVarList');
