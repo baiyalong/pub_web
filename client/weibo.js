@@ -29,7 +29,7 @@ Template.weibo.helpers({
 })
 
 Template.weibo.events({
-    'keypress #template': function (e, t) {
+    'keyup  #template': function (e, t) {
         var content = t.$('#template').val().trim();
         if (content) {
             var varList = Session.get('weiboVarList');
@@ -122,15 +122,15 @@ Template.weibo.events({
 
 Template.weibo.onRendered(function () {
     var content = $('#template').val().trim();
+
     if (content) {
-        Meteor.call('weibo_analyzeContent', content, function (err, res) {
-            Session.set('wordCount', res.length)
+              Meteor.call('weiboVarList', function (err, res) {
+            var varList = res;
+            varList.forEach(function (e) {
+                content = content.replace(e.name, e.value)
+            })
+            Session.set('wordCount', content.length)
         })
-        // var varList = Session.get('weiboVarList');
-        // varList.forEach(function (e) {
-        //     content = content.replace(e.name, e.value)
-        // })
-        // Session.set('wordCount', content.length)
     }
     else Session.set('wordCount', 0)
 
