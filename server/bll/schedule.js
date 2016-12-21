@@ -74,3 +74,17 @@ scheduleJobs.syncDataAirForecast = {
   }
 }
 
+
+scheduleJobs.dataRecovery = {
+  schedule: function (parser) {
+    return parser.text('at 3:00 am')
+  },
+  job: function () {
+    var date = new Date(new Date() - 1000 * 60 * 60 * 24 * 100)
+    console.log('dataRecovery', new Date(), date)
+    DataCityDaily.remove({ MONITORTIME: { $lt: date } }, function (err, res) { console.log('DataCityDaily', err, res) })
+    DataCityHourly.remove({ TimePoint: { $lt: date } }, function (err, res) { console.log('DataCityHourly', err, res) })
+    DataStationDaily.remove({ MONITORTIME: { $lt: date } }, function (err, res) { console.log('DataStationDaily', err, res) })
+    DataStationHourly.remove({ monitorTime: { $lt: date } }, function (err, res) { console.log('DataStationHourly', err, res) })
+  }
+}
