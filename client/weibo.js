@@ -122,6 +122,7 @@ Template.weibo.events({
 
 Template.weibo.onRendered(function () {
     var content = $('#template').val().trim();
+
     if (content) {
         Meteor.call('weiboVarList', function (err, res) {
             var varList = res;
