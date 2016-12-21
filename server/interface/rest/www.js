@@ -36,3 +36,9 @@ Api.addRoute('verifyCode/:connection', {
     }
 })
 
+
+Api.addRoute('downloadApp/:deviceType', {
+    get: function () {
+        return { url: Meteor.call('downloadApp', this.urlParams.deviceType) }
+    }
+})
