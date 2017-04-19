@@ -211,7 +211,7 @@ Meteor.methods({
                     return d;
                 })()
             }
-        }, { $set: data })
+        }, { $set: data },{upsert:true})
     },
     'auditAirQuality': function (id, update) {
         AirQuality.update({ _id: id }, { $set: update })
