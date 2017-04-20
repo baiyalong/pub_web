@@ -211,7 +211,7 @@ Meteor.methods({
                     return d;
                 })()
             }
-        }, { $set: data },{upsert:true})
+         }, { $set: Object.assign(data,{date:new Date()}) },{upsert:true})
     },
     'auditAirQuality': function (id, update) {
         AirQuality.update({ _id: id }, { $set: update })
