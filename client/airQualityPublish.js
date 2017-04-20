@@ -26,7 +26,8 @@ Template.airQualityPublish.helpers({
             cityCode: Number(Session.get('cityCode')), date: {
                 $lt: (function () {
                     var d = new Date();
-                    d.setDate(d.getDate() - 1);
+                    // d.setDate(d.getDate() - 1);
+                    d.setHours(0)
                     return d;
                 })()
             }
