@@ -128,7 +128,7 @@ BLL.www = {
                 return res;
             })(pollutant),
             pollutant60day: (function (arr) {
-                var data = DataCityDaily.find({ CITYCODE: id.toString() }, { sort: { MONITORTIME: -1 }, limit: 60 })
+                var data = DataCityDaily.find({ CITYCODE: +id.toString() }, { sort: { MONITORTIME: -1 }, limit: 60 })
                 var res = {};
                 arr.forEach(function (e) {
                     res[e] = data.map(function (ee) {
