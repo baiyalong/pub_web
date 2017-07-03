@@ -12,7 +12,7 @@ Meteor.methods({
             var dateTo = new Date(dateFrom);
             dateTo.setDate(dateTo.getDate() + 1);
 
-            var data = DataCityDaily.findOne({ CITYCODE: cityCode.toString(), MONITORTIME: { $gt: dateFrom, $lt: dateTo } }, { sort: { MONITORTIME: -1 } })
+            var data = DataCityDaily.findOne({ CITYCODE: +cityCode.toString(), MONITORTIME: { $gt: dateFrom, $lt: dateTo } }, { sort: { MONITORTIME: -1 } })
             return data && data.AQI ? data.AQI : null;
         }
         return [

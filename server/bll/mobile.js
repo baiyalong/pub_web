@@ -342,7 +342,7 @@ BLL.mobile = {
           // arr.reverse();
         } else if (parseInt(timeInterval) == 1) //day
         {
-          var data = DataCityDaily.find({ CITYCODE: cityCode.toString() }, { sort: { MONITORTIME: -1 }, limit: 60 }).fetch();
+          var data = DataCityDaily.find({ CITYCODE: +cityCode.toString() }, { sort: { MONITORTIME: -1 }, limit: 60 }).fetch();
           data.forEach(function (e) {
             e['CO'] = Math.floor(e['CO'] * 1000);
           })
@@ -565,7 +565,7 @@ BLL.mobile = {
                 data = [data]
               }
               else if (type == 'day') {
-                data = DataCityDaily.findOne({ CITYCODE: e.code.toString() }, { sort: { MONITORTIME: -1 } })
+                data = DataCityDaily.findOne({ CITYCODE: +e.code.toString() }, { sort: { MONITORTIME: -1 } })
                 data = [data]
               }
             };
