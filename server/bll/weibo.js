@@ -184,7 +184,7 @@ Meteor.methods({
         else if (content && content.length > 140)
             throw new Meteor.Error('内容不超过140个汉字!')
         else {
-            return HTTP.call('POST', 'https://api.weibo.com/2/statuses/update.json', {
+            return HTTP.call('POST', 'https://api.weibo.com/2/statuses/share.json', {
                 params: {
                     access_token: config.token,
                     status: content
