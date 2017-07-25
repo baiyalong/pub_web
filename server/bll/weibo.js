@@ -181,13 +181,13 @@ Meteor.methods({
         content = Meteor.call('weibo_analyzeContent', content)
         if (config && !config.token)
             throw new Meteor.Error('微博帐号未授权！')
-        else if (content && content.length > 140)
-            throw new Meteor.Error('内容不超过140个汉字!')
+        else if (content && content.length > _count_)
+            throw new Meteor.Error('内容不超过'+_count_+'个汉字!')
         else {
             return HTTP.call('POST', 'https://api.weibo.com/2/statuses/share.json', {
                 params: {
                     access_token: config.token,
-                    status: content
+                    status: content+_domain_
                 }
             })
         }
@@ -227,8 +227,8 @@ Meteor.methods({
         varList.forEach(function (e) {
             content = content.replace(e.name, e.value)
         })
-        if (content && content.length > 140)
-            throw new Meteor.Error('内容不超过140个汉字!')
+        if (content && content.length > _count_)
+            throw new Meteor.Error('内容不超过'+_count_+'个汉字!')
         return content;
     },
     weibo_getAppInfo: function () {
@@ -244,6 +244,8 @@ const _weibo_app_key = '3986222912';
 const _weibo_app_secret = '05b6b7cbcd76a22137b41ebf43b14ec3';
 const _weibo_app_redirect_url = 'http://106.74.0.132:3000/weibo';
 
+const _domain_ = 'http://www.nmgepb.gov.cn'
+const _count_ = 126
 
 
 // 用户名：nmgybyj@163.COM
