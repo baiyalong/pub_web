@@ -1,0 +1,82 @@
+var async = require('async')
+var now = require('./date').now
+var src_query = require('./mysql').query
+var dest_db = require('./mongo').db
+var stations = require('./dict').stations
+var levels = require('./dict').levels
+var cache = require('./cache').cityDaily
+
+
+exports.execute = () => {
+    console.log(now(), 'schedule history start')
+    var data = []
+    async.series([
+        c => src_query(`select * from AQIDataPublishHistory_Day where Timepoint =
+         (select distinct Timepoint from AQIDataPublishHistory_Day order by Timepoint desc limit 1 );`,
+            (err, res, fields) => {
+                !err ? data = res : null
+                c(err)
+            }
+        ),
+        c => {
+            var dataCityDaily = data.filter(e => e.Area == e.Positionname)
+            async.parallel(dataCityDaily.map(e => c => db.collection('dataCityDaily').upsert({
+                ID: `${e.Timepoint}~${e.StationCode}`
+            }, {
+                $set: Object.assign(e, {
+                    ID: `${e.Timepoint}~${e.StationCode}`,
+                    AREA: e.Area,
+                    MONITORTIME: e.Timepoint,
+                    SO2: e.SO2,
+                    NO2: e.NO2,
+                    O3_1H: e.O3,
+                    O3_8H: e.O3_8h,
+                    CO: e.CO,
+                    PM10: e.PM10,
+                    PM2_5: e.PM2_5,
+                    AQI: e.AQI,
+                    TYPENAME: levels[e.Quality].name,
+                    LEVELNAME: levels[e.Quality].value,
+                    PRIMARYPOLLUTANT: e.PrimaryPollutant,
+                    DESCRIPTION: e.Unhealthful,
+                    CITYCODE: +e.StationCode
+                })
+            }, c)), c)
+        },
+        c => cache(c),
+        c => {
+            var dataStationDaily = data.filter(e => e.Area != e.Positionname)
+            async.parallel(dataStationDaily.map(e => c => db.collection('dataStationDaily').upsert({
+                ID: `${e.Timepoint}~${e.StationCode}`
+            }, {
+                $set: Object.assign(e, {
+                    ID: `${e.Timepoint}~${e.StationCode}`,
+                    STATIONCODE: e.StationCode,
+                    STATIONNAME: e.positionname,
+                    CITY: e.Area,
+                    UNIQUECODE: stations()[e.StationCode],
+                    MONITORTIME: e.Timepoint,
+                    SO2: +e.SO2,
+                    NO2: +e.NO2,
+                    O3: +e.O3,
+                    O3_8H: +e.O3_8H,
+                    CO: +e.CO,
+                    PM10: +e.PM10,
+                    PM2_5: +e.PM2_5,
+                    AQI: +e.AQI,
+                    TYPE: levels[e.Quality].name,
+                    LEVEL: e.Quality,
+                    PRIMARYPOLLUTANT: e.PrimaryPollutant,
+                    DESCRIPTION: e.Unhealthful,
+                    SO2_MARK: null,
+                    NO2_MARK: null,
+                    O3_MARK: null,
+                    O3_8H_MARK: null,
+                    CO_MARK: null,
+                    PM10_MARK: null,
+                    PM2_5_MARK: null,
+                })
+            }, c)), c)
+        }
+    ], err => err ? console.error(err.message) : console.log(now(), 'schedule history end'))
+}
