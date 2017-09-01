@@ -19,8 +19,8 @@ exports.execute = () => {
             }
         ),
         c => {
-            var dataCityDaily = data.filter(e => e.Area == e.Positionname)
-            async.parallel(dataCityDaily.map(e => c => db.collection('dataCityDaily').upsert({
+            var dataCityDaily = data.filter(e => e.Area == e.positionname)
+            async.parallel(dataCityDaily.map(e => c => dest_db().collection('dataCityDaily').update({
                 ID: `${e.Timepoint}~${e.StationCode}`
             }, {
                 $set: Object.assign(e, {
@@ -41,12 +41,14 @@ exports.execute = () => {
                     DESCRIPTION: e.Unhealthful,
                     CITYCODE: +e.StationCode
                 })
+            }, {
+                upsert: true
             }, c)), c)
         },
         c => cache(c),
         c => {
-            var dataStationDaily = data.filter(e => e.Area != e.Positionname)
-            async.parallel(dataStationDaily.map(e => c => db.collection('dataStationDaily').upsert({
+            var dataStationDaily = data.filter(e => e.Area != e.positionname)
+            async.parallel(dataStationDaily.map(e => c => dest_db().collection('dataStationDaily').update({
                 ID: `${e.Timepoint}~${e.StationCode}`
             }, {
                 $set: Object.assign(e, {
@@ -76,6 +78,8 @@ exports.execute = () => {
                     PM10_MARK: null,
                     PM2_5_MARK: null,
                 })
+            }, {
+                upsert: true
             }, c)), c)
         }
     ], err => err ? console.error(err.message) : console.log(now(), 'schedule history end'))

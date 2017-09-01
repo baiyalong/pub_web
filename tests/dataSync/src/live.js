@@ -20,7 +20,7 @@ exports.execute = () => {
         ),
         c => {
             var dataCityHourly = data.filter(e => e.Area == e.Positionname)
-            async.parallel(dataCityHourly.map(e => c => db.collection('dataCityHourly').upsert({
+            async.parallel(dataCityHourly.map(e => c => dest_db().collection('dataCityHourly').update({
                 Id: `${e.Timepoint}~${e.StationCode}`
             }, {
                 $set: {
@@ -40,12 +40,14 @@ exports.execute = () => {
                     Unheathful: e.Unheathful,
                     PrimaryPollutant: e.PrimaryPollutant
                 }
+            }, {
+                upsert: true
             }, c)), c)
         },
         c => cache(c),
         c => {
             var dataStationHourly = data.filter(e => e.Area != e.Positionname)
-            async.parallel(dataStationHourly.map(e => c => db.collection('dataStationHourly').upsert({
+            async.parallel(dataStationHourly.map(e => c => dest_db().collection('dataStationHourly').update({
                 Id: `${e.Timepoint}~${e.StationCode}`
             }, {
                 $set: Object.assign(e, {
@@ -61,6 +63,8 @@ exports.execute = () => {
                     AQI: +e.AQI,
                     PRIMARYPOLLUTANT: e.PrimaryPollutant
                 })
+            }, {
+                upsert: true
             }, c)), c)
         }
     ], err => err ? console.error(err.message) : console.log(now(), 'schedule live end'))
