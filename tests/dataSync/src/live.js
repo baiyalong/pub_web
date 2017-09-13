@@ -35,7 +35,7 @@ exports.execute = () => {
                     PM10: e.PM10,
                     PM2_5: e.PM2_5,
                     AQI: e.AQI,
-                    Quality: levels[e.Quality].name,
+                    Quality: levels[e.Quality] && levels[e.Quality].name || '-',
                     Measure: e.Measure,
                     Unheathful: e.Unheathful,
                     PrimaryPollutant: e.PrimaryPollutant
