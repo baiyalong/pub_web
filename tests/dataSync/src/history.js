@@ -19,13 +19,13 @@ exports.execute = () => {
             }
         ),
         c => {
-            var dataCityDaily = data.filter(e => e.Area == e.positionname)
+            var dataCityDaily = data.filter(e => e.StationCode.endswith('00'))
             async.parallel(dataCityDaily.map(e => c => dest_db().collection('dataCityDaily').update({
                 ID: `${e.Timepoint}~${e.StationCode}`
             }, {
                 $set: Object.assign(e, {
                     ID: `${e.Timepoint}~${e.StationCode}`,
-                    AREA: e.Area,
+                    AREA: e.positionname,
                     MONITORTIME: e.Timepoint,
                     SO2: e.SO2,
                     NO2: e.NO2,
@@ -47,7 +47,7 @@ exports.execute = () => {
         },
         c => cache(c),
         c => {
-            var dataStationDaily = data.filter(e => e.Area != e.positionname)
+            var dataStationDaily = data.filter(e => !e.StationCode.endswith('00'))
             async.parallel(dataStationDaily.map(e => c => dest_db().collection('dataStationDaily').update({
                 ID: `${e.Timepoint}~${e.StationCode}`
             }, {
