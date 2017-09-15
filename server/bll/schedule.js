@@ -32,7 +32,7 @@ scheduleJobs.syncDataStationHourly = {
     return parser.text('every 5 m');
   },
   job: function () {
-    mysql.syncDataStationHourly();
+    // mysql.syncDataStationHourly();
   }
 }
 
@@ -41,7 +41,7 @@ scheduleJobs.syncDataStationDaily = {
     return parser.text('every 5 m');
   },
   job: function () {
-    mysql.syncDataStationDaily();
+    // mysql.syncDataStationDaily();
   }
 }
 
@@ -51,7 +51,7 @@ scheduleJobs.syncDataCityHourly = {
     return parser.text('every 5 m');
   },
   job: function () {
-    mysql.syncDataCityHourly();
+    // mysql.syncDataCityHourly();
   }
 }
 
@@ -61,7 +61,7 @@ scheduleJobs.syncDataCityDaily = {
     return parser.text('every 5 m');
   },
   job: function () {
-    mysql.syncDataCityDaily();
+    // mysql.syncDataCityDaily();
   }
 }
 
