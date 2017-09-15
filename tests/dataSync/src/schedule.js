@@ -8,8 +8,8 @@ exports.execute = c => {
         live.execute()
         history.execute()
 
-        schedule.scheduleJob('0 */10 * * * * * ', () => live.execute())
-        schedule.scheduleJob('0 */10 * * * * * ', () => history.execute())
+        schedule.scheduleJob('0 */5 * * * * * ', () => live.execute())
+        schedule.scheduleJob('0 */5 * * * * * ', () => history.execute())
     } catch (error) {
         return c(error)
     }
