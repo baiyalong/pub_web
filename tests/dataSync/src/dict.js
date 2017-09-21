@@ -18,27 +18,27 @@ exports.levels = {
         name: '—',
         value: '—'
     },
-    'Ⅰ': {
+    'I': {
         name: '优',
         value: '一级'
     },
-    'Ⅱ': {
+    'II': {
         name: '良',
         value: '二级'
     },
-    'Ⅲ': {
+    'III': {
         name: '轻度污染',
         value: '三级'
     },
-    'Ⅳ': {
+    'IV': {
         name: '中度污染',
         value: '四级'
     },
-    'Ⅴ': {
+    'V': {
         name: '重度污染',
         value: '五级'
     },
-    'Ⅵ': {
+    'VI': {
         name: '严重污染',
         value: '六级'
     },
