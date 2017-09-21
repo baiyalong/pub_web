@@ -34,11 +34,11 @@ exports.execute = () => {
                     CO: e.CO,
                     PM10: e.PM10,
                     PM2_5: e.PM2_5,
-                    AQI: e.AQI,
-                    Quality: levels[e.Quality] && levels[e.Quality].name || '-',
+                    AQI: e.AQI_Hour,
+                    Quality: levels[e.Quality_Hour] && levels[e.Quality_Hour].name || '-',
                     Measure: e.Measure,
                     Unheathful: e.Unheathful,
-                    PrimaryPollutant: e.PrimaryPollutant
+                    PrimaryPollutant: e.PrimaryPollutant_Hour
                 }
             }, {
                 upsert: true
@@ -60,8 +60,8 @@ exports.execute = () => {
                     '103': +e.CO,
                     '104': +e.PM10,
                     '105': +e.PM2_5,
-                    AQI: +e.AQI,
-                    PRIMARYPOLLUTANT: e.PrimaryPollutant
+                    AQI: +e.AQI_Hour,
+                    PRIMARYPOLLUTANT: e.PrimaryPollutant_Hour
                 })
             }, {
                 upsert: true
