@@ -5,14 +5,16 @@ var dest_db = require('./mongo').db
 var stations = require('./dict').stations
 var levels = require('./dict').levels
 var cache = require('./cache').cityHourly
+var resync = require('../config').hour
 
 
 exports.execute = () => {
     console.log(now(), 'schedule live start')
     var data = []
     async.series([
-        c => src_query(`select * from AQIDataPublishLive where Timepoint =
-         (select distinct Timepoint from AQIDataPublishLive order by Timepoint desc limit 1 );`,
+        c => src_query(`select * from AQIDataPublishLive where Timepoint >=
+        ${resync?`"${resync}"`:"(select distinct Timepoint from AQIDataPublishLive order by Timepoint desc limit 1 )"}
+         ;`,
             (err, res, fields) => {
                 !err ? data = res : null
                 c(err)

@@ -5,14 +5,16 @@ var dest_db = require('./mongo').db
 var stations = require('./dict').stations
 var levels = require('./dict').levels
 var cache = require('./cache').cityDaily
+var resync = require('../config').day
 
 
 exports.execute = () => {
     console.log(now(), 'schedule history start')
     var data = []
     async.series([
-        c => src_query(`select * from AQIDataPublishHistory_Day where Timepoint =
-         (select distinct Timepoint from AQIDataPublishHistory_Day order by Timepoint desc limit 1 );`,
+        c => src_query(`select * from AQIDataPublishHistory_Day where Timepoint >=
+        ${resync?`"${resync}"`:"(select distinct Timepoint from AQIDataPublishHistory_Day order by Timepoint desc limit 1 )"}
+         ;`,
             (err, res, fields) => {
                 !err ? data = res : null
                 c(err)
