@@ -5,7 +5,7 @@ var dest_db = require('./mongo').db
 var stations = require('./dict').stations
 var levels = require('./dict').levels
 var cache = require('./cache').cityDaily
-var resync = require('../config').day
+var resync = require('../config').resync.day
 
 
 exports.execute = () => {
