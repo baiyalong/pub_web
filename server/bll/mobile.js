@@ -767,14 +767,13 @@ BLL.mobile = {
       return Math.max(res, 0)
     }
     var area = Area.find({ code: { $not: { $mod: [1000, 0] } } }).fetch();
-    var res = area.filter(function (e) { return e.code%100==0  }).map(function (e) {
-      var county = area.filter(function (ee) { return ee.code % e.code < 100 })[1];//主城区
-      if (e.code == 152500) county = area.filter(function (ee) { return ee.code % e.code < 100 })[2];//锡林郭勒
+    var res = area.filter(function (e) { return e.code%100!=0  }).map(function (e) {
+      var city = area.find(function(c){return c.code == Math.floor(e.code/100)*100})
       return {
-        cityCode: e.code,
-        cityName: e.name,
-        countyCode: county.code,
-        countyName: county.name
+        cityCode: city.code,
+        cityName: city.name,
+        countyCode: e.code,
+        countyName: e.name
       }
     })
     var list = null;
