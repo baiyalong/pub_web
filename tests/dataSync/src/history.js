@@ -21,7 +21,7 @@ exports.execute = () => {
             }
         ),
         c => {
-            var dataCityDaily = data.filter(e => e.StationCode.endswith('00'))
+            var dataCityDaily = data.filter(e => !e.StationCode.endswith('A'))
             async.parallel(dataCityDaily.map(e => c => dest_db().collection('dataCityDaily').update({
                 ID: `${e.Timepoint}~${e.StationCode}`
             }, {
@@ -49,7 +49,7 @@ exports.execute = () => {
         },
         c => cache(c),
         c => {
-            var dataStationDaily = data.filter(e => !e.StationCode.endswith('00'))
+            var dataStationDaily = data.filter(e => e.StationCode.endswith('A'))
             async.parallel(dataStationDaily.map(e => c => dest_db().collection('dataStationDaily').update({
                 ID: `${e.Timepoint}~${e.StationCode}`
             }, {

@@ -11,7 +11,7 @@ BLL.mobile = {
       e.areaArray = area.filter(function (ee) {
         if (e.code == 152500) return ee.code > e.code + 1 && ee.code < (e.code + 100)
         else return ee.code > e.code && ee.code < (e.code + 100)
-      }).slice(0, 1)
+      })
       return e;
     })
   },
@@ -767,7 +767,7 @@ BLL.mobile = {
       return Math.max(res, 0)
     }
     var area = Area.find({ code: { $not: { $mod: [1000, 0] } } }).fetch();
-    var res = area.filter(function (e) { return e.code % 100 == 0 }).map(function (e) {
+    var res = area.filter(function (e) { return e.code%100==0  }).map(function (e) {
       var county = area.filter(function (ee) { return ee.code % e.code < 100 })[1];//主城区
       if (e.code == 152500) county = area.filter(function (ee) { return ee.code % e.code < 100 })[2];//锡林郭勒
       return {
@@ -962,7 +962,7 @@ BLL.mobile = {
     }
 
     var area = Area.find({ code: { $not: { $mod: [1000, 0] } } }).fetch();
-    var res = area.filter(function (e) { return e.code % 100 == 0 }).map(function (e) {
+    var res = area.filter(function (e) { return e.code %100==0 }).map(function (e) {
       var county = area.filter(function (ee) { return ee.code % e.code < 100 })[1];//主城区
       if (e.code == 152500) county = area.filter(function (ee) { return ee.code % e.code < 100 })[2];//锡林郭勒
       return {
