@@ -92,7 +92,7 @@ BLL.mobile = {
     var f = weather.content.f.f1;
 
     var num = function () {
-      return Math.floor(Math.random() * 500);   //假数据
+      return 0;// Math.floor(Math.random() * 500);   //假数据
     }
 
     var healthyAdrr = function (aqi) {
@@ -151,7 +151,11 @@ BLL.mobile = {
         },],
       healthyAdviceList: healthyAdrr(aqi),
       aqPridictionList: (function () {
-        return DataAirQuality.find({ areaCode: code, description: { $exists: false }, primaryPollutant: { $exists: true } }).map(function (e) {
+        var c = Math.floor(code/100)
+        if(c==1525)c=152502
+        else if(c==1529)c=152921
+        else c=c*100+1       
+        return DataAirQuality.find({ areaCode: c, description: { $exists: false }, primaryPollutant: { $exists: true } }).map(function (e) {
           return [
             moment(e.date).format('MM月DD日'),
             e.airIndexLevel,
@@ -215,7 +219,11 @@ BLL.mobile = {
       })(),
     }
 
-    code = Math.floor(code / 100) * 100;
+    // code = Math.floor(code / 100) * 100;
+
+    if(code%100==1||code==152502||code==152921) 
+    code = Math.floor(code/100)*100
+
     var real = DataCityHourly.findOne({
       CityCode: code
     }, {
@@ -316,7 +324,8 @@ BLL.mobile = {
       timeInterval: parseInt(param.timeInterval),
       aqiHistory: (function (timeInterval) {
         var arr = [];
-        var cityCode = Math.floor(parseInt(param.areaId) / 100) * 100;
+        var cityCode = Math.floor(parseInt(param.areaId) ) ;
+        if(cityCode%100==1)cityCode=Math.floor(cityCode/100)*100
         if (parseInt(timeInterval) == 0) //hour
         {
           var data = DataCityHourly.find({ CityCode: cityCode }, { sort: { TimePoint: -1 }, limit: 7 * 24 }).fetch();
@@ -342,7 +351,7 @@ BLL.mobile = {
           // arr.reverse();
         } else if (parseInt(timeInterval) == 1) //day
         {
-          var data = DataCityDaily.find({ CITYCODE: +cityCode.toString() }, { sort: { MONITORTIME: -1 }, limit: 60 }).fetch();
+          var data = DataCityDaily.find({ CITYCODE: cityCode }, { sort: { MONITORTIME: -1 }, limit: 60 }).fetch();
           data.forEach(function (e) {
             e['CO'] = Math.floor(e['CO'] * 1000);
           })
@@ -789,7 +798,7 @@ BLL.mobile = {
         }
       }, {}).map(function (e) { e.code = e.CityCode; return e; })
       res = res.map(function (e) {
-        var data = list.filter(function (ee) { return ee.code == e.cityCode; });
+        var data = list.filter(function (ee) { return ee.code == e.countyCode; });
         if (!data || data.length == 0) return;
         data = data[0];
         e.aqi = filter('AQI', Number(data['AQI']));
@@ -824,7 +833,7 @@ BLL.mobile = {
       list = DataCityDaily.findOne({}, { sort: { MONITORTIME: -1 } })
       list = DataCityDaily.find({ MONITORTIME: { $gt: dateFrom, $lt: dateTo } }, {}).map(function (e) { e.code = Number(e.CITYCODE); return e; })
       res = res.map(function (e) {
-        var data = list.filter(function (ee) { return ee.code == e.cityCode; });
+        var data = list.filter(function (ee) { return ee.code == e.countyCode; });
         if (!data || data.length == 0) return;
         var arr = ['AQI', 'PM2_5', 'PM10', 'O3_8H', 'SO2', 'NO2', 'CO']
         var avg_count = {}
@@ -886,7 +895,7 @@ BLL.mobile = {
       list = DataCityDaily.findOne({}, { sort: { MONITORTIME: -1 } })
       list = DataCityDaily.find({ MONITORTIME: { $gt: dateFrom, $lt: dateTo } }, {}).map(function (e) { e.code = Number(e.CITYCODE); return e; })
       res = res.map(function (e) {
-        var data = list.filter(function (ee) { return ee.code == e.cityCode; });
+        var data = list.filter(function (ee) { return ee.code == e.countyCode; });
         if (!data || data.length == 0) return;
         var arr = ['AQI', 'PM2_5', 'PM10', 'O3_8H', 'SO2', 'NO2', 'CO']
         var avg_count = {}

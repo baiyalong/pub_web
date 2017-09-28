@@ -52,7 +52,7 @@ Station.allow({
 
 Meteor.publish('station', function (city) {
     if (city && !isNaN(Number(city)))
-        return Station.find({ $and: [{ UniqueCode: { $gte: Number(city) * 1000 } }, { UniqueCode: { $lt: (Number(city) + 1) * 1000 } }] }, {
+        return Station.find({ $and: [{ countyCode: { $gte: +city } }, { countyCode: { $lt: +city + 100 } }] }, {
             sort: { UniqueCode: 1 },
             fields: {
                 UniqueCode: 1,
