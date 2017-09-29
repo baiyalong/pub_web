@@ -221,8 +221,8 @@ BLL.mobile = {
 
     // code = Math.floor(code / 100) * 100;
 
-    if(code%100==1||code==152502||code==152921) 
-    code = Math.floor(code/100)*100
+    // if(code%100==1||code==152502||code==152921) 
+    // code = Math.floor(code/100)*100
 
     var real = DataCityHourly.findOne({
       CityCode: code
