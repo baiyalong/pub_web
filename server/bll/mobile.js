@@ -81,7 +81,7 @@ BLL.mobile = {
     })();
 
     function filter(name, value) {
-      if (value === null || isNaN(value)) value = 0;
+      if (value === null || isNaN(value)) return num();
       var res = Math.min(value, limit[name])
       return Math.max(res, 0)
     }
@@ -92,7 +92,7 @@ BLL.mobile = {
     var f = weather.content.f.f1;
 
     var num = function () {
-      return 0;// Math.floor(Math.random() * 500);   //假数据
+      return -99;// Math.floor(Math.random() * 500);   //假数据
     }
 
     var healthyAdrr = function (aqi) {
@@ -224,6 +224,18 @@ BLL.mobile = {
     // if(code%100==1||code==152502||code==152921) 
     // code = Math.floor(code/100)*100
 
+    if(code==150101)code=150102
+    if(code==150201)code=150203
+    if(code==150301)code=150302
+    if(code==150401)code=150402
+    if(code==150501)code=150502
+    if(code==150601)code=150627
+    if(code==150701)code=150702
+    if(code==150801)code=150802
+    if(code==150901)code=150902
+
+
+
     var real = DataCityHourly.findOne({
       CityCode: code
     }, {
@@ -325,7 +337,19 @@ BLL.mobile = {
       aqiHistory: (function (timeInterval) {
         var arr = [];
         var cityCode = Math.floor(parseInt(param.areaId) ) ;
-        if(cityCode%100==1)cityCode=Math.floor(cityCode/100)*100
+        // if(cityCode%100==1)cityCode=Math.floor(cityCode/100)*100
+        var code = cityCode
+        if(code==150101)code=150102
+        if(code==150201)code=150203
+        if(code==150301)code=150302
+        if(code==150401)code=150402
+        if(code==150501)code=150502
+        if(code==150601)code=150627
+        if(code==150701)code=150702
+        if(code==150801)code=150802
+        if(code==150901)code=150902
+        cityCode = code
+
         if (parseInt(timeInterval) == 0) //hour
         {
           var data = DataCityHourly.find({ CityCode: cityCode }, { sort: { TimePoint: -1 }, limit: 7 * 24 }).fetch();
