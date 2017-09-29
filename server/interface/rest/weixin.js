@@ -62,6 +62,7 @@ Api.addRoute('areaDetailList2', {
 
                 return city;
             })
+            .filter(function(e){return e.areaList&&e.areaList[0]&&e.areaList[0].aqi})
     }
 })
 

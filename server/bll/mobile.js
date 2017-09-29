@@ -937,7 +937,7 @@ BLL.mobile = {
     } else {
       res = { err: 'error params！' }
     }
-    return res;
+    return res.filter(function(e){return e.aqi});
   },
 
 
