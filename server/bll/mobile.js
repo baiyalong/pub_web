@@ -123,6 +123,10 @@ BLL.mobile = {
       windPower: f[0].fg || f[0].fh,
       temperature: (f[0].fc || f[0].fd) + '℃',
       aqi: aqi,
+      //
+      updateTime : moment(new Date()).format('YYYY/MM/DD HH:mm'),
+      primaryPollutant : '-',
+      //
       //aqiLevel: 0,
       pollutantLevel: [{
         type: 105,

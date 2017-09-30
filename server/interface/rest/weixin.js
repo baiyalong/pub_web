@@ -54,15 +54,15 @@ Api.addRoute('areaDetailList2', {
                 var cityCode = Math.floor(areaDetail.areaCode / 100) * 100;
                 var city = {
                     cityCode: cityCode,
-                    cityName: Area.findOne({ code: cityCode }).name,
+                    cityName: Area.findOne({ code: cityCode })&&Area.findOne({ code: cityCode }).name||'-',
                     weather: areaDetail.weather,
                     temperature: areaDetail.temperature,
                     areaList: [areaDetail]
                 }
 
                 return city;
-            })
-            // .filter(function(e){return e.areaList&&e.areaList[0]&&e.areaList[0].aqi})
+            }).filter(function(e){return e.cityName!='-'})
+            .filter(function(e){return e.areaList&&e.areaList[0]&&e.areaList[0].aqi})
     }
 })
 
