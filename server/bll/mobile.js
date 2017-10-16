@@ -225,18 +225,18 @@ BLL.mobile = {
 
     // code = Math.floor(code / 100) * 100;
 
-    // if(code%100==1||code==152502||code==152921) 
-    // code = Math.floor(code/100)*100
+    if(code%100==1||code==152502||code==152921) 
+    code = Math.floor(code/100)*100
 
-    if(code==150101)code=150102
-    if(code==150201)code=150203
-    if(code==150301)code=150302
-    if(code==150401)code=150402
-    if(code==150501)code=150502
-    if(code==150601)code=150627
-    if(code==150701)code=150702
-    if(code==150801)code=150802
-    if(code==150901)code=150902
+    // if(code==150101)code=150102
+    // if(code==150201)code=150203
+    // if(code==150301)code=150302
+    // if(code==150401)code=150402
+    // if(code==150501)code=150502
+    // if(code==150601)code=150627
+    // if(code==150701)code=150702
+    // if(code==150801)code=150802
+    // if(code==150901)code=150902
 
 
 
@@ -342,17 +342,19 @@ BLL.mobile = {
         var arr = [];
         var cityCode = Math.floor(parseInt(param.areaId) ) ;
         // if(cityCode%100==1)cityCode=Math.floor(cityCode/100)*100
-        var code = cityCode
-        if(code==150101)code=150102
-        if(code==150201)code=150203
-        if(code==150301)code=150302
-        if(code==150401)code=150402
-        if(code==150501)code=150502
-        if(code==150601)code=150627
-        if(code==150701)code=150702
-        if(code==150801)code=150802
-        if(code==150901)code=150902
-        cityCode = code
+        if(cityCode%100==1||cityCode==152502||cityCode==152921) 
+        cityCode = Math.floor(cityCode/100)*100
+        // var code = cityCode
+        // if(code==150101)code=150102
+        // if(code==150201)code=150203
+        // if(code==150301)code=150302
+        // if(code==150401)code=150402
+        // if(code==150501)code=150502
+        // if(code==150601)code=150627
+        // if(code==150701)code=150702
+        // if(code==150801)code=150802
+        // if(code==150901)code=150902
+        // cityCode = code
 
         if (parseInt(timeInterval) == 0) //hour
         {
